@@ -9,7 +9,8 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "framer-motion": "^12.23.15",
+    "autoprefixer": "^10.4.21",
+    "framer-motion": "^12.23.16",
     "gsap": "^3.13.0",
     "lottie-react": "^2.4.1",
     "lucide-react": "^0.544.0",
