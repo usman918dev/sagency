@@ -1,92 +1,149 @@
-"use client";
-import React from "react";
-import { ShieldCheck, Rocket, Users, Heart } from "lucide-react";
+import {
+  GraduationCap,
+  Handshake,
+  BadgePercent,
+  Sparkles,
+  Telescope,
+  ArrowRight,
+} from 'lucide-react';
+import React from 'react';
 
-const reasons = [
-  {
-    id: 1,
-    title: "Trusted Expertise",
-    description: "Years of delivering top-notch digital solutions to clients worldwide.",
-    icon: <ShieldCheck className="w-8 h-8 text-white" />,
-  },
-  {
-    id: 2,
-    title: "Rapid Delivery",
-    description: "Fast, efficient, and agile workflows without compromising quality.",
-    icon: <Rocket className="w-8 h-8 text-white" />,
-  },
-  {
-    id: 3,
-    title: "Client-Centric Approach",
-    description: "Transparent communication and tailored solutions for every client.",
-    icon: <Users className="w-8 h-8 text-white" />,
-  },
-  {
-    id: 4,
-    title: "Innovation & Creativity",
-    description: "We combine creativity and cutting-edge technology to exceed expectations.",
-    icon: <Heart className="w-8 h-8 text-white" />,
-  },
-];
+// Reusable Card Component for features
+const FeatureCard = ({
+  icon: Icon,
+  title,
+  description,
+  className = '',
+  highlighted = false,
+}) => {
+  // Dynamic styles for dark theme
+  const cardStyles = highlighted
+    ? 'bg-orange-500 text-white'
+    : 'bg-[#0d1117] text-white border border-[#30363d]';
 
-const WhyChooseUsSplit = () => {
+  const textStyles = highlighted ? 'text-orange-100' : 'text-gray-400';
+  const iconStyles = highlighted ? 'text-white bg-[#89898947]' : 'text-orange-500 bg-[#1a1f25]';
+  const linkStyles = highlighted
+    ? 'text-white hover:text-orange-100'
+    : 'text-gray-300 hover:text-white';
+
   return (
-    <section className="relative w-full py-20 px-6 overflow-hidden">
-      {/* Background shapes */}
-      {/* <div className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-purple-600/20 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute -bottom-40 -right-40 w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-3xl pointer-events-none"></div> */}
-
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:items-start gap-12 relative z-10">
-        {/* Left side: reasons */}
-        <div className="flex-1 space-y-8">
-          <h2 className="text-4xl font-bold text-white mb-4">
-            Why <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-500">Choose Us</span>
-          </h2>
-          <p className="text-gray-400 mb-12">
-            Our agency blends creativity, strategy, and technology to deliver
-            exceptional digital experiences. Here’s why clients trust us to
-            bring ideas to life:
-          </p>
-
-          <div className="space-y-6">
-            {reasons.map((reason) => (
-              <div
-                key={reason.id}
-                className="flex items-start gap-4 p-6 rounded-2xl bg-white/5 backdrop-blur-md hover:bg-white/10 transition-all duration-300 cursor-pointer"
-              >
-                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-purple-600 to-blue-500 flex items-center justify-center flex-shrink-0">
-                  {reason.icon}
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-white mb-1">{reason.title}</h3>
-                  <p className="text-gray-300 text-sm">{reason.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+    <div
+      className={`flex h-full flex-col justify-between rounded-2xl p-6 transition-colors duration-300 ${cardStyles} ${className}`}
+    >
+      <div>
+        {/* Icon */}
+        <div className={`mb-6 flex items-center justify-center w-16 h-16 rounded-full ${iconStyles}`}>
+          <Icon size={32} className={iconStyles} />
         </div>
 
-        {/* Right side: Illustration / abstract shapes */}
-        <div className="flex-1">
-          <div className="w-full h-[400px] lg:h-[500px] bg-gradient-to-tr from-purple-600 to-blue-500 rounded-3xl relative overflow-hidden shadow-2xl">
-            {/* Optional: Add floating circles/animations */}
-            <div className="absolute -top-10 -left-10 w-40 h-40 bg-white/10 rounded-full animate-pulse"></div>
-            <div className="absolute -bottom-10 -right-10 w-60 h-60 bg-white/10 rounded-full animate-pulse delay-200"></div>
-          </div>
-        </div>
+        {/* Title */}
+        <h3 className="mb-2 text-lg font-bold">{title}</h3>
+
+        {/* Description */}
+        {description && (
+          <p className={`text-sm ${textStyles}`}>{description}</p>
+        )}
       </div>
 
-      {/* CTA Button */}
-      <div className="mt-16 text-center lg:text-left">
-        <a
-          href="#contact"
-          className="inline-block px-8 py-3 rounded-full bg-gradient-to-r from-purple-600 to-blue-500 text-white font-semibold shadow-lg transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl"
-        >
-          Work With Us
-        </a>
-      </div>
-    </section>
+      {/* Learn More Link */}
+      {/* <a
+                href="#"
+                className={`mt-6 flex items-center gap-2 self-start text-sm font-semibold transition-colors ${linkStyles}`}
+            >
+                Learn more
+                <ArrowRight size={16} />
+            </a> */}
+    </div>
   );
 };
 
-export default WhyChooseUsSplit;
+// Main Component
+const WhyChooseUs = () => {
+  const features = [
+    {
+      icon: Sparkles,
+      title: 'Innovative Solutions',
+      description: 'We leverage cutting-edge technologies and creative strategies to deliver outstanding digital experiences.',
+      className: 'lg:col-span-4',
+    },
+    {
+      icon: Handshake,
+      title: 'Dedicated Support',
+      description: 'Our team provides 24/7 support and maintains clear communication throughout your project.',
+      className: 'lg:col-span-4',
+    },
+    {
+      icon: BadgePercent,
+      title: 'Results-Driven Approach',
+      description: 'We focus on delivering measurable results that directly impact your business growth and ROI.',
+      className: 'md:col-span-2 lg:col-span-8 ',
+      highlighted: true,
+    },
+    {
+      icon: GraduationCap,
+      title: 'Expert Team',
+      description: 'Our professionals bring years of industry experience and expertise to every project we undertake.',
+      className: 'lg:col-span-4',
+    },
+    {
+      icon: Telescope,
+      title: 'Future-Ready Solutions',
+      description: 'We stay ahead of industry trends to ensure your digital presence remains competitive and innovative.',
+      className: 'lg:col-span-4',
+    },
+  ];
+
+  return (
+    <div className="flex min-h-screen w-full ">
+      <main className="w-full ">
+        <section className="rounded-3xl  p-6 sm:p-10 lg:p-16 border border-[#30363d]  container mx-auto">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-12">
+
+            {/* Main Title */}
+            <div className="md:col-span-2 lg:col-span-4 lg:row-span-1">
+              <h2 className="text-5xl font-black uppercase leading-none tracking-tighter text-white sm:text-6xl">
+                Why Choose
+                <br />
+                Us?
+              </h2>
+            </div>
+
+            {/* Feature Cards */}
+            {features.map((feature, index) => (
+              <FeatureCard key={index} {...feature} />
+            ))}
+
+            {/* Launch Career Block */}
+            <div className="flex h-full flex-col justify-between rounded-2xl p-6 md:col-span-2 lg:col-span-7">
+              <div>
+
+                <p className="text-gray-400">
+                  Let's collaborate to create innovative digital solutions that will help your business thrive in the modern digital landscape.
+                  Our expert team is ready to bring your vision to life.
+                </p>
+                <p className="text-5xl font-black uppercase leading-none tracking-tighter text-white sm:text-6xl">
+                  READY TO TRANSFORM YOUR DIGITAL PRESENCE?
+                </p>
+              </div>
+
+            </div>
+<div className="col-span-1 flex items-end justify-end mt-8">
+  <button
+    aria-label="Launch your sales career"
+    className="flex h-14 w-14 items-center justify-center rounded-full bg-orange-500 text-white transition-transform hover:scale-105"
+  >
+    <ArrowRight size={24} />
+  </button>
+</div>
+
+          </div>
+
+        </section>
+      </main>
+    </div>
+  );
+
+};
+
+export default WhyChooseUs;
