@@ -13,8 +13,8 @@ const HeroSection = () => {
   return (
 
     <>
-      <div 
-      // style={{ backgroundImage: "url('/assets/bg.png')" }}
+      <div
+        // style={{ backgroundImage: "url('/assets/bg.png')" }}
         className="min-h-screen w-full bg-cover bg-center bg-fixed bg-gradient-to-br from-[#1A1D24]/40 to-[#0F1115]/40 backdrop-blur-md
 "
       >
@@ -27,9 +27,21 @@ const HeroSection = () => {
         // }}
 
         >
-          <div className="container max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left Content Section */}
             <div className="flex flex-col items-center lg:items-start text-center lg:text-left py-12">
+
+              {/* Small Code Line */}
+              <motion.span
+                className="mb-2 text-sm font-mono tracking-wide uppercase text-[#F25725] rounded-lg inline-block"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                Empowering Your Business with AI
+              </motion.span>
+
+              {/* Main Headline */}
               <motion.h1
                 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-4 tracking-tight"
                 initial={{ opacity: 0, y: -20 }}
@@ -48,6 +60,7 @@ const HeroSection = () => {
                 </motion.span>
               </motion.h1>
 
+              {/* Description */}
               <motion.p
                 className="text-lg sm:text-xl text-gray-300 max-w-lg mb-8"
                 initial={{ opacity: 0, y: 20 }}
@@ -57,11 +70,11 @@ const HeroSection = () => {
                 Leverage the power of machine learning and AI to unlock insights and drive business growth
               </motion.p>
 
+              {/* Buttons */}
               <div className="flex space-x-4">
-                {/* Our Services Button */}
                 <motion.button
                   className="px-8 py-3 font-semibold rounded bg-[#F25725] hover:bg-transparent hover:border-[#F25725] hover:border transition-colors duration-300 shadow-lg text-white"
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{ scale: 1.0 }}
                   whileTap={{ scale: 0.95 }}
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -70,10 +83,9 @@ const HeroSection = () => {
                   Our Services
                 </motion.button>
 
-                {/* Contact Us Button */}
                 <motion.button
-                  className="px-8 py-3 font-semibold rounded border border-[#F25725] text-[#F25725] hover:bg-[#F25725] hover:text-white transition-colors duration-300 shadow-md"
-                  whileHover={{ scale: 1.05 }}
+                  className="px-8 py-3 font-semibold rounded border hover:border-[#F25725] hover:bg-[#F25725] hover:text-white transition-colors duration-300 shadow-md"
+                  whileHover={{ scale: 1.0 }}
                   whileTap={{ scale: 0.95 }}
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -83,25 +95,14 @@ const HeroSection = () => {
                 </motion.button>
               </div>
 
-              {/* Your existing motion.div */}
+              {/* Avatar / Clients Section */}
               <motion.div
                 className="mt-8 flex items-center space-x-2"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 1.2 }}
               >
-                {/* other content here */}
-              </motion.div>
-
-
-              <motion.div
-                className="mt-8 flex items-center space-x-2"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 1 }}
-              >
                 <div className="flex -space-x-2 overflow-hidden">
-                  {/* Dummy avatar images */}
                   <img
                     className="inline-block h-8 w-8 rounded-full ring-2 ring-white"
                     src="https://via.placeholder.com/32"
@@ -118,7 +119,9 @@ const HeroSection = () => {
                     alt="Client avatar 3"
                   />
                 </div>
-                <span className="text-gray-400 font-medium">Over 100+ clients have worked with us</span>
+                <span className="text-gray-400 font-medium">
+                  Over 100+ clients have worked with us
+                </span>
               </motion.div>
             </div>
 
@@ -132,11 +135,10 @@ const HeroSection = () => {
               >
                 <div className="w-full h-full flex items-center justify-center">
                   <AnimatedMockup />
-
                 </div>
               </motion.div>
 
-              {/* Gradient background for floating effect */}
+              {/* Gradient Background */}
               <motion.div
                 className="absolute inset-0 flex items-center justify-center"
                 initial={{ opacity: 0, scale: 0.5 }}
@@ -152,8 +154,8 @@ const HeroSection = () => {
                 ></div>
               </motion.div>
             </div>
-
           </div>
+
 
         </div >
         <div className='container mx-auto rounded-4xl'>
@@ -193,8 +195,11 @@ const HeroSection = () => {
           {/* <AnimatedWaveBg className="absolute top-0 left-0 w-full h-full" /> */}
 
         </div>
-        <ProcessSection />
-<WhyChooseUs/>
+        <div className='mt-24'>
+          <ProcessSection />
+          <WhyChooseUs />
+        </div>
+
       </div>
     </>
 

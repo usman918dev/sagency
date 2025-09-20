@@ -1,105 +1,127 @@
-// src/components/BadgeTicker.jsx
 "use client";
 import React from "react";
-import AnimatedWaveBg from "../Svg";
+import {
+  Atom,
+  Box,
+  Boxes,
+  Wind,
+  Server,
+  Database,
+  Code,
+  Type,
+  FileCode,
+  Brain,
+  Figma,
+  GitBranch,
+} from "lucide-react";
 
-// The Badge component for styling individual badges
-function Badge({ text, icon: Icon }) {
+
+// Badge component with dynamic colors and icons
+function Badge({ text, icon: Icon, color }) {
   return (
-    <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-lg border border-white/20 text-white px-4 py-2 rounded-full shadow-lg whitespace-nowrap transition-transform duration-300 hover:scale-105 hover:bg-white/20">
-      {Icon && <Icon className="w-5 h-5" />}
-      <span>{text}</span>
+    <div
+      className="flex items-center justify-center w-36 h-16 space-x-2 text-white px-4 py-2 rounded-4xl shadow-lg whitespace-nowrap transition-transform duration-300 hover:scale-105"
+      style={{
+        backgroundColor: color + "20", // light transparent background
+        border: `1px solid ${color}50`,
+      }}
+    >
+      {Icon && (
+        <div
+          className="flex items-center justify-center w-8 h-8 rounded-full"
+          style={{ backgroundColor: color }}
+        >
+          <Icon className="w-4 h-4 text-white" />
+        </div>
+      )}
+      <span className="font-medium">{text}</span>
     </div>
   );
 }
 
-// Main ProfessionalBadgeTicker component
 export default function ProfessionalBadgeTicker() {
-  const badges = [
-    { text: "React" },
-    { text: "Next.js" },
-    { text: "Tailwind" },
-    { text: "Node.js" },
-    { text: "MongoDB" },
-    { text: "GraphQL" },
-    { text: "TypeScript" },
-    { text: "JavaScript" },
-    { text: "Python" },
-    { text: "Figma" },
-    { text: "Git" },
-    { text: "Docker" },
-  ];
+const badges = [
+  { text: "React", icon: Atom, color: "#61DAFB" },
+  { text: "Next.js", icon: Box, color: "#000000" },
+  { text: "Tailwind", icon: Wind, color: "#38BDF8" },
+  { text: "Node.js", icon: Server, color: "#83CD29" },
+  { text: "MongoDB", icon: Database, color: "#4DB33D" },
+  { text: "GraphQL", icon: Code, color: "#E535AB" },
+  { text: "TypeScript", icon: Type, color: "#3178C6" },
+  { text: "JavaScript", icon: FileCode, color: "#F7DF1E" },
+  { text: "Python", icon: Brain, color: "#3776AB" },
+  { text: "Figma", icon: Figma, color: "#F24E1E" },
+  { text: "Git", icon: GitBranch, color: "#F05032" },
+  { text: "Docker", icon: Boxes, color: "#0DB7ED" },
+];
+
+
 
   const rowCount = 2;
   const badgesPerRow = 6;
 
-  // Split badges into two rows
+  // Split badges into rows
   const rows = Array.from({ length: rowCount }, (_, i) =>
     badges.slice(i * badgesPerRow, (i + 1) * badgesPerRow)
   );
 
   return (
-    <div>
+    <div className="w-full relative py-12 overflow-hidden">
+      <div className="absolute inset-0"></div>
+      <div className="container mx-auto px-4 relative z-10 flex flex-col items-center">
+        {rows.map((row, rowIndex) => {
+          const isForward = rowIndex === 0;
+          const duration = 30; // lower = faster scroll
 
-      <div className="w-full relative py-12 overflow-hidden">
-      {/* <AnimatedWaveBg className="absolute top-0 left-0 w-full h-full" /> */}
-
-        <div className="absolute inset-0"></div>
-        <div className="container mx-auto px-4 relative z-10 flex flex-col items-center">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white text-center mb-10">
-            Our Tech Stack
-          </h2>
-
-          {rows.map((row, rowIndex) => {
-            const isForward = rowIndex === 0;
-            const duration = 40; // in seconds, controls speed
-
-            return (
+          return (
+            <div
+              key={rowIndex}
+              className="relative flex items-center mb-6 overflow-hidden w-full"
+            >
               <div
-                key={rowIndex}
-                className={`relative flex items-center mb-6 overflow-hidden`}
+                className="flex space-x-6 badge-track"
+                style={{
+                  animation: `${isForward ? "scroll-fwd" : "scroll-bwd"} ${duration}s linear infinite`,
+                }}
               >
-                <div
-                  className={`flex space-x-6 badge-track`}
-                  style={{
-                    animation: `${isForward ? 'scroll-fwd' : 'scroll-bwd'} ${duration}s linear infinite`,
-                    animationPlayState: 'running',
-                  }}
-                >
-                  {/* Duplicate the row for seamless looping */}
-                  {[...row, ...row].map((badge, i) => (
-                    <Badge key={`badge-${rowIndex}-${i}`} text={badge.text} icon={badge.icon} />
-                  ))}
-                </div>
+                {/* Duplicate row twice for seamless loop */}
+                {[...row, ...row].map((badge, i) => (
+                  <Badge
+                    key={`badge-${rowIndex}-${i}`}
+                    text={badge.text}
+                    icon={badge.icon}
+                    color={badge.color}
+                  />
+                ))}
               </div>
-            );
-          })}
-        </div>
+            </div>
+          );
+        })}
+      </div>
 
-        {/* CSS for animations */}
-        <style jsx>{`
+      {/* Infinite Scroll Animations */}
+      <style jsx>{`
         @keyframes scroll-fwd {
-          from {
+          0% {
             transform: translateX(0%);
           }
-          to {
+          100% {
             transform: translateX(-50%);
           }
         }
         @keyframes scroll-bwd {
-          from {
+          0% {
             transform: translateX(-50%);
           }
-          to {
+          100% {
             transform: translateX(0%);
           }
         }
+        /* Pause animation on hover */
         .badge-track:hover {
           animation-play-state: paused !important;
         }
       `}</style>
-      </div>
     </div>
-
   );
 }

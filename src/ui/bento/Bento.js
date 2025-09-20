@@ -2,57 +2,59 @@ import { useRef, useEffect, useCallback, useState } from 'react';
 import { gsap } from 'gsap';
 import './bento.css';
 import { DevMockup } from '../mockup/Mockup';
+import { Search, Megaphone, Palette, Globe, ShoppingBag, Clapperboard } from "lucide-react";
 
-const DEFAULT_PARTICLE_COUNT = 12;
-const DEFAULT_SPOTLIGHT_RADIUS = 300;
-const DEFAULT_GLOW_COLOR = '132, 0, 255';
-const MOBILE_BREAKPOINT = 768;
 
 const cardData = [
   {
     color: '#060010',
     title: 'SEO',
     description: 'Our SEO experts optimize your website, ensuring it ranks higher in search results and attracts targeted organic traffic.',
-    label: 'Insights',
-    img: '/assets/seo.webp'
+    icon: Search, // Perfect for SEO & search optimization
+    img: '/assets/seo1.webp'
   },
   {
     color: '#060010',
     title: 'Digital Marketing',
     description: 'Unleash the power of data-driven strategies in digital marketing to drive unprecedented success and establish a dominant presence.',
-    label: 'Overview',
-    img: '/assets/digital.webp'
+    icon: Megaphone, // Represents marketing & outreach
+    img: '/assets/digi.jpg'
   },
   {
     color: '#060010',
     title: 'Graphic Design',
-    description: 'Elevate your brand with captivating Graphic Design that creates lasting impressions and sets you apart as a leader in your Industry',
-    label: 'Teamwork',
-    img: '/assets/graphic.jpg'
+    description: 'Elevate your brand with captivating Graphic Design that creates lasting impressions and sets you apart as a leader in your industry.',
+    icon: Palette, // Ideal for design & creativity
+    img: '/assets/d1.jpg'
   },
   {
     color: '#060010',
     title: 'Website Development',
     description: 'We create stunning, user-friendly websites that showcase your brand and deliver a seamless browsing experience.',
-    label: 'Efficiency',
-    // img: '/assets/web.webp'
+    icon: Globe, // Represents web development & global presence
     lottie: 'yes'
   },
   {
     color: '#060010',
     title: 'eCommerce Developments',
     description: 'Transform your business into an engaging mobile experience that drives user loyalty.',
-    label: 'Connectivity',
-    img: '/assets/ecom.webp'
+    icon: ShoppingBag, // E-commerce / online store
+    img: '/assets/ecom1.webp'
   },
   {
     color: '#060010',
     title: 'Video Editing',
     description: 'Creative edits, smooth transitions, and cinematic visuals for every project.',
-    label: 'Protection',
-    img: '/assets/video.jpg'
+    icon: Clapperboard, // Perfect for video production
+    img: '/assets/edit.jpg'
   }
 ];
+
+
+const DEFAULT_PARTICLE_COUNT = 12;
+const DEFAULT_SPOTLIGHT_RADIUS = 300;
+const DEFAULT_GLOW_COLOR = '132, 0, 255';
+const MOBILE_BREAKPOINT = 768;
 
 const createParticleElement = (x, y, color = DEFAULT_GLOW_COLOR) => {
   const el = document.createElement('div');
@@ -531,15 +533,19 @@ const MagicBento = ({
                 enableMagnetism={enableMagnetism}
               >
                 <div className="absolute inset-0">
-                  {card.lottie &&
+                  {card.img ? (
+                    <img
+                      src={card.img}
+                      alt={card.title || "Card image"}
+                      className="w-full h-full object-cover rounded-xl"
+                    />
+                  ) : card.lottie ? (
                     <DevMockup className="w-full h-full object-cover" />
-                  }
-                  {/* Overlay applied only to background */}
-                  {/* <div className="absolute inset-0 bg-black/60 rounded-2xl"></div> */}
+                  ) : null}
                 </div>
-                {/* <div className="absolute inset-0 bg-black/60"></div> */}
+
                 <div className="card__header">
-                  <div className="card__label">{card.label}</div>
+                  <div className="card__label">{card.icon && <card.icon className="w-8 h-8 text-white" />}</div>
                 </div>
                 <div className="card__content">
                   <h2 className="card__title">{card.title}</h2>
