@@ -97,7 +97,7 @@ const WhyChooseUs = () => {
   return (
     <div className="flex min-h-screen w-full ">
       <main className="w-full ">
-        <section className="rounded-3xl  p-6 sm:p-10 lg:p-16 border border-[#30363d]  container mx-auto">
+        <section className="rounded-3xl  p-6 sm:p-10 lg:p-16 border border-[#30363d] g-px">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-12">
 
             {/* Main Title */}
@@ -122,7 +122,7 @@ const WhyChooseUs = () => {
                   Let's collaborate to create innovative digital solutions that will help your business thrive in the modern digital landscape.
                   Our expert team is ready to bring your vision to life.
                 </p>
-                <p className="text-5xl font-black uppercase leading-none tracking-tighter text-white sm:text-6xl">
+                <p className="text-4xl font-black uppercase leading-none tracking-tighter text-white sm:text-5xl">
                   READY TO TRANSFORM YOUR DIGITAL PRESENCE?
                 </p>
               </div>

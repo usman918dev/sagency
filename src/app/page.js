@@ -8,6 +8,7 @@ import AnimatedMockup from '@/ui/mockup/Mockup';
 import AnimatedWaveBg from '@/ui/Svg';
 import ProcessSection from '@/ui/howwework/HowWeWork';
 import WhyChooseUs from '@/ui/whychooseus/WhyChooseUs';
+import Testimonials from '@/ui/testinomials/Testinomails';
 
 const HeroSection = () => {
   return (
@@ -27,7 +28,7 @@ const HeroSection = () => {
         // }}
 
         >
-          <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="g-px grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left Content Section */}
             <div className="flex flex-col items-center lg:items-start text-center lg:text-left py-12">
 
@@ -158,12 +159,12 @@ const HeroSection = () => {
 
 
         </div >
-        <div className='container mx-auto rounded-4xl'>
+        <div className='g-px rounded-4xl'>
           <HorizontalLogoLoop />
         </div>
 
         <div className=''>
-          <div className="container mx-auto text-center mb-12 pt-36 ">
+          <div className="g-px text-center mb-12 pt-36 ">
             {/* Small subheading */}
             <p className="text-sm text-[#F25725] uppercase tracking-wider mb-2">
               Our Services
@@ -178,7 +179,7 @@ const HeroSection = () => {
             </h2>
           </div>
           {/* Your MagicBento / services grid */}
-          <div className="container mx-auto  ">
+          <div className="g-px  ">
             <MagicBento
               textAutoHide={true}
               enableStars={true}
@@ -197,7 +198,9 @@ const HeroSection = () => {
         </div>
         <div className='mt-24'>
           <ProcessSection />
+
           <WhyChooseUs />
+          <Testimonials />
         </div>
 
       </div>

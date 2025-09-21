@@ -58,11 +58,11 @@ export default function Navbar() {
         showNavbar ? "translate-y-0" : "-translate-y-full"
       } ${
         scrolled 
-          ? "bg-[#08375D]/90 backdrop-blur-xl shadow-xl border-b border-white/10" 
-          : "bg-gradient-to-r from-[#08375D]/80 via-[#08375D]/70 to-[#08375D]/80 backdrop-blur-sm"
+          ? "backdrop-blur-xl shadow-xl border-b border-white/10" 
+          : "backdrop-blur-sm"
       }`}
     >
-      <div className="container mx-auto flex items-center justify-between px-6 py-3">
+      <div className="g-px flex items-center justify-between px-6 py-2">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2 group">
           <div className="relative">
@@ -70,7 +70,7 @@ export default function Navbar() {
               src="/assets/logomain.png"
               alt="Agency Logo"
               className={`transition-all duration-500 ease-in-out object-contain group-hover:scale-105 ${
-                scrolled ? "w-16 h-16" : "w-20 h-20"
+                scrolled ? "w-12 h-12" : "w-16 h-16"
               }`}
             />
             <div className="absolute inset-0 bg-gradient-to-r from-[#F25725]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full blur-xl"></div>
@@ -188,11 +188,11 @@ export default function Navbar() {
 
       {/* Mobile Dropdown Menu */}
       <div
-        className={`lg:hidden bg-gradient-to-b from-[#08375D]/95 to-[#08375D]/98 backdrop-blur-xl border-t border-white/10 transition-all duration-500 ease-in-out overflow-hidden ${
+        className={`lg:hidden backdrop-blur-xl border-t border-white/10 transition-all duration-500 ease-in-out overflow-hidden ${
           isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <nav className="flex flex-col px-6 py-6 space-y-3">
+        <nav className="flex flex-col px-6 py-4 space-y-2">
           {navLinks.map((link, index) => (
             <div key={index} className="relative">
               {link.dropdown ? (
@@ -201,7 +201,7 @@ export default function Navbar() {
                     setActiveLink(link.name);
                     setServicesOpen(!servicesOpen);
                   }}
-                  className={`flex justify-between items-center w-full px-4 py-3 text-lg font-semibold transition-all duration-300 rounded-lg ${
+                  className={`flex justify-between items-center w-full px-4 py-2 text-base font-semibold transition-all duration-300 rounded-lg ${
                     activeLink === link.name ? "text-[#F25725] bg-white/10" : "text-white"
                   } hover:bg-white/10 hover:text-[#F25725]`}
                 >
@@ -220,7 +220,7 @@ export default function Navbar() {
                     setActiveLink(link.name);
                     setIsOpen(false);
                   }}
-                  className={`block w-full px-4 py-3 text-lg font-semibold transition-all duration-300 rounded-lg ${
+                  className={`block w-full px-4 py-2 text-base font-semibold transition-all duration-300 rounded-lg ${
                     activeLink === link.name ? "text-[#F25725] bg-white/10" : "text-white"
                   } hover:bg-white/10 hover:text-[#F25725]`}
                 >
@@ -251,11 +251,11 @@ export default function Navbar() {
               )}
             </div>
           ))}
-          <div className="pt-4 mt-4 border-t border-white/20">
+          <div className="pt-3 mt-3 border-t border-white/20">
             <Link
               href="/contact"
               onClick={() => setIsOpen(false)}
-              className="block w-full px-6 py-3 text-center bg-gradient-to-r from-[#F25725] to-[#ff6b35] text-white font-semibold rounded-full hover:shadow-lg hover:shadow-[#F25725]/25 transition-all duration-300"
+              className="block w-full px-6 py-2 text-center bg-gradient-to-r from-[#F25725] to-[#ff6b35] text-white font-semibold rounded-full hover:shadow-lg hover:shadow-[#F25725]/25 transition-all duration-300"
             >
               Get Started
             </Link>
