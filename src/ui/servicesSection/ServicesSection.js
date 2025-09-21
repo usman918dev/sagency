@@ -10,7 +10,7 @@ export default function ServiceSection({ service, inverted, prefersReducedMotion
     <section className="relative overflow-hidden border-b border-gray-100">
       <div className="min-h-[50vh] max-h-[600px] flex items-center">
         <div className="w-full px-6 py-16">
-          <div className="max-w-7xl mx-auto">
+          <div className="g-px">
             <div className={`grid lg:grid-cols-2 gap-12 items-center ${inverted ? 'lg:grid-flow-col-dense' : ''}`}>
               {/* Text Content */}
               <motion.div 

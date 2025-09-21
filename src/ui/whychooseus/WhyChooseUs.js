@@ -29,7 +29,7 @@ const FeatureCard = ({
 
   return (
     <div
-      className={`flex h-full flex-col justify-between rounded-2xl p-6 transition-colors duration-300 ${cardStyles} ${className}`}
+      className={`flex h-full flex-col justify-between rounded-2xl p-6 transition-all duration-300 hover:border-orange-500 hover:border ${cardStyles} ${className}`}
     >
       <div>
         {/* Icon */}
@@ -97,7 +97,7 @@ const WhyChooseUs = () => {
   return (
     <div className="flex min-h-screen w-full ">
       <main className="w-full ">
-        <section className="rounded-3xl  p-6 sm:p-10 lg:p-16 border border-[#30363d] g-px">
+        <section className="rounded-3xl p-6 sm:p-10 lg:p-16 g-px">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-12">
 
             {/* Main Title */}
@@ -128,14 +128,14 @@ const WhyChooseUs = () => {
               </div>
 
             </div>
-<div className="col-span-1 flex items-end justify-end mt-8">
-  <button
-    aria-label="Launch your sales career"
-    className="flex h-14 w-14 items-center justify-center rounded-full bg-orange-500 text-white transition-transform hover:scale-105"
-  >
-    <ArrowRight size={24} />
-  </button>
-</div>
+            <div className="col-span-1 flex items-end justify-end mt-8">
+              <button
+                aria-label="Launch your sales career"
+                className="flex h-14 w-14 items-center justify-center rounded-full bg-orange-500 text-white transition-transform hover:scale-105"
+              >
+                <ArrowRight size={24} />
+              </button>
+            </div>
 
           </div>
 

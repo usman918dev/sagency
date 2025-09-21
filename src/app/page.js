@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import Threads from '@/ui/animatedbg/Bg';
 import MagicBento from '@/ui/bento/Bento';
 import HorizontalLogoLoop from '@/ui/logoloop/LogoLoop';
-import AnimatedMockup from '@/ui/mockup/Mockup';
+import AnimatedMockup, { LandingMockup } from '@/ui/mockup/Mockup';
 import AnimatedWaveBg from '@/ui/Svg';
 import ProcessSection from '@/ui/howwework/HowWeWork';
 import WhyChooseUs from '@/ui/whychooseus/WhyChooseUs';
@@ -16,7 +16,7 @@ const HeroSection = () => {
     <>
       <div
         // style={{ backgroundImage: "url('/assets/bg.png')" }}
-        className="min-h-screen w-full bg-cover bg-center bg-fixed bg-gradient-to-br from-[#1A1D24]/40 to-[#0F1115]/40 backdrop-blur-md
+        className="min-h-screen w-full bg-cover bg-center bg-fixed bg-[#0D1117] backdrop-blur-md
 "
       >
 
@@ -103,23 +103,24 @@ const HeroSection = () => {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 1.2 }}
               >
-                <div className="flex -space-x-2 overflow-hidden">
+                <div className="flex -space-x-2 p-1 overflow-hidden">
                   <img
                     className="inline-block h-8 w-8 rounded-full ring-2 ring-white"
-                    src="https://via.placeholder.com/32"
+                    src="https://randomuser.me/api/portraits/men/32.jpg"
                     alt="Client avatar 1"
                   />
                   <img
                     className="inline-block h-8 w-8 rounded-full ring-2 ring-white"
-                    src="https://via.placeholder.com/32"
+                    src="https://randomuser.me/api/portraits/women/45.jpg"
                     alt="Client avatar 2"
                   />
                   <img
                     className="inline-block h-8 w-8 rounded-full ring-2 ring-white"
-                    src="https://via.placeholder.com/32"
+                    src="https://randomuser.me/api/portraits/men/56.jpg"
                     alt="Client avatar 3"
                   />
                 </div>
+
                 <span className="text-gray-400 font-medium">
                   Over 100+ clients have worked with us
                 </span>
@@ -135,7 +136,8 @@ const HeroSection = () => {
                 transition={{ type: 'spring', stiffness: 100, damping: 10, delay: 1.2 }}
               >
                 <div className="w-full h-full flex items-center justify-center">
-                  <AnimatedMockup />
+                  {/* <AnimatedMockup /> */}
+                  <LandingMockup/>
                 </div>
               </motion.div>
 
@@ -179,7 +181,7 @@ const HeroSection = () => {
             </h2>
           </div>
           {/* Your MagicBento / services grid */}
-          <div className="g-px  ">
+          <div className="g-px">
             <MagicBento
               textAutoHide={true}
               enableStars={true}

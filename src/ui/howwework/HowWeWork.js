@@ -42,7 +42,7 @@ const HowWeWorkCard = ({ card }) => {
 
   return (
     <div
-      className={`relative p-8 rounded-2xl text-center ${
+      className={`relative p-8 rounded-2xl text-center transition-all duration-300 hover:border-orange-500 ${
         card.highlight
           ? "bg-gradient-to-br from-orange-500 to-orange-600 text-white"
           : "bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 text-gray-300"
