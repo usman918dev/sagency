@@ -1,20 +1,20 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { 
-  Star, 
-  Quote, 
-  ChevronLeft, 
+import { motion } from "framer-motion";
+import {
+  Star,
+  Quote,
+  ChevronLeft,
   ChevronRight,
   User,
   Building2,
   Calendar,
   Award
 } from "lucide-react";
-
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false)
 
   const testimonials = [
     {
@@ -79,20 +79,20 @@ const Testimonials = () => {
     }
   ];
 
-  // Smooth transition function
+  // Smooth transition function with improved animations
   const changeTestimonial = (newIndex) => {
     if (newIndex === currentIndex || isTransitioning) return;
-    
+
     setIsTransitioning(true);
-    
-    // Scale down animation
+
+    // Fade out and slide
     setTimeout(() => {
       setCurrentIndex(newIndex);
-      // Scale up animation after content change
+      // Fade in and slide after content change
       setTimeout(() => {
         setIsTransitioning(false);
-      }, 150);
-    }, 150);
+      }, 300);
+    }, 300);
   };
 
   // Auto-play testimonials
@@ -124,56 +124,101 @@ const Testimonials = () => {
   };
 
   const currentTestimonial = testimonials[currentIndex];
+  // Animation variants
+  const fadeIn = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+  };
+
 
   return (
-    <section className="relative w-full py-24 px-6 bg-[#0D1117] overflow-hidden">
+    <motion.section
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      className="relative w-full py-24 px-6 bg-[#0D1117] overflow-hidden"
+    >
       {/* Background Effects */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-500/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-red-500/5 rounded-full blur-3xl"></div>
-      </div>
+      <motion.div
+        variants={fadeIn}
+        className="absolute inset-0"
+        whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      >
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-500/5 rounded-full blur-3xl"
+        />
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 1, delay: 0.3 }}
+          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-red-500/5 rounded-full blur-3xl"
+        />
+      </motion.div>
 
-      <div className="g-px relative z-10">
+      <motion.div
+        variants={fadeIn}
+        transition={{ delay: 0.2 }}
+        className="g-px relative z-10"
+        whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      >
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <motion.div
+          variants={fadeIn}
+          transition={{ delay: 0.3 }}
+          className="text-center mb-16">
           <div className="inline-flex items-center gap-2 bg-orange-500/10 border border-orange-500/20 rounded-full px-6 py-2 mb-8">
             <Award className="w-4 h-4 text-orange-400" />
             <span className="text-orange-400 text-sm font-medium uppercase tracking-wider">
               Client Testimonials
             </span>
           </div>
-          
+
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
             What Our{" "}
             <span className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
               Clients Say
             </span>
           </h2>
-          
+
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Don't just take our word for it. Here's what our satisfied clients have to say about their experience working with us.
           </p>
-        </div>
+        </motion.div>
 
         {/* Main Testimonial Display */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
-          
+        <motion.div
+          variants={fadeIn}
+          transition={{ delay: 0.4 }}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16"
+        >
           {/* Testimonial Content */}
-          <div className="relative">
-            <div className={`bg-gray-900/50 backdrop-blur-sm border border-gray-800/50 rounded-2xl p-8 lg:p-10 transition-all duration-300 ease-in-out ${
-              isTransitioning ? 'scale-95 opacity-70' : 'scale-100 opacity-100'
-            }`}>
-              {/* Quote Icon */}
-              <div className={`mb-6 transition-all duration-300 ease-in-out ${
-                isTransitioning ? 'translate-y-2 opacity-0' : 'translate-y-0 opacity-100'
+          <motion.div
+            variants={fadeIn}
+            transition={{ delay: 0.5 }}
+            className="relative">
+            <div className={`bg-gray-900/50 backdrop-blur-sm border border-gray-800/50 rounded-2xl p-8 lg:p-10 transition-all duration-500 ease-in-out ${
+                isTransitioning 
+                  ? 'opacity-0 transform -translate-x-4' 
+                  : 'opacity-100 transform translate-x-0'
               }`}>
+              {/* Quote Icon */}
+              <div className={`mb-6 transition-all duration-300 ease-in-out ${isTransitioning ? 'translate-y-2 opacity-0' : 'translate-y-0 opacity-100'
+                }`}>
                 <Quote className="w-12 h-12 text-orange-400 opacity-50" />
               </div>
 
               {/* Rating Stars */}
-              <div className={`flex items-center gap-1 mb-6 transition-all duration-300 ease-in-out delay-75 ${
-                isTransitioning ? 'translate-y-2 opacity-0' : 'translate-y-0 opacity-100'
-              }`}>
+              <div className={`flex items-center gap-1 mb-6 transition-all duration-300 ease-in-out delay-75 ${isTransitioning ? 'translate-y-2 opacity-0' : 'translate-y-0 opacity-100'
+                }`}>
                 {[...Array(currentTestimonial.rating)].map((_, index) => (
                   <Star key={index} className="w-5 h-5 fill-orange-400 text-orange-400" />
                 ))}
@@ -183,16 +228,14 @@ const Testimonials = () => {
               </div>
 
               {/* Testimonial Text */}
-              <blockquote className={`text-lg lg:text-xl text-gray-200 leading-relaxed mb-8 font-medium transition-all duration-300 ease-in-out delay-100 ${
-                isTransitioning ? 'translate-y-2 opacity-0' : 'translate-y-0 opacity-100'
-              }`}>
+              <blockquote className={`text-lg lg:text-xl text-gray-200 leading-relaxed mb-8 font-medium transition-all duration-300 ease-in-out delay-100 ${isTransitioning ? 'translate-y-2 opacity-0' : 'translate-y-0 opacity-100'
+                }`}>
                 "{currentTestimonial.text}"
               </blockquote>
 
               {/* Results */}
-              <div className={`mb-8 transition-all duration-300 ease-in-out delay-150 ${
-                isTransitioning ? 'translate-y-2 opacity-0' : 'translate-y-0 opacity-100'
-              }`}>
+              <div className={`mb-8 transition-all duration-300 ease-in-out delay-150 ${isTransitioning ? 'translate-y-2 opacity-0' : 'translate-y-0 opacity-100'
+                }`}>
                 <h4 className="text-orange-400 font-semibold mb-3">Key Results:</h4>
                 <ul className="space-y-2">
                   {currentTestimonial.results.map((result, index) => (
@@ -205,9 +248,8 @@ const Testimonials = () => {
               </div>
 
               {/* Project Info */}
-              <div className={`flex items-center gap-4 text-sm text-gray-400 mb-6 transition-all duration-300 ease-in-out delay-200 ${
-                isTransitioning ? 'translate-y-2 opacity-0' : 'translate-y-0 opacity-100'
-              }`}>
+              <div className={`flex items-center gap-4 text-sm text-gray-400 mb-6 transition-all duration-300 ease-in-out delay-200 ${isTransitioning ? 'translate-y-2 opacity-0' : 'translate-y-0 opacity-100'
+                }`}>
                 <div className="flex items-center gap-1">
                   <Building2 className="w-4 h-4" />
                   {currentTestimonial.project}
@@ -219,9 +261,8 @@ const Testimonials = () => {
               </div>
 
               {/* Client Info */}
-              <div className={`flex items-center gap-4 pt-6 border-t border-gray-700/50 transition-all duration-300 ease-in-out delay-250 ${
-                isTransitioning ? 'translate-y-2 opacity-0' : 'translate-y-0 opacity-100'
-              }`}>
+              <div className={`flex items-center gap-4 pt-6 border-t border-gray-700/50 transition-all duration-300 ease-in-out delay-250 ${isTransitioning ? 'translate-y-2 opacity-0' : 'translate-y-0 opacity-100'
+                }`}>
                 <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center">
                   <User className="w-6 h-6 text-white" />
                 </div>
@@ -233,7 +274,7 @@ const Testimonials = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Navigation and Stats */}
           <div className="space-y-8">
@@ -243,26 +284,24 @@ const Testimonials = () => {
                 <button
                   onClick={prevTestimonial}
                   disabled={isTransitioning}
-                  className={`w-12 h-12 bg-gray-800/50 border border-gray-700/50 rounded-full flex items-center justify-center text-gray-400 hover:bg-orange-500 hover:border-orange-500 hover:text-white transition-all duration-300 ${
-                    isTransitioning ? 'opacity-50 cursor-not-allowed' : 'hover:scale-105'
-                  }`}
+                  className={`w-12 h-12 bg-gray-800/50 border border-gray-700/50 rounded-full flex items-center justify-center text-gray-400 hover:bg-orange-500 hover:border-orange-500 hover:text-white transition-all duration-300 ${isTransitioning ? 'opacity-50 cursor-not-allowed' : 'hover:scale-105'
+                    }`}
                 >
                   <ChevronLeft className="w-5 h-5" />
                 </button>
-                
+
                 <div className="flex gap-2">
                   {testimonials.map((_, index) => (
                     <button
                       key={index}
                       onClick={() => goToSlide(index)}
                       disabled={isTransitioning}
-                      className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                        index === currentIndex 
-                          ? 'bg-orange-400 scale-125' 
-                          : isTransitioning 
-                            ? 'bg-gray-600 opacity-50 cursor-not-allowed' 
-                            : 'bg-gray-600 hover:bg-gray-500 hover:scale-110'
-                      }`}
+                      className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentIndex
+                        ? 'bg-orange-400 scale-125'
+                        : isTransitioning
+                          ? 'bg-gray-600 opacity-50 cursor-not-allowed'
+                          : 'bg-gray-600 hover:bg-gray-500 hover:scale-110'
+                        }`}
                     />
                   ))}
                 </div>
@@ -270,9 +309,8 @@ const Testimonials = () => {
                 <button
                   onClick={nextTestimonial}
                   disabled={isTransitioning}
-                  className={`w-12 h-12 bg-gray-800/50 border border-gray-700/50 rounded-full flex items-center justify-center text-gray-400 hover:bg-orange-500 hover:border-orange-500 hover:text-white transition-all duration-300 ${
-                    isTransitioning ? 'opacity-50 cursor-not-allowed' : 'hover:scale-105'
-                  }`}
+                  className={`w-12 h-12 bg-gray-800/50 border border-gray-700/50 rounded-full flex items-center justify-center text-gray-400 hover:bg-orange-500 hover:border-orange-500 hover:text-white transition-all duration-300 ${isTransitioning ? 'opacity-50 cursor-not-allowed' : 'hover:scale-105'
+                    }`}
                 >
                   <ChevronRight className="w-5 h-5" />
                 </button>
@@ -284,49 +322,67 @@ const Testimonials = () => {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 gap-6">
-              <div className="text-center p-6 bg-gray-900/30 backdrop-blur-sm rounded-xl border border-gray-800/50">
-                <div className="text-3xl font-bold text-orange-400 mb-2">98%</div>
-                <div className="text-gray-400 text-sm">Client Satisfaction</div>
-              </div>
-              <div className="text-center p-6 bg-gray-900/30 backdrop-blur-sm rounded-xl border border-gray-800/50">
-                <div className="text-3xl font-bold text-orange-400 mb-2">5.0</div>
-                <div className="text-gray-400 text-sm">Average Rating</div>
-              </div>
-              <div className="text-center p-6 bg-gray-900/30 backdrop-blur-sm rounded-xl border border-gray-800/50">
-                <div className="text-3xl font-bold text-orange-400 mb-2">200+</div>
-                <div className="text-gray-400 text-sm">Happy Clients</div>
-              </div>
-              <div className="text-center p-6 bg-gray-900/30 backdrop-blur-sm rounded-xl border border-gray-800/50">
-                <div className="text-3xl font-bold text-orange-400 mb-2">95%</div>
-                <div className="text-gray-400 text-sm">Project Success</div>
-              </div>
-            </div>
+            <motion.div 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              className="grid grid-cols-2 gap-6"
+            >
+              {[
+                { value: "98%", label: "Client Satisfaction" },
+                { value: "5.0", label: "Average Rating" },
+                { value: "200+", label: "Happy Clients" },
+                { value: "95%", label: "Project Success" }
+              ].map((stat, index) => (
+                <motion.div
+                  key={index}
+                  variants={{
+                    hidden: { opacity: 0, y: 30 },
+                    visible: {
+                      opacity: 1,
+                      y: 0,
+                      transition: {
+                        duration: 0.5,
+                        delay: index * 0.2
+                      }
+                    }
+                  }}
+                  className="text-center p-6 bg-gray-900/30 backdrop-blur-sm rounded-xl border border-gray-800/50"
+                >
+                  <div className="text-3xl font-bold text-orange-400 mb-2">{stat.value}</div>
+                  <div className="text-gray-400 text-sm">{stat.label}</div>
+                </motion.div>
+              ))}
+            </motion.div>
 
             {/* Auto-play Toggle */}
             <div className="text-center">
               <button
                 onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                  isAutoPlaying 
-                    ? 'bg-orange-500 text-white' 
-                    : 'bg-gray-800/50 text-gray-400 border border-gray-700/50 hover:bg-gray-700/50'
-                }`}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${isAutoPlaying
+                  ? 'bg-orange-500 text-white'
+                  : 'bg-gray-800/50 text-gray-400 border border-gray-700/50 hover:bg-gray-700/50'
+                  }`}
               >
                 {isAutoPlaying ? 'Auto-play: ON' : 'Auto-play: OFF'}
               </button>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* All Testimonials Preview */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div
+          variants={fadeIn}
+          transition={{ delay: 0.6 }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
           {testimonials.slice(0, 3).map((testimonial, index) => (
-            <div 
+            <motion.div
+              variants={fadeIn}
+              transition={{ delay: 0.7 + index * 0.1 }}
               key={testimonial.id}
-              className={`p-6 bg-gray-900/30 backdrop-blur-sm border border-gray-800/50 rounded-xl cursor-pointer transition-all duration-300 hover:border-orange-500/30 hover:scale-105 ${
-                index === currentIndex ? 'border-orange-500/50' : ''
-              }`}
+              className={`p-6 bg-gray-900/30 backdrop-blur-sm border border-gray-800/50 rounded-xl cursor-pointer transition-all duration-300 hover:border-orange-500/30 hover:scale-105 ${index === currentIndex ? 'border-orange-500/50' : ''
+                }`}
               onClick={() => goToSlide(index)}
             >
               <div className="flex items-center gap-1 mb-3">
@@ -334,11 +390,11 @@ const Testimonials = () => {
                   <Star key={i} className="w-4 h-4 fill-orange-400 text-orange-400" />
                 ))}
               </div>
-              
+
               <p className="text-gray-300 text-sm mb-4 line-clamp-3">
                 "{testimonial.text}"
               </p>
-              
+
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center">
                   <User className="w-4 h-4 text-white" />
@@ -348,11 +404,11 @@ const Testimonials = () => {
                   <div className="text-gray-400 text-xs">{testimonial.company}</div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
-      </div>
-    </section>
+        </motion.div>
+      </motion.div>
+    </motion.section>
   );
 };
 

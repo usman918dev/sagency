@@ -2,6 +2,7 @@
 import React from "react";
 import { Clock, Target, Users, TrendingUp } from "lucide-react";
 
+import { motion } from "framer-motion";
 const howWeWorkCards = [
   {
     id: 1,
@@ -37,72 +38,77 @@ const howWeWorkCards = [
   },
 ];
 
-const HowWeWorkCard = ({ card }) => {
+
+
+const HowWeWorkCard = ({ card, index }) => {
   const IconComponent = card.icon;
 
+  // Cards alternate direction: left or right
+  const direction = index % 2 === 0 ? -100 : 100;
+
   return (
-    <div
-      className={`relative p-8 rounded-2xl text-center transition-all duration-300 hover:border-orange-500 ${
-        card.highlight
+    <motion.div
+      initial={{ opacity: 0, x: direction }} // Start from left or right
+      whileInView={{ opacity: 1, x: 0 }} // Animate to center when visible
+      viewport={{ once: true, amount: 0.2 }} // Only trigger once
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className={`relative p-8 rounded-2xl text-center transition-all duration-300 hover:border-orange-500 ${card.highlight
           ? "bg-gradient-to-br from-orange-500 to-orange-600 text-white"
           : "bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 text-gray-300"
-      }`}
+        }`}
     >
       <div
-        className={`w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto ${
-          card.highlight ? "bg-white/20 backdrop-blur-sm" : "bg-orange-500"
-        }`}
+        className={`w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto ${card.highlight ? "bg-white/20 backdrop-blur-sm" : "bg-orange-500"
+          }`}
       >
         <IconComponent className="w-8 h-8 text-white" />
       </div>
 
       <h3
-        className={`text-xl font-bold mb-4 leading-tight ${
-          card.highlight ? "text-white" : "text-white"
-        }`}
+        className={`text-xl font-bold mb-4 leading-tight ${card.highlight ? "text-white" : "text-white"
+          }`}
       >
         {card.title}
       </h3>
 
       <p
-        className={`leading-relaxed ${
-          card.highlight ? "text-white/90" : "text-gray-400"
-        }`}
+        className={`leading-relaxed ${card.highlight ? "text-white/90" : "text-gray-400"
+          }`}
       >
         {card.description}
       </p>
-    </div>
+    </motion.div>
   );
 };
 
 const HowWeWork = () => {
   return (
     <section className="relative w-full py-24 px-6 bg-[#0D1117] overflow-hidden">
+      {/* Background Glow Effects */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-500/5 rounded-full blur-3xl"></div>
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-orange-600/5 rounded-full blur-3xl"></div>
       </div>
 
       <div className="max-w-6xl mx-auto relative z-10">
+        {/* Section Header */}
         <div className="text-center mb-16">
           <p className="text-orange-400 text-sm font-medium uppercase tracking-wider mb-4">
             How We Work
           </p>
-
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6 leading-tight max-w-2xl mx-auto">
             Our proven process ensures exceptional results.
           </h2>
         </div>
 
+        {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {howWeWorkCards.map((card, index) => (
-            <div 
-              key={card.id} 
-              className={`${
-                (index === 1 || index === 3) ? 'lg:mt-12' : ''
-              }`}
+            <div
+              key={card.id}
+              className={`${index === 1 || index === 3 ? "lg:mt-12" : ""}`}
             >
-              <HowWeWorkCard card={card} />
+              <HowWeWorkCard card={card} index={index} />
             </div>
           ))}
         </div>

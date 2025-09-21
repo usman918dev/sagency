@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Threads from '@/ui/animatedbg/Bg';
+import BackgroundEffects from '@/ui/background/BackgroundEffects';
 import MagicBento from '@/ui/bento/Bento';
 import HorizontalLogoLoop from '@/ui/logoloop/LogoLoop';
 import AnimatedMockup, { LandingMockup } from '@/ui/mockup/Mockup';
@@ -12,18 +13,16 @@ import Testimonials from '@/ui/testinomials/Testinomails';
 
 const HeroSection = () => {
   return (
-
     <>
+      {/* <BackgroundEffects /> */}
       <div
-        // style={{ backgroundImage: "url('/assets/bg.png')" }}
-        className="min-h-screen w-full bg-cover bg-center bg-fixed bg-[#0D1117] backdrop-blur-md
-"
+        className="min-h-screen w-full bg-cover bg-center bg-fixed bg-[#0D1117]/90 backdrop-blur-md relative"
       >
 
         <div
           className="min-h-screen  text-white flex items-center justify-center p-4 sm:p-8 font-sans relative"
         // style={{
-        //   backgroundImage:  bg-[#0A0C10]"radial-gradient(#101010 1px, transparent 1px)",
+          // backgroundImage:  bg-[#0A0C10]"radial-gradient(#101010 1px, transparent 1px)",
         //   backgroundSize: "40px 40px",
         // }}
 
@@ -137,7 +136,7 @@ const HeroSection = () => {
               >
                 <div className="w-full h-full flex items-center justify-center">
                   {/* <AnimatedMockup /> */}
-                  <LandingMockup/>
+                  <LandingMockup />
                 </div>
               </motion.div>
 
@@ -165,7 +164,7 @@ const HeroSection = () => {
           <HorizontalLogoLoop />
         </div>
 
-        <div className=''>
+        <div className=' bg-[#0D1117]'>
           <div className="g-px text-center mb-12 pt-36 ">
             {/* Small subheading */}
             <p className="text-sm text-[#F25725] uppercase tracking-wider mb-2">
@@ -181,7 +180,13 @@ const HeroSection = () => {
             </h2>
           </div>
           {/* Your MagicBento / services grid */}
-          <div className="g-px">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }} // Start hidden, slightly below
+            whileInView={{ opacity: 1, y: 0 }} // Fade and slide up when visible
+            viewport={{ once: true, amount: 0.2 }} // Trigger only once when 20% visible
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="g-px"
+          >
             <MagicBento
               textAutoHide={true}
               enableStars={true}
@@ -194,7 +199,7 @@ const HeroSection = () => {
               particleCount={24}
               glowColor="8, 55, 93"
             />
-          </div>
+          </motion.div>
           {/* <AnimatedWaveBg className="absolute top-0 left-0 w-full h-full" /> */}
 
         </div>

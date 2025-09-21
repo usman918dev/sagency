@@ -1,105 +1,96 @@
 "use client";
-import React from "react";
-import {
-  Atom,
-  Box,
-  Boxes,
-  Wind,
-  Server,
-  Database,
-  Code,
-  Type,
-  FileCode,
-  Brain,
-  Figma,
-  GitBranch,
-} from "lucide-react";
+import React, { useEffect, useRef } from "react";
 
-
-// Badge component with dynamic colors and icons
-function Badge({ text, icon: Icon, color }) {
+// Logo component
+function Logo({ src, alt }) {
   return (
-    <div
-      className="flex items-center justify-center w-36 h-16 space-x-2 text-white px-4 py-2 rounded-4xl shadow-lg whitespace-nowrap transition-transform duration-300 hover:scale-105"
-      style={{
-        backgroundColor: color + "20", // light transparent background
-        border: `1px solid ${color}50`,
-      }}
-    >
-      {Icon && (
-        <div
-          className="flex items-center justify-center w-8 h-8 rounded-full"
-          style={{ backgroundColor: color }}
-        >
-          <Icon className="w-4 h-4 text-white" />
-        </div>
-      )}
-      <span className="font-medium">{text}</span>
+    <div className="w-32 h-12 transition-transform duration-300 hover:scale-105 flex items-center justify-center bg-white rounded-full px mx-4">
+      <img
+        src={src}
+        alt={alt}
+        className="max-w-full max-h-full object-contain"
+      />
     </div>
   );
 }
 
 export default function ProfessionalBadgeTicker() {
-const badges = [
-  { text: "React", icon: Atom, color: "#61DAFB" },
-  { text: "Next.js", icon: Box, color: "#000000" },
-  { text: "Tailwind", icon: Wind, color: "#38BDF8" },
-  { text: "Node.js", icon: Server, color: "#83CD29" },
-  { text: "MongoDB", icon: Database, color: "#4DB33D" },
-  { text: "GraphQL", icon: Code, color: "#E535AB" },
-  { text: "TypeScript", icon: Type, color: "#3178C6" },
-  { text: "JavaScript", icon: FileCode, color: "#F7DF1E" },
-  { text: "Python", icon: Brain, color: "#3776AB" },
-  { text: "Figma", icon: Figma, color: "#F24E1E" },
-  { text: "Git", icon: GitBranch, color: "#F05032" },
-  { text: "Docker", icon: Boxes, color: "#0DB7ED" },
-];
+  const sectionRef = useRef(null);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-slide-in');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
 
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
 
-  const rowCount = 2;
-  const badgesPerRow = 6;
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
 
-  // Split badges into rows
+  const logos = Array.from({ length: 25 }, (_, i) => ({
+    src: `/LOGO/${i + 1}.png`,
+    alt: `Logo ${i + 1}`
+  }));
+
+  const rowCount = 3;
+  const logosPerRow = Math.ceil(logos.length / rowCount);
+
+  // Split logos into rows
   const rows = Array.from({ length: rowCount }, (_, i) =>
-    badges.slice(i * badgesPerRow, (i + 1) * badgesPerRow)
+    logos.slice(i * logosPerRow, (i + 1) * logosPerRow)
   );
 
   return (
-    <div className="w-full relative py-12 overflow-hidden">
-      <div className="absolute inset-0"></div>
-      <div className="container mx-auto px-4 relative z-10 flex flex-col items-center">
-        {rows.map((row, rowIndex) => {
-          const isForward = rowIndex === 0;
-          const duration = 30; // lower = faster scroll
+    <div 
+      ref={sectionRef}
+      className="w-full relative py-12 overflow-hidden bg-[#1c2131] rounded-2xl opacity-0">
+      <div className="max-w-7xl mx-auto px-4">
+        <h2 className="text-center text-4xl font-bold text-white mb-10">
+          Join our <span className="text-orange-500">1500+</span> happy customers
+        </h2>
+        <div className="flex flex-col space-y-8">
+          {rows.map((row, rowIndex) => {
+            const isForward = rowIndex % 2 === 0;
+            const duration = 40;
 
-          return (
-            <div
-              key={rowIndex}
-              className="relative flex items-center mb-6 overflow-hidden w-full"
-            >
+            return (
               <div
-                className="flex space-x-6 badge-track"
-                style={{
-                  animation: `${isForward ? "scroll-fwd" : "scroll-bwd"} ${duration}s linear infinite`,
-                }}
+                key={rowIndex}
+                className="relative flex items-center overflow-hidden w-full"
               >
-                {/* Duplicate row twice for seamless loop */}
-                {[...row, ...row].map((badge, i) => (
-                  <Badge
-                    key={`badge-${rowIndex}-${i}`}
-                    text={badge.text}
-                    icon={badge.icon}
-                    color={badge.color}
-                  />
-                ))}
+                <div
+                  className="flex badge-track"
+                  style={{
+                    animation: `${isForward ? "scroll-fwd" : "scroll-bwd"} ${duration}s linear infinite`
+                  }}
+                >
+                  {[...row, ...row].map((logo, i) => (
+                    <Logo
+                      key={`logo-${rowIndex}-${i}`}
+                      src={logo.src}
+                      alt={logo.alt}
+                    />
+                  ))}
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
 
-      {/* Infinite Scroll Animations */}
       <style jsx>{`
         @keyframes scroll-fwd {
           0% {
@@ -117,9 +108,23 @@ const badges = [
             transform: translateX(0%);
           }
         }
-        /* Pause animation on hover */
         .badge-track:hover {
           animation-play-state: paused !important;
+        }
+        
+        .animate-slide-in {
+          animation: slideIn 1s forwards;
+        }
+        
+        @keyframes slideIn {
+          0% {
+            opacity: 0;
+            transform: translateX(-100px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateX(0);
+          }
         }
       `}</style>
     </div>
