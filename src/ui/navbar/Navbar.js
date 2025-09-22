@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Menu, X, ChevronDown, Globe, Palette, Smartphone, ShoppingCart, Search, Settings } from "lucide-react";
 import Link from "next/link";
+import Image from 'next/image';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -66,12 +67,15 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2 group">
           <div className="relative">
-            <img
+            <Image
               src="/assets/logomain.png"
               alt="Agency Logo"
+              width={64}
+              height={64}
               className={`transition-all duration-500 ease-in-out object-contain group-hover:scale-105 ${
                 scrolled ? "w-12 h-12" : "w-16 h-16"
               }`}
+              priority
             />
             <div className="absolute inset-0 bg-gradient-to-r from-[#F25725]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full blur-xl"></div>
           </div>

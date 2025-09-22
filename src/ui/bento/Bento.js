@@ -532,7 +532,7 @@ const MagicBento = ({
                 clickEffect={clickEffect}
                 enableMagnetism={enableMagnetism}
               >
-                <div className="absolute inset-0">
+                {/* <div className="absolute inset-0">
                   {card.img ? (
                     <img
                       src={card.img}
@@ -542,7 +542,7 @@ const MagicBento = ({
                   ) : card.lottie ? (
                     <DevMockup className="w-full h-full object-cover" />
                   ) : null}
-                </div>
+                </div> */}
 
                 <div className="card__header">
                   <div className="card__label">{card.icon && <card.icon className="w-8 h-8 text-white" />}</div>

@@ -43,37 +43,43 @@ const howWeWorkCards = [
 const HowWeWorkCard = ({ card, index }) => {
   const IconComponent = card.icon;
 
-  // Cards alternate direction: left or right
-  const direction = index % 2 === 0 ? -100 : 100;
+  // Cards alternate direction: top or bottom with smoother motion
+  const direction = index % 2 === 0 ? -150 : 150;
 
   return (
     <motion.div
-      initial={{ opacity: 0, x: direction }} // Start from left or right
-      whileInView={{ opacity: 1, x: 0 }} // Animate to center when visible
-      viewport={{ once: true, amount: 0.2 }} // Only trigger once
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`relative p-8 rounded-2xl text-center transition-all duration-300 hover:border-orange-500 ${card.highlight
+      initial={{ opacity: 0, y: direction, scale: 0.98 }} // Soft start with slight shrink
+      whileInView={{ opacity: 1, y: 0, scale: 1 }} // Smooth rise to natural position
+      viewport={{ once: true, amount: 0.3 }} // Trigger when 30% visible
+      transition={{
+        duration: 0.9,        // Longer for smooth experience
+        ease: [0.25, 0.1, 0.25, 1], // Custom smooth cubic bezier curve
+      }}
+      className={`relative p-8 rounded-2xl text-center transition-all duration-300 hover:border-orange-500 ${
+        card.highlight
           ? "bg-gradient-to-br from-orange-500 to-orange-600 text-white"
           : "bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 text-gray-300"
-        }`}
+      }`}
     >
+      {/* Icon */}
       <div
-        className={`w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto ${card.highlight ? "bg-white/20 backdrop-blur-sm" : "bg-orange-500"
-          }`}
+        className={`w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto ${
+          card.highlight ? "bg-white/20 backdrop-blur-sm" : "bg-orange-500"
+        }`}
       >
         <IconComponent className="w-8 h-8 text-white" />
       </div>
 
-      <h3
-        className={`text-xl font-bold mb-4 leading-tight ${card.highlight ? "text-white" : "text-white"
-          }`}
-      >
+      {/* Title */}
+      <h3 className="text-xl font-bold mb-4 leading-tight text-white">
         {card.title}
       </h3>
 
+      {/* Description */}
       <p
-        className={`leading-relaxed ${card.highlight ? "text-white/90" : "text-gray-400"
-          }`}
+        className={`leading-relaxed ${
+          card.highlight ? "text-white/90" : "text-gray-400"
+        }`}
       >
         {card.description}
       </p>
@@ -81,9 +87,11 @@ const HowWeWorkCard = ({ card, index }) => {
   );
 };
 
+
 const HowWeWork = () => {
   return (
-    <section className="relative w-full py-24 px-6 bg-[#0D1117] overflow-hidden">
+    <section className="relative w-full py-24 px-6 
+ overflow-hidden">
       {/* Background Glow Effects */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-500/5 rounded-full blur-3xl"></div>
@@ -93,7 +101,7 @@ const HowWeWork = () => {
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <p className="text-orange-400 text-sm font-medium uppercase tracking-wider mb-4">
+          <p className="text-orange-400 text-sm font-bold uppercase tracking-wider mb-4">
             How We Work
           </p>
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6 leading-tight max-w-2xl mx-auto">

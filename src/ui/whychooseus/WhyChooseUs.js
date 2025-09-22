@@ -143,10 +143,11 @@ const WhyChooseUs = () => {
             >
               <div>
                 <p className="text-gray-400 mb-6">
-                  Let's collaborate to create innovative digital solutions that will help your
+                  Let&apos;s collaborate to create innovative digital solutions that will help your
                   business thrive in the modern digital landscape. Our expert team is ready to
                   bring your vision to life.
                 </p>
+
                 <h3 className="text-4xl font-black uppercase leading-none tracking-tighter text-white sm:text-5xl">
                   Ready to Transform Your Digital Presence?
                 </h3>

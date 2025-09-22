@@ -10,19 +10,23 @@ import AnimatedWaveBg from '@/ui/Svg';
 import ProcessSection from '@/ui/howwework/HowWeWork';
 import WhyChooseUs from '@/ui/whychooseus/WhyChooseUs';
 import Testimonials from '@/ui/testinomials/Testinomails';
+import PortfolioSection from '@/ui/portfolio/PortfolioSection';
 
 const HeroSection = () => {
   return (
     <>
-      {/* <BackgroundEffects /> */}
+      <BackgroundEffects />
       <div
-        className="min-h-screen w-full bg-cover bg-center bg-fixed bg-[#0D1117]/90 backdrop-blur-md relative"
+        className="min-h-screen w-full relative mt-12"
+        // style={{
+        //   backgroundImage: "url('/assets/bg.png')", // Replace with your image path
+        // }}
       >
 
         <div
           className="min-h-screen  text-white flex items-center justify-center p-4 sm:p-8 font-sans relative"
         // style={{
-          // backgroundImage:  bg-[#0A0C10]"radial-gradient(#101010 1px, transparent 1px)",
+        // backgroundImage:  bg-[#0A0C10]"radial-gradient(#101010 1px, transparent 1px)",
         //   backgroundSize: "40px 40px",
         // }}
 
@@ -164,8 +168,8 @@ const HeroSection = () => {
           <HorizontalLogoLoop />
         </div>
 
-        <div className=' bg-[#0D1117]'>
-          <div className="g-px text-center mb-12 pt-36 ">
+        <div className=''>
+          <div className="g-px text-center mb-12 pt-36 mt-20">
             {/* Small subheading */}
             <p className="text-sm text-[#F25725] uppercase tracking-wider mb-2">
               Our Services
@@ -203,9 +207,9 @@ const HeroSection = () => {
           {/* <AnimatedWaveBg className="absolute top-0 left-0 w-full h-full" /> */}
 
         </div>
-        <div className='mt-24'>
+        <div className=''>
           <ProcessSection />
-
+          <PortfolioSection />
           <WhyChooseUs />
           <Testimonials />
         </div>

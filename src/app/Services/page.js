@@ -175,7 +175,7 @@ export default function ServicesPage() {
                 brand?
               </span>
             </h2>
-            <p className="text-xl text-gray-300 mb-8">Let's discuss how we can help scale your business with our proven strategies.</p>
+            <p className="text-xl text-gray-300 mb-8">Let&apos;s discuss how we can help scale your business with our proven strategies.</p>
             <button className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold rounded-full hover:from-orange-600 hover:to-red-600 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/25">
               Book a Free Consultation
             </button>
@@ -292,8 +292,8 @@ function TestimonialSection({ prefersReducedMotion }) {
       </div>
       <div className="max-w-4xl mx-auto text-center relative z-10">
         <blockquote className="text-xl md:text-2xl text-gray-200 font-medium mb-6">
-          "Working with this agency transformed our digital presence. Our social media engagement increased by{" "}
-          <span className="text-orange-400 font-bold">340%</span> in just 3 months."
+          &quot;Working with this agency transformed our digital presence. Our social media engagement increased by{" "}
+          <span className="text-orange-400 font-bold">340%</span> in just 3 months.&quot;
         </blockquote>
         <cite className="text-gray-400">
           — Sarah Johnson, Marketing Director at TechFlow

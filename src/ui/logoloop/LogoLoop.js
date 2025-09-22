@@ -1,15 +1,19 @@
 "use client";
+import Image from "next/image";
 import React, { useEffect, useRef } from "react";
 
 // Logo component
 function Logo({ src, alt }) {
   return (
     <div className="w-32 h-12 transition-transform duration-300 hover:scale-105 flex items-center justify-center bg-white rounded-full px mx-4">
-      <img
-        src={src}
-        alt={alt}
-        className="max-w-full max-h-full object-contain"
-      />
+      <div className="relative w-full h-full">
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          className="object-contain"
+        />
+      </div>
     </div>
   );
 }

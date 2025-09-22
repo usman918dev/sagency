@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import {
   Star,
@@ -80,7 +80,7 @@ const Testimonials = () => {
   ];
 
   // Smooth transition function with improved animations
-  const changeTestimonial = (newIndex) => {
+  const changeTestimonial = useCallback((newIndex) => {
     if (newIndex === currentIndex || isTransitioning) return;
 
     setIsTransitioning(true);
@@ -93,7 +93,7 @@ const Testimonials = () => {
         setIsTransitioning(false);
       }, 300);
     }, 300);
-  };
+  }, [currentIndex, isTransitioning]);
 
   // Auto-play testimonials
   useEffect(() => {
@@ -104,7 +104,7 @@ const Testimonials = () => {
       }, 5000);
       return () => clearInterval(interval);
     }
-  }, [isAutoPlaying, currentIndex, testimonials.length, isTransitioning]);
+  }, [isAutoPlaying, currentIndex, testimonials.length, isTransitioning, changeTestimonial]);
 
   const nextTestimonial = () => {
     const nextIndex = currentIndex === testimonials.length - 1 ? 0 : currentIndex + 1;
@@ -136,7 +136,7 @@ const Testimonials = () => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
-      className="relative w-full py-24 px-6 bg-[#0D1117] overflow-hidden"
+      className="relative w-full py-24 px-6 overflow-hidden"
     >
       {/* Background Effects */}
       <motion.div
@@ -190,7 +190,7 @@ const Testimonials = () => {
           </h2>
 
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Don't just take our word for it. Here's what our satisfied clients have to say about their experience working with us.
+            Don&apos;t just take our word for it. Here&apos;s what our satisfied clients have to say about their experience working with us.
           </p>
         </motion.div>
 
@@ -230,7 +230,7 @@ const Testimonials = () => {
               {/* Testimonial Text */}
               <blockquote className={`text-lg lg:text-xl text-gray-200 leading-relaxed mb-8 font-medium transition-all duration-300 ease-in-out delay-100 ${isTransitioning ? 'translate-y-2 opacity-0' : 'translate-y-0 opacity-100'
                 }`}>
-                "{currentTestimonial.text}"
+                &quot;{currentTestimonial.text}&quot;
               </blockquote>
 
               {/* Results */}
@@ -392,7 +392,7 @@ const Testimonials = () => {
               </div>
 
               <p className="text-gray-300 text-sm mb-4 line-clamp-3">
-                "{testimonial.text}"
+                &quot;{testimonial.text}&quot;
               </p>
 
               <div className="flex items-center gap-3">

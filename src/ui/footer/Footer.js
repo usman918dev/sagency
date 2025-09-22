@@ -45,12 +45,12 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative bg-[#0D1117] border-t border-gray-800/50">
+    <footer className="relative border-t border-gray-800/50">
       {/* Background Effects */}
-      <div className="absolute inset-0 overflow-hidden">
+      {/* <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-orange-500/3 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-red-500/3 rounded-full blur-3xl"></div>
-      </div>
+      </div> */}
 
       <div className="relative z-10">
         {/* Newsletter Section */}
@@ -94,8 +94,8 @@ const Footer = () => {
               <div className="mb-6">
                 <Image src="/assets/logomain.png" alt="SAgency Logo" width={150} height={50} className="mb-4" />
                 <p className="text-gray-400 leading-relaxed mb-6">
-                  We're a creative digital agency specializing in web
-                  development, mobile apps, and digital marketing. Let's
+                  We&apos;re a creative digital agency specializing in web
+                  development, mobile apps, and digital marketing. Let&apos;s
                   transform your ideas into powerful digital experiences.
                 </p>
               </div>
