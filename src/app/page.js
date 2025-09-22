@@ -11,6 +11,7 @@ import ProcessSection from '@/ui/howwework/HowWeWork';
 import WhyChooseUs from '@/ui/whychooseus/WhyChooseUs';
 import Testimonials from '@/ui/testinomials/Testinomails';
 import PortfolioSection from '@/ui/portfolio/PortfolioSection';
+import Button from '@/ui/btn/Button';
 
 const HeroSection = () => {
   return (
@@ -87,16 +88,7 @@ const HeroSection = () => {
                   Our Services
                 </motion.button>
 
-                <motion.button
-                  className="px-8 py-3 font-semibold rounded border hover:border-[#F25725] hover:bg-[#F25725] hover:text-white transition-colors duration-300 shadow-md"
-                  whileHover={{ scale: 1.0 }}
-                  whileTap={{ scale: 0.95 }}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: 1 }}
-                >
-                  Contact Us
-                </motion.button>
+                <Button text={"Contact Us"}/>
               </div>
 
               {/* Avatar / Clients Section */}
@@ -171,7 +163,7 @@ const HeroSection = () => {
         <div className=''>
           <div className="g-px text-center mb-12 pt-36 mt-20">
             {/* Small subheading */}
-            <p className="text-sm text-[#F25725] uppercase tracking-wider mb-2">
+            <p className="text-orange-400 text-sm font-bold uppercase tracking-wider mb-4">
               Our Services
             </p>
 
