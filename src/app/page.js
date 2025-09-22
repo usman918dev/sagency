@@ -12,6 +12,8 @@ import WhyChooseUs from '@/ui/whychooseus/WhyChooseUs';
 import Testimonials from '@/ui/testinomials/Testinomails';
 import PortfolioSection from '@/ui/portfolio/PortfolioSection';
 import Button from '@/ui/btn/Button';
+import CallToAction from '@/ui/cta/Cta';
+import PortfolioTwo from '@/ui/portfolio/PortfolioTwo';
 
 const HeroSection = () => {
   return (
@@ -19,9 +21,9 @@ const HeroSection = () => {
       <BackgroundEffects />
       <div
         className="min-h-screen w-full relative mt-12"
-        // style={{
-        //   backgroundImage: "url('/assets/bg.png')", // Replace with your image path
-        // }}
+      // style={{
+      //   backgroundImage: "url('/assets/bg.png')", // Replace with your image path
+      // }}
       >
 
         <div
@@ -88,7 +90,7 @@ const HeroSection = () => {
                   Our Services
                 </motion.button>
 
-                <Button text={"Contact Us"}/>
+                <Button text={"Contact Us"} />
               </div>
 
               {/* Avatar / Clients Section */}
@@ -201,11 +203,13 @@ const HeroSection = () => {
         </div>
         <div className=''>
           <ProcessSection />
-          <PortfolioSection />
+          {/* <PortfolioSection /> */}
+          <PortfolioTwo />
+          <CallToAction />
+          <div className='my-20'></div>
           <WhyChooseUs />
           <Testimonials />
         </div>
-
       </div>
     </>
 

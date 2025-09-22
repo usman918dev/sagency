@@ -136,7 +136,7 @@ const Testimonials = () => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
-      className="relative w-full py-24 px-6 overflow-hidden"
+      className="relative w-full py-44 px-6 overflow-hidden"
     >
       {/* Background Effects */}
       <motion.div
