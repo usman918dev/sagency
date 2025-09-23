@@ -55,13 +55,11 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out ${
-        showNavbar ? "translate-y-0" : "-translate-y-full"
-      } ${
-        scrolled 
-          ? "backdrop-blur-xl shadow-xl border-b border-white/10" 
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out ${showNavbar ? "translate-y-0" : "-translate-y-full"
+        } ${scrolled
+          ? "backdrop-blur-xl shadow-xl border-b border-white/10"
           : "backdrop-blur-sm"
-      }`}
+        }`}
     >
       <div className="g-px flex items-center justify-between px-6 py-2">
         {/* Logo */}
@@ -72,9 +70,8 @@ export default function Navbar() {
               alt="Agency Logo"
               width={64}
               height={64}
-              className={`transition-all duration-500 ease-in-out object-contain group-hover:scale-105 ${
-                scrolled ? "w-12 h-12" : "w-16 h-16"
-              }`}
+              className={`transition-all duration-500 ease-in-out object-contain group-hover:scale-105 ${scrolled ? "w-12 h-12" : "w-16 h-16"
+                }`}
               priority
             />
             <div className="absolute inset-0 bg-gradient-to-r from-[#F25725]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full blur-xl"></div>
@@ -91,16 +88,14 @@ export default function Navbar() {
                     setActiveLink(link.name);
                     setServicesOpen(!servicesOpen);
                   }}
-                  className={`relative flex items-center px-4 py-2 text-sm font-semibold transition-all duration-300 ease-in-out ${
-                    activeLink === link.name ? "text-[#F25725]" : "text-white"
-                  } hover:text-[#F25725] group-hover:bg-white/5 rounded-lg`}
+                  className={`relative flex items-center px-4 py-2 text-sm font-semibold transition-all duration-300 ease-in-out ${activeLink === link.name ? "text-[#F25725]" : "text-white"
+                    } hover:text-[#F25725] group-hover:bg-white/5 rounded-lg`}
                 >
                   {link.name}
                   <ChevronDown
                     size={16}
-                    className={`ml-1 transition-all duration-300 ${
-                      servicesOpen ? "rotate-180 text-[#F25725]" : "rotate-0"
-                    }`}
+                    className={`ml-1 transition-all duration-300 ${servicesOpen ? "rotate-180 text-[#F25725]" : "rotate-0"
+                      }`}
                   />
                   <span className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-[#F25725] to-[#ff6b35] transition-all duration-300 w-0 group-hover:w-full"></span>
                 </button>
@@ -108,9 +103,8 @@ export default function Navbar() {
                 <Link
                   href={link.href}
                   onClick={() => setActiveLink(link.name)}
-                  className={`relative block px-4 py-2 text-sm font-semibold transition-all duration-300 ease-in-out ${
-                    activeLink === link.name ? "text-[#F25725]" : "text-white"
-                  } hover:text-[#F25725] group-hover:bg-white/5 rounded-lg`}
+                  className={`relative block px-4 py-2 text-sm font-semibold transition-all duration-300 ease-in-out ${activeLink === link.name ? "text-[#F25725]" : "text-white"
+                    } hover:text-[#F25725] group-hover:bg-white/5 rounded-lg`}
                 >
                   {link.name}
                   <span className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-[#F25725] to-[#ff6b35] transition-all duration-300 w-0 group-hover:w-full"></span>
@@ -119,11 +113,10 @@ export default function Navbar() {
 
               {link.dropdown && (
                 <div
-                  className={`absolute left-0 mt-2 w-64 bg-white/95 backdrop-blur-lg rounded-xl shadow-2xl border border-white/20 overflow-hidden transition-all duration-500 ease-out ${
-                    servicesOpen
+                  className={`absolute left-0 mt-2 w-64 bg-white/95 backdrop-blur-lg rounded-xl shadow-2xl border border-white/20 overflow-hidden transition-all duration-500 ease-out ${servicesOpen
                       ? "opacity-100 translate-y-0 scale-100"
                       : "opacity-0 translate-y-4 scale-95 pointer-events-none"
-                  }`}
+                    }`}
                 >
                   <div className="p-2">
                     {link.dropdown.map((item, idx) => {
@@ -171,19 +164,16 @@ export default function Navbar() {
           >
             <div className="relative w-6 h-6">
               <span
-                className={`absolute block w-full h-0.5 bg-white transition-all duration-300 ease-in-out ${
-                  isOpen ? "rotate-45 top-3" : "top-1"
-                }`}
+                className={`absolute block w-full h-0.5 bg-white transition-all duration-300 ease-in-out ${isOpen ? "rotate-45 top-3" : "top-1"
+                  }`}
               ></span>
               <span
-                className={`absolute block w-full h-0.5 bg-white transition-all duration-300 ease-in-out top-3 ${
-                  isOpen ? "opacity-0" : "opacity-100"
-                }`}
+                className={`absolute block w-full h-0.5 bg-white transition-all duration-300 ease-in-out top-3 ${isOpen ? "opacity-0" : "opacity-100"
+                  }`}
               ></span>
               <span
-                className={`absolute block w-full h-0.5 bg-white transition-all duration-300 ease-in-out ${
-                  isOpen ? "-rotate-45 top-3" : "top-5"
-                }`}
+                className={`absolute block w-full h-0.5 bg-white transition-all duration-300 ease-in-out ${isOpen ? "-rotate-45 top-3" : "top-5"
+                  }`}
               ></span>
             </div>
           </button>
@@ -192,9 +182,8 @@ export default function Navbar() {
 
       {/* Mobile Dropdown Menu */}
       <div
-        className={`lg:hidden backdrop-blur-xl border-t border-white/10 transition-all duration-500 ease-in-out overflow-hidden ${
-          isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
-        }`}
+        className={`lg:hidden backdrop-blur-xl border-t border-white/10 transition-all duration-500 ease-in-out overflow-hidden ${isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
+          }`}
       >
         <nav className="flex flex-col px-6 py-4 space-y-2">
           {navLinks.map((link, index) => (
@@ -205,16 +194,14 @@ export default function Navbar() {
                     setActiveLink(link.name);
                     setServicesOpen(!servicesOpen);
                   }}
-                  className={`flex justify-between items-center w-full px-4 py-2 text-base font-semibold transition-all duration-300 rounded-lg ${
-                    activeLink === link.name ? "text-[#F25725] bg-white/10" : "text-white"
-                  } hover:bg-white/10 hover:text-[#F25725]`}
+                  className={`flex justify-between items-center w-full px-4 py-2 text-base font-semibold transition-all duration-300 rounded-lg ${activeLink === link.name ? "text-[#F25725] bg-white/10" : "text-white"
+                    } hover:bg-white/10 hover:text-[#F25725]`}
                 >
                   {link.name}
                   <ChevronDown
                     size={18}
-                    className={`transition-all duration-300 ${
-                      servicesOpen ? "rotate-180 text-[#F25725]" : "rotate-0"
-                    }`}
+                    className={`transition-all duration-300 ${servicesOpen ? "rotate-180 text-[#F25725]" : "rotate-0"
+                      }`}
                   />
                 </button>
               ) : (
@@ -224,9 +211,8 @@ export default function Navbar() {
                     setActiveLink(link.name);
                     setIsOpen(false);
                   }}
-                  className={`block w-full px-4 py-2 text-base font-semibold transition-all duration-300 rounded-lg ${
-                    activeLink === link.name ? "text-[#F25725] bg-white/10" : "text-white"
-                  } hover:bg-white/10 hover:text-[#F25725]`}
+                  className={`block w-full px-4 py-2 text-base font-semibold transition-all duration-300 rounded-lg ${activeLink === link.name ? "text-[#F25725] bg-white/10" : "text-white"
+                    } hover:bg-white/10 hover:text-[#F25725]`}
                 >
                   {link.name}
                 </Link>

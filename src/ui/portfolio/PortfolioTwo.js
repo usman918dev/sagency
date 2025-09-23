@@ -22,7 +22,7 @@ const PortfolioSection = () => {
     const infiniteItems = generateInfiniteArray(portfolioItems, 4); // 4x duplication
 
     return (
-        <section className="relative w-full py-24 overflow-hidden transition-colors duration-300">
+        <section className="relative w-full py-24 overflow-hidden transition-colors duration-300 bg-[#1c2131]">
             {/* Corner Frame */}
             <div className="absolute top-0 left-0 w-[40%] h-[70%]">
                 <svg
@@ -33,8 +33,8 @@ const PortfolioSection = () => {
                     {/* Gradient for Top-Left Shape */}
                     <defs>
                         <linearGradient id="cornerGradientTop" x1="0" y1="0" x2="1" y2="1">
-                            <stop offset="0%" stopColor="#08375D" stopOpacity="0.7" />
-                            <stop offset="100%" stopColor="#08445dff" stopOpacity="0.7" />
+                            <stop offset="0%" stopColor="#08375D" stopOpacity="0.8" />
+                            <stop offset="100%" stopColor="#08445dff" stopOpacity="0.8" />
                         </linearGradient>
                     </defs>
 
@@ -42,7 +42,7 @@ const PortfolioSection = () => {
                     <path
                         d="M0,0 L120,0 L120,0 Q0,0 0,120 L0,120 Z"
                         fill="url(#cornerGradientTop)"
-                        fillOpacity="0.7"  // additional control
+                        fillOpacity="0.8"  // additional control
                     />
                 </svg>
             </div>
@@ -56,8 +56,8 @@ const PortfolioSection = () => {
                     {/* Gradient for Bottom-Right Shape */}
                     <defs>
                         <linearGradient id="cornerGradientBottom" x1="0" y1="0" x2="1" y2="1">
-                            <stop offset="0%" stopColor="#F25725" stopOpacity="0.7" />
-                            <stop offset="100%" stopColor="#f28f25ff" stopOpacity="0.7" />
+                            <stop offset="0%" stopColor="#F25725" stopOpacity="01" />
+                            <stop offset="100%" stopColor="#f28f25ff" stopOpacity="0.8" />
                         </linearGradient>
                     </defs>
 
@@ -65,7 +65,7 @@ const PortfolioSection = () => {
                     <path
                         d="M120,120 L0,120 L0,120 Q120,120 120,0 L120,0 Z"
                         fill="url(#cornerGradientBottom)"
-                        fillOpacity="0.7"
+                        fillOpacity="0.8"
                     />
                 </svg>
             </div>

@@ -14,13 +14,14 @@ import PortfolioSection from '@/ui/portfolio/PortfolioSection';
 import Button from '@/ui/btn/Button';
 import CallToAction, { CallToActionS } from '@/ui/cta/Cta';
 import PortfolioTwo from '@/ui/portfolio/PortfolioTwo';
+import ServicesGrid from '@/ui/servicesection/ServicesSectionMini';
 
 const HeroSection = () => {
   return (
     <>
-      <BackgroundEffects />
+      {/* <BackgroundEffects /> */}
       <div
-        className="min-h-screen w-full relative mt-12"
+        className="min-h-screen w-full relative mt-12 bg-gradient-to-b from-[#08375D] to-[#1A4C7A]"
       // style={{
       //   backgroundImage: "url('/assets/bg.png')", // Replace with your image path
       // }}
@@ -28,10 +29,10 @@ const HeroSection = () => {
 
         <div
           className="min-h-screen  text-white flex items-center justify-center p-4 sm:p-8 font-sans relative"
-        // style={{
-        // backgroundImage:  bg-[#0A0C10]"radial-gradient(#101010 1px, transparent 1px)",
-        //   backgroundSize: "40px 40px",
-        // }}
+          style={{
+            backgroundImage: "radial-gradient(#101010 1px, transparent 1px)",
+            backgroundSize: "40px 40px",
+          }}
 
         >
           <div className="g-px grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -162,8 +163,8 @@ const HeroSection = () => {
           <HorizontalLogoLoop />
         </div>
 
-        <div className=''>
-          <div className="g-px text-center mb-12 pt-36 mt-20">
+        <div className='py-24'>
+          <div className="g-px text-center mb-12 pt-36">
             {/* Small subheading */}
             <p className="text-orange-400 text-sm font-bold uppercase tracking-wider mb-4">
               Our Services
@@ -171,12 +172,36 @@ const HeroSection = () => {
 
             {/* Big heading */}
             <h2 className="text-3xl max-w-2xl sm:text-4xl md:text-5xl font-bold text-white relative inline-block">
-              What We Do to Empower Your Business
+              What We Do to Empower Your{" "}
+              <span className="relative inline-block">
+                {/* Random SVG border */}
+                <svg
+                  className="absolute -top-[75%] -left-[10%] w-[120%] h-[290%] z-10 pointer-events-none"
+                  viewBox="0 0 200 80"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M10 40 C0 20, 190 10, 180 40 S10 50, 10 40 Z"
+                    stroke="#F25725"
+                    strokeWidth="4"
+                    fill="transparent"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
 
-              {/* Animated gradient underline */}
-              {/* <span className="absolute left-0 -bottom-2 w-full h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full animate-pulse"></span> */}
+
+                {/* Word itself */}
+                <span className="relative z-20">Business</span>
+              </span>
             </h2>
+
+
           </div>
+
+          {/* <span className="absolute left-0 -bottom-2 w-full h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full animate-pulse"></span> */}
           {/* Your MagicBento / services grid */}
           <motion.div
             initial={{ opacity: 0, y: 50 }} // Start hidden, slightly below
@@ -185,7 +210,9 @@ const HeroSection = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="g-px pb-12 pt-4"
           >
-            <MagicBento
+            <ServicesGrid />
+
+            {/* <MagicBento
               textAutoHide={true}
               enableStars={true}
               enableSpotlight={false}
@@ -196,7 +223,7 @@ const HeroSection = () => {
               spotlightRadius={300}
               particleCount={24}
               glowColor="8, 55, 93"
-            />
+            /> */}
           </motion.div>
           {/* <AnimatedWaveBg className="absolute top-0 left-0 w-full h-full" /> */}
 

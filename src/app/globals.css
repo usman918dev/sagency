@@ -63,3 +63,47 @@ body {
 .g-px {
   @apply container xl:max-w-screen-xl mx-auto lg:max-w-screen-lg w-full
 }
+
+/* globals.css */
+
+/* Hide the default scrollbar */
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Opera */
+}
+
+
+/* Glint effect animation for the cards */
+.glint-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 12px; /* same as card's rounded-xl */
+}
+
+.glint-line::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transform: skewX(-25deg);
+  transition: left 0.7s ease-in-out;
+}
+
+.group:hover .glint-line::before {
+  left: 150%;
+}
