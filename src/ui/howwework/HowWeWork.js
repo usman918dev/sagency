@@ -90,7 +90,7 @@ const HowWeWorkCard = ({ card, index }) => {
 
 const HowWeWork = () => {
   return (
-    <section className="relative w-full py-42 px-6 
+    <section className="relative w-full py-32 px-6 bg-[#1c2131]
  overflow-hidden">
       {/* Background Glow Effects */}
       <div className="absolute inset-0">

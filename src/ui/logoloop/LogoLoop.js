@@ -58,10 +58,10 @@ export default function ProfessionalBadgeTicker() {
   );
 
   return (
-    <div 
+    <div
       ref={sectionRef}
       className="w-full relative py-12 overflow-hidden bg-[#1c2131] rounded-2xl opacity-0">
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-8">
         <h2 className="text-center text-4xl font-bold text-white mb-10">
           Join our <span className="text-orange-500">1500+</span> happy customers
         </h2>

@@ -45,7 +45,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative border-t border-gray-800/50">
+    <footer className="relative border-t border-gray-800/50 ">
       {/* Background Effects */}
       {/* <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-orange-500/3 rounded-full blur-3xl"></div>
@@ -87,13 +87,13 @@ const Footer = () => {
         </div>
 
         {/* Main Footer Content */}
-        <div className="g-px px-6 py-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className=" px-6 py-16 bg-[#0A192F]">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 g-px">
             {/* Company Info */}
             <div className="lg:col-span-1">
               <div className="mb-6">
                 <Image src="/assets/logomain.png" alt="SAgency Logo" width={150} height={50} className="mb-4" />
-                <p className="text-gray-400 leading-relaxed mb-6">
+                <p className="text-white leading-relaxed mb-6">
                   We&apos;re a creative digital agency specializing in web
                   development, mobile apps, and digital marketing. Let&apos;s
                   transform your ideas into powerful digital experiences.
@@ -107,7 +107,7 @@ const Footer = () => {
                     key={index}
                     href={social.href}
                     aria-label={social.label}
-                    className="w-10 h-10 bg-gray-800/50 border border-gray-700/50 rounded-lg flex items-center justify-center text-gray-400 hover:bg-orange-500 hover:border-orange-500 hover:text-white transition-all duration-300 hover:scale-110"
+                    className="w-10 h-10 bg-gray-800/50 border border-gray-700/50 rounded-lg flex items-center justify-center text-white hover:bg-orange-500 hover:border-orange-500 hover:text-white transition-all duration-300 hover:scale-110"
                   >
                     <social.icon className="w-5 h-5" />
                   </a>
@@ -117,7 +117,7 @@ const Footer = () => {
 
             {/* Services */}
             <div className="lg:col-span-1">
-              <h3 className="text-lg font-semibold text-white mb-6">
+              <h3 className="text-lg font-semibold text-white mb-6 ml-4">
                 Services
               </h3>
               <ul className="space-y-3">
@@ -125,7 +125,7 @@ const Footer = () => {
                   <li key={index}>
                     <a
                       href={service.href}
-                      className="text-gray-400 hover:text-orange-400 transition-colors duration-200 flex items-center gap-2 group"
+                      className="text-white hover:text-orange-400 transition-colors duration-200 flex items-center gap-2 group"
                     >
                       <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                       {service.name}
@@ -137,13 +137,13 @@ const Footer = () => {
 
             {/* Company */}
             <div className="lg:col-span-1">
-              <h3 className="text-lg font-semibold text-white mb-6">Company</h3>
+              <h3 className="text-lg font-semibold text-white mb-6 ml-4">Company</h3>
               <ul className="space-y-3">
                 {company.map((item, index) => (
                   <li key={index}>
                     <a
                       href={item.href}
-                      className="text-gray-400 hover:text-orange-400 transition-colors duration-200 flex items-center gap-2 group"
+                      className="text-white hover:text-orange-400 transition-colors duration-200 flex items-center gap-2 group"
                     >
                       <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                       {item.name}
@@ -157,19 +157,19 @@ const Footer = () => {
             <div className="lg:col-span-1">
               <h3 className="text-lg font-semibold text-white mb-6">Contact Us</h3>
               <div className="space-y-3">
-                <div className="flex items-center gap-3 text-gray-400">
+                <div className="flex items-center gap-3 text-white">
                   <Mail className="w-5 h-5 text-orange-400 flex-shrink-0" />
                   <span>hello@sagency.com</span>
                 </div>
-                <div className="flex items-center gap-3 text-gray-400">
+                <div className="flex items-center gap-3 text-white">
                   <Phone className="w-5 h-5 text-orange-400 flex-shrink-0" />
                   <span>+1 (555) 123-4567</span>
                 </div>
-                <div className="flex items-center gap-3 text-gray-400">
+                <div className="flex items-center gap-3 text-white">
                   <MapPin className="w-5 h-5 text-orange-400 flex-shrink-0" />
                   <span>123 Business Ave, Suite 100, City, State 12345</span>
                 </div>
-                <div className="flex items-center gap-3 text-gray-400">
+                <div className="flex items-center gap-3 text-white">
                   <Clock className="w-5 h-5 text-orange-400 flex-shrink-0" />
                   <span>Mon - Fri: 9:00 AM - 6:00 PM</span>
                 </div>
@@ -179,23 +179,23 @@ const Footer = () => {
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-gray-800/50">
+        <div className="border-t border-gray-800/50 bg-[#101828]">
           <div className="g-px px-6 py-8">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-              <div className="text-gray-400 text-sm">
+              <div className="text-white text-sm">
                 © {currentYear} SAgency. All rights reserved. Made with ❤️ by
                 our team.
               </div>
               <div className="flex items-center gap-6 text-sm">
                 <a
                   href="/sitemap"
-                  className="text-gray-400 hover:text-orange-400 transition-colors duration-200"
+                  className="text-white hover:text-orange-400 transition-colors duration-200"
                 >
                   Sitemap
                 </a>
                 <a
                   href="/accessibility"
-                  className="text-gray-400 hover:text-orange-400 transition-colors duration-200"
+                  className="text-white hover:text-orange-400 transition-colors duration-200"
                 >
                   Accessibility
                 </a>

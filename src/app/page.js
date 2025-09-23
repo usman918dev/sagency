@@ -12,7 +12,7 @@ import WhyChooseUs from '@/ui/whychooseus/WhyChooseUs';
 import Testimonials from '@/ui/testinomials/Testinomails';
 import PortfolioSection from '@/ui/portfolio/PortfolioSection';
 import Button from '@/ui/btn/Button';
-import CallToAction from '@/ui/cta/Cta';
+import CallToAction, { CallToActionS } from '@/ui/cta/Cta';
 import PortfolioTwo from '@/ui/portfolio/PortfolioTwo';
 
 const HeroSection = () => {
@@ -183,7 +183,7 @@ const HeroSection = () => {
             whileInView={{ opacity: 1, y: 0 }} // Fade and slide up when visible
             viewport={{ once: true, amount: 0.2 }} // Trigger only once when 20% visible
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="g-px"
+            className="g-px pb-12 pt-4"
           >
             <MagicBento
               textAutoHide={true}
@@ -209,6 +209,9 @@ const HeroSection = () => {
           <div className='my-20'></div>
           <WhyChooseUs />
           <Testimonials />
+          <CallToActionS />
+          <div className='my-20'></div>
+
         </div>
       </div>
     </>
