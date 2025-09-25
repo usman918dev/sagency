@@ -57,11 +57,11 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out ${showNavbar ? "translate-y-0" : "-translate-y-full"
         } ${scrolled
-          ? "backdrop-blur-xl shadow-xl border-b border-white/10"
-          : "backdrop-blur-sm"
+          ? "backdrop-blur-xl shadow-xl shadow-black/10 border-b border-white/10 bg-gradient-to-r from-black/30 via-black/20 to-black/30 dark:from-black/50 dark:via-black/40 dark:to-black/50"
+          : "backdrop-blur-sm bg-gradient-to-r from-black/20 via-black/10 to-black/20 dark:from-black/30 dark:via-black/20 dark:to-black/30"
         }`}
     >
-      <div className="g-px flex items-center justify-between px-6 py-2">
+      <div className="g-px flex items-center justify-between py-2">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2 group">
           <div className="relative">
@@ -69,8 +69,8 @@ export default function Navbar() {
               src="/assets/logomain.png"
               alt="Agency Logo"
               width={64}
-              height={64}
-              className={`transition-all duration-500 ease-in-out object-contain group-hover:scale-105 ${scrolled ? "w-12 h-12" : "w-16 h-16"
+              height={32}
+              className={`transition-all duration-500 ease-in-out object-contain group-hover:scale-105 ${scrolled ? "w-26 h-12" : "w-32 h-16"
                 }`}
               priority
             />
@@ -114,8 +114,8 @@ export default function Navbar() {
               {link.dropdown && (
                 <div
                   className={`absolute left-0 mt-2 w-64 bg-white/95 backdrop-blur-lg rounded-xl shadow-2xl border border-white/20 overflow-hidden transition-all duration-500 ease-out ${servicesOpen
-                      ? "opacity-100 translate-y-0 scale-100"
-                      : "opacity-0 translate-y-4 scale-95 pointer-events-none"
+                    ? "opacity-100 translate-y-0 scale-100"
+                    : "opacity-0 translate-y-4 scale-95 pointer-events-none"
                     }`}
                 >
                   <div className="p-2">

@@ -17,6 +17,7 @@ export default function RootLayout({ children }) {
       {/* <BackgroundEffects /> */}
 
         <Navbar/>
+        <div className="mt-0"></div>
         {children}
         <Footer/>
       </body>
