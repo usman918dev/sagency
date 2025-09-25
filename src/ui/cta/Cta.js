@@ -5,7 +5,7 @@ import Button from "../btn/Button";
 const CallToAction = () => {
   return (
     <section
-      className="relative w-full overflow-hidden py-60 bg-[#1c2131]
+      className="relative w-full overflow-hidden py-30 bg-gradient-to-r from-[#1b2439] via-[#16213e] to-[#1b2439]
                  bg-fixed bg-center bg-cover "
     >
       {/* Overlay */}

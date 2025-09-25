@@ -45,7 +45,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative border-t border-gray-800/50 ">
+    <footer className="relative  ">
       {/* Background Effects */}
       {/* <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-orange-500/3 rounded-full blur-3xl"></div>
@@ -54,7 +54,7 @@ const Footer = () => {
 
       <div className="relative z-10">
         {/* Newsletter Section */}
-        <div className="border-b border-gray-800/50 bg-gradient-to-r from-[#1b2439] via-[#16213e] to-[#1b2439]">
+        <div className=" bg-[#1c2131] py-10">
           <div className="g-px py-16">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
               <div>
@@ -87,7 +87,7 @@ const Footer = () => {
         </div>
 
         {/* Main Footer Content */}
-        <div className=" px-6 py-16 bg-[#0A192F]">
+        <div className=" px-6 py-16 bg-gradient-to-r from-[#1b2439] via-[#16213e] to-[#1b2439]">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 g-px">
             {/* Company Info */}
             <div className="lg:col-span-1">

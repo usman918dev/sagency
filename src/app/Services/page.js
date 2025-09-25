@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import SectionHeader from '@/ui/sectionheader/SectionHeader';
 
 const services = [
   {
@@ -10,7 +11,7 @@ const services = [
     title: "Social Media Management",
     short: "Audience growth, content calendar, community engagement & monthly reporting.",
     bullets: ["Strategy", "Post Creation", "Scheduling", "Community Management", "Analytics"],
-        imageSrc: "/assets/graphic.jpg",
+    imageSrc: "/assets/graphic.jpg",
     alt: "Social media management dashboard with analytics"
   },
   {
@@ -34,7 +35,7 @@ const services = [
     title: "Website Development",
     short: "Fast, SEO-friendly websites — static & dynamic, React/Next.js builds.",
     bullets: ["Responsive Design", "CMS Integration", "Performance", "Deployment"],
-        imageSrc: "/assets/wy.webp",
+    imageSrc: "/assets/wy.webp",
     alt: "Modern website development workspace"
   },
   {
@@ -42,7 +43,7 @@ const services = [
     title: "SEO",
     short: "Technical + content SEO for organic growth and higher SERP rankings.",
     bullets: ["Audit", "On-page", "Technical Fixes", "Backlink Strategy"],
-        imageSrc: "/assets/seo.webp",
+    imageSrc: "/assets/seo.webp",
     alt: "SEO analytics and keyword research tools"
   },
   {
@@ -50,7 +51,7 @@ const services = [
     title: "Shopify Development",
     short: "Full Shopify setup, custom themes & app integrations for e-commerce.",
     bullets: ["Theme Dev", "Payment Setup", "Shipping", "App Integrations"],
-        imageSrc: "/assets/graphic.jpg",
+    imageSrc: "/assets/graphic.jpg",
     alt: "Shopify e-commerce store development"
   },
   {
@@ -58,7 +59,7 @@ const services = [
     title: "Video Editing & 2D Animation",
     short: "Short form ads, explainer videos & 2D animations for brand storytelling.",
     bullets: ["Editing", "Motion Graphics", "Storyboarding", "Export for Web/Ads"],
-        imageSrc: "/assets/video.jpg",
+    imageSrc: "/assets/video.jpg",
     alt: "Video editing software with timeline and effects"
   }
 ];
@@ -81,10 +82,10 @@ export default function ServicesPage() {
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     setPrefersReducedMotion(mediaQuery.matches);
-    
+
     const handleChange = () => setPrefersReducedMotion(mediaQuery.matches);
     mediaQuery.addEventListener('change', handleChange);
-    
+
     return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
 
@@ -97,8 +98,8 @@ export default function ServicesPage() {
     <>
       <Head>
         <title>Services — Your Agency Name | Social Media, Design, Web & More</title>
-        <meta 
-          name="description" 
+        <meta
+          name="description"
           content="Professional digital services: Social Media, Graphic Design, Paid Ads, Web Dev, SEO, Shopify & Video. Strategy-driven results for growing brands."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -108,50 +109,18 @@ export default function ServicesPage() {
         />
       </Head>
 
-      <main className="min-h-screen bg-[#0D1117] pt-24">
+      <main className="min-h-screen bg-[#1c2131] pt-20">
         {/* Hero Section */}
-        <section className="relative px-6 py-20 text-center bg-[#0D1117] overflow-hidden">
-          <div className="absolute inset-0">
-            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-500/5 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-orange-600/5 rounded-full blur-3xl"></div>
-          </div>
-          <div className="max-w-4xl mx-auto relative z-10">
-            <motion.h1 
-              className="text-4xl md:text-6xl font-bold text-white mb-6"
-              initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: [0.2, 0.9, 0.3, 1] }}
-            >
-              Services that scale your{" "}
-              <span className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
-                brand
-              </span>
-            </motion.h1>
-            <motion.p 
-              className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto"
-              initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2, ease: [0.2, 0.9, 0.3, 1] }}
-            >
-              Strategic digital services — from creative design to growth-focused ads. We build, launch and optimize.
-            </motion.p>
-            <motion.button
-              onClick={scrollToContact}
-              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold rounded-full hover:from-orange-600 hover:to-red-600 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/25"
-              initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4, ease: [0.2, 0.9, 0.3, 1] }}
-              whileHover={!prefersReducedMotion ? { scale: 1.05 } : {}}
-              whileTap={!prefersReducedMotion ? { scale: 0.95 } : {}}
-            >
-              Schedule a Free Audit
-            </motion.button>
-          </div>
-        </section>
+        <SectionHeader
+          title="Our Services"
+          description="We provide modern, scalable, and result-driven digital services that help your brand thrive."
+          buttonText="Schedule a Free Audit"
+          onButtonClick={scrollToContact}
+        />
 
         {/* Services Sections */}
         {services.map((service, index) => (
-          <ServiceSection 
+          <ServiceSection
             key={service.id}
             service={service}
             inverted={index % 2 === 1}
@@ -163,7 +132,7 @@ export default function ServicesPage() {
         <TestimonialSection prefersReducedMotion={prefersReducedMotion} />
 
         {/* Contact CTA Section */}
-        <section id="contact" className="px-6 py-20 bg-[#0D1117] text-white text-center relative overflow-hidden">
+        {/* <section id="contact" className="px-6 py-20 bg-[#1c2131] text-white text-center relative overflow-hidden">
           <div className="absolute inset-0">
             <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-500/5 rounded-full blur-3xl"></div>
             <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-red-500/5 rounded-full blur-3xl"></div>
@@ -180,7 +149,7 @@ export default function ServicesPage() {
               Book a Free Consultation
             </button>
           </div>
-        </section>
+        </section> */}
       </main>
     </>
   );
@@ -192,7 +161,7 @@ function ServiceSection({ service, inverted, prefersReducedMotion }) {
   };
 
   return (
-    <section className="relative overflow-hidden border-b border-gray-800/50 bg-[#0D1117]">
+    <section className="relative overflow-hidden border-b border-gray-800/50 bg-[#1c2131]">
       <div className="absolute inset-0">
         <div className={`absolute ${inverted ? 'top-1/4 right-1/4' : 'bottom-1/4 left-1/4'} w-64 h-64 bg-orange-500/3 rounded-full blur-2xl`}></div>
       </div>
@@ -201,11 +170,11 @@ function ServiceSection({ service, inverted, prefersReducedMotion }) {
           <div className="g-px">
             <div className={`grid lg:grid-cols-2 gap-12 items-center ${inverted ? 'lg:grid-flow-col-dense' : ''}`}>
               {/* Text Content */}
-              <motion.div 
+              <motion.div
                 className={`space-y-6 ${inverted ? 'lg:col-start-2' : ''}`}
-                initial={prefersReducedMotion ? { opacity: 0 } : { 
-                  opacity: 0, 
-                  x: inverted ? 40 : -40 
+                initial={prefersReducedMotion ? { opacity: 0 } : {
+                  opacity: 0,
+                  x: inverted ? 40 : -40
                 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, ease: [0.2, 0.9, 0.3, 1] }}
@@ -219,11 +188,11 @@ function ServiceSection({ service, inverted, prefersReducedMotion }) {
                     Trusted by 50+ brands
                   </p>
                 </div>
-                
+
                 <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
                   {service.short}
                 </p>
-                
+
                 <ul className="grid grid-cols-2 gap-2">
                   {service.bullets.map((bullet, index) => (
                     <li key={index} className="flex items-center text-gray-300">
@@ -234,7 +203,7 @@ function ServiceSection({ service, inverted, prefersReducedMotion }) {
                     </li>
                   ))}
                 </ul>
-                
+
                 <button
                   onClick={scrollToContact}
                   className="inline-flex items-center text-orange-400 font-semibold hover:text-orange-300 transition-colors duration-200 group"
@@ -247,11 +216,11 @@ function ServiceSection({ service, inverted, prefersReducedMotion }) {
               </motion.div>
 
               {/* Image */}
-              <motion.div 
+              <motion.div
                 className={`relative ${inverted ? 'lg:col-start-1' : ''}`}
-                initial={prefersReducedMotion ? { opacity: 0 } : { 
-                  opacity: 0, 
-                  x: inverted ? -40 : 40 
+                initial={prefersReducedMotion ? { opacity: 0 } : {
+                  opacity: 0,
+                  x: inverted ? -40 : 40
                 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, ease: [0.2, 0.9, 0.3, 1] }}
@@ -280,7 +249,7 @@ function ServiceSection({ service, inverted, prefersReducedMotion }) {
 
 function TestimonialSection({ prefersReducedMotion }) {
   return (
-    <motion.section 
+    <motion.section
       className="px-6 py-16 bg-gray-900/30 backdrop-blur-sm border-y border-gray-800/50 relative overflow-hidden"
       initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -298,7 +267,7 @@ function TestimonialSection({ prefersReducedMotion }) {
         <cite className="text-gray-400">
           — Sarah Johnson, Marketing Director at TechFlow
         </cite>
-        
+
         {/* Client Logos */}
         <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8 items-center opacity-40">
           {[1, 2, 3, 4].map((i) => (

@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 import { Clock, Target, Users, TrendingUp } from "lucide-react";
-
 import { motion } from "framer-motion";
+
 const howWeWorkCards = [
   {
     id: 1,
@@ -38,34 +38,29 @@ const howWeWorkCards = [
   },
 ];
 
-
-
+// Card Component
 const HowWeWorkCard = ({ card, index }) => {
   const IconComponent = card.icon;
-
-  // Cards alternate direction: top or bottom with smoother motion
   const direction = index % 2 === 0 ? -150 : 150;
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: direction, scale: 0.98 }} // Soft start with slight shrink
-      whileInView={{ opacity: 1, y: 0, scale: 1 }} // Smooth rise to natural position
-      viewport={{ once: true, amount: 0.3 }} // Trigger when 30% visible
+      initial={{ opacity: 0, y: direction, scale: 0.98 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, amount: 0.3 }}
       transition={{
-        duration: 0.9,        // Longer for smooth experience
-        ease: [0.25, 0.1, 0.25, 1], // Custom smooth cubic bezier curve
+        duration: 0.9,
+        ease: [0.25, 0.1, 0.25, 1],
       }}
-      className={`relative p-8 rounded-2xl text-center transition-all duration-300 hover:border-orange-500 ${
-        card.highlight
-          ? "bg-gradient-to-br from-orange-500 to-orange-600 text-white"
-          : "bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 text-gray-300"
-      }`}
+      className={`relative p-8 rounded-2xl text-center transition-all duration-300 hover:border-orange-500 ${card.highlight
+          ? "bg-gradient-to-br from-orange-500 to-orange-600 text-white shadow-lg shadow-orange-500/25"
+          : "bg-gray-800/50 backdrop-blur-sm border bg-gradient-to-r from-[#1b2439] via-[#16213e] to-[#1b2439] border-gray-700/50 text-gray-300"
+        }`}
     >
       {/* Icon */}
       <div
-        className={`w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto ${
-          card.highlight ? "bg-white/20 backdrop-blur-sm" : "bg-orange-500"
-        }`}
+        className={`w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto ${card.highlight ? "bg-white/20 backdrop-blur-sm" : "bg-orange-500"
+          }`}
       >
         <IconComponent className="w-8 h-8 text-white" />
       </div>
@@ -77,9 +72,8 @@ const HowWeWorkCard = ({ card, index }) => {
 
       {/* Description */}
       <p
-        className={`leading-relaxed ${
-          card.highlight ? "text-white/90" : "text-gray-400"
-        }`}
+        className={`leading-relaxed ${card.highlight ? "text-white/90" : "text-gray-400"
+          }`}
       >
         {card.description}
       </p>
@@ -87,17 +81,38 @@ const HowWeWorkCard = ({ card, index }) => {
   );
 };
 
-
 const HowWeWork = () => {
   return (
-    <section className="relative w-full py-32 px-6 bg-[#1c2131]
- overflow-hidden">
-      {/* Background Glow Effects */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-500/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-orange-600/5 rounded-full blur-3xl"></div>
+    <section className="relative w-full py-32 px-6 bg-[#1c2131] overflow-hidden">
+      {/* === Background Glow Effects === */}
+      {/* <div className="absolute inset-0">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-orange-600/10 rounded-full blur-3xl"></div>
+      </div> */}
+
+      {/* === Decorative Top Left Corner Rings === */}
+      <div className="absolute top-0 left-0 opacity-60 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-20">
+        <div className="relative w-100 h-100 rounded-full border-20 border-[#F25725] flex items-center justify-center opacity-80">
+          <div className="w-48 h-48 rounded-full border-20 border-[#F25725]/70" />
+        </div>
       </div>
 
+      {/* === Floating Animated Dots === */}
+      <motion.div
+        className="absolute top-20 right-10 w-4 h-4 rounded-full bg-orange-500/60"
+        animate={{ y: [0, -15, 0] }}
+        transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute bottom-24 left-12 w-3 h-3 rounded-full bg-orange-400/60"
+        animate={{ y: [0, 20, 0] }}
+        transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+      />
+
+      {/* === Diagonal Gradient Divider Behind Cards === */}
+      {/* <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-[400px] bg-gradient-to-r from-transparent via-orange-500/5 to-transparent pointer-events-none"></div> */}
+
+      {/* === Section Content === */}
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">

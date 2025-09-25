@@ -21,7 +21,7 @@ const HeroSection = () => {
     <>
       {/* <BackgroundEffects /> */}
       <div
-        className="min-h-[120vh] w-full relative bg-center bg-gradient-to-b from-[#08375D] to-[#1A4C7A]"
+        className="min-h-[120vh] w-full relative bg-center bg-gradient-to-b from-[#08375D] to-[#1A4C7A] "
         style={{
           backgroundImage: "url('/assets/b1.jpg')", // Replace with your image path
         }}
@@ -31,9 +31,9 @@ const HeroSection = () => {
         {/* Vignette Effect */}
         {/* <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.25),transparent_70%)] pointer-events-none"></div> */}
         <div
-          className="min-h-[120vh] text-white flex items-center justify-center font-sans relative"
+          className="min-h-[120vh] text-white flex items-center justify-center max-sm:pt-28 max-lg:pt-28 font-sans relative"
         >
-          <div className="g-px grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ">
+          <div className="g-px grid grid-cols-1 lg:grid-cols-2 gap-12 max-sm:gap-0 max-lg:gap-0 items-center ">
             {/* Left Content Section */}
             <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
 
@@ -49,7 +49,7 @@ const HeroSection = () => {
 
               {/* Main Headline */}
               <motion.h1
-                className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-4 tracking-tight"
+                className="text-5xl sm:text-4xl md:text-6xl font-bold leading-tight mb-4 tracking-tight"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
@@ -126,7 +126,7 @@ const HeroSection = () => {
             {/* Right Robot Illustration Section */}
             <div className="flex items-center justify-center relative0">
               <motion.div
-                className="w-full max-w-sm sm:max-w-md lg:max-w-lg z-10"
+                className="w-full max-w-sm sm:max-w-md lg:max-w-2xl z-10"
                 initial={{ opacity: 0, scale: 0.8, rotateY: 90 }}
                 animate={{ opacity: 1, scale: 1, rotateY: 0 }}
                 transition={{ type: 'spring', stiffness: 100, damping: 10, delay: 1.2 }}
@@ -160,9 +160,9 @@ const HeroSection = () => {
 
       </div>
 
-      <div className=' bg-gradient-to-r from-[#1b2439] via-[#16213e] to-[#1b2439]'>
+      <div className=' bg-[#1c2131]'>
         {/* <div className="absolute inset-0 bg-gradient-to-t from-[#0ea5ff]/10 via-[#7c3aed]/10 to-transparent"></div> */}
-        <div className='g-px -mt-40 lg:-mt-30 md:-mt-20 rounded-4xl bg-black'>
+        <div className='g-px -mt-40 lg:-mt-30 md:-mt-20 max-sm:-mt-10 rounded-4xl bg-black'>
           <HorizontalLogoLoop />
         </div>
         <div className="g-px text-center mb-12 pt-40">
@@ -249,11 +249,11 @@ const HeroSection = () => {
       <div className=''>
         <ProcessSection />
         {/* <PortfolioSection /> */}
+        <Testimonials />
         <CallToAction />
         <WhyChooseUs />
         <PortfolioTwo />
         {/* <div className='my-20'></div> */}
-        <Testimonials />
         {/* <CallToActionS /> */}
         {/* <div className='my-20'></div> */}
 

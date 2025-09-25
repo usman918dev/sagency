@@ -71,9 +71,52 @@ const WhyChooseUs = () => {
 
 
   return (
-    <div className="flex min-h-screen w-full py-32 bg-gradient-to-r from-[#1b2439] via-[#16213e] to-[#1b2439]">
+    <div className="flex min-h-screen w-full py-32 bg-gradient-to-r from-[#1b2439] via-[#16213e] to-[#1b2439] relative">
+   <motion.div
+        className="absolute top-20 right-10 w-4 h-4 rounded-full bg-orange-500/60"
+        animate={{ y: [0, -15, 0] }}
+        transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute bottom-24 left-12 w-3 h-3 rounded-full bg-orange-400/60"
+        animate={{ y: [0, 20, 0] }}
+        transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+      />
+      {/* Top-left corner borders with glow effect and animation */}
+      <motion.span
+        className="absolute top-0 left-0 h-[4px] block z-10 bg-gradient-to-r from-orange-500 to-orange-600"
+        style={{ width: "min(40vw, 40vh)" }}
+        initial={{ opacity: 0, width: 0 }}
+        whileInView={{ opacity: 1, width: "min(40vw, 40vh)" }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+      />
+      <motion.span
+        className="absolute top-0 left-0 w-[4px] block z-10 bg-gradient-to-b from-orange-500 to-orange-600"
+        style={{ height: "min(40vh, 40vh)" }}
+        initial={{ opacity: 0, height: 0 }}
+        whileInView={{ opacity: 1, height: "min(40vh, 40vh)" }}
+        transition={{ duration: 0.5, delay: 0.6 }}
+      />
+
+      {/* Bottom-right corner borders with glow effect and animation */}
+      <motion.span
+        className="absolute bottom-0 right-0 h-[4px] block z-10 bg-gradient-to-l from-orange-500 to-orange-600"
+        style={{ width: "min(40vw, 40vh)" }}
+        initial={{ opacity: 0, width: 0 }}
+        whileInView={{ opacity: 1, width: "min(40vw, 40vh)" }}
+        transition={{ duration: 0.5, delay: 0.8 }}
+      />
+      <motion.span
+        className="absolute bottom-0 right-0 w-[4px] block z-10 bg-gradient-to-t from-orange-500 to-orange-600"
+        style={{ height: "min(40vw, 40vh)" }}
+        initial={{ opacity: 0, height: 0 }}
+        whileInView={{ opacity: 1, height: "min(40vw, 40vh)" }}
+        transition={{ duration: 0.5, delay: 1.0 }}
+      />
+
       <main className="w-full">
-        <section className="rounded-3xl py-12 sm:py-16 lg:py-20 px-12 g-px">
+
+        <section className="rounded-3xl py-12 sm:py-16 lg:py-20 px-12 max-sm:px-4 g-px">
           <motion.div
             className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-12"
             initial="hidden"
@@ -102,7 +145,7 @@ const WhyChooseUs = () => {
 
             {/* Launch Career / CTA Block */}
             <motion.div
-              className="flex h-full flex-col justify-between rounded-2xl p-6 md:col-span-2 lg:col-span-8  transition-all duration-300"
+              className="flex h-full flex-col justify-between rounded-2xl p-8 md:col-span-2 lg:col-span-8 transition-all duration-300 relative overflow-visible"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
@@ -110,7 +153,7 @@ const WhyChooseUs = () => {
             >
               <div className='flex'>
                 <div>
-                  <p className="text-gray-300 mb-2 max-w-[90%]">
+                  <p className="text-gray-300 mb-2 max-w-[90%] max-sm:max-w-[100%]">
                     Let&apos;s collaborate to build innovative digital solutions that help your business grow. Our expert team is ready to bring your vision to life.
                   </p>
 

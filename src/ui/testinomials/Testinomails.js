@@ -136,39 +136,39 @@ const Testimonials = () => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
-      className="relative w-full py-44 px-6 overflow-hidden bg-[#1c2131]"
+      className="relative w-full py-44 px-6 overflow-hidden bg-gradient-to-r from-[#1b2439] via-[#16213e] to-[#1b2439]"
     >
       {/* Background Effects */}
-      <motion.div
+      {/* <motion.div
         variants={fadeIn}
         className="absolute inset-0"
         whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.2 }}
       >
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
           whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.2 }}
           className="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-500/5 rounded-full blur-3xl"
         />
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 1, delay: 0.3 }}
           className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-red-500/5 rounded-full blur-3xl"
         />
-      </motion.div>
+      </motion.div> */}
 
       <motion.div
         variants={fadeIn}
         transition={{ delay: 0.2 }}
         className="g-px relative z-10"
         whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.2 }}
       >
         {/* Section Header */}
         <motion.div
@@ -205,10 +205,9 @@ const Testimonials = () => {
             variants={fadeIn}
             transition={{ delay: 0.5 }}
             className="relative">
-            <div className={`bg-gray-900/50 backdrop-blur-sm border border-gray-800/50 rounded-2xl p-8 lg:p-10 transition-all duration-500 ease-in-out ${
-                isTransitioning 
-                  ? 'opacity-0 transform -translate-x-4' 
-                  : 'opacity-100 transform translate-x-0'
+            <div className={`bg-gray-900/50 backdrop-blur-sm border border-gray-800/50 rounded-2xl p-8 lg:p-10 transition-all duration-500 ease-in-out ${isTransitioning
+              ? 'opacity-0 transform -translate-x-4'
+              : 'opacity-100 transform translate-x-0'
               }`}>
               {/* Quote Icon */}
               <div className={`mb-6 transition-all duration-300 ease-in-out ${isTransitioning ? 'translate-y-2 opacity-0' : 'translate-y-0 opacity-100'
@@ -322,7 +321,7 @@ const Testimonials = () => {
             </div>
 
             {/* Stats */}
-            <motion.div 
+            <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}

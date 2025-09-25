@@ -48,6 +48,7 @@ export default function Navbar() {
         { name: "Digital Marketing", href: "/services", icon: Settings },
       ],
     },
+    { name: "Plans", href: "/plans" },
     { name: "Portfolio", href: "/portfolio" },
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
