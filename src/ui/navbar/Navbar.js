@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { Menu, X, ChevronDown, Globe, Palette, Smartphone, ShoppingCart, Search, Settings } from "lucide-react";
 import Link from "next/link";
 import Image from 'next/image';
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,6 +12,7 @@ export default function Navbar() {
   const [servicesOpen, setServicesOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const lastScrollY = useRef(0);
+  const servicesRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,12 +42,12 @@ export default function Navbar() {
       name: "Services",
       href: "/services",
       dropdown: [
-        { name: "Web Development", href: "/services", icon: Globe },
-        { name: "Graphic Design", href: "/services", icon: Palette },
-        { name: "Mobile Apps", href: "/services", icon: Smartphone },
-        { name: "E-commerce", href: "/services", icon: ShoppingCart },
-        { name: "SEO", href: "/services", icon: Search },
-        { name: "Digital Marketing", href: "/services", icon: Settings },
+        { name: "Web Development", href: "/services/web-development", icon: Globe },
+        { name: "Graphic Design", href: "/services/graphic-designing", icon: Palette },
+        { name: "SEO", href: "/services/seo-content-strategy", icon: Search },
+        { name: "Digital Marketing", href: "/services/digital-marketing", icon: Settings },
+        // { name: "Mobile Apps", href: "/services", icon: Smartphone },
+        { name: "E-commerce", href: "/services/ecommerce-development", icon: ShoppingCart },
       ],
     },
     { name: "Plans", href: "/plans" },
@@ -84,22 +86,27 @@ export default function Navbar() {
           {navLinks.map((link, index) => (
             <div key={index} className="relative group">
               {link.dropdown ? (
-                <button
-                  onClick={() => {
-                    setActiveLink(link.name);
-                    setServicesOpen(!servicesOpen);
-                  }}
-                  className={`relative flex items-center px-4 py-2 text-sm font-semibold transition-all duration-300 ease-in-out ${activeLink === link.name ? "text-[#F25725]" : "text-white"
-                    } hover:text-[#F25725] group-hover:bg-white/5 rounded-lg`}
+                <div 
+                  ref={link.name === "Services" ? servicesRef : null}
+                  className="relative"
+                  onMouseEnter={() => link.name === "Services" && setServicesOpen(true)}
+                  onMouseLeave={() => link.name === "Services" && setServicesOpen(false)}
                 >
-                  {link.name}
-                  <ChevronDown
-                    size={16}
-                    className={`ml-1 transition-all duration-300 ${servicesOpen ? "rotate-180 text-[#F25725]" : "rotate-0"
-                      }`}
-                  />
-                  <span className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-[#F25725] to-[#ff6b35] transition-all duration-300 w-0 group-hover:w-full"></span>
-                </button>
+                  <Link
+                    href={link.href}
+                    className={`relative flex items-center px-4 py-2 text-sm font-semibold transition-all duration-300 ease-in-out ${activeLink === link.name ? "text-[#F25725]" : "text-white"
+                      } hover:text-[#F25725] group-hover:bg-white/5 rounded-lg`}
+                    onClick={() => setActiveLink(link.name)}
+                  >
+                    {link.name}
+                    <ChevronDown
+                      size={16}
+                      className={`ml-1 transition-all duration-300 ${servicesOpen && link.name === "Services" ? "rotate-180 text-[#F25725]" : "rotate-0"
+                        }`}
+                    />
+                    <span className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-[#F25725] to-[#ff6b35] transition-all duration-300 w-0 group-hover:w-full"></span>
+                  </Link>
+                </div>
               ) : (
                 <Link
                   href={link.href}
@@ -112,34 +119,60 @@ export default function Navbar() {
                 </Link>
               )}
 
-              {link.dropdown && (
-                <div
-                  className={`absolute left-0 mt-2 w-64 bg-white/95 backdrop-blur-lg rounded-xl shadow-2xl border border-white/20 overflow-hidden transition-all duration-500 ease-out ${servicesOpen
-                    ? "opacity-100 translate-y-0 scale-100"
-                    : "opacity-0 translate-y-4 scale-95 pointer-events-none"
-                    }`}
-                >
-                  <div className="p-2">
-                    {link.dropdown.map((item, idx) => {
-                      const IconComponent = item.icon;
-                      return (
-                        <Link
-                          key={idx}
-                          href={item.href}
-                          className="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-[#F25725]/10 hover:to-[#ff6b35]/10 hover:text-[#F25725] transition-all duration-300 rounded-lg group/item"
-                          onClick={() => setServicesOpen(false)}
-                        >
-                          <IconComponent size={18} className="mr-3 text-[#F25725] group-hover/item:scale-110 transition-transform duration-300" />
-                          <span className="font-medium">{item.name}</span>
-                          <div className="ml-auto opacity-0 group-hover/item:opacity-100 transition-opacity duration-300">
-                            <ChevronDown size={14} className="rotate-[-90deg] text-[#F25725]" />
-                          </div>
-                        </Link>
-                      );
-                    })}
-                  </div>
-                  <div className="h-1 bg-gradient-to-r from-[#F25725] via-[#ff6b35] to-[#F25725]"></div>
-                </div>
+              {link.dropdown && link.name === "Services" && (
+                <AnimatePresence>
+                  {servicesOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                      transition={{ duration: 0.2, ease: "easeOut" }}
+                      className="absolute left-0 mt-2 w-64 bg-white/95 backdrop-blur-lg rounded-xl shadow-2xl border border-white/20 overflow-hidden"
+                      onMouseEnter={() => setServicesOpen(true)}
+                      onMouseLeave={() => setServicesOpen(false)}
+                    >
+                      <motion.div
+                        initial="hidden"
+                        animate="show"
+                        variants={{
+                          hidden: {},
+                          show: {
+                            transition: {
+                              staggerChildren: 0.05
+                            }
+                          }
+                        }}
+                        className="p-2"
+                      >
+                        {link.dropdown.map((item, idx) => {
+                          const IconComponent = item.icon;
+                          return (
+                            <motion.div
+                              key={idx}
+                              variants={{
+                                hidden: { opacity: 0, y: 10 },
+                                show: { opacity: 1, y: 0 }
+                              }}
+                            >
+                              <Link
+                                href={item.href}
+                                className="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-[#F25725]/10 hover:to-[#ff6b35]/10 hover:text-[#F25725] transition-all duration-300 rounded-lg group/item"
+                                onClick={() => setServicesOpen(false)}
+                              >
+                                <IconComponent size={18} className="mr-3 text-[#F25725] group-hover/item:scale-110 transition-transform duration-300" />
+                                <span className="font-medium">{item.name}</span>
+                                <div className="ml-auto opacity-0 group-hover/item:opacity-100 transition-opacity duration-300">
+                                  <ChevronDown size={14} className="rotate-[-90deg] text-[#F25725]" />
+                                </div>
+                              </Link>
+                            </motion.div>
+                          );
+                        })}
+                      </motion.div>
+                      <div className="h-1 bg-gradient-to-r from-[#F25725] via-[#ff6b35] to-[#F25725]"></div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               )}
             </div>
           ))}

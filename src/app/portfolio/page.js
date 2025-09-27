@@ -4,96 +4,6 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Eye, ArrowRight } from 'lucide-react';
 
-// Portfolio data with enhanced structure
-const portfolioData = [
-  {
-    id: 1,
-    title: "E-Commerce Platform",
-    description: "Modern shopping experience with seamless checkout and inventory management",
-    category: "Web Apps",
-    image: "/assets/ecom.webp"
-  },
-  {
-    id: 2,
-    title: "Mobile Banking App",
-    description: "Secure financial management with biometric authentication and real-time transactions",
-    category: "Mobile Apps",
-    image: "/assets/digital.webp"
-  },
-  {
-    id: 3,
-    title: "Brand Identity System",
-    description: "Complete visual identity including logo, typography, and brand guidelines",
-    category: "Branding",
-    image: "/assets/graphic.jpg"
-  },
-  {
-    id: 4,
-    title: "SaaS Analytics Dashboard",
-    description: "Real-time data visualization with customizable charts and reporting tools",
-    category: "Web Apps",
-    image: "/assets/seo.webp"
-  },
-  {
-    id: 5,
-    title: "Fitness Tracking App",
-    description: "Personal workout companion with AI-powered training recommendations",
-    category: "Mobile Apps",
-    image: "/assets/web.webp"
-  },
-  {
-    id: 6,
-    title: "Corporate Website Design",
-    description: "Professional business presence with content management and SEO optimization",
-    category: "Web Apps",
-    image: "/assets/ecom1.webp"
-  },
-  {
-    id: 7,
-    title: "Restaurant App Interface",
-    description: "Intuitive food ordering experience with real-time delivery tracking",
-    category: "UI/UX",
-    image: "/assets/seo1.webp"
-  },
-  {
-    id: 8,
-    title: "Fintech Trading Platform",
-    description: "Advanced cryptocurrency trading with portfolio analytics and market insights",
-    category: "Web Apps",
-    image: "/assets/wy.webp"
-  },
-  {
-    id: 9,
-    title: "Social Media Management",
-    description: "Multi-platform content scheduling with engagement analytics and automation",
-    category: "Web Apps",
-    image: "/assets/bg.png"
-  },
-  {
-    id: 10,
-    title: "Healthcare Mobile App",
-    description: "Telemedicine platform connecting patients with healthcare professionals",
-    category: "Mobile Apps",
-    image: "/assets/d1.jpg"
-  },
-  {
-    id: 11,
-    title: "Luxury Brand Identity",
-    description: "Premium brand development for high-end fashion and lifestyle products",
-    category: "Branding",
-    image: "/assets/edit.jpg"
-  },
-  {
-    id: 12,
-    title: "Travel Booking Interface",
-    description: "Seamless travel planning experience with smart recommendations",
-    category: "UI/UX",
-    image: "/assets/video.jpg"
-  }
-];
-
-// Enhanced categories
-const categories = ["All", "Web Apps", "Mobile Apps", "Branding", "UI/UX"];
 
 // Portfolio Card Component - Image-first with hover overlay
 const PortfolioCard = ({ project, index }) => {
@@ -340,3 +250,96 @@ const PortfolioPage = () => {
 };
 
 export default PortfolioPage;
+
+
+
+// Portfolio data with enhanced structure
+const portfolioData = [
+  {
+    id: 1,
+    title: "E-Commerce Platform",
+    description: "Modern shopping experience with seamless checkout and inventory management",
+    category: "Web Apps",
+    image: "/assets/ecom.webp"
+  },
+  {
+    id: 2,
+    title: "Mobile Banking App",
+    description: "Secure financial management with biometric authentication and real-time transactions",
+    category: "Mobile Apps",
+    image: "/assets/digital.webp"
+  },
+  {
+    id: 3,
+    title: "Brand Identity System",
+    description: "Complete visual identity including logo, typography, and brand guidelines",
+    category: "Branding",
+    image: "/assets/graphic.jpg"
+  },
+  {
+    id: 4,
+    title: "SaaS Analytics Dashboard",
+    description: "Real-time data visualization with customizable charts and reporting tools",
+    category: "Web Apps",
+    image: "/assets/seo.webp"
+  },
+  {
+    id: 5,
+    title: "Fitness Tracking App",
+    description: "Personal workout companion with AI-powered training recommendations",
+    category: "Mobile Apps",
+    image: "/assets/web.webp"
+  },
+  {
+    id: 6,
+    title: "Corporate Website Design",
+    description: "Professional business presence with content management and SEO optimization",
+    category: "Web Apps",
+    image: "/assets/ecom1.webp"
+  },
+  {
+    id: 7,
+    title: "Restaurant App Interface",
+    description: "Intuitive food ordering experience with real-time delivery tracking",
+    category: "UI/UX",
+    image: "/assets/seo1.webp"
+  },
+  {
+    id: 8,
+    title: "Fintech Trading Platform",
+    description: "Advanced cryptocurrency trading with portfolio analytics and market insights",
+    category: "Web Apps",
+    image: "/assets/wy.webp"
+  },
+  {
+    id: 9,
+    title: "Social Media Management",
+    description: "Multi-platform content scheduling with engagement analytics and automation",
+    category: "Web Apps",
+    image: "/assets/bg.png"
+  },
+  {
+    id: 10,
+    title: "Healthcare Mobile App",
+    description: "Telemedicine platform connecting patients with healthcare professionals",
+    category: "Mobile Apps",
+    image: "/assets/d1.jpg"
+  },
+  {
+    id: 11,
+    title: "Luxury Brand Identity",
+    description: "Premium brand development for high-end fashion and lifestyle products",
+    category: "Branding",
+    image: "/assets/edit.jpg"
+  },
+  {
+    id: 12,
+    title: "Travel Booking Interface",
+    description: "Seamless travel planning experience with smart recommendations",
+    category: "UI/UX",
+    image: "/assets/video.jpg"
+  }
+];
+
+// Enhanced categories
+const categories = ["All", "Web Apps", "Mobile Apps", "Branding", "UI/UX"];

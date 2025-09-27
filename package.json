@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-  "build": "next build --turbopack",
-  "predeploy": "npm run build",
+    "build": "next build --turbopack",
+    "predeploy": "npm run build",
     "start": "next start",
     "lint": "eslint"
   },
@@ -23,6 +23,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
+    "@tailwindcss/typography": "^0.5.19",
     "eslint": "^9",
     "eslint-config-next": "15.5.3",
     "gh-pages": "^5.0.0",
