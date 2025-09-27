@@ -22,7 +22,7 @@ const CTA = () => {
           Ready to <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F25725] to-[#ff6b35]">Elevate</span> Your Brand?
         </h2>
         <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
-          Let's build something amazing together. Contact us today for a free consultation and find out how our services can help you achieve your business goals.
+          Let&apos;s build something amazing together. Contact us today for a free consultation and find out how our services can help you achieve your business goals.
         </p>
         <Link href="/contact">
           <motion.span
