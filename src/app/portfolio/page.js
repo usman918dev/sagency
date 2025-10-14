@@ -1,125 +1,74 @@
 "use client";
 
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Eye, ArrowRight } from 'lucide-react';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 
+// Portfolio Card Component - tailored for marquee layout
+const PortfolioCard = ({ project }) => {
+  const imageUrl = encodeURI(project.image);
 
-// Portfolio Card Component - Image-first with hover overlay
-const PortfolioCard = ({ project, index }) => {
   return (
     <motion.div
-      className="group relative aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer"
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -30 }}
-      transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
-      layout
+      className="group relative flex-shrink-0 w-[260px] sm:w-[300px] lg:w-[340px] h-[320px] rounded-3xl overflow-hidden border border-white/5 bg-white/5"
+      whileHover={{ y: -10 }}
+      transition={{ type: "spring", stiffness: 200, damping: 24 }}
     >
-      {/* Project Image - Primary Focus */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-gray-800 transition-transform duration-700 group-hover:scale-110"
-        style={{ backgroundImage: `url(${project.image})` }}
-      />
-
-      {/* Subtle gradient overlay for better text readability */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/10" />
-
-      {/* Hover Overlay with Project Details */}
-      <div className="absolute inset-0 bg-black/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-6">
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.3, delay: 0.1 }}
-          className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500"
-        >
-          {/* Category Badge */}
-          <div className="mb-3">
-            <span className="inline-block px-3 py-1 bg-[#F25725]/90 text-white text-xs font-semibold rounded-full">
-              {project.category}
-            </span>
-          </div>
-
-          {/* Project Title */}
-          <h3 className="text-xl font-bold text-white mb-2">
-            {project.title}
-          </h3>
-
-          {/* Project Description */}
-          <p className="text-gray-300 text-sm leading-relaxed mb-4">
-            {project.description}
-          </p>
-
-          {/* View Details Button */}
-          <button className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-[#F25725] to-[#ff6b35] text-white font-semibold rounded-full shadow-lg shadow-[#F25725]/25 hover:shadow-xl hover:shadow-[#F25725]/40 transition-all duration-300 hover:scale-105 group/btn">
-            <span>View Details</span>
-            <ArrowRight size={16} className="ml-2 group-hover/btn:translate-x-1 transition-transform duration-300" />
-          </button>
-        </motion.div>
+      <div className="absolute inset-0">
+        <div
+          className="absolute inset-0 bg-cover bg-center transition-transform duration-[1200ms] group-hover:scale-110"
+          style={{ backgroundImage: `url("${imageUrl}")` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
       </div>
 
-      {/* Corner accent for visual depth */}
-      <div className="absolute top-4 right-4 w-2 h-2 bg-[#F25725] rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
+      <div className="relative z-10 h-full flex flex-col justify-end p-6">
+        <span className="text-[11px] font-semibold uppercase tracking-[0.3em] text-white/60 mb-3">
+          {project.category}
+        </span>
+        <h3 className="text-xl font-semibold text-white mb-2">
+          {project.title}
+        </h3>
+        <p className="text-sm text-white/70 leading-relaxed">
+          {project.description}
+        </p>
+      </div>
+
+      <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-[#F25725]/0 via-[#F25725]/20 to-[#ff6b35]/30" />
+      <div className="pointer-events-none absolute -bottom-16 left-1/2 h-32 w-32 -translate-x-1/2 rounded-full bg-[#F25725]/40 blur-3xl opacity-0 group-hover:opacity-80 transition-opacity duration-500" />
     </motion.div>
   );
 };
 
-// Portfolio Filters Component
-const PortfolioFilters = ({ categories, activeCategory, onCategoryChange }) => {
-  return (
-    <motion.div
-      className="mb-12"
-      initial={{ opacity: 0, y: -20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-    >
-      {/* Filter container with horizontal scroll on mobile */}
-      <div className="flex justify-center">
-        <div className="flex gap-3 overflow-x-auto pb-4 px-4 md:px-0 scrollbar-hide max-w-full">
-          {categories.map((category, index) => (
-            <motion.button
-              key={category}
-              onClick={() => onCategoryChange(category)}
-              className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 whitespace-nowrap flex-shrink-0 ${
-                activeCategory === category
-                  ? 'bg-gradient-to-r from-[#F25725] to-[#ff6b35] text-white shadow-lg shadow-[#F25725]/25'
-                  : 'bg-transparent text-white border border-[#F25725]/50 hover:border-[#F25725] hover:bg-[#F25725]/10'
-              }`}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {category}
-            </motion.button>
-          ))}
-        </div>
-      </div>
+// Auto-scrolling marquee row for portfolio cards
+const PortfolioRow = ({ projects, speed = 28, direction = 'left' }) => {
+  const duplicatedProjects = [...projects, ...projects];
 
-      {/* Custom scrollbar hide for webkit browsers */}
-      <style jsx>{`
-        .scrollbar-hide {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style>
-    </motion.div>
+  return (
+    <div className="relative overflow-hidden py-6">
+      <motion.div
+        className="flex gap-6 sm:gap-8"
+        animate={{ x: direction === 'left' ? ['0%', '-50%'] : ['-50%', '0%'] }}
+        transition={{ duration: speed, repeat: Infinity, ease: 'linear' }}
+      >
+        {duplicatedProjects.map((project, index) => (
+          <PortfolioCard key={`${project.id}-${index}`} project={project} />
+        ))}
+      </motion.div>
+
+      {/* Edge fades to hint at scrolling */}
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#1c2131] via-[#1c2131]/80 to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#1c2131] via-[#1c2131]/80 to-transparent" />
+    </div>
   );
 };
 
 // Main Portfolio Page Component
 const PortfolioPage = () => {
-  const [activeCategory, setActiveCategory] = useState("All");
-
-  // Filter portfolio items based on selected category
-  const filteredProjects = activeCategory === "All" 
-    ? portfolioData 
-    : portfolioData.filter(project => project.category === activeCategory);
+  const rows = 3;
+  const rowsData = Array.from({ length: rows }, (_, rowIndex) =>
+    portfolioData.filter((_, projectIndex) => projectIndex % rows === rowIndex)
+  );
 
   return (
     <main className="min-h-screen bg-[#1c2131] overflow-hidden">
@@ -167,32 +116,17 @@ const PortfolioPage = () => {
             </p>
           </motion.div>
 
-          {/* Portfolio Filters */}
-          <PortfolioFilters 
-            categories={categories}
-            activeCategory={activeCategory}
-            onCategoryChange={setActiveCategory}
-          />
-
-          {/* Portfolio Grid with AnimatePresence for smooth filtering */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeCategory}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              {filteredProjects.map((project, index) => (
-                <PortfolioCard 
-                  key={`${activeCategory}-${project.id}`}
-                  project={project} 
-                  index={index}
-                />
-              ))}
-            </motion.div>
-          </AnimatePresence>
+          {/* Moving rows of portfolio cards */}
+          <div className="space-y-6">
+            {rowsData.map((projects, rowIndex) => (
+              <PortfolioRow
+                key={`portfolio-row-${rowIndex}`}
+                projects={projects}
+                speed={24 + rowIndex * 4}
+                direction={rowIndex % 2 === 0 ? 'left' : 'right'}
+              />
+            ))}
+          </div>
 
           {/* Portfolio Stats - Clean and Minimal */}
           <motion.div
@@ -253,93 +187,72 @@ export default PortfolioPage;
 
 
 
-// Portfolio data with enhanced structure
-const portfolioData = [
+// Portfolio data assembled from assets library
+const fileNames = [
+  'p (1).jpg',
+  'p (1).png',
+  'p (2).jpg',
+  'p (2).png',
+  'p (3).jpg',
+  'p (3).png',
+  'p (4).jpg',
+  'p (4).png',
+  'p (5).jpg',
+  'p (6).jpg',
+  'p (7).jpg',
+  'p (8).jpeg',
+  'p (9).jpeg',
+  'p (10).jpeg',
+  'p (11).jpeg',
+  'p (12).jpeg',
+  'p (13).jpeg',
+  'p (14).jpeg',
+  'p (15).jpeg',
+  'p (16).jpeg',
+  'p (17).jpeg',
+  'p (18).jpeg',
+  'p (19).jpeg',
+  'p (20).jpeg',
+  'p (21).jpeg'
+];
+
+const descriptorPool = [
   {
-    id: 1,
-    title: "E-Commerce Platform",
-    description: "Modern shopping experience with seamless checkout and inventory management",
-    category: "Web Apps",
-    image: "/assets/ecom.webp"
+    title: 'Immersive Landing Page',
+    description: 'Full-fidelity hero concept engineered for high-impact product launches.'
   },
   {
-    id: 2,
-    title: "Mobile Banking App",
-    description: "Secure financial management with biometric authentication and real-time transactions",
-    category: "Mobile Apps",
-    image: "/assets/digital.webp"
+    title: 'Brand Narrative System',
+    description: 'Holistic identity suite balancing typography, motion, and color storytelling.'
   },
   {
-    id: 3,
-    title: "Brand Identity System",
-    description: "Complete visual identity including logo, typography, and brand guidelines",
-    category: "Branding",
-    image: "/assets/graphic.jpg"
+    title: 'Product UX Canvas',
+    description: 'Composable UI kit optimised for SaaS dashboards and data-rich workflows.'
   },
   {
-    id: 4,
-    title: "SaaS Analytics Dashboard",
-    description: "Real-time data visualization with customizable charts and reporting tools",
-    category: "Web Apps",
-    image: "/assets/seo.webp"
+    title: 'Experiential Campaign',
+    description: 'Interactive campaign journey blending digital touchpoints and premium visuals.'
   },
   {
-    id: 5,
-    title: "Fitness Tracking App",
-    description: "Personal workout companion with AI-powered training recommendations",
-    category: "Mobile Apps",
-    image: "/assets/web.webp"
+    title: 'Commerce Accelerator',
+    description: 'Conversion-focused storefront with adaptive merchandising experiences.'
   },
   {
-    id: 6,
-    title: "Corporate Website Design",
-    description: "Professional business presence with content management and SEO optimization",
-    category: "Web Apps",
-    image: "/assets/ecom1.webp"
-  },
-  {
-    id: 7,
-    title: "Restaurant App Interface",
-    description: "Intuitive food ordering experience with real-time delivery tracking",
-    category: "UI/UX",
-    image: "/assets/seo1.webp"
-  },
-  {
-    id: 8,
-    title: "Fintech Trading Platform",
-    description: "Advanced cryptocurrency trading with portfolio analytics and market insights",
-    category: "Web Apps",
-    image: "/assets/wy.webp"
-  },
-  {
-    id: 9,
-    title: "Social Media Management",
-    description: "Multi-platform content scheduling with engagement analytics and automation",
-    category: "Web Apps",
-    image: "/assets/bg.png"
-  },
-  {
-    id: 10,
-    title: "Healthcare Mobile App",
-    description: "Telemedicine platform connecting patients with healthcare professionals",
-    category: "Mobile Apps",
-    image: "/assets/d1.jpg"
-  },
-  {
-    id: 11,
-    title: "Luxury Brand Identity",
-    description: "Premium brand development for high-end fashion and lifestyle products",
-    category: "Branding",
-    image: "/assets/edit.jpg"
-  },
-  {
-    id: 12,
-    title: "Travel Booking Interface",
-    description: "Seamless travel planning experience with smart recommendations",
-    category: "UI/UX",
-    image: "/assets/video.jpg"
+    title: 'Editorial Microsite',
+    description: 'Story-driven microsite format designed for long-form, scroll-native narratives.'
   }
 ];
 
-// Enhanced categories
-const categories = ["All", "Web Apps", "Mobile Apps", "Branding", "UI/UX"];
+const categories = ['Web Experience', 'Branding', 'Product Design', 'UI/UX'];
+
+const portfolioData = fileNames.map((fileName, index) => {
+  const descriptor = descriptorPool[index % descriptorPool.length];
+
+  return {
+    id: index + 1,
+    title: descriptor.title,
+    description: descriptor.description,
+    category: categories[index % categories.length],
+    image: `/assets/portfolio/${fileName}`
+  };
+});
