@@ -16,7 +16,7 @@ const PortfolioCard = ({ project }) => {
     >
       <div className="absolute inset-0">
         <div
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-[1200ms] group-hover:scale-110"
+          className="absolute inset-0 bg-cover bg-center transition-transform duration-[1200ms] group-hover:scale-110 group-hover:blur-sm"
           style={{ backgroundImage: `url("${imageUrl}")` }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
@@ -74,16 +74,11 @@ const PortfolioPage = () => {
     <main className="min-h-screen bg-[#1c2131] overflow-hidden">
       {/* Portfolio Section */}
       <section className="relative py-32 px-6">
-        {/* Background Decorative Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          {/* Glowing Gradient Blobs */}
-          <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-[#F25725]/20 to-[#ff6b35]/10 rounded-full blur-3xl opacity-40 -translate-x-1/2 -translate-y-1/2"></div>
-          <div className="absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-tl from-[#1b2439]/30 to-[#16213e]/20 rounded-full blur-3xl opacity-40 translate-x-1/2 translate-y-1/2"></div>
-        </div>
+  
 
         {/* Decorative Ring in Corner */}
         <motion.div
-          className="absolute top-0 right-0 w-32 h-32 -translate-x-1/2 -translate-y-1/2 z-10"
+          className="absolute top-20 right-0 w-32 h-32 -translate-x-1/2 -translate-y-1/2 z-10"
           animate={{ rotate: 360 }}
           transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
         >

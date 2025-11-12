@@ -10,15 +10,19 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@react-three/drei": "^10.7.6",
+    "@react-three/fiber": "^9.4.0",
     "autoprefixer": "^10.4.21",
     "framer-motion": "^12.23.16",
     "gsap": "^3.13.0",
     "lottie-react": "^2.4.1",
     "lucide-react": "^0.544.0",
+    "maath": "^0.10.8",
     "next": "15.5.3",
     "ogl": "^1.0.11",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "three": "^0.180.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

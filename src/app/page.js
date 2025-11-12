@@ -26,7 +26,8 @@ const HeroSection = () => {
           backgroundImage: "url('/assets/b1.jpg')", // Replace with your image path
         }}
       >
-        <div className="absolute inset-0 h-[120vh] bg-gradient-to-r from-black/70 via-black/40 to-transparent pointer-events-none"></div>
+        {/* <div className="absolute inset-0 h-[120vh] bg-gradient-to-r from-black/70 via-black/40 to-transparent pointer-events-none"></div> */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#1c2131]/90 via-[#1c2131]/90 to-[#1c2131]/90 p-32"></div>
 
         {/* Vignette Effect */}
         {/* <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.25),transparent_70%)] pointer-events-none"></div> */}

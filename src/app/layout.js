@@ -2,6 +2,7 @@ import "./globals.css";
 import Navbar from "@/ui/navbar/Navbar";
 import Footer from "@/ui/footer/Footer";
 import BackgroundEffects from '@/ui/background/BackgroundEffects';
+import { StarsCanvas } from "@/components/star-background";
 
 export const metadata = {
   title: "Create Next App",
@@ -14,12 +15,12 @@ export default function RootLayout({ children }) {
       <body
         className={`antialiased`}
       >
-      {/* <BackgroundEffects /> */}
-
-        <Navbar/>
+        {/* <BackgroundEffects /> */}
+        <StarsCanvas />
+        <Navbar />
         <div className="mt-0"></div>
         {children}
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );

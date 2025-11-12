@@ -27,7 +27,7 @@ const CardGridTailwind = () => {
                 return (
                     <div
                         key={idx}
-                        className="relative border border-white/10 shadow-2xl bg-gradient-to-r from-[#1b2439] via-[#16213e] to-[#1b2439] hover:shadow-orange-500/50 rounded-sm py-6 px-10 flex flex-col items-center text-center overflow-hidden group cursor-pointer transition-transform duration-300 hover:-translate-y-3 w-64 w-full"
+                        className="relative border border-white/10 shadow-2xl bg-] hover:shadow-orange-500/50 rounded-xl py-6 px-10 flex flex-col items-center text-center overflow-hidden group cursor-pointer transition-transform duration-300 hover:-translate-y-3 w-64 w-full"
                     >
                         {/* Rising accent background from bottom */}
                         <div className="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-t from-[#F25725] to-[#FF7E5F] transition-all duration-500 ease-in-out group-hover:h-full -z-10 rounded-cm"></div>
@@ -53,7 +53,7 @@ const CardGridTailwind = () => {
                         >
                             Learn More
                         </button> */}
-                        <Button text={"Learn More"}/>
+                        <Button text={"Learn More"} />
                         {/* Bottom line */}
                         <span className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[#F25725] to-[#ff6b35] rounded-tr-xl rounded-tl-xl z-10"></span>
                     </div>

@@ -149,7 +149,8 @@ const PortfolioSection = () => {
                         industries. We&apos;ve helped businesses like yours achieve remarkable
                         results.
                     </p>
-                    <Button text={"Explore More"} />
+                    {/* <Button text={"Explore More"} /> */}
+                    <button className="text-white bg-orange-600 px-8 py-3 rounded">Explore More</button>
                 </div>
 
                 {/* ===== RIGHT MOVING COLUMNS ===== */}

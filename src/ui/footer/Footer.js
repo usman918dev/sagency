@@ -114,7 +114,7 @@ const Footer = () => {
             variants={itemVariants}
             className="relative rounded-3xl py-32 px-8 g-px"
           >
-            <div className="backdrop-blur-md rounded-2xl bg-blue-500/10 border border-blue-500/20 p-8 md:p-12">
+            <div className="backdrop-blur-md rounded-2xl bg-blue-00/10 border border-blue-500/20 p-8 md:p-12">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
                 <div className="lg:col-span-7">
                   <h2 className="font-bold text-4xl md:text-5xl bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent mb-4">
