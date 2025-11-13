@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import Button from "../btn/Button";
+import Button, { SecondButton } from "../btn/Button";
 
 const CallToAction = () => {
   return (
@@ -32,7 +32,7 @@ const CallToAction = () => {
       Let&apos;s Make Something Great <br />
       Together!
     </h2>
-    <Button text={"Contact Us"} />
+    <SecondButton text={"Contact Us"} href={"/contact"}/>
   </div>
 </div>
 
@@ -45,21 +45,21 @@ export default CallToAction;
 export const CallToActionS = () => {
   return (
     <section
-      className="relative w-full overflow-hidden bg-fixed bg-center bg-cover bg-[#08375D] rounded-tr-[200px] rounded-bl-[200px]"
+      className="relative w-full overflow-hidden rounded-tr-[200px] rounded-bl-[200px]"
     // style={{ backgroundImage: "url('/assets/nggg.png')" }}
     >
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/20 backdrop-blur-[1px]"></div>
+      {/* <div className="absolute inset-0 bg-black/20 backdrop-blur-[1px]"></div> */}
 
       {/* Top-Right Corner Fill */}
-      <div className="absolute top-0 right-0 w-[220px] h-[220px] bg-orange-500 rounded-tr-[200px] z-10"
+      {/* <div className="absolute top-0 right-0 w-[220px] h-[220px] bg-orange-500 rounded-tr-[200px] z-10"
         style={{ clipPath: "polygon(100% 0, 0 0, 100% 100%)" }}>
-      </div>
+      </div> */}
 
       {/* Bottom-Left Corner Fill */}
-      <div className="absolute bottom-0 left-0 w-[220px] h-[220px] bg-orange-500 rounded-bl-[200px] z-10"
+      {/* <div className="absolute bottom-0 left-0 w-[220px] h-[220px] bg-orange-500 rounded-bl-[200px] z-10"
         style={{ clipPath: "polygon(0 100%, 0 0, 100% 100%)" }}>
-      </div>
+      </div> */}
 
 
       {/* Content Box */}
@@ -78,7 +78,7 @@ export const CallToActionS = () => {
           we’re here to bring your ideas to life with creativity and precision.
         </p>
 
-        <Button text={"Start Your Project"} />
+        <SecondButton text={"Start Your Project"} href={"/contact"}/>
       </div>
     </section>
 

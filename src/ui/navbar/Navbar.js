@@ -4,6 +4,7 @@ import { Menu, X, ChevronDown, Globe, Palette, Smartphone, ShoppingCart, Search,
 import Link from "next/link";
 import Image from 'next/image';
 import { motion, AnimatePresence } from "framer-motion";
+import { SecondButton } from "../btn/Button";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -182,11 +183,12 @@ export default function Navbar() {
         <div className="hidden lg:block">
           <Link
             href="/contact"
-            className="relative px-6 py-3 bg-gradient-to-r from-[#F25725] to-[#ff6b35] text-white font-semibold rounded-full overflow-hidden group transition-all duration-300 hover:shadow-lg hover:shadow-[#F25725]/25 hover:-translate-y-0.5"
+            className="relative px-6 py-3 text-white font-semibold rounded-full overflow-hidden group transition-all "
           >
-            <span className="relative z-10 transition-colors duration-300">Get Started</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-[#d6471e] to-[#e55a2b] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+            {/* <span className="relative z-10 transition-colors duration-300">Get Started</span> */}
+            <SecondButton text={"Get Started"} href={"contact"}/>
+            {/* <div className="absolute inset-0 bg-gradient-to-r from-[#d6471e] to-[#e55a2b] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div> */}
           </Link>
         </div>
 

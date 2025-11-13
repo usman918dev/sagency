@@ -29,7 +29,7 @@ export async function generateStaticParams() {
 //         "image": service.coverImage,
 //         "provider": {
 //           "@type": "Organization",
-//           "name": "Sagency"
+//           "name": "empowrise"
 //         },
 //         "offers": service.pricingPlans.map(plan => ({
 //           "@type": "Offer",
@@ -40,10 +40,10 @@ export async function generateStaticParams() {
 //       };
 
 //     return {
-//         title: `${service.title} | Services | Sagency`,
+//         title: `${service.title} | Services | empowrise`,
 //         description: description,
 //         openGraph: {
-//             title: `${service.title} | Services | Sagency`,
+//             title: `${service.title} | Services | empowrise`,
 //             description: description,
 //             images: [
 //                 {

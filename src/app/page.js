@@ -11,10 +11,12 @@ import ProcessSection from '@/ui/howwework/HowWeWork';
 import WhyChooseUs from '@/ui/whychooseus/WhyChooseUs';
 import Testimonials from '@/ui/testinomials/Testinomails';
 import PortfolioSection from '@/ui/portfolio/PortfolioSection';
-import Button from '@/ui/btn/Button';
+import Button, { SecondButton } from '@/ui/btn/Button';
 import CallToAction, { CallToActionS } from '@/ui/cta/Cta';
 import PortfolioTwo from '@/ui/portfolio/PortfolioTwo';
 import ServicesGrid from '@/ui/servicesection/ServicesSectionMini';
+import Image from 'next/image';
+import ContactForm from '@/components/ContactForm';
 
 const HeroSection = () => {
   return (
@@ -80,17 +82,17 @@ const HeroSection = () => {
               {/* Buttons */}
               <div className="flex space-x-4">
                 <motion.button
-                  className="px-8 py-3 font-semibold rounded bg-[#F25725] hover:bg-transparent hover:border-[#F25725] hover:border transition-colors duration-300 shadow-lg text-white"
+                  className='flex gap-8'
                   whileHover={{ scale: 1.0 }}
                   whileTap={{ scale: 0.95 }}
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, delay: 0.8 }}
                 >
-                  Our Services
+                  <SecondButton text={"Our Services"} href={"/services"} />
+                  <Button text={"Contact Us"} href={"/contact"} />
                 </motion.button>
 
-                <Button text={"Contact Us"} />
               </div>
 
               {/* Avatar / Clients Section */}
@@ -163,9 +165,10 @@ const HeroSection = () => {
 
       <div className=' bg-[#1c2131]'>
         {/* <div className="absolute inset-0 bg-gradient-to-t from-[#0ea5ff]/10 via-[#7c3aed]/10 to-transparent"></div> */}
-        <div className='g-px -mt-40 lg:-mt-30 md:-mt-20 max-sm:-mt-10 rounded-4xl bg-black'>
+        <div className='g-px -mt-40 lg:-mt-30 md:-mt-20 max-sm:-mt-10 rounded-4xl shadow-2xl'>
           <HorizontalLogoLoop />
         </div>
+        {/* <Image height={140} width={140} alt="ll" src={"/assets/mag.svg"}/> */}
         <div className="g-px text-center mb-12 pt-40">
           {/* Small subheading */}
           <p className="text-orange-400 text-sm font-bold uppercase tracking-wider mb-4">
@@ -254,8 +257,11 @@ const HeroSection = () => {
         <CallToAction />
         <WhyChooseUs />
         <PortfolioTwo />
-        {/* <div className='my-20'></div> */}
-        {/* <CallToActionS /> */}
+        {/* <ContactForm /> */}
+        <div className='py-20'>
+
+        <CallToActionS />
+        </div>
         {/* <div className='my-20'></div> */}
 
       </div>

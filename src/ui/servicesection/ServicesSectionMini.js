@@ -53,7 +53,7 @@ const CardGridTailwind = () => {
                         >
                             Learn More
                         </button> */}
-                        <Button text={"Learn More"} />
+                        {/* <Button text={"Learn More"} /> */}
                         {/* Bottom line */}
                         <span className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[#F25725] to-[#ff6b35] rounded-tr-xl rounded-tl-xl z-10"></span>
                     </div>

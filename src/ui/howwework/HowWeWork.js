@@ -132,6 +132,5 @@ const howWeWorkCards = [
     description:
       "After thorough testing, we launch your project and continuously optimize for better performance and results.",
     icon: TrendingUp,
-    highlight: false,
-  },
+    highlight: true  },
 ];

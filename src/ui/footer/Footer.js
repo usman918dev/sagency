@@ -29,10 +29,10 @@ const Footer = () => {
 
   const company = [
     { name: "About Us", href: "/about" },
-    { name: "Our Team", href: "/team" },
-    { name: "Careers", href: "/careers" },
+    { name: "Our Team", href: "/about#team" },
+    // { name: "Careers", href: "/careers" },
     { name: "Portfolio", href: "/portfolio" },
-    { name: "Case Studies", href: "/case-studies" },
+    // { name: "Case Studies", href: "/case-studies" },
     { name: "Blog", href: "/blog" },
   ];
   const containerVariants = {
@@ -64,45 +64,9 @@ const Footer = () => {
 
   return (
     <footer className="relative  ">
-      {/* Background Effects */}
-      {/* <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-orange-500/3 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-red-500/3 rounded-full blur-3xl"></div>
-      </div> */}
 
       <div className="relative z-10">
         {/* Newsletter Section */}
-        {/* <div className=" bg-[#1c2131] py-10">
-          <div className="g-px py-16">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-              <div>
-                <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                  Ready to start your{" "}
-                  <span className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
-                    next project?
-                  </span>
-                </h3>
-                <p className="text-gray-400 text-lg leading-relaxed">
-                  Join our newsletter for the latest updates, industry insights,
-                  and exclusive offers.
-                </p>
-              </div>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <div className="flex-1">
-                  <input
-                    type="email"
-                    placeholder="Enter your email address"
-                    className="w-full px-6 py-4 bg-gray-800/50 border border-gray-700/50 rounded-xl text-white placeholder-gray-400 focus:border-orange-500 focus:outline-none transition-colors duration-200"
-                  />
-                </div>
-                <button className="px-8 py-4 bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold rounded-xl hover:from-orange-600 hover:to-red-600 transition-all duration-300 hover:scale-105 flex items-center gap-2 whitespace-nowrap">
-                  Subscribe
-                  <Send className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div> */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -158,7 +122,7 @@ const Footer = () => {
             {/* Company Info */}
             <div className="lg:col-span-1">
               <div className="mb-6">
-                <Image src="/assets/logomain.png" alt="SAgency Logo" width={150} height={50} className="mb-4" />
+                <Image src="/assets/logomain.png" alt="empowrise Logo" width={150} height={50} className="mb-4" />
                 <p className="text-white leading-relaxed mb-6">
                   We&apos;re a creative digital agency specializing in web
                   development, mobile apps, and digital marketing. Let&apos;s
@@ -225,15 +189,15 @@ const Footer = () => {
               <div className="space-y-3">
                 <div className="flex items-center gap-3 text-white">
                   <Mail className="w-5 h-5 text-orange-400 flex-shrink-0" />
-                  <span>hello@sagency.com</span>
+                  <span>team@empowrise.org</span>
                 </div>
                 <div className="flex items-center gap-3 text-white">
                   <Phone className="w-5 h-5 text-orange-400 flex-shrink-0" />
-                  <span>+1 (555) 123-4567</span>
+                  <span>+92 345 8187381</span>
                 </div>
                 <div className="flex items-center gap-3 text-white">
                   <MapPin className="w-5 h-5 text-orange-400 flex-shrink-0" />
-                  <span>123 Business Ave, Suite 100, City, State 12345</span>
+                  <span>Jaranwala Faisalabad, Pakistan</span>
                 </div>
                 <div className="flex items-center gap-3 text-white">
                   <Clock className="w-5 h-5 text-orange-400 flex-shrink-0" />
@@ -249,25 +213,8 @@ const Footer = () => {
           <div className="g-px px-6 py-8">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <div className="text-white text-sm">
-                © {currentYear} SAgency. All rights reserved. Made with ❤️ by
+                © {currentYear} Empowrise. All rights reserved. Made with ❤️ by
                 our team.
-              </div>
-              <div className="flex items-center gap-6 text-sm">
-                <a
-                  href="/sitemap"
-                  className="text-white hover:text-orange-400 transition-colors duration-200"
-                >
-                  Sitemap
-                </a>
-                <a
-                  href="/accessibility"
-                  className="text-white hover:text-orange-400 transition-colors duration-200"
-                >
-                  Accessibility
-                </a>
-                <div className="text-gray-500">
-                  Built with Next.js & Tailwind CSS
-                </div>
               </div>
             </div>
           </div>
