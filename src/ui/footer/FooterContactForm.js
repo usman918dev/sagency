@@ -24,10 +24,9 @@ const FooterContactForm = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
+    // TODO: Implement actual form submission to backend
     await new Promise(resolve => setTimeout(resolve, 1500));
     
-    console.log('Form submitted:', formData);
     setIsSubmitting(false);
     
     // Reset form
@@ -38,6 +37,7 @@ const FooterContactForm = () => {
       query: ''
     });
     
+    // TODO: Replace alert with proper toast notification
     alert('Message sent successfully!');
   };
 

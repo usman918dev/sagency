@@ -25,12 +25,13 @@ const Footer = () => {
     e.preventDefault();
     setIsSubscribing(true);
     
-    // Simulate subscription
+    // TODO: Implement actual newsletter subscription to backend
     await new Promise(resolve => setTimeout(resolve, 1500));
     
-    console.log('Newsletter subscription:', newsletterEmail);
     setIsSubscribing(false);
     setNewsletterEmail("");
+    
+    // TODO: Replace alert with proper toast notification
     alert('Successfully subscribed to newsletter!');
   };
 
