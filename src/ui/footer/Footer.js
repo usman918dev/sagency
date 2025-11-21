@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import {
   Mail,
   Phone,
@@ -14,9 +14,26 @@ import {
   Clock,
 } from "lucide-react";
 import Image from "next/image";
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
+import FooterContactForm from "./FooterContactForm";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const [newsletterEmail, setNewsletterEmail] = useState("");
+  const [isSubscribing, setIsSubscribing] = useState(false);
+
+  const handleNewsletterSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubscribing(true);
+    
+    // TODO: Implement actual newsletter subscription to backend
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    
+    setIsSubscribing(false);
+    setNewsletterEmail("");
+    
+    // TODO: Replace alert with proper toast notification
+    alert('Successfully subscribed to newsletter!');
+  };
 
   const services = [
     { name: "Web Development", href: "/services/web-development" },
@@ -35,25 +52,7 @@ const Footer = () => {
     // { name: "Case Studies", href: "/case-studies" },
     { name: "Blog", href: "/blog" },
   ];
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.2,
-      },
-    },
-  };
 
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { type: "spring", stiffness: 100 },
-    },
-  };
   const socialLinks = [
     { icon: Facebook, href: "https://facebook.com", label: "Facebook" },
     { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
@@ -63,67 +62,17 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative  ">
-
+    <footer className="relative bg-gradient-to-b from-[#1c2131] via-[#16213e] to-[#101828]">
       <div className="relative z-10">
-        {/* Newsletter Section */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={containerVariants}
-          className=" bg-[#1c2131]"
-        >
-          <motion.div
-            variants={itemVariants}
-            className="relative rounded-3xl py-32 px-8 g-px"
-          >
-            <div className="backdrop-blur-md rounded-2xl bg-blue-00/10 border border-blue-500/20 p-8 md:p-12">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-                <div className="lg:col-span-7">
-                  <h2 className="font-bold text-4xl md:text-5xl bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent mb-4">
-                    Ready to start your{" "}
-                    <span className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
-                      next project?
-                    </span>
-                  </h2>
-                  <p className="text-lg text-gray-300 font-light max-w-2xl">
-                    Join our newsletter for the latest updates, industry insights,
-                    and exclusive offers.
-                  </p>
-                </div>
-
-                <div className="lg:col-span-5">
-                  <div className="space-y-4">
-                    <div className="relative overflow-hidden rounded-xl bg-white/10 backdrop-blur-md p-1">
-                      <input
-                        type="email"
-                        placeholder="Enter your email address"
-                        className="w-full bg-black/30 px-6 py-4 text-white placeholder-gray-400 rounded-lg focus:outline-none"
-                      />
-                    </div>
-                    <motion.button
-                      whileHover={{ scale: 1.03 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="w-full py-4 px-6 rounded-xl font-medium text-white bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 transition-all duration-300 shadow-lg shadow-orange-900/30 flex items-center justify-center gap-2"
-                    >
-                      Subscribe
-                      <Send className="w-4 h-4" />
-                    </motion.button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </motion.div>
-        {/* Main Footer Content */}
-        <div className=" px-6 py-16 bg-gradient-to-r from-[#1b2439] via-[#16213e] to-[#1b2439]">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 g-px">
-            {/* Company Info */}
-            <div className="lg:col-span-1">
+        {/* Main Footer Content with Integrated Newsletter */}
+        <div className="px-6 py-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10">
+            
+            {/* Company Info - 3 columns */}
+            <div className="lg:col-span-3">
               <div className="mb-6">
                 <Image src="/assets/logomain.png" alt="empowrise Logo" width={150} height={50} className="mb-4" />
-                <p className="text-white leading-relaxed mb-6">
+                <p className="text-gray-300 leading-relaxed text-sm">
                   We&apos;re a creative digital agency specializing in web
                   development, mobile apps, and digital marketing. Let&apos;s
                   transform your ideas into powerful digital experiences.
@@ -131,13 +80,13 @@ const Footer = () => {
               </div>
 
               {/* Social Links */}
-              <div className="flex gap-4">
+              <div className="flex gap-3">
                 {socialLinks.map((social, index) => (
                   <a
                     key={index}
                     href={social.href}
                     aria-label={social.label}
-                    className="w-10 h-10 bg-gray-800/50 border border-gray-700/50 rounded-lg flex items-center justify-center text-white hover:bg-orange-500 hover:border-orange-500 hover:text-white transition-all duration-300 hover:scale-110"
+                    className="w-10 h-10 bg-gray-800/50 border border-gray-700/50 rounded-lg flex items-center justify-center text-gray-300 hover:bg-orange-500 hover:border-orange-500 hover:text-white transition-all duration-300 hover:scale-110"
                   >
                     <social.icon className="w-5 h-5" />
                   </a>
@@ -145,9 +94,9 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* Services */}
-            <div className="lg:col-span-1">
-              <h3 className="text-lg font-semibold text-white mb-6 ml-4">
+            {/* Services - 2 columns */}
+            <div className="lg:col-span-2">
+              <h3 className="text-lg font-semibold text-white mb-6">
                 Services
               </h3>
               <ul className="space-y-3">
@@ -155,7 +104,7 @@ const Footer = () => {
                   <li key={index}>
                     <a
                       href={service.href}
-                      className="text-white hover:text-orange-400 transition-colors duration-200 flex items-center gap-2 group"
+                      className="text-gray-300 hover:text-orange-400 transition-colors duration-200 flex items-center gap-2 group text-sm"
                     >
                       <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                       {service.name}
@@ -165,15 +114,15 @@ const Footer = () => {
               </ul>
             </div>
 
-            {/* Company */}
-            <div className="lg:col-span-1">
-              <h3 className="text-lg font-semibold text-white mb-6 ml-4">Company</h3>
+            {/* Company - 2 columns */}
+            <div className="lg:col-span-2">
+              <h3 className="text-lg font-semibold text-white mb-6">Company</h3>
               <ul className="space-y-3">
                 {company.map((item, index) => (
                   <li key={index}>
                     <a
                       href={item.href}
-                      className="text-white hover:text-orange-400 transition-colors duration-200 flex items-center gap-2 group"
+                      className="text-gray-300 hover:text-orange-400 transition-colors duration-200 flex items-center gap-2 group text-sm"
                     >
                       <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                       {item.name}
@@ -183,36 +132,82 @@ const Footer = () => {
               </ul>
             </div>
 
-            {/* Contact Us */}
-            <div className="lg:col-span-1">
-              <h3 className="text-lg font-semibold text-white mb-6">Contact Us</h3>
-              <div className="space-y-3">
-                <div className="flex items-center gap-3 text-white">
-                  <Mail className="w-5 h-5 text-orange-400 flex-shrink-0" />
-                  <span>team@empowrise.org</span>
-                </div>
-                <div className="flex items-center gap-3 text-white">
-                  <Phone className="w-5 h-5 text-orange-400 flex-shrink-0" />
-                  <span>+92 345 8187381</span>
-                </div>
-                <div className="flex items-center gap-3 text-white">
-                  <MapPin className="w-5 h-5 text-orange-400 flex-shrink-0" />
-                  <span>Jaranwala Faisalabad, Pakistan</span>
-                </div>
-                <div className="flex items-center gap-3 text-white">
-                  <Clock className="w-5 h-5 text-orange-400 flex-shrink-0" />
-                  <span>Mon - Fri: 9:00 AM - 6:00 PM</span>
-                </div>
+            {/* Newsletter CTA - 2 columns */}
+            <div className="lg:col-span-2">
+              <h3 className="text-lg font-semibold text-white mb-4">
+                Newsletter
+              </h3>
+              <p className="text-gray-300 text-sm mb-4 leading-relaxed">
+                Subscribe to get the latest updates and exclusive offers.
+              </p>
+              <form onSubmit={handleNewsletterSubmit} className="space-y-3">
+                <input
+                  type="email"
+                  value={newsletterEmail}
+                  onChange={(e) => setNewsletterEmail(e.target.value)}
+                  required
+                  placeholder="Enter your email"
+                  className="w-full bg-gray-900/50 border border-gray-600/50 rounded-lg px-4 py-2.5 text-white placeholder-gray-400 focus:border-orange-500 focus:outline-none transition-colors duration-200 text-sm"
+                />
+                <motion.button
+                  type="submit"
+                  disabled={isSubscribing}
+                  whileHover={{ scale: isSubscribing ? 1 : 1.02 }}
+                  whileTap={{ scale: isSubscribing ? 1 : 0.98 }}
+                  className="w-full py-2.5 px-4 rounded-lg font-medium text-white bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 disabled:from-gray-600 disabled:to-gray-700 transition-all duration-300 flex items-center justify-center gap-2 text-sm"
+                >
+                  {isSubscribing ? (
+                    <>
+                      <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      Subscribing...
+                    </>
+                  ) : (
+                    <>
+                      Subscribe
+                      <Send className="w-4 h-4" />
+                    </>
+                  )}
+                </motion.button>
+              </form>
+            </div>
+
+            {/* Contact Form - 3 columns */}
+            <div className="lg:col-span-3">
+              <h3 className="text-lg font-semibold text-white mb-4">
+                Quick Contact
+              </h3>
+              <FooterContactForm />
+            </div>
+          </div>
+
+          {/* Contact Info Bar */}
+          <div className="mt-12 pt-8 border-t border-gray-700/50">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="flex items-center gap-3 text-gray-300">
+                <Mail className="w-5 h-5 text-orange-400 flex-shrink-0" />
+                <span className="text-sm">team@empowrise.org</span>
+              </div>
+              <div className="flex items-center gap-3 text-gray-300">
+                <Phone className="w-5 h-5 text-orange-400 flex-shrink-0" />
+                <span className="text-sm">+92 345 8187381</span>
+              </div>
+              <div className="flex items-center gap-3 text-gray-300">
+                <MapPin className="w-5 h-5 text-orange-400 flex-shrink-0" />
+                <span className="text-sm">Jaranwala Faisalabad, Pakistan</span>
+              </div>
+              <div className="flex items-center gap-3 text-gray-300">
+                <Clock className="w-5 h-5 text-orange-400 flex-shrink-0" />
+                <span className="text-sm">Mon - Fri: 9:00 AM - 6:00 PM</span>
               </div>
             </div>
           </div>
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-gray-800/50 bg-[#101828]">
-          <div className="g-px px-6 py-8">
+        <div className="border-t border-gray-800/50 bg-[#0a0f1a]">
+          <div className="px-6 py-6">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-              <div className="text-white text-sm">
+              <div className="text-gray-400 text-sm">
                 © {currentYear} Empowrise. All rights reserved. Made with ❤️ by
                 our team.
               </div>
