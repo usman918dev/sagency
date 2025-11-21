@@ -181,15 +181,15 @@ export default function Navbar() {
 
         {/* CTA Button */}
         <div className="hidden lg:block">
-          <Link
+          {/* <Link
             href="/contact"
             className="relative px-6 py-3 text-white font-semibold rounded-full overflow-hidden group transition-all "
-          >
+          > */}
             {/* <span className="relative z-10 transition-colors duration-300">Get Started</span> */}
             <SecondButton text={"Get Started"} href={"contact"}/>
             {/* <div className="absolute inset-0 bg-gradient-to-r from-[#d6471e] to-[#e55a2b] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div> */}
-          </Link>
+          {/* </Link> */}
         </div>
 
         {/* Mobile Menu Toggle */}

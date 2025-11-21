@@ -4,63 +4,86 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import SectionHeader from '@/ui/sectionheader/SectionHeader';
+import Mockup, { DevMockup, DigitalMockup, LandingMockup } from '@/ui/mockup/Mockup';
 
 const services = [
   {
     id: 1,
-    title: "Social Media Management",
-    short: "Audience growth, content calendar, community engagement & monthly reporting.",
-    bullets: ["Strategy", "Post Creation", "Scheduling", "Community Management", "Analytics"],
-    imageSrc: "/assets/graphic.jpg",
-    alt: "Social media management dashboard with analytics"
+    title: "Digital Marketing & Strategy",
+    short: "We don't just post content; we build thriving communities around your brand. Our data-driven approach analyzes your specific audience to create a bespoke strategy that turns passive scrollers into loyal advocates. From detailed content calendars to real-time engagement, we handle every digital touchpoint to ensure your brand voice remains consistent, authoritative, and engaging across all platforms.",
+    bullets: [
+      "Audience Analysis",
+      "Content Strategy",
+      "Community Growth",
+      "Performance Analytics"
+    ],
+    imageSrc: <DigitalMockup/>,
+    alt: "Digital marketing strategy and social media analytics dashboard"
   },
   {
     id: 2,
     title: "Graphic Designing",
-    short: "Brand identity, marketing creatives, print & digital assets.",
-    bullets: ["Logo & Identity", "Social Creatives", "Brochures", "UI Assets"],
-    imageSrc: "/assets/graphic.jpg",
-    alt: "Graphic design workspace with creative assets"
+    short: "Visuals speak louder than text, and our design team ensures your brand captures attention instantly. We create stunning, brand-centric assets that communicate your unique value proposition. Whether it is a complete brand identity overhaul, a catchy logo, or daily social media creatives, we ensure every pixel aligns perfectly with your marketing goals and aesthetic standards.",
+    bullets: [
+      "Brand Identity & Logos",
+      "Marketing Creatives",
+      "UI/UX Elements",
+      "Print & Digital Assets"
+    ],
+    imageSrc: <Mockup/>,
+    alt: "Graphic design workspace featuring creative tools and color palettes"
   },
   {
     id: 3,
-    title: "Paid Ads & Media Buying",
-    short: "ROI-focused ad campaigns across Meta, Google & TikTok with A/B testing.",
-    bullets: ["Strategy", "Creative Optimization", "Budget Management", "Reporting"],
-    imageSrc: "/assets/digital.webp",
-    alt: "Digital advertising campaign dashboard"
+    title: "Web Development",
+    short: "Your website is your 24/7 digital storefront, and we ensure it is built to perform. We develop lightning-fast, secure, and scalable websites using modern frameworks like React and Next.js. We focus on clean code architecture and responsive interfaces to ensure your site not only looks professional but performs flawlessly under high traffic conditions on any device.",
+    bullets: [
+      "Full-Stack Development",
+      "Responsive Design",
+      "Speed Optimization",
+      "API Integration"
+    ],
+    imageSrc: <DevMockup/>,
+    alt: "Modern web development code and responsive interface layout"
   },
   {
     id: 4,
-    title: "Website Development",
-    short: "Fast, SEO-friendly websites — static & dynamic, React/Next.js builds.",
-    bullets: ["Responsive Design", "CMS Integration", "Performance", "Deployment"],
-    imageSrc: "/assets/wy.webp",
-    alt: "Modern website development workspace"
+    title: "SEO Optimization",
+    short: "Dominate search results and drive organic traffic that actually converts into sales. We move beyond basic keywords to implement a holistic SEO strategy that covers technical site health, on-page content optimization, and authority building. We help your brand claim the top spot for search terms that matter to your bottom line, ensuring sustainable long-term growth.",
+    bullets: [
+      "Technical Audits",
+      "Keyword Strategy",
+      "On-Page Optimization",
+      "Backlink Building"
+    ],
+    imageSrc: <LandingMockup/>,
+    alt: "SEO analytics chart showing keyword ranking improvements"
   },
   {
     id: 5,
-    title: "SEO",
-    short: "Technical + content SEO for organic growth and higher SERP rankings.",
-    bullets: ["Audit", "On-page", "Technical Fixes", "Backlink Strategy"],
-    imageSrc: "/assets/seo.webp",
-    alt: "SEO analytics and keyword research tools"
+    title: "E-commerce Development",
+    short: "Turn visitors into buyers with a seamless, secure, and intuitive shopping experience. We specialize in building robust e-commerce stores on Shopify and custom platforms that are optimized for conversions. From custom theme development to secure payment gateway integration and inventory management, we handle the technical complexities so you can focus on selling.",
+    bullets: [
+      "Store Setup & Config",
+      "Custom Theme Dev",
+      "Payment Gateways",
+      "App Integrations"
+    ],
+    imageSrc: <LandingMockup/>,
+    alt: "E-commerce store dashboard and product management interface"
   },
   {
     id: 6,
-    title: "Shopify Development",
-    short: "Full Shopify setup, custom themes & app integrations for e-commerce.",
-    bullets: ["Theme Dev", "Payment Setup", "Shipping", "App Integrations"],
-    imageSrc: "/assets/graphic.jpg",
-    alt: "Shopify e-commerce store development"
-  },
-  {
-    id: 7,
-    title: "Video Editing & 2D Animation",
-    short: "Short form ads, explainer videos & 2D animations for brand storytelling.",
-    bullets: ["Editing", "Motion Graphics", "Storyboarding", "Export for Web/Ads"],
-    imageSrc: "/assets/video.jpg",
-    alt: "Video editing software with timeline and effects"
+    title: "Video Editing & Animation",
+    short: "Capture attention in the first three seconds with high-impact visual storytelling. Our production team transforms raw footage into compelling narratives perfect for Reels, TikToks, and commercial ads. We combine dynamic cuts, smooth transitions, motion graphics, and professional sound design to increase viewer retention and drive your message home effectively.",
+    bullets: [
+      "Professional Editing",
+      "Motion Graphics",
+      "Color Grading",
+      "Sound Design"
+    ],
+    imageSrc: <LandingMockup/>,
+    alt: "Video editing timeline software with motion effects"
   }
 ];
 
@@ -228,7 +251,7 @@ function ServiceSection({ service, inverted, prefersReducedMotion }) {
                 whileHover={!prefersReducedMotion ? { scale: 1.03 } : {}}
               >
                 <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border border-gray-800/50 bg-gray-900/30 backdrop-blur-sm">
-                  <Image
+                  {/* <Image
                     src={service.imageSrc}
                     alt={service.alt}
                     fill
@@ -236,7 +259,8 @@ function ServiceSection({ service, inverted, prefersReducedMotion }) {
                     loading="lazy"
                     placeholder="blur"
                     blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyydH//2Q=="
-                  />
+                  /> */}
+                  {service.imageSrc}
                 </div>
               </motion.div>
             </div>

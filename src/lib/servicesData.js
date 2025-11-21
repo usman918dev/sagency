@@ -16,7 +16,7 @@ export const servicesData = [
     slug: "web-development",
     description: `
       <h2 class="text-3xl font-bold mb-4 text-white">Crafting Digital Experiences That Convert</h2>
-      <p>In today's <strong>digital-first world</strong>, your website is more than just an online brochure; it's your most powerful marketing asset, your 24/7 salesperson, and the central hub of your brand's universe. At <strong>empowrise</strong>, we don't just build websites; we craft immersive digital experiences that captivate audiences, drive engagement, and deliver measurable results.</p>
+      <p>In today's <strong>digital-first world</strong>, your website is more than just an online brochure; it's your most powerful marketing asset, your 24/7 salesperson, and the central hub of your brand's universe. At <strong>Sagency</strong>, we don't just build websites; we craft immersive digital experiences that captivate audiences, drive engagement, and deliver measurable results.</p>
       <p>We specialize in building <strong>high-performance websites</strong> using modern frameworks like Next.js and React, ensuring your site is scalable, secure, and optimized for search engines from the ground up. From initial strategy and UI/UX design to back-end development and deployment, we provide a complete, end-to-end solution that grows with your business.</p>
     `,
     coverImage: "/assets/web.webp",

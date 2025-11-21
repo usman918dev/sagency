@@ -11,30 +11,30 @@ const CallToAction = () => {
       {/* Overlay */}
 
       {/* Content Box */}
-<div
-  className="relative z-10 px-6 py-24 text-center overflow-hidden"
->
-  {/* Background Image */}
-  <div
-    className="absolute inset-0 bg-fixed bg-center bg-cover"
-    style={{ backgroundImage: "url('/assets/bgg.png')" }}
-  ></div>
+      <div
+        className="relative z-10 px-6 py-24 text-center overflow-hidden"
+      >
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-fixed bg-center bg-cover"
+          style={{ backgroundImage: "url('/assets/bgg.png')" }}
+        ></div>
 
-  {/* Overlay ONLY on the image */}
-  <div className="absolute inset-0 bg-gradient-to-r from-[#1c2131]/80 via-[#1c2131]/70 to-[#1c2131]/80"></div>
+        {/* Overlay ONLY on the image */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#1c2131]/80 via-[#1c2131]/70 to-[#1c2131]/80"></div>
 
-  {/* Content */}
-  <div className="relative z-10">
-    <p className="text-orange-400 text-md font-extrabold uppercase tracking-wider mb-4">
-      Have You Project In Mind?
-    </p>
-    <h2 className="text-white text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-8">
-      Let&apos;s Make Something Great <br />
-      Together!
-    </h2>
-    <SecondButton text={"Contact Us"} href={"/contact"}/>
-  </div>
-</div>
+        {/* Content */}
+        <div className="relative z-10">
+          <p className="text-orange-400 text-md font-extrabold uppercase tracking-wider mb-4">
+            Have You Project In Mind?
+          </p>
+          <h2 className="text-white text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-8">
+            Let&apos;s Make Something Great <br />
+            Together!
+          </h2>
+          <SecondButton text={"Contact Us"} href={"/contact"} />
+        </div>
+      </div>
 
     </section>
   );
@@ -78,7 +78,7 @@ export const CallToActionS = () => {
           we’re here to bring your ideas to life with creativity and precision.
         </p>
 
-        <SecondButton text={"Start Your Project"} href={"/contact"}/>
+        <SecondButton text={"Start Your Project"} href={"/contact"} />
       </div>
     </section>
 

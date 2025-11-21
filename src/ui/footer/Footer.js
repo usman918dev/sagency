@@ -13,8 +13,8 @@ import {
   Send,
   Clock,
 } from "lucide-react";
-import Image from "next/image";
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
@@ -35,25 +35,7 @@ const Footer = () => {
     // { name: "Case Studies", href: "/case-studies" },
     { name: "Blog", href: "/blog" },
   ];
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.2,
-      },
-    },
-  };
 
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { type: "spring", stiffness: 100 },
-    },
-  };
   const socialLinks = [
     { icon: Facebook, href: "https://facebook.com", label: "Facebook" },
     { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
@@ -63,66 +45,52 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative  ">
-
+    <footer className="relative">
       <div className="relative z-10">
-        {/* Newsletter Section */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={containerVariants}
-          className=" bg-[#1c2131]"
-        >
-          <motion.div
-            variants={itemVariants}
-            className="relative rounded-3xl py-32 px-8 g-px"
-          >
-            <div className="backdrop-blur-md rounded-2xl bg-blue-00/10 border border-blue-500/20 p-8 md:p-12">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-                <div className="lg:col-span-7">
-                  <h2 className="font-bold text-4xl md:text-5xl bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent mb-4">
-                    Ready to start your{" "}
-                    <span className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
-                      next project?
-                    </span>
-                  </h2>
-                  <p className="text-lg text-gray-300 font-light max-w-2xl">
-                    Join our newsletter for the latest updates, industry insights,
-                    and exclusive offers.
-                  </p>
-                </div>
-
-                <div className="lg:col-span-5">
-                  <div className="space-y-4">
-                    <div className="relative overflow-hidden rounded-xl bg-white/10 backdrop-blur-md p-1">
-                      <input
-                        type="email"
-                        placeholder="Enter your email address"
-                        className="w-full bg-black/30 px-6 py-4 text-white placeholder-gray-400 rounded-lg focus:outline-none"
-                      />
-                    </div>
+        
+        {/* Main Footer Content */}
+        <div className="px-6 py-16 bg-gradient-to-r from-[#1b2439] via-[#16213e] to-[#1b2439]">
+          
+          {/* Minimal Newsletter Section - Integrated into footer */}
+          <div className="g-px mb-16 pb-12 border-b border-gray-700/30">
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
+              <div className="lg:w-1/2">
+                <h3 className="text-2xl font-bold text-white mb-2">
+                  Ready to start your <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500">next project?</span>
+                </h3>
+                <p className="text-gray-400">Join our newsletter for the latest updates and exclusive offers.</p>
+              </div>
+              <div className="w-full lg:w-1/2 max-w-md">
+                 <div className="flex flex-col sm:flex-row gap-3">
+                    <input
+                      type="email"
+                      placeholder="Enter your email address"
+                      className="w-full bg-black/30 border border-gray-700/50 px-5 py-3 text-white placeholder-gray-400 rounded-lg focus:outline-none focus:border-orange-500/50 transition-colors"
+                    />
                     <motion.button
-                      whileHover={{ scale: 1.03 }}
+                      whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="w-full py-4 px-6 rounded-xl font-medium text-white bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 transition-all duration-300 shadow-lg shadow-orange-900/30 flex items-center justify-center gap-2"
+                      className="whitespace-nowrap px-6 py-3 rounded-lg font-medium text-white bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 transition-all duration-300 shadow-lg shadow-orange-900/30 flex items-center justify-center gap-2"
                     >
                       Subscribe
                       <Send className="w-4 h-4" />
                     </motion.button>
                   </div>
-                </div>
               </div>
             </div>
-          </motion.div>
-        </motion.div>
-        {/* Main Footer Content */}
-        <div className=" px-6 py-16 bg-gradient-to-r from-[#1b2439] via-[#16213e] to-[#1b2439]">
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 g-px">
             {/* Company Info */}
             <div className="lg:col-span-1">
               <div className="mb-6">
-                <Image src="/assets/logomain.png" alt="empowrise Logo" width={150} height={50} className="mb-4" />
+                <img 
+                  src="/assets/logomain.png" 
+                  alt="SAgency Logo" 
+                  width={150} 
+                  height={50} 
+                  className="mb-4" 
+                />
                 <p className="text-white leading-relaxed mb-6">
                   We&apos;re a creative digital agency specializing in web
                   development, mobile apps, and digital marketing. Let&apos;s
@@ -167,7 +135,9 @@ const Footer = () => {
 
             {/* Company */}
             <div className="lg:col-span-1">
-              <h3 className="text-lg font-semibold text-white mb-6 ml-4">Company</h3>
+              <h3 className="text-lg font-semibold text-white mb-6 ml-4">
+                Company
+              </h3>
               <ul className="space-y-3">
                 {company.map((item, index) => (
                   <li key={index}>
@@ -185,11 +155,13 @@ const Footer = () => {
 
             {/* Contact Us */}
             <div className="lg:col-span-1">
-              <h3 className="text-lg font-semibold text-white mb-6">Contact Us</h3>
+              <h3 className="text-lg font-semibold text-white mb-6">
+                Contact Us
+              </h3>
               <div className="space-y-3">
                 <div className="flex items-center gap-3 text-white">
                   <Mail className="w-5 h-5 text-orange-400 flex-shrink-0" />
-                  <span>team@empowrise.org</span>
+                  <span>team@sagency.org</span>
                 </div>
                 <div className="flex items-center gap-3 text-white">
                   <Phone className="w-5 h-5 text-orange-400 flex-shrink-0" />
