@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 const CTA = () => {
   return (
-    <motion.section 
+    <motion.section
       className="py-24 px-6 bg-[#1c2131] border-t border-gray-800/50 relative overflow-hidden"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}

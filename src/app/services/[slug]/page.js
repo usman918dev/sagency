@@ -70,8 +70,8 @@ const ServicePage = ({ params }) => {
 
   return (
     <main className="bg-[#1c2131]">
-      <Hero 
-        title={service.title} 
+      <Hero
+        title={service.title}
         coverImage={service.coverImage}
         icon={service.icon}
       />

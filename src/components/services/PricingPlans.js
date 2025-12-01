@@ -7,7 +7,7 @@ const PricingPlans = ({ plans }) => {
   return (
     <section className="py-24 px-6 bg-gradient-to-b from-[#181d2b] to-[#1c2131]">
       <div className="max-w-7xl mx-auto">
-        <motion.div 
+        <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -27,11 +27,10 @@ const PricingPlans = ({ plans }) => {
           {plans.map((plan, index) => (
             <motion.div
               key={index}
-              className={`relative flex flex-col bg-gray-900/50 backdrop-blur-sm border rounded-2xl p-8 transition-all duration-500 ${
-                plan.recommended 
-                  ? 'border-[#F25725] scale-105 shadow-[0_0_40px_rgba(242,87,37,0.25)]' 
+              className={`relative flex flex-col bg-gray-900/50 backdrop-blur-sm border rounded-2xl p-8 transition-all duration-500 ${plan.recommended
+                  ? 'border-[#F25725] scale-105 shadow-[0_0_40px_rgba(242,87,37,0.25)]'
                   : 'border-gray-700/50 hover:border-[#F25725]/50'
-              }`}
+                }`}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}

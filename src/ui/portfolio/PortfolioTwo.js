@@ -5,11 +5,14 @@ import Image from "next/image";
 import Button, { SecondButton } from "../btn/Button";
 
 const portfolioItems = [
-    { id: 1, src: "/assets/bg.png", alt: "Project 1" },
-    { id: 2, src: "/assets/bgg.png", alt: "Project 2" },
-    { id: 3, src: "/assets/ecom.webp", alt: "Project 3" },
-    { id: 4, src: "/assets/edit.jpg", alt: "Project 4" },
-    { id: 5, src: "/assets/graphic.jpg", alt: "Project 5" },
+    { id: 1, src: "/assets/bg.png", title: "Landing Page Redesign", description: "A conversion-focused landing page with a modern UI and fast performance.", alt: "Landing page redesign" },
+    { id: 2, src: "/assets/webb.jpg", title: "Brand Website", description: "A responsive brand website showcasing the company vision and services.", alt: "Brand website" },
+    { id: 3, src: "/assets/shop.jpg", title: "E-commerce Store", description: "A high-performance online store with optimized checkout flow and product pages.", alt: "E-commerce store" },
+    { id: 4, src: "/assets/social.jpg", title: "Social Video Campaign", description: "Short, engaging social videos and motion graphics for ad campaigns.", alt: "Social video campaign" },
+    { id: 5, src: "/assets/graphic.jpg", title: "Marketing Creatives", description: "Graphics and visuals for marketing and ad creatives across platforms.", alt: "Marketing creatives" },
+    { id: 6, src: "/assets/web.webp", title: "Corporate Web App", description: "A secure and scalable corporate application with aligned UX patterns.", alt: "Corporate web app" },
+    { id: 7, src: "/assets/seo.webp", title: "SEO Performance", description: "SEO-focused site rebuild to boost organic traffic and Core Web Vitals.", alt: "SEO optimized site" },
+    { id: 8, src: "/assets/ecom1.webp", title: "Shopify Store", description: "Custom Shopify store with product layouts and advanced integrations.", alt: "Shopify store" },
 ];
 
 // Generate a long chain of images
@@ -149,7 +152,7 @@ const PortfolioSection = () => {
                         industries. We&apos;ve helped businesses like yours achieve remarkable
                         results.
                     </p>
-                    <SecondButton text={"Explore More"} href={"/portfolio"}/>
+                    <SecondButton text={"Explore More"} href={"/portfolio"} />
                     {/* <button className="text-white bg-orange-600 px-8 py-3 rounded">Explore More</button> */}
                 </div>
 
@@ -174,7 +177,7 @@ const PortfolioSection = () => {
                                     {/* Image */}
                                     <Image
                                         src={item.src}
-                                        alt={item.alt}
+                                        alt={item.title}
                                         width={300}
                                         height={325}
                                         className="w-[150px] sm:w-[200px] md:w-[300px] min-h-[180px] sm:min-h-[250px] md:min-h-[325px] object-cover transition-transform duration-500 group-hover:scale-105"
@@ -183,15 +186,14 @@ const PortfolioSection = () => {
                                     {/* Overlay Content */}
                                     <div className="absolute inset-0 bg-black/60 backdrop-blur-sm opacity-0 group-hover:opacity-100 touch-active:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center text-center p-2 sm:p-4">
                                         <h3 className="text-white text-base sm:text-lg md:text-xl font-bold mb-1 sm:mb-2">
-                                            Project Title
+                                            {item.title}
                                         </h3>
                                         <p className="text-gray-200 text-xs sm:text-sm mb-2 sm:mb-4 hidden sm:block">
-                                            Brief description about the project goes here to give
-                                            context.
+                                            {item.description}
                                         </p>
                                         <button
-                                            className="bg-teal-500 hover:bg-teal-600 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-md text-xs sm:text-sm transition"
-                                            aria-label={`View details for ${item.alt}`}
+                                            className="bg-orange-500 hover:bg-orange-600 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-md text-xs sm:text-sm transition"
+                                            aria-label={`View details for ${item.title}`}
                                         >
                                             View Details
                                         </button>
@@ -220,7 +222,7 @@ const PortfolioSection = () => {
                                     {/* Image */}
                                     <Image
                                         src={item.src}
-                                        alt={item.alt}
+                                        alt={item.title}
                                         width={300}
                                         height={325}
                                         className="w-[150px] sm:w-[200px] md:w-[300px] h-[180px] sm:h-[250px] md:h-[325px] object-cover transition-transform duration-500 group-hover:scale-105"
@@ -229,14 +231,14 @@ const PortfolioSection = () => {
                                     {/* Overlay Content */}
                                     <div className="absolute inset-0 bg-black/60 backdrop-blur-sm opacity-0 group-hover:opacity-100 touch-active:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center text-center p-2 sm:p-4">
                                         <h3 className="text-white text-base sm:text-lg md:text-xl font-bold mb-1 sm:mb-2">
-                                            Project Title
+                                            {item.title}
                                         </h3>
                                         <p className="text-gray-200 text-xs sm:text-sm mb-2 sm:mb-4 hidden sm:block">
-                                            Short description about the project to engage users.
+                                            {item.description}
                                         </p>
                                         <button
                                             className="bg-orange-500 hover:bg-orange-600 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-md text-xs sm:text-sm transition"
-                                            aria-label={`View details for ${item.alt}`}
+                                            aria-label={`View details for ${item.title}`}
                                         >
                                             View Details
                                         </button>
