@@ -45,3 +45,39 @@ SEO tools come in all shapes and sizes, but they generally help you with a few k
 ### Don't Just Write, Optimize!
 
 Using SEO tools isn't about tricking Google; it's about making your content as clear and accessible as possible to both search engines and real people. By spending a little time with these tools, you're giving your amazing blog posts the best possible chance to be discovered and truly shine! So, go on, give your content the spotlight it deserves.
+
+---
+
+## 📧 Google OAuth2 Setup for Email Notifications
+
+This application supports sending notification emails for form submissions using **Nodemailer with Google OAuth2** (`src/lib/gmail.js` and `src/lib/emailService.js`).
+
+### Environment Variables Required in `.env.local`:
+```env
+GOOGLE_CLIENT_ID=your_client_id.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=your_client_secret
+GOOGLE_REDIRECT_URI=https://sagency-main.vercel.app/
+GOOGLE_REFRESH_TOKEN=your_refresh_token
+NOTIFY_EMAIL_TO=infoderixio@gmail.com
+```
+
+### How to Obtain a Google OAuth2 Refresh Token
+
+Since the OAuth client has a `client_id` and `client_secret`, a `refresh_token` must be generated once for the Gmail account sending emails:
+
+1. **Go to Google OAuth2 Playground**:
+   - Open [https://developers.google.com/oauthplayground](https://developers.google.com/oauthplayground).
+2. **Configure OAuth2 Credentials**:
+   - Click the gear icon (⚙️) in the top-right corner.
+   - Check **"Use your own OAuth credentials"**.
+   - Paste your `OAuth Client ID` and `OAuth Client Secret`.
+3. **Select & Authorize Scopes**:
+   - In Step 1 (Select & authorize APIs), scroll to **Gmail API v1**.
+   - Select `https://mail.google.com/` (or `https://www.googleapis.com/auth/gmail.send`).
+   - Click **Authorize APIs** and log in with the sending Gmail account (`infoderixio@gmail.com`).
+4. **Exchange Authorization Code for Tokens**:
+   - In Step 2, click **Exchange authorization code for tokens**.
+   - Copy the generated `Refresh token`.
+5. **Set `.env.local` or Vercel Environment Variables**:
+   - Paste the `Refresh token` into `GOOGLE_REFRESH_TOKEN`.
+   - Set `NOTIFY_EMAIL_TO` to your destination email inbox.

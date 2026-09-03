@@ -1,306 +1,100 @@
-"use client";
-import Head from 'next/head';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
-import SectionHeader from '@/ui/sectionheader/SectionHeader';
-import Mockup, { DevMockup, DigitalMockup, LandingMockup } from '@/ui/mockup/Mockup';
+/**
+ * /services — server component wrapper
+ *
+ * Exports metadata and injects CollectionPage + Service ItemList JSON-LD.
+ * Interactive UI rendered by _ServicesContent (client component).
+ *
+ * NOTE: This page wrapper must NOT include the [slug] children's schema —
+ * each service subpage has its own schema in services/[slug]/page.js.
+ */
+import ServicesContent from "./_ServicesContent";
+import { servicesData } from "@/lib/servicesData";
+import {
+  buildJsonLd,
+  buildBreadcrumb,
+  buildWebPage,
+  organizationRef,
+  BASE_URL,
+} from "@/lib/schemaHelpers";
 
-const services = [
-  {
-    id: 1,
-    title: "Digital Marketing & Strategy",
-    short: "We don't just post content; we build thriving communities around your brand. Our data-driven approach analyzes your specific audience to create a bespoke strategy that turns passive scrollers into loyal advocates. From detailed content calendars to real-time engagement, we handle every digital touchpoint to ensure your brand voice remains consistent, authoritative, and engaging across all platforms.",
-    bullets: [
-      "Audience Analysis",
-      "Content Strategy",
-      "Community Growth",
-      "Performance Analytics"
-    ],
-    imageSrc: <DigitalMockup/>,
-    alt: "Digital marketing strategy and social media analytics dashboard"
+export const metadata = {
+  title: "Digital Agency Services – Web, Design, SEO & Marketing",
+  description:
+    "Explore Derixio's full suite of digital agency services: Amazon Growth, custom web development, graphic design, SEO, digital marketing, and video production for global clients.",
+  alternates: {
+    canonical: "https://www.derixio.com/services",
   },
-  {
-    id: 2,
-    title: "Graphic Designing",
-    short: "Visuals speak louder than text, and our design team ensures your brand captures attention instantly. We create stunning, brand-centric assets that communicate your unique value proposition. Whether it is a complete brand identity overhaul, a catchy logo, or daily social media creatives, we ensure every pixel aligns perfectly with your marketing goals and aesthetic standards.",
-    bullets: [
-      "Brand Identity & Logos",
-      "Marketing Creatives",
-      "UI/UX Elements",
-      "Print & Digital Assets"
+  openGraph: {
+    title: "Digital Agency Services | Derixio",
+    description:
+      "Web development, graphic design, SEO, digital marketing, Amazon PPC, and video production services by Derixio – premium digital agency.",
+    url: "https://www.derixio.com/services",
+    siteName: "Derixio",
+    images: [
+      {
+        url: "https://www.derixio.com/assets/derixio-official-logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Derixio Digital Agency Services",
+      },
     ],
-    imageSrc: <Mockup/>,
-    alt: "Graphic design workspace featuring creative tools and color palettes"
+    locale: "en_US",
+    type: "website",
   },
-  {
-    id: 3,
-    title: "Web Development",
-    short: "Your website is your 24/7 digital storefront, and we ensure it is built to perform. We develop lightning-fast, secure, and scalable websites using modern frameworks like React and Next.js. We focus on clean code architecture and responsive interfaces to ensure your site not only looks professional but performs flawlessly under high traffic conditions on any device.",
-    bullets: [
-      "Full-Stack Development",
-      "Responsive Design",
-      "Speed Optimization",
-      "API Integration"
-    ],
-    imageSrc: <DevMockup/>,
-    alt: "Modern web development code and responsive interface layout"
+  twitter: {
+    card: "summary_large_image",
+    title: "Digital Agency Services | Derixio",
+    description:
+      "Full suite of digital services: web development, graphic design, SEO, digital marketing, Amazon PPC, and video production.",
+    images: ["https://www.derixio.com/assets/derixio-official-logo.png"],
   },
-  {
-    id: 4,
-    title: "SEO Optimization",
-    short: "Dominate search results and drive organic traffic that actually converts into sales. We move beyond basic keywords to implement a holistic SEO strategy that covers technical site health, on-page content optimization, and authority building. We help your brand claim the top spot for search terms that matter to your bottom line, ensuring sustainable long-term growth.",
-    bullets: [
-      "Technical Audits",
-      "Keyword Strategy",
-      "On-Page Optimization",
-      "Backlink Building"
-    ],
-    imageSrc: <LandingMockup/>,
-    alt: "SEO analytics chart showing keyword ranking improvements"
-  },
-  {
-    id: 5,
-    title: "E-commerce Development",
-    short: "Turn visitors into buyers with a seamless, secure, and intuitive shopping experience. We specialize in building robust e-commerce stores on Shopify and custom platforms that are optimized for conversions. From custom theme development to secure payment gateway integration and inventory management, we handle the technical complexities so you can focus on selling.",
-    bullets: [
-      "Store Setup & Config",
-      "Custom Theme Dev",
-      "Payment Gateways",
-      "App Integrations"
-    ],
-    imageSrc: <LandingMockup/>,
-    alt: "E-commerce store dashboard and product management interface"
-  },
-  {
-    id: 6,
-    title: "Video Editing & Animation",
-    short: "Capture attention in the first three seconds with high-impact visual storytelling. Our production team transforms raw footage into compelling narratives perfect for Reels, TikToks, and commercial ads. We combine dynamic cuts, smooth transitions, motion graphics, and professional sound design to increase viewer retention and drive your message home effectively.",
-    bullets: [
-      "Professional Editing",
-      "Motion Graphics",
-      "Color Grading",
-      "Sound Design"
-    ],
-    imageSrc: <LandingMockup/>,
-    alt: "Video editing timeline software with motion effects"
-  }
-];
-
-const jsonLdData = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Your Agency Name",
-  "description": "Professional digital services for growing brands",
-  "services": services.map(service => ({
-    "@type": "Service",
-    "name": service.title,
-    "description": service.short
-  }))
 };
 
 export default function ServicesPage() {
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  /* ── Breadcrumb ─────────────────────────────────────────────────── */
+  const breadcrumb = buildBreadcrumb([
+    { name: "Home",     url: "/" },
+    { name: "Services", url: "/services" },
+  ]);
 
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setPrefersReducedMotion(mediaQuery.matches);
+  /* ── CollectionPage (services hub) ─────────────────────────────── */
+  const webPage = buildWebPage({
+    url: "/services",
+    name: "Digital Agency Services – Web, Design, SEO & Marketing | Derixio",
+    description:
+      "Explore Derixio's full suite of services: web development, graphic design, SEO, digital marketing, Amazon PPC, and video production.",
+    type: "CollectionPage",
+  });
 
-    const handleChange = () => setPrefersReducedMotion(mediaQuery.matches);
-    mediaQuery.addEventListener('change', handleChange);
-
-    return () => mediaQuery.removeEventListener('change', handleChange);
-  }, []);
-
-  const scrollToContact = () => {
-    // Replace with your contact section ID or external link
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+  /* ── ItemList of Service entities (driven by servicesData) ──────── */
+  const serviceItemList = {
+    "@type": "ItemList",
+    "@id": `${BASE_URL}/services#services-list`,
+    "name": "Derixio Digital Agency Services",
+    "numberOfItems": servicesData.length,
+    "itemListElement": servicesData.map((service, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "item": {
+        "@type": "Service",
+        "@id": `${BASE_URL}/services/${service.slug}#service`,
+        "name": service.title,
+        "url": `${BASE_URL}/services/${service.slug}`,
+        "provider": organizationRef(),
+        "areaServed": "Worldwide",
+      },
+    })),
   };
+
+  const jsonLd = buildJsonLd([webPage, breadcrumb, serviceItemList]);
 
   return (
     <>
-      <Head>
-        <title>Services — Your Agency Name | Social Media, Design, Web & More</title>
-        <meta
-          name="description"
-          content="Professional digital services: Social Media, Graphic Design, Paid Ads, Web Dev, SEO, Shopify & Video. Strategy-driven results for growing brands."
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdData) }}
-        />
-      </Head>
-
-      <main className="min-h-screen bg-[#1c2131] pt-20">
-        {/* Hero Section */}
-        <SectionHeader
-          title="Our Services"
-          description="We provide modern, scalable, and result-driven digital services that help your brand thrive."
-          buttonText="Schedule a Free Audit"
-          onButtonClick={scrollToContact}
-        />
-
-        {/* Services Sections */}
-        {services.map((service, index) => (
-          <ServiceSection
-            key={service.id}
-            service={service}
-            inverted={index % 2 === 1}
-            prefersReducedMotion={prefersReducedMotion}
-          />
-        ))}
-
-        {/* Testimonial Section (after 3rd service) */}
-        <TestimonialSection prefersReducedMotion={prefersReducedMotion} />
-
-        {/* Contact CTA Section */}
-        {/* <section id="contact" className="px-6 py-20 bg-[#1c2131] text-white text-center relative overflow-hidden">
-          <div className="absolute inset-0">
-            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-500/5 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-red-500/5 rounded-full blur-3xl"></div>
-          </div>
-          <div className="max-w-4xl mx-auto relative z-10">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Ready to grow your{" "}
-              <span className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
-                brand?
-              </span>
-            </h2>
-            <p className="text-xl text-gray-300 mb-8">Let&apos;s discuss how we can help scale your business with our proven strategies.</p>
-            <button className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold rounded-full hover:from-orange-600 hover:to-red-600 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/25">
-              Book a Free Consultation
-            </button>
-          </div>
-        </section> */}
-      </main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <ServicesContent />
     </>
-  );
-}
-
-function ServiceSection({ service, inverted, prefersReducedMotion }) {
-  const scrollToContact = () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  return (
-    <section className="relative overflow-hidden border-b border-gray-800/50 bg-[#1c2131]">
-      <div className="absolute inset-0">
-        <div className={`absolute ${inverted ? 'top-1/4 right-1/4' : 'bottom-1/4 left-1/4'} w-64 h-64 bg-orange-500/3 rounded-full blur-2xl`}></div>
-      </div>
-      <div className="min-h-[50vh] max-h-[600px] flex items-center relative z-10">
-        <div className="w-full px-6 py-16">
-          <div className="g-px">
-            <div className={`grid lg:grid-cols-2 gap-12 items-center ${inverted ? 'lg:grid-flow-col-dense' : ''}`}>
-              {/* Text Content */}
-              <motion.div
-                className={`space-y-6 ${inverted ? 'lg:col-start-2' : ''}`}
-                initial={prefersReducedMotion ? { opacity: 0 } : {
-                  opacity: 0,
-                  x: inverted ? 40 : -40
-                }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, ease: [0.2, 0.9, 0.3, 1] }}
-                viewport={{ once: true, margin: "-100px" }}
-              >
-                <div>
-                  <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">
-                    {service.title}
-                  </h2>
-                  <p className="text-sm text-orange-400 font-medium mb-4">
-                    Trusted by 50+ brands
-                  </p>
-                </div>
-
-                <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
-                  {service.short}
-                </p>
-
-                <ul className="grid grid-cols-2 gap-2">
-                  {service.bullets.map((bullet, index) => (
-                    <li key={index} className="flex items-center text-gray-300">
-                      <svg className="w-4 h-4 text-orange-400 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
-                      {bullet}
-                    </li>
-                  ))}
-                </ul>
-
-                <button
-                  onClick={scrollToContact}
-                  className="inline-flex items-center text-orange-400 font-semibold hover:text-orange-300 transition-colors duration-200 group"
-                >
-                  Get a Quote
-                  <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </button>
-              </motion.div>
-
-              {/* Image */}
-              <motion.div
-                className={`relative ${inverted ? 'lg:col-start-1' : ''}`}
-                initial={prefersReducedMotion ? { opacity: 0 } : {
-                  opacity: 0,
-                  x: inverted ? -40 : 40
-                }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, ease: [0.2, 0.9, 0.3, 1] }}
-                viewport={{ once: true, margin: "-100px" }}
-                whileHover={!prefersReducedMotion ? { scale: 1.03 } : {}}
-              >
-                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border border-gray-800/50 bg-gray-900/30 backdrop-blur-sm">
-                  {/* <Image
-                    src={service.imageSrc}
-                    alt={service.alt}
-                    fill
-                    className="object-cover transition-transform duration-300 hover:scale-105"
-                    loading="lazy"
-                    placeholder="blur"
-                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyydH//2Q=="
-                  /> */}
-                  {service.imageSrc}
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function TestimonialSection({ prefersReducedMotion }) {
-  return (
-    <motion.section
-      className="px-6 py-16 bg-gray-900/30 backdrop-blur-sm border-y border-gray-800/50 relative overflow-hidden"
-      initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: [0.2, 0.9, 0.3, 1] }}
-      viewport={{ once: true }}
-    >
-      <div className="absolute inset-0">
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-orange-500/5 rounded-full blur-3xl"></div>
-      </div>
-      <div className="max-w-4xl mx-auto text-center relative z-10">
-        <blockquote className="text-xl md:text-2xl text-gray-200 font-medium mb-6">
-          &quot;Working with this agency transformed our digital presence. Our social media engagement increased by{" "}
-          <span className="text-orange-400 font-bold">340%</span> in just 3 months.&quot;
-        </blockquote>
-        <cite className="text-gray-400">
-          — Sarah Johnson, Marketing Director at TechFlow
-        </cite>
-
-        {/* Client Logos */}
-        <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8 items-center opacity-40">
-          {[1, 2, 3, 4].map((i) => (
-            <div key={i} className="h-12 bg-gray-800/50 border border-gray-700/50 rounded-lg flex items-center justify-center hover:border-orange-500/30 transition-colors duration-200">
-              <span className="text-gray-500 text-sm">Client Logo {i}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </motion.section>
   );
 }

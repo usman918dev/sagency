@@ -38,22 +38,6 @@ const projects = [
     description: "Advanced SEO analysis and optimization platform",
     tags: ["Next.js", "AI", "GraphQL"],
   },
-  // {
-  //   id: 5,
-  //   title: "Mobile Commerce App",
-  //   category: "Mobile",
-  //   image: "/assets/ecom1.webp",
-  //   description: "Feature-rich mobile commerce application",
-  //   tags: ["React Native", "Firebase"],
-  // },
-  // {
-  //   id: 6,
-  //   title: "SEO Performance Suite",
-  //   category: "SEO",
-  //   image: "/assets/seo1.webp",
-  //   description: "Comprehensive SEO performance tracking system",
-  //   tags: ["Vue.js", "Python", "AI"],
-  // },
 ];
 
 const categories = ["All", "Web Application", "E-Commerce", "Marketing", "SEO", "Mobile"];
@@ -66,20 +50,18 @@ const PortfolioSection = () => {
   );
 
   return (
-    <section className="relative py-20 min-h-screen">
-      <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-12">
+    <section className="relative py-24 min-h-screen bg-[var(--background)]">
+      <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
         {/* LEFT SIDE CONTENT */}
         <div className="flex flex-col justify-center">
-          <span className="text-orange-400 text-sm font-bold uppercase tracking-wider mb-4 uppercase">
-            Portfolio
+          <span className="text-[#9D26FF] text-xs sm:text-sm font-bold uppercase tracking-widest mb-3">
+            Derixio Portfolio
           </span>
-          <h2 className="mt-4 text-4xl md:text-5xl font-bold text-white leading-tight">
-            Experience the digital brilliance of our portfolio showcase.
+          <h2 className="mt-2 text-4xl md:text-5xl font-extrabold text-[var(--foreground-heading)] leading-tight">
+            Experience the Digital Excellence of <span className="text-[#9D26FF]">Our Work</span>
           </h2>
-          <p className="mt-6 text-gray-400 max-w-md">
-            Explore our portfolio to see our successful projects across various
-            industries. We’ve helped businesses like yours achieve remarkable
-            results.
+          <p className="mt-6 text-[var(--foreground-muted)] max-w-md leading-relaxed text-base">
+            Explore our curated showcase of high-impact digital platforms, brand transformations, and software solutions built for scaling enterprises.
           </p>
 
           {/* CATEGORY FILTER */}
@@ -88,10 +70,10 @@ const PortfolioSection = () => {
               <motion.button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                className={`px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 ${
                   selectedCategory === category
-                    ? "bg-orange-600 text-white shadow-md"
-                    : "bg-gray-800 text-gray-300 hover:bg-gray-700"
+                    ? "bg-[#9D26FF] text-white shadow-lg shadow-purple-900/40"
+                    : "bg-[var(--card)] text-[var(--foreground-muted)] border border-[var(--border)] hover:border-[#9D26FF]"
                 }`}
                 whileHover={{ scale: 1.05 }}
               >
@@ -111,7 +93,7 @@ const PortfolioSection = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 40 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="relative group rounded-2xl overflow-hidden shadow-lg bg-[#101828] hover:shadow-orange-600/30 transition-shadow duration-500"
+                className="relative group rounded-3xl overflow-hidden shadow-2xl bg-[var(--card)] border border-[var(--border)] hover:border-[#9D26FF] transition-all duration-500"
               >
                 {/* Project Image */}
                 <motion.div className="relative w-full h-[230px]">
@@ -124,11 +106,11 @@ const PortfolioSection = () => {
                 </motion.div>
 
                 {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
                 {/* Content */}
                 <div className="absolute inset-0 flex flex-col justify-end p-6">
-                  <span className="text-xs font-medium uppercase tracking-widest text-orange-400">
+                  <span className="text-xs font-semibold uppercase tracking-widest text-[#9D26FF]">
                     {project.category}
                   </span>
                   <h3 className="mt-1 text-lg font-bold text-white">
@@ -137,12 +119,12 @@ const PortfolioSection = () => {
 
                   {/* Description & Tags */}
                   <div className="mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <p className="text-gray-300 text-sm">{project.description}</p>
-                    <div className="mt-2 flex flex-wrap gap-2">
+                    <p className="text-gray-200 text-xs sm:text-sm leading-relaxed">{project.description}</p>
+                    <div className="mt-3 flex flex-wrap gap-1.5">
                       {project.tags.map((tag, i) => (
                         <span
                           key={i}
-                          className="text-xs bg-gray-700 text-gray-300 px-2 py-1 rounded-full"
+                          className="text-[10px] bg-[#9D26FF]/20 text-white border border-[#9D26FF]/40 px-2.5 py-1 rounded-full font-medium"
                         >
                           {tag}
                         </span>
@@ -150,12 +132,13 @@ const PortfolioSection = () => {
                     </div>
                   </div>
 
-                  <motion.button
+                  <motion.a
+                    href="/portfolio"
                     whileHover={{ y: -2 }}
-                    className="mt-4 px-4 py-2 bg-gradient-to-r from-orange-600 to-red-500 text-white rounded-lg text-sm font-medium shadow-md hover:shadow-orange-500/40 transition-all"
+                    className="mt-4 inline-block text-center px-4 py-2 bg-[#9D26FF] text-white rounded-xl text-xs font-semibold shadow-md hover:bg-[#8500ED] transition-all"
                   >
-                    View Detail
-                  </motion.button>
+                    View Project Case Study
+                  </motion.a>
                 </div>
               </motion.div>
             ))}

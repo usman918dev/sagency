@@ -1,97 +1,78 @@
 "use client";
 import React from "react";
-import { Clock, Target, Users, TrendingUp } from "lucide-react";
+import { Clock, Target, Users, TrendingUp, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 
-
-
-// Card Component
 const HowWeWorkCard = ({ card, index }) => {
   const IconComponent = card.icon;
 
   return (
     <motion.div
-      initial={{ opacity: 0, x: -50 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
       transition={{
-        duration: 0.35,
+        duration: 0.5,
         delay: index * 0.12,
         ease: "easeOut",
       }}
-      className={`relative p-8 rounded-2xl text-center transition-all duration-300 hover:border-orange-500 ${card.highlight
-        ? "bg-gradient-to-br from-orange-500 to-orange-600 text-white shadow-lg shadow-orange-500/25"
-        : "bg-gray-800/50 backdrop-blur-sm border bg-gradient-to-r from-[#1b2439] via-[#16213e] to-[#1b2439] border-gray-700/50 text-gray-300"
-        }`}
+      className={`relative p-8 rounded-3xl bg-[var(--card)] border border-[var(--border)] hover:border-[#9D26FF] shadow-lg overflow-hidden group h-full flex flex-col justify-between transition-all duration-300 ${card.highlight ? "border-[#9D26FF]/60" : ""}`}
     >
-      {/* Icon */}
-      <div
-        className={`w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto ${card.highlight ? "bg-white/20 backdrop-blur-sm" : "bg-orange-500"
-          }`}
-      >
-        <IconComponent className="w-8 h-8 text-white" />
+      <div className="glint-line" />
+
+      <div>
+        {/* Step Number Badge */}
+        <div className="flex items-center justify-between mb-6">
+          <div
+            className={`w-14 h-14 rounded-2xl flex items-center justify-center shadow-md transition-transform duration-300 group-hover:scale-110 ${
+              card.highlight
+                ? "bg-[#9D26FF] text-white font-bold"
+                : "bg-[var(--background-alt)] border border-[var(--border)] text-[#9D26FF]"
+            }`}
+          >
+            <IconComponent className="w-7 h-7" />
+          </div>
+          <span className="text-3xl font-extrabold text-[var(--foreground-muted)]/20 group-hover:text-[#9D26FF]/40 transition-colors font-mono">
+            0{index + 1}
+          </span>
+        </div>
+
+        {/* Title */}
+        <h3 className="text-lg sm:text-xl font-extrabold mb-3 text-[var(--foreground-heading)] tracking-tight">
+          {card.title}
+        </h3>
+
+        {/* Description */}
+        <p className="leading-relaxed text-xs sm:text-sm text-[var(--foreground-muted)]">
+          {card.description}
+        </p>
       </div>
-
-      {/* Title */}
-      <h3 className="text-xl font-bold mb-4 leading-tight text-white">
-        {card.title}
-      </h3>
-
-      {/* Description */}
-      <p
-        className={`leading-relaxed ${card.highlight ? "text-white/90" : "text-gray-400"
-          }`}
-      >
-        {card.description}
-      </p>
     </motion.div>
   );
 };
 
 const HowWeWork = () => {
   return (
-    <section className="relative w-full py-32 px-6 bg-[#1c2131] overflow-hidden">
+    <section className="relative w-full py-28 bg-[var(--background)] overflow-hidden bg-agenko-grid">
+      <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-[#9D26FF]/10 rounded-full blur-[130px] pointer-events-none" />
 
-      {/* === Decorative Top Left Corner Rings === */}
-      <div className="absolute top-0 left-0 opacity-60 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-10">
-        <div className="relative w-100 h-100 rounded-full border-20 border-[#F25725] flex items-center justify-center opacity-80">
-          <div className="w-48 h-48 rounded-full border-20 border-[#F25725]/70" />
-        </div>
-      </div>
-
-      {/* === Floating Animated Dots === */}
-      <motion.div
-        className="absolute top-20 right-10 w-4 h-4 rounded-full bg-orange-500/60"
-        animate={{ y: [0, -15, 0] }}
-        transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute bottom-24 left-12 w-3 h-3 rounded-full bg-orange-400/60"
-        animate={{ y: [0, 20, 0] }}
-        transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-      />
-
-      {/* === Section Content === */}
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="g-px relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <p className="text-orange-400 text-sm font-bold uppercase tracking-wider mb-4 z-10">
-            How We Work
-          </p>
-          <h2 className="text-2xl z-30 md:text-3xl lg:text-4xl font-bold text-white mb-6 leading-tight max-w-2xl mx-auto">
-            Our proven process ensures exceptional results.
+        <div className="text-center mb-16 max-w-3xl mx-auto">
+          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-[var(--background-alt)] border border-[var(--border)] text-[#9D26FF] text-xs font-bold uppercase tracking-widest mb-4">
+            <Sparkles size={14} className="text-[#9D26FF]" />
+            <span>DERIXIO METHODOLOGY</span>
+          </div>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl text-[var(--foreground-heading)] leading-tight tracking-tight">
+            <span className="font-light">Our 4-Step Blueprint to </span><br className="hidden sm:inline" />
+            <span className="font-extrabold text-[#9D26FF]">Real Growth</span>
           </h2>
         </div>
 
-        {/* Cards Grid */}
+        {/* Process Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {howWeWorkCards.map((card, index) => (
-            <div
-              key={card.id}
-              className={`${index === 1 || index === 3 ? "lg:mt-12" : ""}`}
-            >
-              <HowWeWorkCard card={card} index={index} />
-            </div>
+            <HowWeWorkCard key={card.id} card={card} index={index} />
           ))}
         </div>
       </div>
@@ -104,9 +85,9 @@ export default HowWeWork;
 const howWeWorkCards = [
   {
     id: 1,
-    title: "Discovery & Research",
+    title: "Discovery & Audit",
     description:
-      "We start by understanding your business goals, target audience, and market landscape to create a solid foundation.",
+      "We analyze your Amazon listings, website, and market position to identify exactly where the growth opportunity is.",
     icon: Target,
     highlight: false,
   },
@@ -114,23 +95,24 @@ const howWeWorkCards = [
     id: 2,
     title: "Strategy & Planning",
     description:
-      "Our team develops a comprehensive strategy tailored to your objectives with clear timelines and milestones.",
+      "We map out the right approach — whether it's Amazon optimization, a new website, or a marketing plan — with clear timelines and priorities.",
     icon: Users,
     highlight: true,
   },
   {
     id: 3,
-    title: "Design & Development",
+    title: "Execution & Craft",
     description:
-      "We bring your vision to life with creative designs and robust development using the latest technologies.",
+      "Our team builds and delivers with precision — from Amazon listings and creatives to code and campaigns — matched to what each project needs.",
     icon: Clock,
     highlight: false,
   },
   {
     id: 4,
-    title: "Launch & Optimize",
+    title: "Launch & Growth",
     description:
-      "After thorough testing, we launch your project and continuously optimize for better performance and results.",
+      "We track real performance and continuously optimize for better rankings, conversions, and ROI.",
     icon: TrendingUp,
-    highlight: true  },
+    highlight: true,
+  },
 ];

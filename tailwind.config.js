@@ -8,6 +8,16 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        derixio: {
+          DEFAULT: '#9D26FF',
+          light: '#A855F7',
+          dark: '#7C3AED',
+          accent: '#C084FC',
+          violet: '#6D28D9',
+          glow: 'rgba(157, 38, 255, 0.4)',
+        },
+      },
       keyframes: {
         fadeMove: {
           "0%, 100%": { transform: "translateY(0px)", opacity: "0.7" },

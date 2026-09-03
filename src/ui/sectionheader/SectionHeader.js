@@ -8,7 +8,6 @@ export default function SectionHeader({
   description = "Strategic digital services — from creative design to growth-focused ads. We build, launch and optimize.",
   buttonText,
   onButtonClick,
-  gradient = "from-[#1b2439] via-[#16213e] to-[#1b2439]", // customizable background gradient
 }) {
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
@@ -19,12 +18,12 @@ export default function SectionHeader({
 
   return (
     <section
-      className={`relative px-6 py-20 text-center bg-gradient-to-r ${gradient} overflow-hidden`}
+      className="relative px-6 py-20 text-center bg-[var(--background-alt)] border-b border-[var(--border)] overflow-hidden"
     >
       <div className="max-w-4xl mx-auto relative z-10">
         {/* Title */}
         <motion.h1
-          className="text-3xl md:text-4xl font-bold text-white mb-6"
+          className="text-3xl md:text-4xl font-bold text-[var(--foreground-heading)] mb-6"
           initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.2, 0.9, 0.3, 1] }}
@@ -34,7 +33,7 @@ export default function SectionHeader({
 
         {/* Description */}
         <motion.p
-          className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto"
+          className="text-xl md:text-2xl text-[var(--foreground-muted)] mb-8 max-w-3xl mx-auto"
           initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2, ease: [0.2, 0.9, 0.3, 1] }}
@@ -46,7 +45,7 @@ export default function SectionHeader({
         {buttonText && onButtonClick && (
           <motion.button
             onClick={onButtonClick}
-            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold rounded-full hover:from-orange-600 hover:to-red-600 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/25"
+            className="inline-flex items-center px-8 py-4 bg-[#9D26FF] hover:bg-[#8500ED] text-white font-semibold rounded-full transition-all duration-300 hover:scale-105 hover:shadow-2xl"
             initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4, ease: [0.2, 0.9, 0.3, 1] }}

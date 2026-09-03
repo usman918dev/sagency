@@ -1,17 +1,16 @@
 "use client";
 import Image from "next/image";
-import React, { useEffect, useRef } from "react";
+import React from "react";
 
-// Logo component
 function Logo({ src, alt }) {
   return (
-    <div className="w-32 h-12 transition-transform duration-300 hover:scale-105 flex items-center justify-center bg-white rounded-full px mx-4">
-      <div className="relative w-full h-full">
+    <div className="w-36 h-14 shrink-0 transition-all duration-300 hover:scale-105 flex items-center justify-center bg-[var(--card)] border border-[var(--border)] hover:border-[#9D26FF]/60 rounded-2xl px-4 mx-3 shadow-sm group">
+      <div className="relative w-full h-full opacity-85 group-hover:opacity-100 transition-all duration-300">
         <Image
           src={src}
           alt={alt}
           fill
-          className="object-contain"
+          className="object-contain p-1.5 dark:filter dark:invert dark:brightness-200 dark:contrast-125"
         />
       </div>
     </div>
@@ -19,79 +18,62 @@ function Logo({ src, alt }) {
 }
 
 export default function ProfessionalBadgeTicker() {
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-slide-in');
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
-
   const logos = Array.from({ length: 25 }, (_, i) => ({
     src: `/LOGO/${i + 1}.png`,
-    alt: `Logo ${i + 1}`
+    alt: `Partner Brand ${i + 1}`
   }));
 
-  const rowCount = 3;
+  const rowCount = 2;
   const logosPerRow = Math.ceil(logos.length / rowCount);
-
-  // Split logos into rows
   const rows = Array.from({ length: rowCount }, (_, i) =>
     logos.slice(i * logosPerRow, (i + 1) * logosPerRow)
   );
 
   return (
-    <div
-      ref={sectionRef}
-      className="w-full py-12 overflow-hidden bg-gradient-to-r from-[#1b2439] via-[#16213e] to-[#1b2439] sm:px-12 rounded-2xl opacity-0">
-      <div className="max-w-7xl mx-auto px-8">
-        <h2 className="text-center text-4xl font-bold text-white mb-10">
-          Join our <span className="text-orange-500">1500+</span> happy customers
-        </h2>
-        <div className="flex flex-col space-y-8">
-          {rows.map((row, rowIndex) => {
-            const isForward = rowIndex % 2 === 0;
-            const duration = 40;
+    <div className="w-full py-16 bg-[var(--background-alt)] relative overflow-hidden">
+      <div className="g-px">
+        <div className="text-center mb-10">
+          <p className="text-[#9D26FF] text-xs font-bold uppercase tracking-widest mb-2">
+            TRUSTED BY GLOBAL LEADERS
+          </p>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[var(--foreground-heading)]">
+            Powering <span className="text-[#9D26FF]">1500+ High-Growth</span> Brands Worldwide
+          </h2>
+        </div>
 
-            return (
-              <div
-                key={rowIndex}
-                className="relative flex items-center overflow-hidden w-full"
-              >
+        <div className="relative w-full overflow-hidden">
+          {/* Side Fade Gradient Masks */}
+          <div className="absolute top-0 left-0 bottom-0 w-24 bg-gradient-to-r from-[var(--background-alt)] to-transparent z-10 pointer-events-none" />
+          <div className="absolute top-0 right-0 bottom-0 w-24 bg-gradient-to-l from-[var(--background-alt)] to-transparent z-10 pointer-events-none" />
+
+          <div className="flex flex-col space-y-5">
+            {rows.map((row, rowIndex) => {
+              const isForward = rowIndex % 2 === 0;
+              const duration = 35;
+
+              return (
                 <div
-                  className="flex badge-track"
-                  style={{
-                    animation: `${isForward ? "scroll-fwd" : "scroll-bwd"} ${duration}s linear infinite`
-                  }}
+                  key={rowIndex}
+                  className="relative flex items-center overflow-hidden w-full py-1"
                 >
-                  {[...row, ...row].map((logo, i) => (
-                    <Logo
-                      key={`logo-${rowIndex}-${i}`}
-                      src={logo.src}
-                      alt={logo.alt}
-                    />
-                  ))}
+                  <div
+                    className="flex badge-track"
+                    style={{
+                      animation: `${isForward ? "scroll-fwd" : "scroll-bwd"} ${duration}s linear infinite`
+                    }}
+                  >
+                    {[...row, ...row, ...row].map((logo, i) => (
+                      <Logo
+                        key={`logo-${rowIndex}-${i}`}
+                        src={logo.src}
+                        alt={logo.alt}
+                      />
+                    ))}
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </div>
 
@@ -101,12 +83,12 @@ export default function ProfessionalBadgeTicker() {
             transform: translateX(0%);
           }
           100% {
-            transform: translateX(-50%);
+            transform: translateX(-33.33%);
           }
         }
         @keyframes scroll-bwd {
           0% {
-            transform: translateX(-50%);
+            transform: translateX(-33.33%);
           }
           100% {
             transform: translateX(0%);
@@ -114,21 +96,6 @@ export default function ProfessionalBadgeTicker() {
         }
         .badge-track:hover {
           animation-play-state: paused !important;
-        }
-        
-        .animate-slide-in {
-          animation: slideIn 1s forwards;
-        }
-        
-        @keyframes slideIn {
-          0% {
-            opacity: 0;
-            transform: translateX(-100px);
-          }
-          100% {
-            opacity: 1;
-            transform: translateX(0);
-          }
         }
       `}</style>
     </div>

@@ -27,7 +27,7 @@ export default function ServiceSection({ service, inverted, prefersReducedMotion
                   <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
                     {service.title}
                   </h2>
-                  <p className="text-sm text-blue-600 font-medium mb-4">
+                  <p className="text-sm text-[#9D26FF] font-medium mb-4">
                     Trusted by 50+ brands
                   </p>
                 </div>
@@ -39,7 +39,7 @@ export default function ServiceSection({ service, inverted, prefersReducedMotion
                 <ul className="grid grid-cols-2 gap-2">
                   {service.bullets.map((bullet, index) => (
                     <li key={index} className="flex items-center text-gray-700">
-                      <svg className="w-4 h-4 text-blue-600 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <svg className="w-4 h-4 text-[#9D26FF] mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
                       {bullet}
@@ -49,7 +49,7 @@ export default function ServiceSection({ service, inverted, prefersReducedMotion
                 
                 <button
                   onClick={scrollToContact}
-                  className="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors duration-200"
+                  className="inline-flex items-center text-[#9D26FF] font-semibold hover:text-[#8500ED] transition-colors duration-200"
                 >
                   Get a Quote
                   <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">

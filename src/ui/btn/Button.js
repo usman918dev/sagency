@@ -1,38 +1,29 @@
-"use client"
+"use client";
 
-export default function Button({ text,href }) {
-    return (
-        <a
-            className={`group relative inline-block overflow-hidden border border-[#fff] hover:border-[#F25725] px-8 py-3 focus:ring-3 focus:outline-hidden rounded transition-colors duration-600 shadow-xl`}
-            href={`${href}`}
-        >
-            <span
-                className="absolute inset-y-0 left-0 w-[0px] bg-[#F25725] transition-all group-hover:w-full"
-            ></span>
+import Link from "next/link";
 
-            <span
-                className="relative text-sm font-semibold text-white transition-colors group-hover:text-white"
-            >
-                {text}
-            </span>
-        </a>
-    )
+export default function Button({ text, href }) {
+  return (
+    <Link
+      className="group relative inline-flex items-center justify-center overflow-hidden border border-[#9D26FF]/40 hover:border-[#9D26FF] px-8 py-3.5 rounded-full transition-all duration-300 shadow-md bg-[var(--background-alt)] hover:bg-[#9D26FF] text-[var(--foreground-heading)] hover:text-white font-semibold text-sm cursor-pointer"
+      href={href || "#"}
+    >
+      <span className="relative text-sm font-semibold transition-colors duration-300">
+        {text}
+      </span>
+    </Link>
+  );
 }
-export function SecondButton({ text, href}) {
-    return (
-        <a
-            className={`group relative inline-block overflow-hidden bg border border-[#F25725] hover:border-[#F25725] px-8 py-3 focus:ring-3 focus:outline-hidden rounded transition-colors duration-600 shadow-xl`}
-            href={`${href}`}
-        >
-            <span
-                className="absolute inset-y-0 left-0 w-full bg-[#F25725] transition-all group-hover:w-[0px]"
-            ></span>
 
-            <span
-                className="relative text-sm font-semibold text-white transition-colors group-hover:text-white"
-            >
-                {text}
-            </span>
-        </a>
-    )
+export function SecondButton({ text, href }) {
+  return (
+    <Link
+      className="group relative inline-flex items-center justify-center overflow-hidden border border-[#9D26FF] px-8 py-3.5 rounded-full transition-all duration-300 shadow-md bg-[#9D26FF] hover:bg-[#8500ED] text-white font-extrabold text-sm cursor-pointer"
+      href={href || "#"}
+    >
+      <span className="relative text-sm font-extrabold text-white transition-colors duration-300">
+        {text}
+      </span>
+    </Link>
+  );
 }
