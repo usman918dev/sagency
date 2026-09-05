@@ -118,8 +118,73 @@ export default function CaseStudyDetailView({ project }) {
           </div>
         </section>
 
-        {/* ── MAIN HERO MEDIA ───────────────────────────────────────────────── */}
+        {/* ── THE CHALLENGE & THE APPROACH (PROBLEM & SOLUTION) ───────────── */}
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
+          {/* Challenge / Problem */}
+          <div className="p-8 rounded-3xl bg-[var(--card)] border border-[var(--border)] shadow-lg">
+            <span className="text-red-400 text-xs font-bold uppercase tracking-widest block mb-2">
+              THE CHALLENGE / PROBLEM
+            </span>
+            <h2 className="text-2xl font-extrabold text-[var(--foreground-heading)] tracking-tight mb-4">
+              Identifying the Problem
+            </h2>
+            <p className="text-sm text-[var(--foreground-muted)] leading-relaxed">
+              {project.challenge || project.problem ||
+                "The client faced low engagement and conversion rates due to outdated visuals, unoptimized customer friction points, and inconsistent brand storytelling across digital customer touchpoints."}
+            </p>
+          </div>
+
+          {/* Approach / Solution */}
+          <div className="p-8 rounded-3xl bg-[var(--card)] border border-[var(--border)] shadow-lg">
+            <span className="text-emerald-400 text-xs font-bold uppercase tracking-widest block mb-2">
+              THE APPROACH / SOLUTION
+            </span>
+            <h2 className="text-2xl font-extrabold text-[var(--foreground-heading)] tracking-tight mb-4">
+              Derixio Growth Solution
+            </h2>
+            <p className="text-sm text-[var(--foreground-muted)] leading-relaxed">
+              {project.approach || project.solution ||
+                "We conducted a holistic design and performance audit, redesigning customer journey assets into high-converting visual stories built specifically for mobile accessibility and high-intent conversion."}
+            </p>
+          </div>
+        </section>
+
+        {/* ── THE OUTCOME (RESULT) ───────────────────────────────────────── */}
+        <section className="p-8 sm:p-10 rounded-3xl bg-[var(--card)] border border-[var(--border)] shadow-xl mb-16">
+          <span className="text-[#9D26FF] text-xs font-bold uppercase tracking-widest block mb-2">
+            THE OUTCOME & RESULTS
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--foreground-heading)] tracking-tight mb-4">
+            Delivered Impact & Brand Growth
+          </h2>
+          <p className="text-sm sm:text-base text-[var(--foreground-muted)] leading-relaxed mb-6">
+            {project.outcome || project.results ||
+              "The brand successfully achieved elevated customer perception, higher detail page engagement, and a scalable design system for future product line expansions."}
+          </p>
+
+          <div className="flex flex-wrap gap-4 pt-4 border-t border-[var(--border)]">
+            <div className="flex items-center space-x-2 text-xs font-semibold text-[var(--foreground-heading)]">
+              <CheckCircle2 size={16} className="text-[#9D26FF]" />
+              <span>Full Rights & Asset Handoff</span>
+            </div>
+            <div className="flex items-center space-x-2 text-xs font-semibold text-[var(--foreground-heading)]">
+              <ShieldCheck size={16} className="text-[#9D26FF]" />
+              <span>Mobile-Optimized Assets</span>
+            </div>
+          </div>
+        </section>
+
+        {/* ── MAIN HERO MEDIA (PICTURE) ───────────────────────────────────── */}
         <section className="mb-20">
+          <div className="border-b border-[var(--border)] pb-4 mb-8">
+            <span className="text-[#9D26FF] text-xs font-bold uppercase tracking-widest">
+              CASE STUDY VISUAL COVER
+            </span>
+            <h2 className="text-3xl font-extrabold text-[var(--foreground-heading)] tracking-tight">
+              Featured Result Screenshot
+            </h2>
+          </div>
+
           <div className="relative w-full aspect-[16/9] max-h-[600px] rounded-3xl overflow-hidden border border-[var(--border)] shadow-2xl bg-[var(--background-alt)] group">
             {project.mediaType === "video" && project.videoUrl ? (
               <div className="relative w-full h-full">
@@ -151,38 +216,7 @@ export default function CaseStudyDetailView({ project }) {
           </div>
         </section>
 
-        {/* ── THE CHALLENGE & THE APPROACH ─────────────────────────────────── */}
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-20">
-          {/* Challenge */}
-          <div className="p-8 rounded-3xl bg-[var(--card)] border border-[var(--border)] shadow-lg">
-            <span className="text-[#9D26FF] text-xs font-bold uppercase tracking-widest block mb-2">
-              THE CHALLENGE
-            </span>
-            <h2 className="text-2xl font-extrabold text-[var(--foreground-heading)] tracking-tight mb-4">
-              Identifying the Bottleneck
-            </h2>
-            <p className="text-sm text-[var(--foreground-muted)] leading-relaxed">
-              {project.challenge ||
-                "The client faced low engagement and conversion rates due to outdated visuals, unoptimized customer friction points, and inconsistent brand storytelling across digital customer touchpoints."}
-            </p>
-          </div>
-
-          {/* Approach */}
-          <div className="p-8 rounded-3xl bg-[var(--card)] border border-[var(--border)] shadow-lg">
-            <span className="text-[#9D26FF] text-xs font-bold uppercase tracking-widest block mb-2">
-              THE APPROACH
-            </span>
-            <h2 className="text-2xl font-extrabold text-[var(--foreground-heading)] tracking-tight mb-4">
-              Derixio Growth Strategy
-            </h2>
-            <p className="text-sm text-[var(--foreground-muted)] leading-relaxed">
-              {project.approach ||
-                "We conducted a holistic design and performance audit, redesigning customer journey assets into high-converting visual stories built specifically for mobile accessibility and high-intent conversion."}
-            </p>
-          </div>
-        </section>
-
-        {/* ── THE WORK (STRUCTURED VISUAL DELIVERABLES) ────────────────────── */}
+        {/* ── THE WORK (STRUCTURED VISUAL DELIVERABLES & PICTURES) ────────── */}
         <section className="mb-20">
           <div className="border-b border-[var(--border)] pb-4 mb-10">
             <span className="text-[#9D26FF] text-xs font-bold uppercase tracking-widest">
@@ -330,31 +364,6 @@ export default function CaseStudyDetailView({ project }) {
               ))}
             </div>
           )}
-        </section>
-
-        {/* ── THE OUTCOME (QUALITATIVE REAL OUTCOMES) ───────────────────────── */}
-        <section className="p-8 sm:p-10 rounded-3xl bg-[var(--card)] border border-[var(--border)] shadow-xl mb-20">
-          <span className="text-[#9D26FF] text-xs font-bold uppercase tracking-widest block mb-2">
-            THE OUTCOME
-          </span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--foreground-heading)] tracking-tight mb-4">
-            Delivered Impact & Brand Growth
-          </h2>
-          <p className="text-sm sm:text-base text-[var(--foreground-muted)] leading-relaxed mb-6">
-            {project.outcome ||
-              "The brand successfully achieved elevated customer perception, higher detail page engagement, and a scalable design system for future product line expansions."}
-          </p>
-
-          <div className="flex flex-wrap gap-4 pt-4 border-t border-[var(--border)]">
-            <div className="flex items-center space-x-2 text-xs font-semibold text-[var(--foreground-heading)]">
-              <CheckCircle2 size={16} className="text-[#9D26FF]" />
-              <span>Full Rights & Asset Handoff</span>
-            </div>
-            <div className="flex items-center space-x-2 text-xs font-semibold text-[var(--foreground-heading)]">
-              <ShieldCheck size={16} className="text-[#9D26FF]" />
-              <span>Mobile-Optimized Assets</span>
-            </div>
-          </div>
         </section>
 
         {/* ── FINAL CTA ────────────────────────────────────────────────────── */}

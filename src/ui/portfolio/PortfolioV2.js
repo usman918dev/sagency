@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -22,10 +22,10 @@ const FILTER_TABS = [
 // ─── HERO STATS ───────────────────────────────────────────────────────────────
 
 const HERO_STATS = [
-  { value: "$2M+", label: "Revenue Generated" },
-  { value: "+64%", label: "Avg. Sales Growth" },
+  { value: "$300K+", label: "Revenue Generated" },
+  { value: "+42%", label: "Avg. Sales Growth" },
   { value: "181%→49%", label: "Best ACoS Reduction" },
-  { value: "40+", label: "Brands Managed" },
+  { value: "15+", label: "Brands Managed" },
 ];
 
 // ─── FEATURED PPC (large bento hero tile) ────────────────────────────────────
@@ -41,6 +41,7 @@ const FEATURED_PPC = {
   result: "Scaled Amazon PPC sales to $46,487.44 in a single month while maintaining a highly efficient 13.89% ACoS through data-driven campaign optimization.",
   problem: "Inefficient ad spend, high ACoS, poor keyword targeting, and inconsistent sales and profitability.",
   solution: "Full PPC campaign overhaul: restructured by separating high-converting keywords, implemented profit-driven bidding strategy, and leveraged peak season opportunities.",
+  results: "Scaled Amazon PPC sales to $46,487.44 in a single month while maintaining a highly efficient 13.89% ACoS through data-driven campaign optimization with 1,543 orders."
 };
 
 // ─── LISTING IMAGES ───────────────────────────────────────────────────────────
@@ -146,6 +147,7 @@ const PPC_TILES = [
     result: "ACoS reduced from 181.43% to 49.07% in 5 months",
     problem: "ACoS of 181.43%, excessive ad spend, poor returns, weak campaign structure, limited organic growth, and inefficient bidding strategies.",
     solution: "Restructured campaigns by separating high-converting, testing, and exploratory keywords. Reallocated budget toward top-performing ads. Improved listings with A+ content.",
+    results: "ACoS reduced from 181.43% to 49.07% in 5 months. Total sales increased from $1,075.61 to $8,997.16 with a 12.06% conversion rate.",
   },
   {
     id: "ppc2",
@@ -156,6 +158,9 @@ const PPC_TILES = [
     metricValue: "$46K",
     metricSub: "at 13.89% ACoS",
     result: "$46,487.44 in a single month at 13.89% ACoS with 1,543 orders",
+    problem: "Inefficient ad spend, high ACoS, poor keyword targeting, and inconsistent sales and profitability without a structured strategy.",
+    solution: "Restructured campaigns into high-converting and exploratory keyword groups. Implemented a profit-driven bidding strategy and scaled high-ROI placements.",
+    results: "Generated $46,487.44 in total sales with 1,543 orders in a single month at a 13.89% ACoS.",
   },
   {
     id: "ppc3",
@@ -166,6 +171,9 @@ const PPC_TILES = [
     metricValue: "−30%",
     metricSub: "ACoS improvement",
     result: "ACoS reduced from 61.72% to 31.98% via multi-ad type strategy: Sponsored Products, Sponsored Brands & Sponsored Display.",
+    problem: "High Advertising Cost of Sales (ACoS of 61.72%) affecting profitability and ineffective ad targeting across existing campaigns.",
+    solution: "Conducted an in-depth audit, added negative keywords to eliminate wasted spend, adjusted bids for high intent, and launched Sponsored Brands & Display ads.",
+    results: "ACoS reduced from 61.72% to 31.98%, while overall ad sales increased by +37%.",
   },
   {
     id: "ppc4",
@@ -176,6 +184,9 @@ const PPC_TILES = [
     metricValue: "$100K+",
     metricSub: "with 1,621 units",
     result: "$100,471.43 in sales with 1,621 units ordered in selected period (up from $70,333.77)",
+    problem: "Client needed to improve Amazon sales performance and overall order volume compared with the previous period.",
+    solution: "Focused on sales performance optimization, performance monitoring across date ranges, and bid scaling on top converting search queries.",
+    results: "Generated $100,471.43 in ordered product sales with 1,621 units ordered (up from $70,333.77 in the previous year).",
   },
 ];
 
@@ -356,7 +367,7 @@ const VIDEO_TILES = [
 const TRUST_STATS = [
   {
     id: "ts1",
-    stat: "+64%",
+    stat: "+42%",
     project: "Anker Innovations Storefront & PPC",
     category: "ECOMMERCE · AMAZON",
     description: "Revenue growth within 90 days of listing & campaign optimization",
@@ -400,27 +411,89 @@ function SectionHeader({ badge, title, description }) {
   );
 }
 
+// Auto-scrolling screenshot image for web development cards
+function ScrollableCardImage({ src, alt, isHovered }) {
+  const containerRef = useRef(null);
+  const imgRef = useRef(null);
+  const [scrollDistance, setScrollDistance] = useState(0);
+
+  const measure = useCallback(() => {
+    if (containerRef.current && imgRef.current) {
+      const containerH = containerRef.current.clientHeight;
+      const imgH = imgRef.current.offsetHeight;
+      if (imgH > containerH) {
+        setScrollDistance(imgH - containerH);
+      } else {
+        setScrollDistance(0);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    if (imgRef.current && imgRef.current.complete) {
+      measure();
+    }
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, [measure]);
+
+  useEffect(() => {
+    if (isHovered) {
+      measure();
+    }
+  }, [isHovered, measure]);
+
+  const duration = Math.min(8, Math.max(4, scrollDistance / 110));
+
+  return (
+    <div ref={containerRef} className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        ref={imgRef}
+        src={src}
+        alt={alt}
+        onLoad={measure}
+        className="w-full h-auto min-h-full block absolute top-0 left-0 will-change-transform select-none"
+        style={{
+          transform: isHovered && scrollDistance > 0 ? `translateY(-${scrollDistance}px)` : "translateY(0px)",
+          transition: isHovered
+            ? `transform ${duration}s cubic-bezier(0.25, 0.1, 0.25, 1)`
+            : "transform 1.2s cubic-bezier(0.25, 1, 0.5, 1)",
+        }}
+      />
+    </div>
+  );
+}
+
 // Large image tile: col-span-2 in 3-col grid
-function LargeTile({ tile, onClick }) {
+function LargeTile({ tile, onClick, scrollScreenshot = false }) {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <div
       onClick={onClick}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       className="sm:col-span-2 lg:col-span-2 relative rounded-3xl overflow-hidden cursor-pointer group min-h-[380px] border border-[var(--border)] hover:border-[#9D26FF] transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1"
     >
-      <Image
-        src={tile.image}
-        alt={tile.title}
-        fill
-        sizes="(max-width: 1024px) 100vw, 66vw"
-        className="object-cover transition-transform duration-700 group-hover:scale-105"
-      />
+      {scrollScreenshot ? (
+        <ScrollableCardImage src={tile.image} alt={tile.title} isHovered={isHovered} />
+      ) : (
+        <Image
+          src={tile.image}
+          alt={tile.title}
+          fill
+          sizes="(max-width: 1024px) 100vw, 66vw"
+          className="object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+      )}
       {/* Clean bottom-only gradient — image stays vivid, only the text area darkens */}
       <div
         className="absolute inset-x-0 bottom-0 pointer-events-none"
         style={{ height: "55%", background: "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.78) 100%)" }}
       />
       {/* Top-left badge pill */}
-      <div className="absolute top-5 left-5">
+      <div className="absolute top-5 left-5 pointer-events-none">
         <span
           className="px-3 py-1.5 rounded-full text-white text-[10px] font-mono font-bold uppercase tracking-widest shadow-lg"
           style={{ background: "rgba(157,38,255,0.92)", backdropFilter: "blur(6px)", border: "1px solid rgba(255,255,255,0.15)" }}
@@ -428,7 +501,7 @@ function LargeTile({ tile, onClick }) {
           {tile.tag}
         </span>
       </div>
-      <div className="absolute bottom-0 left-0 right-0 p-7">
+      <div className="absolute bottom-0 left-0 right-0 p-7 pointer-events-none">
         <h3 className="text-xl sm:text-2xl font-bold text-white leading-snug mb-5">{tile.title}</h3>
         <div className="flex items-end justify-between">
           <div>
@@ -437,7 +510,7 @@ function LargeTile({ tile, onClick }) {
             </div>
             <div className="text-xs text-white/60 mt-1.5">{tile.metricSub}</div>
           </div>
-          <div className="w-11 h-11 rounded-full bg-[#9D26FF] text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-xl">
+          <div className="w-11 h-11 rounded-full bg-[#9D26FF] text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-xl pointer-events-auto">
             <ArrowUpRight size={20} />
           </div>
         </div>
@@ -447,26 +520,34 @@ function LargeTile({ tile, onClick }) {
 }
 
 // Standard image tile: col-span-1
-function SmallTile({ tile, onClick }) {
+function SmallTile({ tile, onClick, scrollScreenshot = false }) {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <div
       onClick={onClick}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       className="relative rounded-3xl overflow-hidden cursor-pointer group min-h-[260px] border border-[var(--border)] hover:border-[#9D26FF] transition-all duration-300 shadow-xl hover:-translate-y-1"
     >
-      <Image
-        src={tile.image}
-        alt={tile.title}
-        fill
-        sizes="(max-width: 640px) 100vw, 33vw"
-        className="object-cover transition-transform duration-700 group-hover:scale-105"
-      />
+      {scrollScreenshot ? (
+        <ScrollableCardImage src={tile.image} alt={tile.title} isHovered={isHovered} />
+      ) : (
+        <Image
+          src={tile.image}
+          alt={tile.title}
+          fill
+          sizes="(max-width: 640px) 100vw, 33vw"
+          className="object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+      )}
       {/* Lighter bottom-only gradient — preserves image detail in the upper area */}
       <div
         className="absolute inset-x-0 bottom-0 pointer-events-none"
         style={{ height: "50%", background: "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.80) 100%)" }}
       />
       {/* Badge pill with semi-transparent purple fill instead of the old black/dark border pill */}
-      <div className="absolute top-4 left-4">
+      <div className="absolute top-4 left-4 pointer-events-none">
         <span
           className="px-2.5 py-1 rounded-full text-white text-[9px] font-mono font-bold uppercase tracking-widest"
           style={{ background: "rgba(157,38,255,0.85)", backdropFilter: "blur(4px)", border: "1px solid rgba(255,255,255,0.12)" }}
@@ -474,7 +555,7 @@ function SmallTile({ tile, onClick }) {
           {tile.tag}
         </span>
       </div>
-      <div className="absolute bottom-0 left-0 right-0 p-5">
+      <div className="absolute bottom-0 left-0 right-0 p-5 pointer-events-none">
         <h3 className="text-sm font-bold text-white mb-2 leading-snug">{tile.title}</h3>
         <div className="text-3xl font-black text-[#9D26FF] leading-none tracking-tight" style={{ textShadow: "0 2px 10px rgba(0,0,0,0.45)" }}>
           {tile.metricValue}
@@ -503,6 +584,7 @@ export default function PortfolioV2() {
       client: tile.client || "Amazon Brand Partner",
       problem: tile.problem,
       solution: tile.solution,
+      results: tile.results || tile.result,
       gallery: tile.gallery,
     });
 
@@ -1103,7 +1185,7 @@ export default function PortfolioV2() {
                 </div>
                 <div className="relative z-10 mt-5">
                   <div className="flex items-end gap-2 mb-4">
-                    <span className="text-4xl font-black text-[#9D26FF] leading-none tracking-tight">40+</span>
+                    <span className="text-4xl font-black text-[#9D26FF] leading-none tracking-tight">15+</span>
                     <span className="text-[10px] text-[var(--foreground-muted)] mb-1 leading-tight">Amazon brands fully managed</span>
                   </div>
                   <div className="h-px w-full bg-[var(--border)] mb-4" />
@@ -1205,11 +1287,11 @@ export default function PortfolioV2() {
               </div>
 
               {/* Large image tile — Shopify (right, spans 2 cols) */}
-              <LargeTile tile={WEBDEV_TILES[0]} onClick={() => openModal(WEBDEV_TILES[0])} />
+              <LargeTile tile={WEBDEV_TILES[0]} onClick={() => openModal(WEBDEV_TILES[0])} scrollScreenshot />
 
               {/* ROW 2 — Next.js small tile + WordPress small tile + Text stat card */}
-              <SmallTile tile={WEBDEV_TILES[1]} onClick={() => openModal(WEBDEV_TILES[1])} />
-              <SmallTile tile={WEBDEV_TILES[2]} onClick={() => openModal(WEBDEV_TILES[2])} />
+              <SmallTile tile={WEBDEV_TILES[1]} onClick={() => openModal(WEBDEV_TILES[1])} scrollScreenshot />
+              <SmallTile tile={WEBDEV_TILES[2]} onClick={() => openModal(WEBDEV_TILES[2])} scrollScreenshot />
 
               {/* Text stat card — bottom-right */}
               <div className="relative rounded-3xl bg-[var(--card)] border border-[var(--border)] p-7 flex flex-col justify-between overflow-hidden hover:border-[#9D26FF] hover:-translate-y-1 transition-all duration-300 shadow-lg min-h-[260px] group">

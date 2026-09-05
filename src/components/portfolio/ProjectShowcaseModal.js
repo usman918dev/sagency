@@ -218,8 +218,87 @@ export default function ProjectShowcaseModal({ project, isOpen, onClose, categor
             </div>
           </div>
 
-          {/* 2. INTERACTIVE LIGHTBOX GALLERY WITH PREV / NEXT ARROWS */}
-          <div className="relative w-full group">
+          {/* 2. PROBLEM, SOLUTION & RESULTS/PROGRESS CASE STUDY BREAKDOWN (3 TEXT BOXES) */}
+          {(() => {
+            let prob = project.problem || '';
+            let sol = project.solution || '';
+            let res = project.results || project.result || '';
+
+            if (project.caseStudyDetails && (!prob || !sol || !res)) {
+              const cleanHtml = project.caseStudyDetails.replace(/<!--[\s\S]*?-->/g, '');
+              const probMatch = cleanHtml.match(/(?:<b>\s*Client Problem:?\s*<\/b>|<b>\s*Problem:?\s*<\/b>)([\s\S]*?)(?:<h2|<b>\s*Our Solution|<b>\s*Solution:?|<b>\s*Results:?|$)/i);
+              const solMatch = cleanHtml.match(/(?:<b>\s*Our Solution:?\s*<\/b>|<b>\s*Solution:?\s*<\/b>)([\s\S]*?)(?:<h2|<b>\s*Results:?|<b>\s*Result:?|$)/i);
+              const resMatch = cleanHtml.match(/(?:<b>\s*Results:?\s*<\/b>|<b>\s*Result:?\s*<\/b>)([\s\S]*?)(?:$)/i);
+
+              if (!prob && probMatch) prob = probMatch[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+              if (!sol && solMatch) sol = solMatch[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+              if (!res && resMatch) res = resMatch[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+            }
+
+            if (!res && (project.shortDescription || project.description)) {
+              res = project.shortDescription || project.description;
+            }
+
+            const hasBreakdown = prob || sol || res || project.caseStudyDetails;
+            if (!hasBreakdown) return null;
+
+            return (
+              <div className="space-y-6 pt-2 border-t border-[var(--border)]">
+                <div className="flex items-center space-x-2 text-[#9D26FF] font-mono text-xs font-bold uppercase tracking-wider">
+                  <Layers size={14} />
+                  <span>CASE STUDY BREAKDOWN & PROGRESS</span>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {/* Box 1: Problem */}
+                  <div className="p-6 rounded-2xl bg-[var(--card)] border border-red-500/30 shadow-lg flex flex-col">
+                    <h3 className="text-sm font-mono font-bold text-red-400 uppercase tracking-wider mb-2.5 flex items-center">
+                      <span className="w-2.5 h-2.5 rounded-full bg-red-500 mr-2 inline-block" />
+                      1. Problem:
+                    </h3>
+                    <p className="text-xs sm:text-sm text-[var(--foreground-muted)] leading-relaxed whitespace-pre-line flex-grow">
+                      {prob || "High advertising costs, ineffective keyword targeting, and limited organic sales visibility."}
+                    </p>
+                  </div>
+
+                  {/* Box 2: Solution */}
+                  <div className="p-6 rounded-2xl bg-[var(--card)] border border-emerald-500/30 shadow-lg flex flex-col">
+                    <h3 className="text-sm font-mono font-bold text-emerald-400 uppercase tracking-wider mb-2.5 flex items-center">
+                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 mr-2 inline-block" />
+                      2. Solution:
+                    </h3>
+                    <p className="text-xs sm:text-sm text-[var(--foreground-muted)] leading-relaxed whitespace-pre-line flex-grow">
+                      {sol || "Complete PPC campaign overhaul, negative keyword filtering, placement bid optimization, and listing enhancement."}
+                    </p>
+                  </div>
+
+                  {/* Box 3: Results & Progress */}
+                  <div className="p-6 rounded-2xl bg-[var(--card)] border border-purple-500/30 shadow-lg flex flex-col">
+                    <h3 className="text-sm font-mono font-bold text-[#9D26FF] uppercase tracking-wider mb-2.5 flex items-center">
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#9D26FF] mr-2 inline-block" />
+                      3. Results & Progress:
+                    </h3>
+                    <p className="text-xs sm:text-sm text-[var(--foreground-muted)] leading-relaxed whitespace-pre-line flex-grow">
+                      {res || "Significant reduction in ACoS, increased monthly ad sales, and improved conversion performance."}
+                    </p>
+                  </div>
+                </div>
+
+                {project.caseStudyDetails && !prob && !sol && (
+                  <div className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)] text-xs sm:text-sm text-[var(--foreground-muted)] leading-relaxed prose prose-invert max-w-none mt-4">
+                    <div dangerouslySetInnerHTML={{ __html: project.caseStudyDetails }} />
+                  </div>
+                )}
+              </div>
+            );
+          })()}
+
+          {/* 3. INTERACTIVE LIGHTBOX GALLERY / PICTURE */}
+          <div className="relative w-full group pt-2 border-t border-[var(--border)]">
+            <div className="flex items-center space-x-2 text-[#9D26FF] font-mono text-xs font-bold uppercase tracking-wider mb-4">
+              <span>CASE STUDY SCREENSHOTS & ASSETS</span>
+            </div>
+
             <div className="relative w-full rounded-2xl overflow-hidden bg-[var(--card)] border border-[var(--border)] shadow-2xl min-h-[300px] flex items-center justify-center p-2 sm:p-4">
               
               {/* Media Content */}
@@ -314,48 +393,6 @@ export default function ProjectShowcaseModal({ project, isOpen, onClose, categor
               </div>
             )}
           </div>
-
-          {/* 3. PROBLEM & SOLUTION CASE STUDY BREAKDOWN */}
-          {(project.problem || project.solution || project.caseStudyDetails) && (
-            <div className="space-y-6 pt-6 border-t border-[var(--border)]">
-              <div className="flex items-center space-x-2 text-[#9D26FF] font-mono text-xs font-bold uppercase tracking-wider">
-                <Layers size={14} />
-                <span>CASE STUDY DETAILS</span>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {project.problem && (
-                  <div className="p-6 rounded-2xl bg-[var(--card)] border border-red-500/20 shadow-lg">
-                    <h3 className="text-sm font-mono font-bold text-red-400 uppercase tracking-wider mb-2.5 flex items-center">
-                      <span className="w-2.5 h-2.5 rounded-full bg-red-500 mr-2 inline-block" />
-                      Problem:
-                    </h3>
-                    <p className="text-sm text-[var(--foreground-muted)] leading-relaxed whitespace-pre-line">
-                      {project.problem}
-                    </p>
-                  </div>
-                )}
-
-                {project.solution && (
-                  <div className="p-6 rounded-2xl bg-[var(--card)] border border-emerald-500/20 shadow-lg">
-                    <h3 className="text-sm font-mono font-bold text-emerald-400 uppercase tracking-wider mb-2.5 flex items-center">
-                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 mr-2 inline-block" />
-                      Solution:
-                    </h3>
-                    <p className="text-sm text-[var(--foreground-muted)] leading-relaxed whitespace-pre-line">
-                      {project.solution}
-                    </p>
-                  </div>
-                )}
-              </div>
-
-              {project.caseStudyDetails && !project.problem && !project.solution && (
-                <div className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)] text-sm text-[var(--foreground-muted)] leading-relaxed prose prose-invert max-w-none">
-                  <div dangerouslySetInnerHTML={{ __html: project.caseStudyDetails }} />
-                </div>
-              )}
-            </div>
-          )}
 
           {/* 3. BOTTOM PROJECT CONVERSION CTA */}
           <section className="mt-16 py-12 px-6 sm:px-10 rounded-3xl bg-[var(--card)] border border-[var(--border)] text-center backdrop-blur-xl shadow-2xl">

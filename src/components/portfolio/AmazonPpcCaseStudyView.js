@@ -88,11 +88,36 @@ export default function AmazonPpcCaseStudyView({ caseStudy }) {
           </div>
         )}
 
-        {/* 4. RESULT SCREENSHOT */}
+        {/* 4. RESULTS / EXTRACTED METRICS */}
+        {detectedMetrics.length > 0 && (
+          <div className="mb-14">
+            <h2 className="text-lg sm:text-xl font-bold text-[#9D26FF] tracking-wider uppercase mb-6 border-b border-[var(--border)] pb-3">
+              Performance Metrics & Results
+            </h2>
+
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              {detectedMetrics.map((m, idx) => (
+                <div
+                  key={idx}
+                  className="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 text-center shadow-lg hover:border-[#9D26FF] transition-colors"
+                >
+                  <p className="text-xs uppercase tracking-wider font-bold text-[var(--foreground-muted)] mb-1">
+                    {m.label}
+                  </p>
+                  <p className="text-2xl sm:text-3xl font-black text-[var(--foreground-heading)]">
+                    {m.value}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* 5. RESULT SCREENSHOT / PICTURE */}
         {image && (
           <div className="mb-14">
             <h2 className="text-lg sm:text-xl font-bold text-[#9D26FF] tracking-wider uppercase mb-6 border-b border-[var(--border)] pb-3">
-              Result
+              Case Study Result Screenshot
             </h2>
 
             <div
@@ -116,31 +141,6 @@ export default function AmazonPpcCaseStudyView({ caseStudy }) {
                   <span>Enlarge Result Screenshot</span>
                 </span>
               </div>
-            </div>
-          </div>
-        )}
-
-        {/* 5. RESULTS / EXTRACTED METRICS */}
-        {detectedMetrics.length > 0 && (
-          <div className="mb-14">
-            <h2 className="text-lg sm:text-xl font-bold text-[#9D26FF] tracking-wider uppercase mb-6 border-b border-[var(--border)] pb-3">
-              Results
-            </h2>
-
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-              {detectedMetrics.map((m, idx) => (
-                <div
-                  key={idx}
-                  className="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 text-center shadow-lg hover:border-[#9D26FF] transition-colors"
-                >
-                  <p className="text-xs uppercase tracking-wider font-bold text-[var(--foreground-muted)] mb-1">
-                    {m.label}
-                  </p>
-                  <p className="text-2xl sm:text-3xl font-black text-[var(--foreground-heading)]">
-                    {m.value}
-                  </p>
-                </div>
-              ))}
             </div>
           </div>
         )}

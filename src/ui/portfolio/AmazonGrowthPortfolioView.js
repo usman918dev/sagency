@@ -102,7 +102,11 @@ export default function AmazonGrowthPortfolioView() {
         metrics: {
           acos: cs.acosImprovement,
           revenue: cs.revenueGrowth
-        }
+        },
+        caseStudyDetails: cs.caseStudyDetails,
+        problem: cs.problem,
+        solution: cs.solution,
+        results: cs.results || cs.result
       }));
     }
 

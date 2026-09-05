@@ -18,7 +18,7 @@ export const metadata = {
   openGraph: {
     title: "Portfolio v2 | Derixio – Amazon Growth Agency",
     description:
-      "See the numbers behind the work: +64% revenue growth, 3.8× conversion lift, 240% distribution increase. Real results for real Amazon brands.",
+      "See the numbers behind the work: +42% revenue growth, 3.8× conversion lift, 240% distribution increase. Real results for real Amazon brands.",
     url: "https://www.derixio.com/portfolio2",
     siteName: "Derixio",
     images: [
@@ -36,7 +36,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Portfolio v2 | Derixio – Amazon Growth Agency",
     description:
-      "See the numbers behind the work: +64% revenue growth, 3.8× conversion lift, 240% distribution increase.",
+      "See the numbers behind the work: +42% revenue growth, 3.8× conversion lift, 240% distribution increase.",
     images: ["https://www.derixio.com/assets/derixio-official-logo.png"],
   },
 };
