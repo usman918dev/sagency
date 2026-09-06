@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Play, Sparkles, ArrowUpRight } from "lucide-react";
@@ -46,8 +46,89 @@ const SUB_CATEGORIES_MAP = {
   ],
 };
 
-// Real Portfolio Items Only (Masonry Grid with 808x632 Aspect Covers, Full Galleries, & Problem/Solution Case Studies)
-const INITIAL_PORTFOLIO_ITEMS = [
+// ─── DB field → component shape mapper ───────────────────────────────────────
+function mapDbProjectToItem(p, index) {
+  // Resolve the main category slug from whatever the DB stored
+  const service = (p.service || "").toLowerCase();
+  let categorySlug = p.categorySlug || p.subCategory || "graphic-designing";
+
+  // Normalise service → main category slug used by the filter tabs
+  if (service.includes("amazon") || categorySlug.startsWith("amazon") || categorySlug === "a-plus-content" || categorySlug === "amazon-brand-store") {
+    categorySlug = "amazon-growth";
+  } else if (service.includes("web") || categorySlug === "web-development") {
+    categorySlug = "web-development";
+  } else if (service.includes("seo") || categorySlug === "seo") {
+    categorySlug = "seo";
+  } else if (service.includes("digital marketing") || categorySlug === "digital-marketing") {
+    categorySlug = "digital-marketing";
+  } else if (service.includes("video") || service.includes("motion") || categorySlug === "video-editing" || categorySlug === "video-motion-design") {
+    categorySlug = "video-editing";
+  } else if (service.includes("graphic") || categorySlug.startsWith("graphic") || categorySlug === "logo-brand-identity" || categorySlug === "ui-ux-design" || categorySlug === "packaging-print-design" || categorySlug === "social-media-ad-creatives" || categorySlug === "3d-product-design-mockups" || categorySlug === "shopify-store-web-graphics") {
+    categorySlug = "graphic-designing";
+  }
+
+  // Resolve sub-category slug (the original DB value is the sub-filter id)
+  const rawSub = (p.subCategory || p.categorySlug || "").toLowerCase().trim();
+  let subCategorySlug = rawSub;
+
+  // Build a human-readable category label for the card badge
+  const SUB_LABEL_MAP = {
+    "amazon-listing-images": "AMAZON · LISTING IMAGES",
+    "a-plus-content": "AMAZON · A+ CONTENT",
+    "amazon-brand-store": "AMAZON · BRAND STORE",
+    "amazon-ppc": "AMAZON · AMAZON PPC",
+    "3d-product-design-mockups": "GRAPHIC · 3D MOCKUPS",
+    "shopify-store-web-graphics": "GRAPHIC · SHOPIFY",
+    "logo-brand-identity": "GRAPHIC · LOGO & BRAND",
+    "social-media-ad-creatives": "GRAPHIC · SOCIAL MEDIA",
+    "packaging-print-design": "GRAPHIC · PACKAGING",
+    "ui-ux-design": "GRAPHIC · UI/UX",
+    "social-media-video-editing": "VIDEO · SOCIAL MEDIA",
+    "ad-creative-videos": "VIDEO · AD CREATIVES",
+    "motion-graphics": "VIDEO · MOTION GRAPHICS",
+    "brand-promotional-videos": "VIDEO · BRAND PROMO",
+    "amazon-video-editing": "VIDEO · AMAZON",
+    "web-development": "WEB DEVELOPMENT",
+    "seo": "SEO",
+    "digital-marketing": "DIGITAL MARKETING",
+  };
+  const categoryLabel = SUB_LABEL_MAP[rawSub] ||
+    (categorySlug === "amazon-growth" ? "AMAZON GROWTH" :
+      categorySlug === "web-development" ? "WEB DEVELOPMENT" :
+        categorySlug === "graphic-designing" ? "GRAPHIC DESIGN" :
+          categorySlug === "seo" ? "SEO" :
+            categorySlug === "digital-marketing" ? "DIGITAL MARKETING" :
+              categorySlug === "video-editing" ? "VIDEO EDITING" : (p.service || "PORTFOLIO").toUpperCase());
+
+  // Resolve gallery (DB stores mediaItems as array of {url} objects or gallery as string[])
+  const mediaItems = Array.isArray(p.mediaItems) ? p.mediaItems : [];
+  const gallery = mediaItems.length > 0
+    ? mediaItems.map(m => m.url).filter(Boolean)
+    : (Array.isArray(p.gallery) ? p.gallery.filter(Boolean) : []);
+
+  const coverImage = p.coverImage || p.image || (gallery[0]) || "/assets/portfolio-web-v4.jpg";
+
+  return {
+    id: p.id,
+    frame: `F${String(index + 1).padStart(2, "0")} / ${categorySlug === "amazon-growth" ? "AMZ" : categorySlug === "web-development" ? "WEB" : categorySlug === "graphic-designing" ? "GFX" : categorySlug === "seo" ? "SEO" : categorySlug === "digital-marketing" ? "MKT" : "VID"}`,
+    title: p.title,
+    categorySlug,
+    subCategorySlug,
+    categoryLabel,
+    image: coverImage,
+    client: p.client || p.brandName || "",
+    description: p.description || "",
+    problem: p.problem || p.caseStudyData || "",
+    solution: p.solution || "",
+    gallery,
+    // PPC overlay extras
+    cardBadge: p.metricSub ? (p.tag || null) : null,
+    cardStat: p.metricValue || null,
+  };
+}
+
+// Fallback items shown if the API call fails
+const FALLBACK_ITEMS = [
   // --- REAL AMAZON LISTING IMAGES PROJECTS ---
   {
     id: "proj_1786726176540_6nd61",
@@ -122,8 +203,8 @@ const INITIAL_PORTFOLIO_ITEMS = [
     frame: "F04 / AMZ",
     title: "Whistling Tea Cattle Listing Images",
     categorySlug: "amazon-growth",
-    subCategorySlug: "amazon-listing-images",
-    categoryLabel: "AMAZON · LISTING IMAGES",
+    subCategorySlug: "a-plus-content",
+    categoryLabel: "AMAZON · A+ CONTENT",
     image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786641401585_reges.jpg",
     client: "Kitchen Craft",
     description: "A premium, cinematic product listing designed to highlight the kettle’s elegant form, wood-grain detailing, and pouring functionality.",
@@ -145,8 +226,8 @@ const INITIAL_PORTFOLIO_ITEMS = [
     frame: "F05 / AMZ",
     title: "Hand Grip Strengthener Listing Images",
     categorySlug: "amazon-growth",
-    subCategorySlug: "amazon-listing-images",
-    categoryLabel: "AMAZON · LISTING IMAGES",
+    subCategorySlug: "a-plus-content",
+    categoryLabel: "AMAZON · A+ CONTENT",
     image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556525233_rp9g8.jpg",
     client: "FitGrip Athletics",
     description: "A professional Amazon listing image set designed to showcase the blue adjustable hand grip strengthener through bold, high-impact visuals.",
@@ -194,8 +275,8 @@ const INITIAL_PORTFOLIO_ITEMS = [
     frame: "F07 / AMZ",
     title: "Dry Body Brush Listing Images",
     categorySlug: "amazon-growth",
-    subCategorySlug: "amazon-listing-images",
-    categoryLabel: "AMAZON · LISTING IMAGES",
+    subCategorySlug: "a-plus-content",
+    categoryLabel: "AMAZON · A+ CONTENT",
     image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786625429845_kutez.jpg",
     client: "SkinCare Essentials",
     description: "Natural dry body brush listing graphics featuring horsehair bristles, copper wire core, and solid beech wood for gentle exfoliation.",
@@ -432,7 +513,7 @@ const CASE_STUDIES = [
   },
 ];
 
-export default function PortfolioTwo() {
+export default function PortfolioTwo({ limit = null }) {
   const [activeCategory, setActiveCategory] = useState("all");
   // Sub-filter active state per category
   const [activeSubFilterMap, setActiveSubFilterMap] = useState({
@@ -441,6 +522,35 @@ export default function PortfolioTwo() {
     "video-editing": "all-video-editing",
   });
   const [selectedProjectModal, setSelectedProjectModal] = useState(null);
+
+  // ─── Live data state ─────────────────────────────────────────────
+  // Start with fallback items immediately (cards show right away).
+  // Live data fetches in background and swaps in silently.
+  const [portfolioItems, setPortfolioItems] = useState(FALLBACK_ITEMS);
+  const [isLoading, setIsLoading] = useState(false); // no blocking skeleton
+
+  const fetchProjects = useCallback(async () => {
+    try {
+      setIsLoading(true);
+      const res = await fetch("/api/portfolio/projects", { cache: "no-store" });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const json = await res.json();
+      if (json.success && Array.isArray(json.data) && json.data.length > 0) {
+        const mapped = json.data
+          .filter(p => p.status !== "Hidden" && p.published !== false && !p.deleted)
+          .map((p, i) => mapDbProjectToItem(p, i));
+        if (mapped.length > 0) setPortfolioItems(mapped);
+      }
+    } catch (err) {
+      console.warn("PortfolioTwo: live fetch failed, using fallback data.", err);
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchProjects();
+  }, [fetchProjects]);
 
   // Sub-filter list for current active category (only Amazon Growth, Graphic Design, Video Editing)
   const currentSubFilterList = useMemo(() => {
@@ -454,8 +564,8 @@ export default function PortfolioTwo() {
   }, [activeCategory, activeSubFilterMap]);
 
   // Filter items based on activeCategory and sub-filter
-  const filteredItems = useMemo(() => {
-    return INITIAL_PORTFOLIO_ITEMS.filter((item) => {
+  const allFilteredItems = useMemo(() => {
+    return portfolioItems.filter((item) => {
       // 1. Check main category
       if (activeCategory !== "all" && item.categorySlug !== activeCategory) {
         return false;
@@ -472,11 +582,21 @@ export default function PortfolioTwo() {
       }
       return true;
     });
-  }, [activeCategory, activeSubFilterMap]);
+  }, [portfolioItems, activeCategory, activeSubFilterMap]);
+
+  // Apply limit when on home page (limit prop is set)
+  const filteredItems = useMemo(() => {
+    if (limit !== null) return allFilteredItems.slice(0, limit);
+    return allFilteredItems;
+  }, [allFilteredItems, limit]);
+
+  // Whether to show the "View All Work" CTA (only in limited/home mode)
+  const showViewAllCta = limit !== null;
 
   // Dynamic live count label
   const countLabelText = useMemo(() => {
-    const totalCount = filteredItems.length;
+    const totalCount = allFilteredItems.length;
+    const displayCount = filteredItems.length;
     const catObj = MAIN_CATEGORIES.find((c) => c.id === activeCategory);
     const catName = catObj ? catObj.label.toUpperCase() : "ALL WORK";
 
@@ -486,16 +606,18 @@ export default function PortfolioTwo() {
       if (activeSubId && activeSubId !== allPrefix) {
         const subObj = currentSubFilterList.find((s) => s.id === activeSubId);
         const subName = subObj ? subObj.label.toUpperCase() : "";
-        return `SHOWING ${totalCount} ${totalCount === 1 ? "PROJECT" : "PROJECTS"} IN ${catName} / ${subName}`;
+        return `SHOWING ${displayCount} ${displayCount === 1 ? "PROJECT" : "PROJECTS"} IN ${catName} / ${subName}`;
       }
     }
 
     if (activeCategory === "all") {
-      return `SHOWING ALL ${totalCount} PORTFOLIO PROJECTS`;
+      return limit !== null
+        ? `SHOWING ${displayCount} OF ${totalCount} PORTFOLIO PROJECTS`
+        : `SHOWING ALL ${totalCount} PORTFOLIO PROJECTS`;
     }
 
-    return `SHOWING ${totalCount} ${totalCount === 1 ? "PROJECT" : "PROJECTS"} IN ${catName}`;
-  }, [filteredItems.length, activeCategory, activeSubFilterMap, currentSubFilterList]);
+    return `SHOWING ${displayCount} ${displayCount === 1 ? "PROJECT" : "PROJECTS"} IN ${catName}`;
+  }, [allFilteredItems.length, filteredItems.length, activeCategory, activeSubFilterMap, currentSubFilterList, limit]);
 
   const handleMainCategoryChange = (catId) => {
     setActiveCategory(catId);
@@ -619,8 +741,8 @@ export default function PortfolioTwo() {
                       className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                     />
 
-                    {/* PPC Card Overlay: bottom-third dark gradient + badge + stat */}
-                    {item.cardBadge && (
+                    {/* PPC Card Overlay: only on full portfolio page, not homepage */}
+                    {!limit && item.cardBadge && (
                       <>
                         {/* Bottom-third dark gradient — fades from transparent at 60% to black/60 at 100% */}
                         <div
@@ -724,6 +846,25 @@ export default function PortfolioTwo() {
                 Reset Filters
               </button>
             </div>
+          )}
+
+          {/* View All Work CTA — only shown in limited/home mode */}
+          {showViewAllCta && filteredItems.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="mt-12 text-center"
+            >
+              <a
+                href="/portfolio"
+                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#9D26FF] text-white text-sm font-bold hover:bg-[#8500ED] transition-all duration-300 shadow-lg hover:shadow-purple-900/40 hover:-translate-y-0.5 group"
+              >
+                View All {portfolioItems.length}+ Projects
+                <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </a>
+            </motion.div>
           )}
         </div>
       </div>

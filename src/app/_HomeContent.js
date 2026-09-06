@@ -246,7 +246,7 @@ const HeroSection = () => {
       <div>
         <ProcessSection />
         <WhyChooseUs />
-        <PortfolioTwo />
+        <PortfolioTwo limit={6} />
         <Testimonials />
         <CallToAction />
       </div>

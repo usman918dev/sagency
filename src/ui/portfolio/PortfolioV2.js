@@ -1163,9 +1163,9 @@ export default function PortfolioV2() {
                         </div>
                         {/* Text below image — result + title + client */}
                         <div className="mt-2 px-0.5 border-l-2 border-[#9D26FF]/50 pl-2">
-                          <div className="text-[10px] font-black text-[#9D26FF] font-mono leading-snug truncate">
+                          {/* <div className="text-[10px] font-black text-[#9D26FF] font-mono leading-snug truncate">
                             {item.result}
-                          </div>
+                          </div> */}
                           <div className="text-xs font-bold text-[var(--foreground-heading)] truncate mt-0.5">
                             {item.title}
                           </div>
@@ -1287,7 +1287,7 @@ export default function PortfolioV2() {
                         <div className="text-xs font-bold text-[var(--foreground-heading)] truncate">{item.title}</div>
                         <div className="text-[10px] text-[var(--foreground-muted)] truncate">{item.client}</div>
                       </div>
-                      <div className="text-xs font-black text-[#9D26FF] text-right flex-shrink-0 leading-snug">{item.result}</div>
+                      {/* <div className="text-xs font-black text-[#9D26FF] text-right flex-shrink-0 leading-snug">{item.result}</div> */}
                     </div>
                   </div>
                 ))}
@@ -1338,7 +1338,7 @@ export default function PortfolioV2() {
                           <div className="text-xs font-bold text-[var(--foreground-heading)] truncate">{item.title}</div>
                           <div className="text-[10px] text-[var(--foreground-muted)] truncate mt-0.5">{item.client}</div>
                         </div>
-                        <div className="text-[11px] font-black text-[#9D26FF] font-mono text-right flex-shrink-0 leading-snug">{item.result}</div>
+                        {/* <div className="text-[11px] font-black text-[#9D26FF] font-mono text-right flex-shrink-0 leading-snug">{item.result}</div> */}
                       </div>
                     </div>
                   ))}
@@ -1377,7 +1377,7 @@ export default function PortfolioV2() {
                     className="group cursor-pointer flex flex-col rounded-2xl overflow-hidden border border-[var(--border)] group-hover:border-[#9D26FF] transition-all duration-300 shadow-lg hover:-translate-y-1 bg-[var(--card)]"
                   >
                     {/* Image — fully clean */}
-                    <div className="relative w-full aspect-square overflow-hidden">
+                    <div className="relative w-full aspect-[1418/1109] overflow-hidden">
                       <Image
                         src={tile.image}
                         alt={tile.title}
@@ -1393,10 +1393,10 @@ export default function PortfolioV2() {
                         <div className="text-xs font-bold text-[var(--foreground-heading)] truncate">{tile.title}</div>
                         <div className="text-[10px] text-[var(--foreground-muted)] truncate mt-0.5">{tile.client}</div>
                       </div>
-                      <div className="text-right flex-shrink-0">
+                      {/* <div className="text-right flex-shrink-0">
                         <div className="text-base font-black text-[#9D26FF] leading-none tracking-tight">{tile.metricValue}</div>
                         <div className="text-[9px] text-[var(--foreground-muted)] mt-0.5">{tile.metricSub}</div>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 ))}
@@ -1447,10 +1447,10 @@ export default function PortfolioV2() {
                           <div className="text-xs font-bold text-[var(--foreground-heading)] truncate">{tile.title}</div>
                           <div className="text-[10px] text-[var(--foreground-muted)] truncate mt-0.5">{tile.client}</div>
                         </div>
-                        <div className="text-right flex-shrink-0">
+                        {/* <div className="text-right flex-shrink-0">
                           <div className="text-lg font-black text-[#9D26FF] leading-none tracking-tight">{tile.metricValue}</div>
                           <div className="text-[9px] text-[var(--foreground-muted)] mt-0.5">{tile.metricSub}</div>
-                        </div>
+                        </div> */}
                       </div>
                     </div>
                   ))}
