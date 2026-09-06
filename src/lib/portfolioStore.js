@@ -175,6 +175,14 @@ export async function saveProject(rawProjectData) {
     fileSize: Number(rawProjectData.fileSize) || 0,
     thumbnail: rawProjectData.thumbnail || coverImageUrl,
 
+    // Amazon Growth & Portfolio Case Study Highlights
+    metricValue: rawProjectData.metricValue || '',
+    metricSub: rawProjectData.metricSub || '',
+    problem: rawProjectData.problem || rawProjectData.caseStudyData || '',
+    solution: rawProjectData.solution || '',
+    beforeImage: rawProjectData.beforeImage || '',
+    tag: rawProjectData.tag || '',
+
     // Web Development
     techStack: Array.isArray(rawProjectData.techStack) ? rawProjectData.techStack : (rawProjectData.techStack ? String(rawProjectData.techStack).split(',').map(s => s.trim()) : []),
     industry: rawProjectData.industry || '',
@@ -188,7 +196,7 @@ export async function saveProject(rawProjectData) {
     // Digital Marketing
     campaignName: rawProjectData.campaignName || rawProjectData.title || '',
     platform: rawProjectData.platform || '',
-    results: rawProjectData.results || '',
+    results: rawProjectData.results || rawProjectData.campaignResults || '',
 
     // Amazon PPC
     brandName: rawProjectData.brandName || rawProjectData.client || '',

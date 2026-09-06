@@ -11,8 +11,119 @@ import {
   ChevronLeft,
   ChevronRight,
   Layers,
-  Play
+  Play,
+  Sparkles
 } from "lucide-react";
+
+// Helper function to return customized 5-step workflow strategy per category
+const getWorkflowData = (category, title) => {
+  const catLower = (category || "").toLowerCase();
+  const titleLower = (title || "").toLowerCase();
+
+  if (catLower.includes("ppc") || titleLower.includes("ppc") || titleLower.includes("acos")) {
+    return {
+      badge: "OUR PPC WORKFLOW",
+      title: "How We Execute Amazon PPC & Ad Strategy",
+      subtitle: "A data-driven framework for eliminating wasted ad spend, scaling revenue, and driving organic rank.",
+      steps: [
+        {
+          num: "01",
+          title: "Audit & Keyword Research",
+          desc: "Analyze search term reports, competitor bid strategy, and identify high-converting keyword targets.",
+        },
+        {
+          num: "02",
+          title: "Campaign Restructuring",
+          desc: "Isolate top exact keywords, set negative match filters, and establish target ACoS threshold parameters.",
+        },
+        {
+          num: "03",
+          title: "Bidding & Placement Rules",
+          desc: "Optimize Top-of-Search placement multipliers, Sponsored Display retargeting, and dynamic bid rules.",
+        },
+        {
+          num: "04",
+          title: "Continuous Optimization",
+          desc: "Perform daily bid adjustments, search query harvesting, and shift budget to top-performing campaigns.",
+        },
+        {
+          num: "05",
+          title: "Review & Scaling",
+          desc: "Track ACoS reductions, organic rank gains, and scale high-ROI campaigns month-over-month.",
+        },
+      ],
+    };
+  }
+
+  if (catLower.includes("web") || catLower.includes("dev") || catLower.includes("code")) {
+    return {
+      badge: "OUR DEV WORKFLOW",
+      title: "How We Execute Website & Digital Platforms",
+      subtitle: "A systematic engineering workflow built for high speed, conversion optimization, and modern UI.",
+      steps: [
+        {
+          num: "01",
+          title: "Discovery & Architecture",
+          desc: "Understand brand positioning, technical requirements, user flow, and competitive benchmarks.",
+        },
+        {
+          num: "02",
+          title: "UX Strategy & Wireframes",
+          desc: "Plan information architecture, conversion funnels, responsive layouts, and interactive prototypes.",
+        },
+        {
+          num: "03",
+          title: "Creative Direction & UI",
+          desc: "Design modern UI tokens, typography, dark/light aesthetics, micro-animations, and component libraries.",
+        },
+        {
+          num: "04",
+          title: "Next.js & Frontend Build",
+          desc: "Develop high-performance code, optimize image assets, implement SEO schema, and test responsive layouts.",
+        },
+        {
+          num: "05",
+          title: "Audit, QA & Launch",
+          desc: "Perform cross-browser testing, page speed validation, security audits, and production deployment.",
+        },
+      ],
+    };
+  }
+
+  // Default: Amazon Listing Images, Graphic Design, A+ Content, Brand Stores
+  return {
+    badge: "OUR LISTING WORKFLOW",
+    title: "How We Execute Amazon Listing Images",
+    subtitle: "A practical framework for transforming product information and customer insights into clear, conversion-focused Amazon listing visuals.",
+    steps: [
+      {
+        num: "01",
+        title: "Product & Market Research",
+        desc: "Understand the product, target customer, category, competitors, and existing listing.",
+      },
+      {
+        num: "02",
+        title: "Listing Creative Strategy",
+        desc: "Identify key selling points, product benefits, customer concerns, and visual order.",
+      },
+      {
+        num: "03",
+        title: "Creative Direction",
+        desc: "Plan main image, feature graphics, lifestyle visuals, comparisons, and content.",
+      },
+      {
+        num: "04",
+        title: "Design & Refinement",
+        desc: "Create polished Amazon-ready listing images and refine visual presentation.",
+      },
+      {
+        num: "05",
+        title: "Final Review & Delivery",
+        desc: "Check consistency, quality, Amazon specs, and prepare final listing assets.",
+      },
+    ],
+  };
+};
 
 export default function ProjectShowcaseModal({ project, isOpen, onClose, categoryName }) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -124,51 +235,36 @@ export default function ProjectShowcaseModal({ project, isOpen, onClose, categor
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 overflow-y-auto bg-[var(--background)] text-[var(--foreground)] flex flex-col min-h-screen">
+      <div className="fixed inset-0 z-[100] bg-[var(--background)] text-[var(--foreground)] flex flex-col h-screen overflow-hidden">
         {/* Subtle Ambient Glow */}
         <div className="fixed top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-[#9D26FF]/5 rounded-full blur-[200px] pointer-events-none" />
 
-        {/* STICKY TOP NAVIGATION BAR */}
-        <header className="sticky top-0 z-50 w-full bg-[var(--background)]/95 backdrop-blur-xl border-b border-[var(--border)] px-4 sm:px-8 py-3.5 flex items-center justify-between shadow-2xl">
-          <div className="flex items-center space-x-3 min-w-0">
-            <button
-              onClick={onClose}
-              className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-bold text-[var(--foreground-muted)] hover:text-[#9D26FF] transition-all"
-            >
-              <ArrowLeft size={16} />
-              <span>Back to Portfolio</span>
-            </button>
+        {/* Floating Close Button X in Top Right */}
+        <button
+          onClick={onClose}
+          className="fixed top-5 right-5 sm:top-6 sm:right-8 z-[120] p-2.5 sm:p-3 rounded-full bg-[var(--card)]/90 hover:bg-[var(--background-alt)] border border-[var(--border)] text-[var(--foreground-muted)] hover:text-[#9D26FF] backdrop-blur-md transition-all shadow-xl cursor-pointer"
+          aria-label="Close Project Showcase"
+        >
+          <X size={20} />
+        </button>
 
-            <div className="h-4 w-px bg-purple-500/30 hidden sm:block" />
-
-            <div className="truncate hidden sm:block">
-              <span className="px-2.5 py-0.5 rounded-full bg-[var(--background-alt)] border border-[var(--border)] text-[#9D26FF] text-[10px] font-bold uppercase tracking-wider">
-                {displayCategory}
-              </span>
-            </div>
-          </div>
-
-          <div className="flex items-center space-x-4">
-            {hasMultipleMedia && (
-              <span className="text-xs font-mono text-[var(--foreground-muted)] bg-[var(--card)] px-3 py-1 rounded-full border border-[var(--border)]">
-                {activeIndex + 1} / {allOrderedItems.length}
-              </span>
-            )}
-            <button
-              onClick={onClose}
-              className="p-2 rounded-xl bg-white/5 hover:bg-[var(--background-alt)] border border-white/10 hover:border-[var(--border)] text-[var(--foreground-muted)] hover:text-[#9D26FF] transition-colors"
-              aria-label="Close Project Showcase"
-            >
-              <X size={20} />
-            </button>
-          </div>
-        </header>
-
-        {/* SHOWCASE BODY */}
-        <main className="relative z-10 flex-grow max-w-5xl mx-auto w-full px-4 sm:px-6 md:px-8 py-8 sm:py-12 space-y-8 sm:space-y-12">
+        {/* SCROLLABLE SHOWCASE BODY */}
+        <div className="flex-1 overflow-y-auto w-full">
+          <main className="relative z-10 max-w-5xl mx-auto w-full px-4 sm:px-6 md:px-8 pt-20 sm:pt-24 pb-12 sm:pb-16 space-y-8 sm:space-y-12">
           
           {/* 1. PROJECT INFORMATION HEADER */}
-          <div className="space-y-4 text-left border-b border-[var(--border)] pb-8">
+          <div className="space-y-6 text-left border-b border-[var(--border)] pb-8">
+            {/* Standalone Back to Portfolio Button above Category Badge */}
+            <div>
+              <button
+                onClick={onClose}
+                className="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-[#9D26FF]/10 hover:bg-[#9D26FF] text-[#9D26FF] hover:text-white border border-[#9D26FF]/30 text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer shadow-sm group"
+              >
+                <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
+                <span>Back to Portfolio</span>
+              </button>
+            </div>
+
             <div className="flex flex-wrap items-center gap-2">
               <span className="px-3 py-1 rounded-full bg-[var(--background-alt)] border border-[var(--border)] text-[#9D26FF] text-xs font-bold uppercase tracking-wider">
                 {displayCategory}
@@ -394,7 +490,61 @@ export default function ProjectShowcaseModal({ project, isOpen, onClose, categor
             )}
           </div>
 
-          {/* 3. BOTTOM PROJECT CONVERSION CTA */}
+          {/* 4. WORKFLOW STRATEGY ROADMAP SECTION (EXACT MATCH TO USER SCREENSHOT DESIGN) */}
+          {(() => {
+            const wf = getWorkflowData(displayCategory, project.title);
+            return (
+              <div className="relative w-full rounded-3xl py-12 px-4 sm:px-6 md:px-8 border border-[var(--border)] bg-agenko-grid overflow-hidden my-12 shadow-sm">
+                {/* Ambient purple radial glow in background */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#9D26FF]/8 rounded-full blur-[100px] pointer-events-none" />
+
+                {/* Pill Badge */}
+                <div className="flex justify-center mb-4 relative z-10">
+                  <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[var(--background)] border border-[#9D26FF]/30 text-[#9D26FF] text-[10px] font-mono font-bold uppercase tracking-widest shadow-sm">
+                    <Sparkles size={12} className="text-[#9D26FF]" />
+                    <span>{wf.badge}</span>
+                  </div>
+                </div>
+
+                {/* Main Heading */}
+                <h2 className="text-3xl sm:text-4xl lg:text-[2.5rem] font-extrabold text-center text-[var(--foreground-heading)] tracking-tight leading-tight mb-3 relative z-10 font-sans">
+                  {wf.title}
+                </h2>
+
+                {/* Subtitle */}
+                <p className="text-center text-[var(--foreground-muted)] text-xs sm:text-sm max-w-xl mx-auto mb-14 leading-relaxed relative z-10">
+                  {wf.subtitle}
+                </p>
+
+                {/* Stepper Timeline - Connecting Line + 5 Circle Nodes */}
+                <div className="relative z-10 max-w-5xl mx-auto">
+                  {/* Connecting Purple Line for Desktop */}
+                  <div className="hidden lg:block absolute top-[28px] left-[8%] right-[8%] h-[2.5px] bg-gradient-to-r from-[#9D26FF]/40 via-[#9D26FF] to-[#9D26FF]/40 z-0" />
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-4 relative z-10">
+                    {wf.steps.map((step, idx) => (
+                      <div key={idx} className="flex flex-col items-center text-center group">
+                        {/* Number Circle Badge */}
+                        <div className="w-14 h-14 rounded-full bg-[var(--background)] border-2 border-[#9D26FF] text-[#9D26FF] font-mono font-bold text-base flex items-center justify-center shadow-lg shadow-purple-500/20 group-hover:scale-110 group-hover:bg-[#9D26FF] group-hover:text-white transition-all duration-300 mb-5 relative z-10">
+                          {step.num}
+                        </div>
+                        {/* Step Title */}
+                        <h3 className="text-sm font-extrabold text-[var(--foreground-heading)] group-hover:text-[#9D26FF] transition-colors leading-snug mb-2 font-sans">
+                          {step.title}
+                        </h3>
+                        {/* Step Description */}
+                        <p className="text-[11px] text-[var(--foreground-muted)] leading-relaxed max-w-[200px] mx-auto">
+                          {step.desc}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            );
+          })()}
+
+          {/* 5. BOTTOM PROJECT CONVERSION CTA */}
           <section className="mt-16 py-12 px-6 sm:px-10 rounded-3xl bg-[var(--card)] border border-[var(--border)] text-center backdrop-blur-xl shadow-2xl">
             <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--foreground-heading)] mb-3">
               Inspired by This {displayCategory} Showcase?
@@ -423,6 +573,7 @@ export default function ProjectShowcaseModal({ project, isOpen, onClose, categor
           </section>
 
         </main>
+        </div>
       </div>
     </AnimatePresence>
   );

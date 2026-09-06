@@ -137,7 +137,14 @@ export default function AdminLeadsPage() {
     mediaItems: [], // Array of { id, url, mediaType, isCover, displayOrder }
     aspectRatio: '16:9',
 
-    // Service-specific
+    // Service-specific & Portfolio Card Highlights
+    tag: '',
+    metricValue: '',
+    metricSub: '',
+    problem: '',
+    solution: '',
+    beforeImage: '',
+
     techStack: 'Next.js, React, TailwindCSS',
     industry: 'SaaS / E-commerce',
     websiteUrl: '',
@@ -146,7 +153,7 @@ export default function AdminLeadsPage() {
     caseStudyData: '',
     campaignName: '',
     platform: 'Facebook Ads',
-    results: '4.2x ROAS, $45k Revenue',
+    results: '',
     brandName: '',
     category: '',
     revenueGrowth: '+280% MoM Revenue',
@@ -452,6 +459,13 @@ export default function AdminLeadsPage() {
       displayOrder: proj.displayOrder || 0,
       mediaItems: items,
 
+      tag: proj.tag || '',
+      metricValue: proj.metricValue || '',
+      metricSub: proj.metricSub || '',
+      problem: proj.problem || proj.caseStudyData || '',
+      solution: proj.solution || '',
+      beforeImage: proj.beforeImage || '',
+
       techStack: Array.isArray(proj.techStack) ? proj.techStack.join(', ') : proj.techStack || '',
       industry: proj.industry || '',
       websiteUrl: proj.websiteUrl || proj.projectUrl || '',
@@ -543,6 +557,14 @@ export default function AdminLeadsPage() {
         status: projectForm.published ? 'Published' : 'Hidden',
         displayOrder: Number(projectForm.displayOrder) || 0,
         mediaType: projectForm.service === 'Video & Motion Design' ? 'video' : (coverMedia.mediaType || 'image'),
+
+        // Card Highlights & Metric Badges
+        tag: projectForm.tag.trim(),
+        metricValue: projectForm.metricValue.trim(),
+        metricSub: projectForm.metricSub.trim(),
+        problem: projectForm.problem.trim(),
+        solution: projectForm.solution.trim(),
+        beforeImage: projectForm.beforeImage.trim(),
 
         // Service-Specific Metadata
         techStack: projectForm.techStack ? projectForm.techStack.split(',').map(s => s.trim()) : [],
@@ -1565,7 +1587,94 @@ export default function AdminLeadsPage() {
                   />
                 </div>
 
-                {/* Client & URL */}
+                {/* Card Tag & Growth Metrics */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-[var(--background-alt)] p-4 rounded-2xl border border-[var(--border)]">
+                  <div>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-[var(--foreground-heading)] mb-1">
+                      Card Tag (Badge)
+                    </label>
+                    <input
+                      type="text"
+                      value={projectForm.tag}
+                      onChange={(e) => setProjectForm(prev => ({ ...prev, tag: e.target.value }))}
+                      placeholder="e.g. LISTING DESIGN, A+ CONTENT"
+                      className="w-full px-3 py-2 rounded-xl bg-[var(--card)] border border-[var(--border)] text-[var(--foreground-heading)] text-xs"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-[var(--foreground-heading)] mb-1">
+                      Metric Highlight (e.g. +340%)
+                    </label>
+                    <input
+                      type="text"
+                      value={projectForm.metricValue}
+                      onChange={(e) => setProjectForm(prev => ({ ...prev, metricValue: e.target.value }))}
+                      placeholder="e.g. +340% or 4.2x ROAS"
+                      className="w-full px-3 py-2 rounded-xl bg-[var(--card)] border border-[var(--border)] text-[var(--foreground-heading)] text-xs font-mono"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-[var(--foreground-heading)] mb-1">
+                      Metric Subtext (e.g. SALES BOOST)
+                    </label>
+                    <input
+                      type="text"
+                      value={projectForm.metricSub}
+                      onChange={(e) => setProjectForm(prev => ({ ...prev, metricSub: e.target.value }))}
+                      placeholder="e.g. SALES BOOST, ROAS"
+                      className="w-full px-3 py-2 rounded-xl bg-[var(--card)] border border-[var(--border)] text-[var(--foreground-heading)] text-xs"
+                    />
+                  </div>
+                </div>
+
+                {/* Case Study Modal Details: Problem, Solution & Results */}
+                <div className="space-y-4 bg-[var(--background-alt)] p-4 rounded-2xl border border-[var(--border)]">
+                  <h4 className="text-xs font-extrabold uppercase tracking-wider text-[#9D26FF] flex items-center space-x-1.5">
+                    <FileText size={14} />
+                    <span>Case Study Modal Details (Problem, Solution, Results)</span>
+                  </h4>
+
+                  <div>
+                    <label className="block text-xs font-bold text-[var(--foreground-heading)] mb-1">
+                      Client Problem / Initial Challenge
+                    </label>
+                    <textarea
+                      rows={2}
+                      value={projectForm.problem}
+                      onChange={(e) => setProjectForm(prev => ({ ...prev, problem: e.target.value }))}
+                      placeholder="Describe the problem, low conversion rates, or initial design issues..."
+                      className="w-full px-3 py-2 rounded-xl bg-[var(--card)] border border-[var(--border)] text-[var(--foreground-heading)] text-xs"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-[var(--foreground-heading)] mb-1">
+                      Our Executed Strategy & Solution
+                    </label>
+                    <textarea
+                      rows={2}
+                      value={projectForm.solution}
+                      onChange={(e) => setProjectForm(prev => ({ ...prev, solution: e.target.value }))}
+                      placeholder="Describe our strategic workflow, design revamp, target audience messaging..."
+                      className="w-full px-3 py-2 rounded-xl bg-[var(--card)] border border-[var(--border)] text-[var(--foreground-heading)] text-xs"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-[var(--foreground-heading)] mb-1">
+                      Measured Growth & Results
+                    </label>
+                    <textarea
+                      rows={2}
+                      value={projectForm.results}
+                      onChange={(e) => setProjectForm(prev => ({ ...prev, results: e.target.value }))}
+                      placeholder="Describe the final results, sales growth, or performance outcome..."
+                      className="w-full px-3 py-2 rounded-xl bg-[var(--card)] border border-[var(--border)] text-[var(--foreground-heading)] text-xs"
+                    />
+                  </div>
+                </div>
+
+                {/* Client & Live URL */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-[var(--foreground-heading)] mb-1.5">

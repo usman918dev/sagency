@@ -102,7 +102,13 @@
       }
     ],
     "coverImage": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1788346264206_xk9tv.jpg",
-    "mediaCount": 6
+    "mediaCount": 6,
+    "metricValue": null,
+    "metricSub": null,
+    "problem": null,
+    "solution": null,
+    "beforeImage": null,
+    "tag": null
   },
   {
     "id": "proj_1786726176540_6nd61",
@@ -225,7 +231,13 @@
       }
     ],
     "coverImage": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786726066975_rb9oz.png",
-    "mediaCount": 8
+    "mediaCount": 8,
+    "metricValue": null,
+    "metricSub": null,
+    "problem": null,
+    "solution": null,
+    "beforeImage": null,
+    "tag": null
   },
   {
     "id": "proj_1786721837342_oh9ah",
@@ -348,7 +360,13 @@
       }
     ],
     "coverImage": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721788971_ktjnn.png",
-    "mediaCount": 8
+    "mediaCount": 8,
+    "metricValue": null,
+    "metricSub": null,
+    "problem": null,
+    "solution": null,
+    "beforeImage": null,
+    "tag": null
   },
   {
     "id": "proj_1786718660672_tyojs",
@@ -462,7 +480,13 @@
       }
     ],
     "coverImage": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786718471342_owd8n.jpg",
-    "mediaCount": 7
+    "mediaCount": 7,
+    "metricValue": null,
+    "metricSub": null,
+    "problem": null,
+    "solution": null,
+    "beforeImage": null,
+    "tag": null
   },
   {
     "id": "proj_1786641570447_m33wd",
@@ -585,7 +609,13 @@
       }
     ],
     "coverImage": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786641401585_reges.jpg",
-    "mediaCount": 8
+    "mediaCount": 8,
+    "metricValue": null,
+    "metricSub": null,
+    "problem": null,
+    "solution": null,
+    "beforeImage": null,
+    "tag": null
   },
   {
     "id": "proj_1786556851498_1423e",
@@ -726,7 +756,13 @@
       }
     ],
     "coverImage": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556525233_rp9g8.jpg",
-    "mediaCount": 10
+    "mediaCount": 10,
+    "metricValue": null,
+    "metricSub": null,
+    "problem": null,
+    "solution": null,
+    "beforeImage": null,
+    "tag": null
   },
   {
     "id": "proj_1786557262274_g8hz3",
@@ -858,7 +894,13 @@
       }
     ],
     "coverImage": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557199885_c5scd.png",
-    "mediaCount": 9
+    "mediaCount": 9,
+    "metricValue": null,
+    "metricSub": null,
+    "problem": null,
+    "solution": null,
+    "beforeImage": null,
+    "tag": null
   },
   {
     "id": "proj_1786625536448_6vn32",
@@ -999,6 +1041,12 @@
       }
     ],
     "coverImage": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786625429845_kutez.jpg",
-    "mediaCount": 10
+    "mediaCount": 10,
+    "metricValue": null,
+    "metricSub": null,
+    "problem": null,
+    "solution": null,
+    "beforeImage": null,
+    "tag": null
   }
 ]

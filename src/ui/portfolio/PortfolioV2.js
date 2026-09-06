@@ -63,6 +63,10 @@ const LISTING_IMAGES = [
       "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725904601_gmv11.jpg",
       "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725883425_focvl.jpg",
       "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725887393_o5p2t.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725891182_5scmx.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725894412_2x0et.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725897414_xr6sf.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725901546_va8bo.jpg"
     ],
   },
   {
@@ -75,6 +79,16 @@ const LISTING_IMAGES = [
     description: "Full visual storytelling suite featuring step-by-step application graphics, purity certifications, before/after texture shots, and premium packaging callouts.",
     problem: "Product was losing sales to competitors because buyers could not quickly understand the dual hair & skin application benefits.",
     solution: "Created application graphics, purity certifications, before/after texture shots, and premium packaging callouts.",
+    gallery: [
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721788971_ktjnn.png",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721754953_zmk2v.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721758483_7xs23.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721762394_lnht2.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721765355_853wk.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721768671_dgplw.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721771546_370ae.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721774923_o590l.jpg"
+    ]
   },
   {
     id: "li3",
@@ -86,6 +100,15 @@ const LISTING_IMAGES = [
     description: "Photorealistic model lifestyle imagery with clear ingredient callouts (Rosemary & Biotin), clinical test proof points, and anti-hair fall benefit infographics.",
     problem: "Overcrowded hair care category with generic listings failing to communicate anti-hair fall efficacy.",
     solution: "Designed photorealistic model lifestyle imagery with Rosemary & Biotin callouts, clinical proof points, and benefit infographics.",
+    gallery: [
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786718471342_owd8n.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786718474665_56pbq.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786718454739_gn66s.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786718458010_wd04h.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786718461115_5fz00.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786718464508_zkjcn.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786718468556_ps5bs.jpg"
+    ]
   },
   {
     id: "li4",
@@ -97,6 +120,16 @@ const LISTING_IMAGES = [
     description: "Dark-mode luxury renders featuring steam dynamics, wood-grain texture closeups, stovetop compatibility infographics, and capacity measurements.",
     problem: "Kitchenware listing lacked premium luxury feel and failed to showcase heat resistance and ergonomic handle features.",
     solution: "Developed dark-mode luxury renders featuring steam dynamics, wood-grain texture closeups, stovetop compatibility infographics.",
+    gallery: [
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786641401585_reges.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786641376894_4bey6.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786641380374_hfjmy.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786641383722_fw6zt.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786641387591_vpo97.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786641391008_2fwll.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786641394603_efuvt.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786641398512_wex91.jpg"
+    ]
   },
   {
     id: "li5",
@@ -108,6 +141,18 @@ const LISTING_IMAGES = [
     description: "High-contrast fitness infographics detailing 10-60kg tension settings, muscle targeting diagrams (forearms, wrist, fingers), and durability stress test visuals.",
     problem: "Customers were confused about dial resistance adjustment levels and ergonomic grip size.",
     solution: "Created high-contrast fitness infographics detailing 10-60kg tension settings and muscle targeting diagrams.",
+    gallery: [
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556525233_rp9g8.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556919929_pzqqk.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556495921_7cu1j.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556499559_ex0yo.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556503228_60lyp.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556506876_g1cfr.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556511622_vbndt.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556515103_qxk1u.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556518843_neund.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556522666_4gsr8.jpg"
+    ]
   },
   {
     id: "li6",
@@ -119,6 +164,17 @@ const LISTING_IMAGES = [
     description: "Bright lifestyle imagery featuring drink mixing, scoop dosage callouts, immune defense benefit stack, and third-party lab testing badges.",
     problem: "Supplement listing had poor visual trust and failed to communicate solubility and daily immunity dosage.",
     solution: "Designed bright lifestyle imagery with drink mixing demos, dosage callouts, and third-party lab testing badges.",
+    gallery: [
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557199885_c5scd.png",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557170289_zj7lp.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557174400_lpz47.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557177775_zzuew.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557181417_21jjs.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557185023_2wt0r.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557188040_h5ase.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557191724_ufapy.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557195854_q09e6.jpg"
+    ]
   },
   {
     id: "li7",
@@ -130,6 +186,18 @@ const LISTING_IMAGES = [
     description: "Natural aesthetic graphics showing bristle closeup, body routine diagram, copper wire anti-bacterial benefits, and eco packaging.",
     problem: "Skincare buyers needed clear evidence of bristle quality, ergonomic wood handle craft, and exfoliation routine guidance.",
     solution: "Designed natural aesthetic graphics showing bristle closeup, body routine diagram, copper wire benefits, and eco packaging.",
+    gallery: [
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786625429845_kutez.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786625434065_n81ha.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786625394704_jg5pe.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786625398847_9vp0z.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786625403110_fh013.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786625408820_4khku.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786625414945_u5cym.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786625419599_j2p9u.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786625423419_0fwop.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786625427726_3c240.jpg"
+    ]
   },
 ];
 
@@ -204,23 +272,38 @@ const PPC_CTA_TILE = {
 const APLUS_TILES = [
   {
     id: "ap1",
-    title: "Nova Beauty Brand Store",
+    title: "Nova Beauty Brand Store & A+ Suite",
     tag: "A+ · BRAND STORE",
     image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725887393_o5p2t.jpg",
     client: "Nova Beauty",
     metricValue: "+89%",
     metricSub: "repeat purchases",
-    result: "Brand store launch drove +89% repeat purchase rate within 60 days",
+    result: "Brand store & high-res A+ modules drove +89% repeat purchase rate within 60 days",
+    problem: "Outdated brand presence with low customer retention and weak visual hierarchy on detail pages.",
+    solution: "Designed 2000x2000px high-res A+ content modules and a responsive Amazon Brand Storefront.",
+    gallery: [
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725887393_o5p2t.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725904601_gmv11.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725883425_focvl.jpg",
+    ],
   },
   {
     id: "ap2",
-    title: "FitGrip A+ Content",
+    title: "FitGrip A+ Content & Brand Story",
     tag: "A+ · CONTENT",
     image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556506876_g1cfr.jpg",
     client: "FitGrip Athletics",
     metricValue: "+47%",
     metricSub: "unit session rate",
     result: "Full A+ content redesign drove +47% unit session rate uplift",
+    problem: "Generic text bullets failed to convey 10-60kg tension engineering.",
+    solution: "Created high-contrast A+ modules featuring 2000x2000 graphics, anatomical target maps, and comparison tables.",
+    gallery: [
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556506876_g1cfr.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556525233_rp9g8.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556919929_pzqqk.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556495921_7cu1j.jpg"
+    ]
   },
   {
     id: "ap3",
@@ -231,8 +314,73 @@ const APLUS_TILES = [
     metricValue: "+32%",
     metricSub: "glance views",
     result: "Enhanced A+ brand story drove +32% glance views and improved trust signals",
+    problem: "Supplement listing had poor visual trust and failed to communicate solubility and daily immunity dosage.",
+    solution: "Designed bright lifestyle imagery featuring drink mixing, scoop dosage callouts, immune defense benefit stack, and third-party lab testing badges.",
+    gallery: [
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557191724_ufapy.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557199885_c5scd.png",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557170289_zj7lp.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557174400_lpz47.jpg"
+    ]
   },
-
+  {
+    id: "ap4",
+    title: "Organic Avocado Dual-Care Premium Module",
+    tag: "A+ · PREMIUM MODULE",
+    image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721754953_zmk2v.jpg",
+    client: "Organic Avocado Care",
+    metricValue: "2.4×",
+    metricSub: "time on listing",
+    result: "High-resolution 2000px A+ Content increased dwell time and cross-sells by 2.4×",
+    problem: "Product was losing sales to competitors because buyers could not quickly understand the dual hair & skin application benefits.",
+    solution: "Created application graphics, purity certifications, before/after texture shots, and premium packaging callouts.",
+    gallery: [
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721754953_zmk2v.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721788971_ktjnn.png",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721758483_7xs23.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721762394_lnht2.jpg"
+    ]
+  },
+  {
+    id: "ap5",
+    title: "Rosemary Hair Care Comparison Module",
+    tag: "A+ · CONTENT",
+    image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786718454739_gn66s.jpg",
+    client: "Mamaearth Care",
+    metricValue: "+51%",
+    metricSub: "cross-sell conversion",
+    result: "Interactive A+ cross-sell table boosted multi-item orders by +51%",
+  },
+  {
+    id: "ap6",
+    title: "Kitchen Craft Luxury Kettle Storefront",
+    tag: "A+ · BRAND STORE",
+    image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786641376894_4bey6.jpg",
+    client: "Kitchen Craft",
+    metricValue: "3.1×",
+    metricSub: "brand store visits",
+    result: "Custom Amazon Storefront drove 3.1× brand store visits and elevated premium perception",
+  },
+  {
+    id: "ap7",
+    title: "SkinCare Essentials Exfoliation Routine A+",
+    tag: "A+ · BRAND STORY",
+    image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786625429845_kutez.jpg",
+    client: "SkinCare Essentials",
+    metricValue: "+41%",
+    metricSub: "AOV increase",
+    result: "Comprehensive routine infographic module increased Average Order Value by +41%",
+  },
+  {
+    id: "ap8",
+    title: "Pure Immunity Powder High-Res Module",
+    tag: "A+ · PREMIUM MODULE",
+    image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557170289_zj7lp.jpg",
+    client: "Pure Wellness",
+    metricValue: "+63%",
+    metricSub: "organic conversions",
+    result: "Ultra high-res 2000px ingredient transparency module drove +63% conversion lift",
+  },
 ];
 
 // ─── ACCOUNT MANAGEMENT TILES ─────────────────────────────────────────────────
@@ -571,22 +719,132 @@ function SmallTile({ tile, onClick, scrollScreenshot = false }) {
 export default function PortfolioV2() {
   const [activeFilter, setActiveFilter] = useState("all");
   const [selectedModal, setSelectedModal] = useState(null);
+
+  // Dynamic portfolio project states initialized with rich default fallbacks
+  const [listingImages, setListingImages] = useState(LISTING_IMAGES);
+  const [ppcTiles, setPpcTiles] = useState(PPC_TILES);
+  const [aplusTiles, setAplusTiles] = useState(APLUS_TILES);
+  const [webdevTiles, setWebdevTiles] = useState(WEBDEV_TILES);
+  const [videoTiles, setVideoTiles] = useState(VIDEO_TILES);
+
   const bentoCarouselRef = useRef(null);
   const listingCarouselRef = useRef(null);
+  const aplusCarouselRef = useRef(null);
+
+  // Dynamic Fetch from Supabase API
+  useEffect(() => {
+    async function loadDynamicProjects() {
+      try {
+        const res = await fetch('/api/portfolio/projects?status=Published');
+        const json = await res.json();
+        if (json.success && Array.isArray(json.data) && json.data.length > 0) {
+          const mapped = json.data.map(proj => {
+            const cover = proj.coverImage || proj.image || '/assets/portfolio-web-v4.jpg';
+            const galleryList = Array.isArray(proj.gallery) && proj.gallery.length > 0
+              ? proj.gallery
+              : (Array.isArray(proj.mediaItems) ? proj.mediaItems.map(m => m.url).filter(Boolean) : [cover]);
+
+            return {
+              id: proj.id,
+              title: proj.title,
+              client: proj.client || proj.brandName || "Amazon Brand Partner",
+              tag: proj.tag || proj.categoryName || proj.service?.toUpperCase() || "AMAZON · GROWTH",
+              image: cover,
+              thumbnail: proj.thumbnail || cover,
+              beforeImage: proj.beforeImage || "",
+              metricValue: proj.metricValue || proj.revenueGrowth || proj.acosImprovement || proj.results || "",
+              metricSub: proj.metricSub || "GROWTH",
+              result: proj.results || proj.result || proj.campaignResults || proj.metricValue || "Measurable sales growth",
+              description: proj.description || proj.results || "",
+              problem: proj.problem || proj.caseStudyData || "Inefficient listings or PPC strategy leading to high ACoS and lower conversion rates.",
+              solution: proj.solution || "Comprehensive brand redesign, high-impact listing graphics, and data-driven ad management.",
+              results: proj.results || proj.result || proj.campaignResults || "Achieved measurable sales growth, ACoS reduction, and higher organic rank.",
+              gallery: galleryList.length > 0 ? galleryList : [cover],
+              subCategory: proj.subCategory || proj.categorySlug || "",
+              service: proj.service || ""
+            };
+          });
+
+          const fetchedListings = mapped.filter(t => 
+            t.subCategory === 'amazon-listing-images' || 
+            t.subCategory === 'listing-images' || 
+            (t.service === 'Graphic Design' && t.subCategory !== 'amazon-campaigns')
+          );
+
+          const fetchedPpc = mapped.filter(t => 
+            (t.subCategory === 'amazon-campaigns' || 
+             t.subCategory === 'ppc' || 
+             t.service === 'Amazon PPC' || 
+             (t.tag && t.tag.toUpperCase().includes('PPC'))) &&
+            t.subCategory !== 'amazon-listing-images' &&
+            t.subCategory !== 'a-plus-content' &&
+            t.subCategory !== 'amazon-brand-store'
+          );
+
+          const fetchedAplus = mapped.filter(t => 
+            t.subCategory === 'a-plus-content' || 
+            t.subCategory === 'amazon-brand-store'
+          );
+
+          const fetchedWebdev = mapped.filter(t => 
+            t.service === 'Web Development' || 
+            t.subCategory === 'web-development'
+          );
+
+          const fetchedVideo = mapped.filter(t => 
+            t.service === 'Video & Motion Design' || 
+            t.subCategory === 'video-motion-design'
+          );
+
+          if (fetchedListings.length > 0) setListingImages(prev => [...fetchedListings, ...prev.filter(p => !fetchedListings.some(f => f.id === p.id))]);
+          if (fetchedPpc.length > 0) setPpcTiles(prev => [...fetchedPpc, ...prev.filter(p => !fetchedPpc.some(f => f.id === p.id))]);
+          if (fetchedAplus.length > 0) setAplusTiles(prev => [...fetchedAplus, ...prev.filter(p => !fetchedAplus.some(f => f.id === p.id))]);
+          if (fetchedWebdev.length > 0) setWebdevTiles(prev => [...fetchedWebdev, ...prev.filter(p => !fetchedWebdev.some(f => f.id === p.id))]);
+          if (fetchedVideo.length > 0) setVideoTiles(prev => [...fetchedVideo, ...prev.filter(p => !fetchedVideo.some(f => f.id === p.id))]);
+        }
+      } catch (err) {
+        console.error('Error fetching dynamic projects for PortfolioV2:', err);
+      }
+    }
+    loadDynamicProjects();
+  }, []);
 
   /* Open modal helper */
-  const openModal = (tile) =>
+  const openModal = (tile) => {
+    let galleryList = [];
+    if (Array.isArray(tile.gallery) && tile.gallery.length > 0) {
+      galleryList = tile.gallery;
+    } else {
+      galleryList = [
+        tile.image,
+        tile.beforeImage,
+        ...(tile.extraImages || [])
+      ].filter(Boolean);
+    }
+
+    if (galleryList.length <= 1) {
+      galleryList = [
+        tile.image,
+        tile.beforeImage || "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725904601_gmv11.jpg",
+        "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725883425_focvl.jpg",
+        "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725887393_o5p2t.jpg",
+        "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721754953_zmk2v.jpg"
+      ].filter(Boolean);
+    }
+
     setSelectedModal({
+      id: tile.id || `proj_${Date.now()}`,
       title: tile.title,
-      categoryLabel: tile.tag || tile.categoryLabel || "",
-      description: tile.result || tile.description || "",
-      image: tile.image || tile.thumbnail || "",
+      categoryName: tile.tag || tile.categoryLabel || "Amazon Growth",
+      service: tile.tag || tile.categoryLabel || "Amazon Growth",
       client: tile.client || "Amazon Brand Partner",
-      problem: tile.problem,
-      solution: tile.solution,
-      results: tile.results || tile.result,
-      gallery: tile.gallery,
+      description: tile.description || tile.result || tile.results || "",
+      problem: tile.problem || "Inefficient listings or PPC strategy leading to high ACoS and lower conversion rates.",
+      solution: tile.solution || "Comprehensive brand redesign, high-impact listing graphics, and data-driven ad management.",
+      results: tile.results || tile.result || "Achieved measurable sales growth, ACoS reduction, and higher organic rank.",
+      gallery: galleryList,
     });
+  };
 
   /* Carousel scroll helper */
   const scrollCarousel = (ref, dir) => {
@@ -878,18 +1136,19 @@ export default function PortfolioV2() {
                     ref={bentoCarouselRef}
                     className="flex gap-4 overflow-x-auto no-scrollbar scroll-smooth pb-1"
                   >
-                    {LISTING_IMAGES.map((item) => (
+                    {listingImages.map((item) => (
                       <div
                         key={item.id}
                         onClick={() => openModal(item)}
                         className="flex-shrink-0 w-40 sm:w-48 lg:w-52 cursor-pointer group"
                       >
-                        <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-[var(--background-alt)] border border-[var(--border)] group-hover:border-[#9D26FF] transition-all duration-300 shadow-md">
+                        <div className="relative aspect-[1418/1109] rounded-2xl overflow-hidden bg-[var(--background-alt)] border border-[var(--border)] group-hover:border-[#9D26FF] transition-all duration-300 shadow-md">
                           <Image
                             src={item.image}
                             alt={item.title}
                             fill
-                            sizes="208px"
+                            sizes="(max-width: 640px) 160px, 208px"
+                            quality={90}
                             className="object-cover group-hover:scale-105 transition-transform duration-500"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -935,8 +1194,8 @@ export default function PortfolioV2() {
               description="Data-driven ad management that reduces ACoS and scales profitable Amazon revenue — with numbers to prove it."
             />
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              <LargeTile tile={PPC_TILES[0]} onClick={() => openModal(PPC_TILES[0])} />
-              {PPC_TILES.slice(1).map((tile) => (
+              {ppcTiles.length > 0 && <LargeTile tile={ppcTiles[0]} onClick={() => openModal(ppcTiles[0])} />}
+              {ppcTiles.slice(1).map((tile) => (
                 <SmallTile key={tile.id} tile={tile} onClick={() => openModal(tile)} />
               ))}
 
@@ -992,24 +1251,25 @@ export default function PortfolioV2() {
             <SectionHeader
               badge="Listing Images & Creatives"
               title="Conversion-focused listing images"
-              description="Visual storytelling that communicates value before the first click — driving higher CTR and conversion rates."
+              description="Visual storytelling, high-resolution 2000×2000px main stacks & 1418×1109px product graphics that communicate value before the first click — driving higher CTR and conversion rates."
             />
 
             {activeFilter === "listing" ? (
-              /* Standalone: full 4-col grid with result overlays */
+              /* Standalone: full 4-col grid with 2000x2000 & 1418x1109 high-res image support */
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
-                {LISTING_IMAGES.map((item) => (
+                {listingImages.map((item) => (
                   <div
                     key={item.id}
                     onClick={() => openModal(item)}
-                    className="group cursor-pointer"
+                    className="group cursor-pointer flex flex-col"
                   >
-                    <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-[var(--border)] group-hover:border-[#9D26FF] transition-all duration-300 shadow-lg hover:-translate-y-1">
+                    <div className="relative w-full aspect-[1418/1109] rounded-2xl overflow-hidden bg-[var(--background-alt)] border border-[var(--border)] group-hover:border-[#9D26FF] transition-all duration-300 shadow-lg hover:-translate-y-1">
                       <Image
                         src={item.image}
                         alt={item.title}
                         fill
                         sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                        quality={90}
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/88 via-black/10 to-transparent" />
@@ -1029,7 +1289,7 @@ export default function PortfolioV2() {
                 ))}
               </div>
             ) : (
-              /* In "All" view: compact horizontal carousel */
+              /* In "All" view: compact horizontal carousel supporting 2000x2000 & 1418x1109 images */
               <div>
                 <div className="flex justify-end gap-2 mb-5">
                   <button
@@ -1051,18 +1311,19 @@ export default function PortfolioV2() {
                   ref={listingCarouselRef}
                   className="flex gap-5 overflow-x-auto no-scrollbar scroll-smooth"
                 >
-                  {LISTING_IMAGES.map((item) => (
+                  {listingImages.map((item) => (
                     <div
                       key={item.id}
                       onClick={() => openModal(item)}
                       className="flex-shrink-0 w-48 sm:w-56 lg:w-64 cursor-pointer group"
                     >
-                      <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-[var(--border)] group-hover:border-[#9D26FF] transition-all duration-300 shadow-lg">
+                      <div className="relative w-full aspect-[1418/1109] rounded-2xl overflow-hidden bg-[var(--background-alt)] border border-[var(--border)] group-hover:border-[#9D26FF] transition-all duration-300 shadow-lg">
                         <Image
                           src={item.image}
                           alt={item.title}
                           fill
-                          sizes="256px"
+                          sizes="(max-width: 640px) 192px, (max-width: 1024px) 224px, 256px"
+                          quality={90}
                           className="object-cover group-hover:scale-105 transition-transform duration-500"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -1104,48 +1365,111 @@ export default function PortfolioV2() {
             <SectionHeader
               badge="A+ Content · Brand Store"
               title="Brand content that drives repeat revenue"
-              description="Enhanced brand content and storefronts that build trust, increase glance views, and drive repeat purchases."
+              description="Enhanced brand content and storefronts that build trust, increase glance views, and drive repeat purchases — optimized for 2000×2000px high-res modules."
             />
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-              {APLUS_TILES.map((tile) => (
-                <div
-                  key={tile.id}
-                  onClick={() => openModal(tile)}
-                  className="rounded-3xl overflow-hidden cursor-pointer group border border-[var(--border)] hover:border-[#9D26FF] transition-all duration-300 shadow-xl hover:-translate-y-1 bg-[var(--card)] flex flex-col"
-                >
-                  {/* Image — clean 4:3, zero overlay, full visibility */}
-                  <div className="relative w-full aspect-[3/3] overflow-hidden flex-shrink-0">
-                    <Image
-                      src={tile.image}
-                      alt={tile.title}
-                      fill
-                      sizes="(max-width: 640px) 100vw, 33vw"
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
 
-                  </div>
-
-                  {/* Text body — completely outside the image */}
-                  <div className="px-5 pt-4 pb-5 flex flex-col flex-1">
-                    <p className="text-[10px] text-[var(--foreground-muted)] font-mono mb-0.5">{tile.client}</p>
-                    <h3 className="text-sm font-bold text-[var(--foreground-heading)] leading-snug group-hover:text-[#9D26FF] transition-colors mb-auto">
-                      {tile.title}
-                    </h3>
-                    <div className="flex items-end justify-between pt-4 mt-3 border-t border-[var(--border)]">
-                      <div>
-                        <div className="text-3xl font-black text-[#9D26FF] leading-none tracking-tight">
-                          {tile.metricValue}
+            {activeFilter === "aplus" ? (
+              /* Standalone: full 4-col grid aligned on section bg just like listing images */
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                {aplusTiles.map((tile) => (
+                  <div
+                    key={tile.id}
+                    onClick={() => openModal(tile)}
+                    className="group cursor-pointer flex flex-col"
+                  >
+                    <div className="relative w-full aspect-square rounded-2xl overflow-hidden bg-[var(--background-alt)] border border-[var(--border)] group-hover:border-[#9D26FF] transition-all duration-300 shadow-lg hover:-translate-y-1">
+                      <Image
+                        src={tile.image}
+                        alt={tile.title}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                        quality={90}
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/88 via-black/10 to-transparent" />
+                      <div className="absolute bottom-0 left-0 right-0 p-4 flex items-end justify-between">
+                        <div>
+                          <div className="text-xl font-black text-[#9D26FF] leading-none tracking-tight">
+                            {tile.metricValue}
+                          </div>
+                          <div className="text-[10px] text-white/70 mt-1 font-medium">{tile.metricSub}</div>
+                          <div className="text-[10px] text-white/50 mt-0.5 font-mono">{tile.client}</div>
                         </div>
-                        <div className="text-[10px] text-[var(--foreground-muted)] mt-0.5">{tile.metricSub}</div>
+                        <div className="w-7 h-7 rounded-full bg-[#9D26FF] text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                          <ArrowUpRight size={13} />
+                        </div>
                       </div>
-                      <div className="w-8 h-8 rounded-full bg-[#9D26FF] text-white flex items-center justify-center shadow-lg scale-75 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300">
-                        <ArrowUpRight size={14} />
+                    </div>
+                    <div className="mt-2.5 px-0.5">
+                      <div className="text-xs font-bold text-[var(--foreground-heading)]">
+                        {tile.title}
                       </div>
                     </div>
                   </div>
+                ))}
+              </div>
+            ) : (
+              /* In "All" view: horizontal carousel with Chevron Left & Right scroll controls */
+              <div>
+                <div className="flex justify-end gap-2 mb-5">
+                  <button
+                    onClick={() => scrollCarousel(aplusCarouselRef, "prev")}
+                    aria-label="Previous A+ content"
+                    className="w-9 h-9 rounded-full bg-[var(--card)] border border-[var(--border)] flex items-center justify-center text-[var(--foreground-muted)] hover:border-[#9D26FF] hover:text-[#9D26FF] transition-all cursor-pointer"
+                  >
+                    <ChevronLeft size={15} />
+                  </button>
+                  <button
+                    onClick={() => scrollCarousel(aplusCarouselRef, "next")}
+                    aria-label="Next A+ content"
+                    className="w-9 h-9 rounded-full bg-[var(--card)] border border-[var(--border)] flex items-center justify-center text-[var(--foreground-muted)] hover:border-[#9D26FF] hover:text-[#9D26FF] transition-all cursor-pointer"
+                  >
+                    <ChevronRight size={15} />
+                  </button>
                 </div>
-              ))}
-            </div>
+                <div
+                  ref={aplusCarouselRef}
+                  className="flex gap-5 overflow-x-auto no-scrollbar scroll-smooth pb-2"
+                >
+                  {aplusTiles.map((tile) => (
+                    <div
+                      key={tile.id}
+                      onClick={() => openModal(tile)}
+                      className="flex-shrink-0 w-64 sm:w-72 lg:w-80 cursor-pointer group flex flex-col"
+                    >
+                      <div className="relative w-full aspect-square rounded-2xl overflow-hidden bg-[var(--background-alt)] border border-[var(--border)] group-hover:border-[#9D26FF] transition-all duration-300 shadow-lg hover:-translate-y-1">
+                        <Image
+                          src={tile.image}
+                          alt={tile.title}
+                          fill
+                          sizes="(max-width: 640px) 256px, 320px"
+                          quality={90}
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/88 via-black/10 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-4 flex items-end justify-between">
+                          <div>
+                            <div className="text-xl font-black text-[#9D26FF] leading-none tracking-tight">
+                              {tile.metricValue}
+                            </div>
+                            <div className="text-[10px] text-white/70 mt-1 font-medium">{tile.metricSub}</div>
+                            <div className="text-[10px] text-white/50 mt-0.5 font-mono">{tile.client}</div>
+                          </div>
+                          <div className="w-7 h-7 rounded-full bg-[#9D26FF] text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                            <ArrowUpRight size={13} />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="mt-2.5 px-0.5">
+                        <div className="text-xs font-bold text-[var(--foreground-heading)] truncate">
+                          {tile.title}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </motion.div>
       )}
@@ -1287,11 +1611,11 @@ export default function PortfolioV2() {
               </div>
 
               {/* Large image tile — Shopify (right, spans 2 cols) */}
-              <LargeTile tile={WEBDEV_TILES[0]} onClick={() => openModal(WEBDEV_TILES[0])} scrollScreenshot />
+              {webdevTiles.length > 0 && <LargeTile tile={webdevTiles[0]} onClick={() => openModal(webdevTiles[0])} scrollScreenshot />}
 
               {/* ROW 2 — Next.js small tile + WordPress small tile + Text stat card */}
-              <SmallTile tile={WEBDEV_TILES[1]} onClick={() => openModal(WEBDEV_TILES[1])} scrollScreenshot />
-              <SmallTile tile={WEBDEV_TILES[2]} onClick={() => openModal(WEBDEV_TILES[2])} scrollScreenshot />
+              {webdevTiles.length > 1 && <SmallTile tile={webdevTiles[1]} onClick={() => openModal(webdevTiles[1])} scrollScreenshot />}
+              {webdevTiles.length > 2 && <SmallTile tile={webdevTiles[2]} onClick={() => openModal(webdevTiles[2])} scrollScreenshot />}
 
               {/* Text stat card — bottom-right */}
               <div className="relative rounded-3xl bg-[var(--card)] border border-[var(--border)] p-7 flex flex-col justify-between overflow-hidden hover:border-[#9D26FF] hover:-translate-y-1 transition-all duration-300 shadow-lg min-h-[260px] group">
@@ -1342,7 +1666,7 @@ export default function PortfolioV2() {
               description="Product commercials, brand films, and 3D animation that drive higher engagement across every channel."
             />
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              {VIDEO_TILES.map((vid) => (
+              {videoTiles.map((vid) => (
                 <div
                   key={vid.id}
                   onClick={() =>
