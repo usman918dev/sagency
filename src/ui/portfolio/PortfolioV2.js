@@ -613,7 +613,7 @@ function ScrollableCardImage({ src, alt, isHovered }) {
   );
 }
 
-// Large image tile: col-span-2 in 3-col grid
+// Large image tile: col-span-2 in 3-col grid — DETACHED METRIC BANNER (image 100% clean)
 function LargeTile({ tile, onClick, scrollScreenshot = false }) {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -622,44 +622,44 @@ function LargeTile({ tile, onClick, scrollScreenshot = false }) {
       onClick={onClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="sm:col-span-2 lg:col-span-2 relative rounded-3xl overflow-hidden cursor-pointer group min-h-[380px] border border-[var(--border)] hover:border-[#9D26FF] transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1"
+      className="sm:col-span-2 lg:col-span-2 flex flex-col cursor-pointer group rounded-3xl overflow-hidden border border-[var(--border)] hover:border-[#9D26FF] transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 bg-[var(--card)]"
     >
-      {scrollScreenshot ? (
-        <ScrollableCardImage src={tile.image} alt={tile.title} isHovered={isHovered} />
-      ) : (
-        <Image
-          src={tile.image}
-          alt={tile.title}
-          fill
-          sizes="(max-width: 1024px) 100vw, 66vw"
-          className="object-cover transition-transform duration-700 group-hover:scale-105"
-        />
-      )}
-      {/* Clean bottom-only gradient — image stays vivid, only the text area darkens */}
-      <div
-        className="absolute inset-x-0 bottom-0 pointer-events-none"
-        style={{ height: "55%", background: "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.78) 100%)" }}
-      />
-      {/* Top-left badge pill */}
-      <div className="absolute top-5 left-5 pointer-events-none">
-        <span
-          className="px-3 py-1.5 rounded-full text-white text-[10px] font-mono font-bold uppercase tracking-widest shadow-lg"
-          style={{ background: "rgba(157,38,255,0.92)", backdropFilter: "blur(6px)", border: "1px solid rgba(255,255,255,0.15)" }}
-        >
-          {tile.tag}
-        </span>
+      {/* ── Image area — completely clean, zero overlays ── */}
+      <div className="relative h-[360px] overflow-hidden">
+        {scrollScreenshot ? (
+          <ScrollableCardImage src={tile.image} alt={tile.title} isHovered={isHovered} />
+        ) : (
+          <Image
+            src={tile.image}
+            alt={tile.title}
+            fill
+            sizes="(max-width: 1024px) 100vw, 66vw"
+            className="object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+        )}
+        {/* Tag badge — only thing on the image */}
+        <div className="absolute top-4 left-4 z-10">
+          <span
+            className="px-3 py-1.5 rounded-full text-white text-[10px] font-mono font-bold uppercase tracking-widest shadow-lg"
+            style={{ background: "rgba(157,38,255,0.92)", backdropFilter: "blur(6px)", border: "1px solid rgba(255,255,255,0.15)" }}
+          >
+            {tile.tag}
+          </span>
+        </div>
       </div>
-      <div className="absolute bottom-0 left-0 right-0 p-7 pointer-events-none">
-        <h3 className="text-xl sm:text-2xl font-bold text-white leading-snug mb-5">{tile.title}</h3>
-        <div className="flex items-end justify-between">
-          <div>
-            <div className="text-5xl sm:text-6xl font-black text-[#9D26FF] leading-none tracking-tight" style={{ textShadow: "0 2px 16px rgba(0,0,0,0.5)" }}>
-              {tile.metricValue}
-            </div>
-            <div className="text-xs text-white/60 mt-1.5">{tile.metricSub}</div>
+      {/* ── Detached metric banner — solid panel below image ── */}
+      <div className="flex items-center justify-between px-6 py-4 border-t-2 border-[#9D26FF]/60 bg-[var(--card)]">
+        <div className="flex-1 min-w-0 pr-4">
+          <p className="text-xs text-[var(--foreground-muted)] font-mono uppercase tracking-wider mb-0.5 truncate">{tile.tag}</p>
+          <h3 className="text-sm sm:text-base font-bold text-[var(--foreground-heading)] leading-snug truncate">{tile.title}</h3>
+        </div>
+        <div className="flex items-center gap-3 flex-shrink-0">
+          <div className="text-right">
+            <div className="text-2xl sm:text-3xl font-black text-[#9D26FF] leading-none tracking-tight">{tile.metricValue}</div>
+            <div className="text-[10px] text-[var(--foreground-muted)] mt-0.5">{tile.metricSub}</div>
           </div>
-          <div className="w-11 h-11 rounded-full bg-[#9D26FF] text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-xl pointer-events-auto">
-            <ArrowUpRight size={20} />
+          <div className="w-9 h-9 rounded-full bg-[#9D26FF]/10 border border-[#9D26FF]/40 text-[#9D26FF] flex items-center justify-center group-hover:bg-[#9D26FF] group-hover:text-white group-hover:border-[#9D26FF] transition-all duration-300 shadow-sm">
+            <ArrowUpRight size={16} />
           </div>
         </div>
       </div>
@@ -667,7 +667,7 @@ function LargeTile({ tile, onClick, scrollScreenshot = false }) {
   );
 }
 
-// Standard image tile: col-span-1
+// Standard image tile: col-span-1 — DETACHED METRIC BANNER (image 100% clean)
 function SmallTile({ tile, onClick, scrollScreenshot = false }) {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -676,39 +676,40 @@ function SmallTile({ tile, onClick, scrollScreenshot = false }) {
       onClick={onClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="relative rounded-3xl overflow-hidden cursor-pointer group min-h-[260px] border border-[var(--border)] hover:border-[#9D26FF] transition-all duration-300 shadow-xl hover:-translate-y-1"
+      className="flex flex-col cursor-pointer group rounded-3xl overflow-hidden border border-[var(--border)] hover:border-[#9D26FF] transition-all duration-300 shadow-xl hover:-translate-y-1 bg-[var(--card)]"
     >
-      {scrollScreenshot ? (
-        <ScrollableCardImage src={tile.image} alt={tile.title} isHovered={isHovered} />
-      ) : (
-        <Image
-          src={tile.image}
-          alt={tile.title}
-          fill
-          sizes="(max-width: 640px) 100vw, 33vw"
-          className="object-cover transition-transform duration-700 group-hover:scale-105"
-        />
-      )}
-      {/* Lighter bottom-only gradient — preserves image detail in the upper area */}
-      <div
-        className="absolute inset-x-0 bottom-0 pointer-events-none"
-        style={{ height: "50%", background: "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.80) 100%)" }}
-      />
-      {/* Badge pill with semi-transparent purple fill instead of the old black/dark border pill */}
-      <div className="absolute top-4 left-4 pointer-events-none">
-        <span
-          className="px-2.5 py-1 rounded-full text-white text-[9px] font-mono font-bold uppercase tracking-widest"
-          style={{ background: "rgba(157,38,255,0.85)", backdropFilter: "blur(4px)", border: "1px solid rgba(255,255,255,0.12)" }}
-        >
-          {tile.tag}
-        </span>
-      </div>
-      <div className="absolute bottom-0 left-0 right-0 p-5 pointer-events-none">
-        <h3 className="text-sm font-bold text-white mb-2 leading-snug">{tile.title}</h3>
-        <div className="text-3xl font-black text-[#9D26FF] leading-none tracking-tight" style={{ textShadow: "0 2px 10px rgba(0,0,0,0.45)" }}>
-          {tile.metricValue}
+      {/* ── Image area — completely clean, zero overlays ── */}
+      <div className="relative h-[260px] overflow-hidden">
+        {scrollScreenshot ? (
+          <ScrollableCardImage src={tile.image} alt={tile.title} isHovered={isHovered} />
+        ) : (
+          <Image
+            src={tile.image}
+            alt={tile.title}
+            fill
+            sizes="(max-width: 640px) 100vw, 33vw"
+            className="object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+        )}
+        {/* Tag badge — only thing on the image */}
+        <div className="absolute top-3.5 left-3.5 z-10">
+          <span
+            className="px-2.5 py-1 rounded-full text-white text-[9px] font-mono font-bold uppercase tracking-widest"
+            style={{ background: "rgba(157,38,255,0.85)", backdropFilter: "blur(4px)", border: "1px solid rgba(255,255,255,0.12)" }}
+          >
+            {tile.tag}
+          </span>
         </div>
-        <div className="text-[10px] text-white/50 mt-0.5">{tile.metricSub}</div>
+      </div>
+      {/* ── Detached metric banner — solid panel below image ── */}
+      <div className="flex items-center justify-between px-5 py-3.5 border-t-2 border-[#9D26FF]/60 bg-[var(--card)]">
+        <div className="flex-1 min-w-0 pr-3">
+          <h3 className="text-xs font-bold text-[var(--foreground-heading)] leading-snug truncate">{tile.title}</h3>
+          <p className="text-[10px] text-[var(--foreground-muted)] truncate mt-0.5">{tile.metricSub}</p>
+        </div>
+        <div className="text-right flex-shrink-0">
+          <div className="text-xl sm:text-2xl font-black text-[#9D26FF] leading-none tracking-tight">{tile.metricValue}</div>
+        </div>
       </div>
     </div>
   );
@@ -956,42 +957,41 @@ export default function PortfolioV2() {
               */}
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
 
-                {/* LARGE FEATURED TILE  (2 cols × 2 rows) */}
+                {/* LARGE FEATURED TILE  (2 cols × 2 rows) — detached banner */}
                 <div
                   onClick={() => openModal(FEATURED_PPC)}
-                  className="lg:col-span-2 lg:row-span-2 relative rounded-3xl overflow-hidden cursor-pointer group min-h-[420px] border border-[var(--border)] hover:border-[#9D26FF] transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1"
+                  className="lg:col-span-2 lg:row-span-2 flex flex-col cursor-pointer group rounded-3xl overflow-hidden border border-[var(--border)] hover:border-[#9D26FF] transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 bg-[var(--card)]"
                 >
-                  <Image
-                    src={FEATURED_PPC.image}
-                    alt={FEATURED_PPC.title}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 66vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/20 to-transparent" />
-
-                  {/* Category badge */}
-                  <div className="absolute top-5 left-5">
-                    <span className="px-3 py-1 rounded-full bg-[#9D26FF] text-white text-[10px] font-mono font-bold uppercase tracking-widest">
-                      {FEATURED_PPC.tag}
-                    </span>
+                  {/* Image — 100% clean */}
+                  <div className="relative h-[420px] overflow-hidden">
+                    <Image
+                      src={FEATURED_PPC.image}
+                      alt={FEATURED_PPC.title}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 66vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    {/* Only the tag badge on the image */}
+                    <div className="absolute top-4 left-4 z-10">
+                      <span className="px-3 py-1.5 rounded-full bg-[#9D26FF] text-white text-[10px] font-mono font-bold uppercase tracking-widest shadow-md">
+                        {FEATURED_PPC.tag}
+                      </span>
+                    </div>
                   </div>
 
-                  {/* Bottom content */}
-                  <div className="absolute bottom-0 left-0 right-0 p-7">
-                    <p className="text-white/40 text-[10px] font-mono mb-2">Client: {FEATURED_PPC.client}</p>
-                    <h3 className="text-xl sm:text-2xl font-bold text-white leading-snug mb-5">
-                      {FEATURED_PPC.title}
-                    </h3>
-                    <div className="flex items-end justify-between">
-                      <div>
-                        <div className="text-6xl sm:text-7xl font-black text-[#9D26FF] leading-none tracking-tight drop-shadow-lg">
-                          {FEATURED_PPC.metricValue}
-                        </div>
-                        <div className="text-sm text-white/50 mt-1.5">{FEATURED_PPC.metricSub}</div>
+                  {/* Detached metric banner */}
+                  <div className="flex items-center justify-between px-6 py-4 border-t-2 border-[#9D26FF]/60 bg-[var(--card)]">
+                    <div className="flex-1 min-w-0 pr-4">
+                      <p className="text-[10px] text-[var(--foreground-muted)] font-mono mb-0.5 truncate">Client: {FEATURED_PPC.client}</p>
+                      <h3 className="text-sm sm:text-base font-bold text-[var(--foreground-heading)] leading-snug truncate">{FEATURED_PPC.title}</h3>
+                    </div>
+                    <div className="flex items-center gap-3 flex-shrink-0">
+                      <div className="text-right">
+                        <div className="text-2xl sm:text-3xl font-black text-[#9D26FF] leading-none tracking-tight">{FEATURED_PPC.metricValue}</div>
+                        <div className="text-[10px] text-[var(--foreground-muted)] mt-0.5">{FEATURED_PPC.metricSub}</div>
                       </div>
-                      <div className="w-12 h-12 rounded-full bg-[#9D26FF] text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-xl">
-                        <ArrowUpRight size={20} />
+                      <div className="w-9 h-9 rounded-full bg-[#9D26FF]/10 border border-[#9D26FF]/40 text-[#9D26FF] flex items-center justify-center group-hover:bg-[#9D26FF] group-hover:text-white transition-all duration-300">
+                        <ArrowUpRight size={16} />
                       </div>
                     </div>
                   </div>
@@ -1044,13 +1044,13 @@ export default function PortfolioV2() {
                   </div>
                 </div>
 
-                {/* BEFORE / AFTER LISTING TILE */}
+                {/* BEFORE / AFTER LISTING TILE — detached banner */}
                 <div
                   onClick={() => openModal(LISTING_IMAGES[0])}
-                  className="relative rounded-3xl overflow-hidden cursor-pointer group border border-[var(--border)] hover:border-[#9D26FF] transition-all duration-300 shadow-xl hover:-translate-y-1 min-h-[210px]"
+                  className="flex flex-col cursor-pointer group rounded-3xl overflow-hidden border border-[var(--border)] hover:border-[#9D26FF] transition-all duration-300 shadow-xl hover:-translate-y-1 bg-[var(--card)]"
                 >
-                  {/* Split 50 / 50 */}
-                  <div className="absolute inset-0 flex">
+                  {/* Split 50/50 image — clean, no overlays */}
+                  <div className="relative flex h-[220px]">
                     {/* Before */}
                     <div className="w-1/2 relative overflow-hidden">
                       <Image
@@ -1060,8 +1060,11 @@ export default function PortfolioV2() {
                         className="object-cover brightness-50 group-hover:brightness-60 group-hover:scale-105 transition-all duration-700"
                       />
                       <div className="absolute top-3 left-3">
-                        <span className="text-[9px] font-mono font-bold text-white/60 uppercase tracking-widest bg-black/60 px-2 py-0.5 rounded-full">
-                          Before
+                        <span
+                          className="text-[10px] font-mono font-black text-white uppercase tracking-widest px-2.5 py-1 rounded-md"
+                          style={{ background: "rgba(0,0,0,0.85)" }}
+                        >
+                          BEFORE
                         </span>
                       </div>
                     </div>
@@ -1074,16 +1077,21 @@ export default function PortfolioV2() {
                         className="object-cover group-hover:scale-105 transition-transform duration-700"
                       />
                       <div className="absolute top-3 right-3">
-                        <span className="text-[9px] font-mono font-bold text-[#9D26FF] uppercase tracking-widest bg-black/60 px-2 py-0.5 rounded-full">
-                          After ✦
+                        <span
+                          className="text-[10px] font-mono font-black text-white uppercase tracking-widest px-2.5 py-1 rounded-md"
+                          style={{ background: "rgba(157,38,255,0.95)" }}
+                        >
+                          AFTER ✦
                         </span>
                       </div>
                     </div>
                   </div>
-                  {/* Bottom result */}
-                  <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/95 via-black/50 to-transparent pt-14">
-                    <div className="text-xl font-black text-[#9D26FF] leading-none">CTR +64%</div>
-                    <div className="text-[11px] text-white/50 mt-0.5">Nova Shampoo · listing redesign</div>
+                  {/* Detached result banner */}
+                  <div className="flex items-center justify-between px-5 py-3.5 border-t-2 border-[#9D26FF]/60 bg-[var(--card)]">
+                    <div>
+                      <p className="text-[10px] text-[var(--foreground-muted)] truncate">Nova Shampoo · listing redesign</p>
+                    </div>
+                    <div className="text-xl font-black text-[#9D26FF] leading-none tracking-tight">CTR +64%</div>
                   </div>
                 </div>
 
@@ -1142,6 +1150,7 @@ export default function PortfolioV2() {
                         onClick={() => openModal(item)}
                         className="flex-shrink-0 w-40 sm:w-48 lg:w-52 cursor-pointer group"
                       >
+                        {/* Image — fully clean, no overlay */}
                         <div className="relative aspect-[1418/1109] rounded-2xl overflow-hidden bg-[var(--background-alt)] border border-[var(--border)] group-hover:border-[#9D26FF] transition-all duration-300 shadow-md">
                           <Image
                             src={item.image}
@@ -1151,15 +1160,13 @@ export default function PortfolioV2() {
                             quality={90}
                             className="object-cover group-hover:scale-105 transition-transform duration-500"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                          <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-1 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                            <div className="text-[10px] font-bold text-[#9D26FF] font-mono leading-snug">
-                              {item.result}
-                            </div>
-                          </div>
                         </div>
-                        <div className="mt-2.5 px-0.5">
-                          <div className="text-xs font-bold text-[var(--foreground-heading)] truncate">
+                        {/* Text below image — result + title + client */}
+                        <div className="mt-2 px-0.5 border-l-2 border-[#9D26FF]/50 pl-2">
+                          <div className="text-[10px] font-black text-[#9D26FF] font-mono leading-snug truncate">
+                            {item.result}
+                          </div>
+                          <div className="text-xs font-bold text-[var(--foreground-heading)] truncate mt-0.5">
                             {item.title}
                           </div>
                           <div className="text-[10px] text-[var(--foreground-muted)] mt-0.5">
@@ -1261,9 +1268,10 @@ export default function PortfolioV2() {
                   <div
                     key={item.id}
                     onClick={() => openModal(item)}
-                    className="group cursor-pointer flex flex-col"
+                    className="group cursor-pointer flex flex-col rounded-2xl overflow-hidden border border-[var(--border)] group-hover:border-[#9D26FF] transition-all duration-300 shadow-lg hover:-translate-y-1 bg-[var(--card)]"
                   >
-                    <div className="relative w-full aspect-[1418/1109] rounded-2xl overflow-hidden bg-[var(--background-alt)] border border-[var(--border)] group-hover:border-[#9D26FF] transition-all duration-300 shadow-lg hover:-translate-y-1">
+                    {/* Image — fully clean */}
+                    <div className="relative w-full aspect-[1418/1109] overflow-hidden">
                       <Image
                         src={item.image}
                         alt={item.title}
@@ -1272,18 +1280,14 @@ export default function PortfolioV2() {
                         quality={90}
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/88 via-black/10 to-transparent" />
-                      <div className="absolute bottom-0 left-0 right-0 p-4">
-                        <div className="text-xs font-black text-[#9D26FF] mb-1 leading-snug">
-                          {item.result}
-                        </div>
-                        <div className="text-[10px] text-white/50">{item.client}</div>
-                      </div>
                     </div>
-                    <div className="mt-2.5 px-0.5">
-                      <div className="text-xs font-bold text-[var(--foreground-heading)]">
-                        {item.title}
+                    {/* Detached metric banner */}
+                    <div className="flex items-center justify-between px-3 py-2.5 border-t-2 border-[#9D26FF]/50 bg-[var(--card)]">
+                      <div className="flex-1 min-w-0 pr-2">
+                        <div className="text-xs font-bold text-[var(--foreground-heading)] truncate">{item.title}</div>
+                        <div className="text-[10px] text-[var(--foreground-muted)] truncate">{item.client}</div>
                       </div>
+                      <div className="text-xs font-black text-[#9D26FF] text-right flex-shrink-0 leading-snug">{item.result}</div>
                     </div>
                   </div>
                 ))}
@@ -1315,9 +1319,10 @@ export default function PortfolioV2() {
                     <div
                       key={item.id}
                       onClick={() => openModal(item)}
-                      className="flex-shrink-0 w-48 sm:w-56 lg:w-64 cursor-pointer group"
+                      className="flex-shrink-0 w-48 sm:w-56 lg:w-64 cursor-pointer group rounded-2xl overflow-hidden border border-[var(--border)] group-hover:border-[#9D26FF] transition-all duration-300 shadow-lg bg-[var(--card)]"
                     >
-                      <div className="relative w-full aspect-[1418/1109] rounded-2xl overflow-hidden bg-[var(--background-alt)] border border-[var(--border)] group-hover:border-[#9D26FF] transition-all duration-300 shadow-lg">
+                      {/* Image — fully clean */}
+                      <div className="relative w-full aspect-[1418/1109] overflow-hidden">
                         <Image
                           src={item.image}
                           alt={item.title}
@@ -1326,20 +1331,14 @@ export default function PortfolioV2() {
                           quality={90}
                           className="object-cover group-hover:scale-105 transition-transform duration-500"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                        <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-1 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all">
-                          <div className="text-[11px] font-bold text-[#9D26FF] font-mono">
-                            {item.result}
-                          </div>
-                        </div>
                       </div>
-                      <div className="mt-2.5 px-0.5">
-                        <div className="text-xs font-bold text-[var(--foreground-heading)] truncate">
-                          {item.title}
+                      {/* Detached metric banner */}
+                      <div className="flex items-center justify-between px-3 py-2.5 border-t-2 border-[#9D26FF]/50 bg-[var(--card)]">
+                        <div className="flex-1 min-w-0 pr-2">
+                          <div className="text-xs font-bold text-[var(--foreground-heading)] truncate">{item.title}</div>
+                          <div className="text-[10px] text-[var(--foreground-muted)] truncate mt-0.5">{item.client}</div>
                         </div>
-                        <div className="text-[10px] text-[var(--foreground-muted)] mt-0.5">
-                          {item.client}
-                        </div>
+                        <div className="text-[11px] font-black text-[#9D26FF] font-mono text-right flex-shrink-0 leading-snug">{item.result}</div>
                       </div>
                     </div>
                   ))}
@@ -1375,9 +1374,10 @@ export default function PortfolioV2() {
                   <div
                     key={tile.id}
                     onClick={() => openModal(tile)}
-                    className="group cursor-pointer flex flex-col"
+                    className="group cursor-pointer flex flex-col rounded-2xl overflow-hidden border border-[var(--border)] group-hover:border-[#9D26FF] transition-all duration-300 shadow-lg hover:-translate-y-1 bg-[var(--card)]"
                   >
-                    <div className="relative w-full aspect-square rounded-2xl overflow-hidden bg-[var(--background-alt)] border border-[var(--border)] group-hover:border-[#9D26FF] transition-all duration-300 shadow-lg hover:-translate-y-1">
+                    {/* Image — fully clean */}
+                    <div className="relative w-full aspect-square overflow-hidden">
                       <Image
                         src={tile.image}
                         alt={tile.title}
@@ -1386,23 +1386,16 @@ export default function PortfolioV2() {
                         quality={90}
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/88 via-black/10 to-transparent" />
-                      <div className="absolute bottom-0 left-0 right-0 p-4 flex items-end justify-between">
-                        <div>
-                          <div className="text-xl font-black text-[#9D26FF] leading-none tracking-tight">
-                            {tile.metricValue}
-                          </div>
-                          <div className="text-[10px] text-white/70 mt-1 font-medium">{tile.metricSub}</div>
-                          <div className="text-[10px] text-white/50 mt-0.5 font-mono">{tile.client}</div>
-                        </div>
-                        <div className="w-7 h-7 rounded-full bg-[#9D26FF] text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                          <ArrowUpRight size={13} />
-                        </div>
-                      </div>
                     </div>
-                    <div className="mt-2.5 px-0.5">
-                      <div className="text-xs font-bold text-[var(--foreground-heading)]">
-                        {tile.title}
+                    {/* Detached metric banner */}
+                    <div className="flex items-center justify-between px-3.5 py-3 border-t-2 border-[#9D26FF]/50 bg-[var(--card)]">
+                      <div className="flex-1 min-w-0 pr-2">
+                        <div className="text-xs font-bold text-[var(--foreground-heading)] truncate">{tile.title}</div>
+                        <div className="text-[10px] text-[var(--foreground-muted)] truncate mt-0.5">{tile.client}</div>
+                      </div>
+                      <div className="text-right flex-shrink-0">
+                        <div className="text-base font-black text-[#9D26FF] leading-none tracking-tight">{tile.metricValue}</div>
+                        <div className="text-[9px] text-[var(--foreground-muted)] mt-0.5">{tile.metricSub}</div>
                       </div>
                     </div>
                   </div>
@@ -1435,9 +1428,10 @@ export default function PortfolioV2() {
                     <div
                       key={tile.id}
                       onClick={() => openModal(tile)}
-                      className="flex-shrink-0 w-64 sm:w-72 lg:w-80 cursor-pointer group flex flex-col"
+                      className="flex-shrink-0 w-64 sm:w-72 lg:w-80 cursor-pointer group flex flex-col rounded-2xl overflow-hidden border border-[var(--border)] group-hover:border-[#9D26FF] transition-all duration-300 shadow-lg hover:-translate-y-1 bg-[var(--card)]"
                     >
-                      <div className="relative w-full aspect-square rounded-2xl overflow-hidden bg-[var(--background-alt)] border border-[var(--border)] group-hover:border-[#9D26FF] transition-all duration-300 shadow-lg hover:-translate-y-1">
+                      {/* Image — fully clean */}
+                      <div className="relative w-full aspect-square overflow-hidden">
                         <Image
                           src={tile.image}
                           alt={tile.title}
@@ -1446,23 +1440,16 @@ export default function PortfolioV2() {
                           quality={90}
                           className="object-cover group-hover:scale-105 transition-transform duration-500"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/88 via-black/10 to-transparent" />
-                        <div className="absolute bottom-0 left-0 right-0 p-4 flex items-end justify-between">
-                          <div>
-                            <div className="text-xl font-black text-[#9D26FF] leading-none tracking-tight">
-                              {tile.metricValue}
-                            </div>
-                            <div className="text-[10px] text-white/70 mt-1 font-medium">{tile.metricSub}</div>
-                            <div className="text-[10px] text-white/50 mt-0.5 font-mono">{tile.client}</div>
-                          </div>
-                          <div className="w-7 h-7 rounded-full bg-[#9D26FF] text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                            <ArrowUpRight size={13} />
-                          </div>
-                        </div>
                       </div>
-                      <div className="mt-2.5 px-0.5">
-                        <div className="text-xs font-bold text-[var(--foreground-heading)] truncate">
-                          {tile.title}
+                      {/* Detached metric banner */}
+                      <div className="flex items-center justify-between px-4 py-3 border-t-2 border-[#9D26FF]/50 bg-[var(--card)]">
+                        <div className="flex-1 min-w-0 pr-2">
+                          <div className="text-xs font-bold text-[var(--foreground-heading)] truncate">{tile.title}</div>
+                          <div className="text-[10px] text-[var(--foreground-muted)] truncate mt-0.5">{tile.client}</div>
+                        </div>
+                        <div className="text-right flex-shrink-0">
+                          <div className="text-lg font-black text-[#9D26FF] leading-none tracking-tight">{tile.metricValue}</div>
+                          <div className="text-[9px] text-[var(--foreground-muted)] mt-0.5">{tile.metricSub}</div>
                         </div>
                       </div>
                     </div>
