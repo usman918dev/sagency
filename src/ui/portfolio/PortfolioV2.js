@@ -765,34 +765,34 @@ export default function PortfolioV2() {
             };
           });
 
-          const fetchedListings = mapped.filter(t => 
-            t.subCategory === 'amazon-listing-images' || 
-            t.subCategory === 'listing-images' || 
+          const fetchedListings = mapped.filter(t =>
+            t.subCategory === 'amazon-listing-images' ||
+            t.subCategory === 'listing-images' ||
             (t.service === 'Graphic Design' && t.subCategory !== 'amazon-campaigns')
           );
 
-          const fetchedPpc = mapped.filter(t => 
-            (t.subCategory === 'amazon-campaigns' || 
-             t.subCategory === 'ppc' || 
-             t.service === 'Amazon PPC' || 
-             (t.tag && t.tag.toUpperCase().includes('PPC'))) &&
+          const fetchedPpc = mapped.filter(t =>
+            (t.subCategory === 'amazon-campaigns' ||
+              t.subCategory === 'ppc' ||
+              t.service === 'Amazon PPC' ||
+              (t.tag && t.tag.toUpperCase().includes('PPC'))) &&
             t.subCategory !== 'amazon-listing-images' &&
             t.subCategory !== 'a-plus-content' &&
             t.subCategory !== 'amazon-brand-store'
           );
 
-          const fetchedAplus = mapped.filter(t => 
-            t.subCategory === 'a-plus-content' || 
+          const fetchedAplus = mapped.filter(t =>
+            t.subCategory === 'a-plus-content' ||
             t.subCategory === 'amazon-brand-store'
           );
 
-          const fetchedWebdev = mapped.filter(t => 
-            t.service === 'Web Development' || 
+          const fetchedWebdev = mapped.filter(t =>
+            t.service === 'Web Development' ||
             t.subCategory === 'web-development'
           );
 
-          const fetchedVideo = mapped.filter(t => 
-            t.service === 'Video & Motion Design' || 
+          const fetchedVideo = mapped.filter(t =>
+            t.service === 'Video & Motion Design' ||
             t.subCategory === 'video-motion-design'
           );
 
@@ -1251,7 +1251,7 @@ export default function PortfolioV2() {
             <SectionHeader
               badge="Listing Images & Creatives"
               title="Conversion-focused listing images"
-              description="Visual storytelling, high-resolution 2000×2000px main stacks & 1418×1109px product graphics that communicate value before the first click — driving higher CTR and conversion rates."
+              description="Strategic visual storytelling and high-impact product graphics engineered to showcase key benefits, overcome buyer objections, and maximize click-through and conversion rates."
             />
 
             {activeFilter === "listing" ? (
@@ -1365,7 +1365,7 @@ export default function PortfolioV2() {
             <SectionHeader
               badge="A+ Content · Brand Store"
               title="Brand content that drives repeat revenue"
-              description="Enhanced brand content and storefronts that build trust, increase glance views, and drive repeat purchases — optimized for 2000×2000px high-res modules."
+              description="Enhanced brand content and storefronts that build trust, increase glance views, and drive repeat purchases"
             />
 
             {activeFilter === "aplus" ? (

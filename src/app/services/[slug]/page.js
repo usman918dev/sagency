@@ -7,9 +7,12 @@
  */
 import { servicesData, getServiceBySlug } from "@/lib/servicesData";
 import Hero from "@/components/services/Hero";
-import ServiceDescription from "@/components/services/ServiceDescription";
+import MetricsRow from "@/components/services/MetricsRow";
+import ServiceOverview from "@/components/services/ServiceOverview";
 import FeaturesList from "@/components/services/FeaturesList";
+import ProcessSection from "@/components/services/ProcessSection";
 import PricingPlans from "@/components/services/PricingPlans";
+import ServiceFAQ from "@/components/services/ServiceFAQ";
 import CTA from "@/components/services/CTA";
 import AmazonPpcProvenResults from "@/components/services/AmazonPpcProvenResults";
 import {
@@ -183,25 +186,48 @@ const ServicePage = async ({ params }) => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      {/* 1. Hero */}
       <Hero
         title={service.title}
+        subtitle={service.subtitle}
         coverImage={service.coverImage}
         icon={service.icon}
         badge={service.badge}
       />
-      <ServiceDescription description={service.description} />
-      
+
+      {/* 2. Stats/Metrics Row */}
+      <MetricsRow metrics={service.metrics} />
+
+      {/* 3. Service Overview */}
+      <ServiceOverview
+        description={service.description}
+        techStack={service.techStack}
+        mockupSlot={service.mockupSlot}
+      />
+
       {isAmazonPpc && (
-        <div className="g-px max-w-7xl mx-auto">
+        <div className="g-px max-w-7xl mx-auto py-8">
           <AmazonPpcProvenResults />
         </div>
       )}
 
+      {/* 4. Capabilities / Deliverables Grid */}
       <FeaturesList features={service.features} />
+
+      {/* 5. Process Timeline */}
+      <ProcessSection process={service.process} />
+
+      {/* 6. Pricing */}
       <PricingPlans plans={service.pricingPlans} serviceTitle={service.title} />
+
+      {/* 7. FAQ Accordion */}
+      <ServiceFAQ faqs={service.faqs} />
+
+      {/* 8. CTA Band */}
       <CTA />
     </main>
   );
 };
 
 export default ServicePage;
+

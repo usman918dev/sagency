@@ -1,9 +1,9 @@
 "use client";
 import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  CheckCircle2, Film, Zap, Sparkles, Play, ShoppingBag, 
-  TrendingUp, Code, Search, Palette, Globe, BarChart 
+import {
+  CheckCircle2, Film, Zap, Sparkles, Play, ShoppingBag,
+  TrendingUp, Code, Search, Palette, Globe, BarChart
 } from 'lucide-react';
 
 const iconMap = {
@@ -46,7 +46,7 @@ const FeaturesList = ({ features }) => {
   };
 
   return (
-    <section className="py-24 px-6 bg-[var(--background)]">
+    <section className="py-20 sm:py-24 px-6 bg-[var(--background)]">
       <div className="max-w-7xl mx-auto">
         <motion.div
           className="text-center mb-16"
@@ -55,14 +55,17 @@ const FeaturesList = ({ features }) => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-[#9D26FF] text-xs font-bold uppercase tracking-widest mb-3">Derixio Capabilities</p>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-[var(--foreground-heading)]">What We Deliver</h2>
-          <p className="text-[var(--foreground-muted)] mt-4 max-w-2xl mx-auto leading-relaxed">
-            A comprehensive suite of capabilities designed to provide maximum performance and measurable return on investment.
+          <p className="text-[#9D26FF] text-xs font-bold uppercase tracking-widest mb-3">DERIXIO CAPABILITIES</p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[var(--foreground-heading)]">
+            Included Deliverables & Features
+          </h2>
+          <p className="text-[var(--foreground-muted)] mt-4 max-w-2xl mx-auto leading-relaxed text-sm sm:text-base">
+            Every service package is built with end-to-end deliverables designed to drive performance and measurable return on investment.
           </p>
         </motion.div>
+
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -70,22 +73,32 @@ const FeaturesList = ({ features }) => {
         >
           {features.map((feature, index) => {
             const IconComponent = (feature.icon && iconMap[feature.icon]) ? iconMap[feature.icon] : CheckCircle2;
-            
+            const tagLabel = feature.tag || `Deliverable #${index + 1}`;
+
             return (
               <motion.div
                 key={index}
-                className="bg-[var(--card)] backdrop-blur-md border border-[var(--border)] rounded-3xl p-8 text-center group transition-all duration-300 hover:border-[#9D26FF]/60 hover:bg-[var(--card)] shadow-xl flex flex-col justify-between h-full"
+                className="bg-[var(--card)] backdrop-blur-md border border-[var(--border)] rounded-3xl p-6 sm:p-8 text-left group transition-all duration-300 hover:border-[#9D26FF]/60 hover:bg-[var(--card)] shadow-xl flex flex-col justify-between h-full"
                 variants={itemVariants}
-                whileHover={{ y: -8, scale: 1.02, transition: { type: 'spring', stiffness: 300 } }}
+                whileHover={{ y: -6, transition: { type: 'spring', stiffness: 300 } }}
               >
                 <div>
-                  <div className="flex justify-center mb-6">
-                    <div className="w-16 h-16 bg-[var(--background-alt)] rounded-2xl flex items-center justify-center border border-[var(--border)] group-hover:border-[#9D26FF] transition-all duration-300 shadow-md group-hover:scale-110 group-hover:bg-gradient-to-r group-hover:from-[#9D26FF] group-hover:to-[#7C3AED]">
-                      <IconComponent className="w-8 h-8 text-[#9D26FF] group-hover:text-white transition-colors duration-300" />
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="w-12 h-12 bg-[var(--background-alt)] rounded-2xl flex items-center justify-center border border-[var(--border)] group-hover:border-[#9D26FF] transition-all duration-300 shadow-md group-hover:scale-105 group-hover:bg-gradient-to-r group-hover:from-[#9D26FF] group-hover:to-[#7C3AED]">
+                      <IconComponent className="w-6 h-6 text-[#9D26FF] group-hover:text-white transition-colors duration-300" />
                     </div>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-[var(--foreground-muted)] px-3 py-1 rounded-full bg-[var(--background-alt)] border border-[var(--border)] group-hover:border-[#9D26FF]/40 group-hover:text-[#9D26FF] transition-colors">
+                      {tagLabel}
+                    </span>
                   </div>
-                  <h3 className="text-xl font-bold text-[var(--foreground-heading)] mb-3">{feature.title}</h3>
-                  <p className="text-[var(--foreground-muted)] text-sm leading-relaxed">{feature.description}</p>
+
+                  <h3 className="text-lg sm:text-xl font-bold text-[var(--foreground-heading)] mb-3 group-hover:text-[#9D26FF] transition-colors">
+                    {feature.title}
+                  </h3>
+
+                  <p className="text-[var(--foreground-muted)] text-xs sm:text-sm leading-relaxed">
+                    {feature.description}
+                  </p>
                 </div>
               </motion.div>
             );
