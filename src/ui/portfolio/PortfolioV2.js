@@ -905,15 +905,17 @@ export default function PortfolioV2() {
           </div>
 
           {/* ── FILTER TABS ── */}
-          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5">
+          {/* ── FILTER TABS ── */}
+          <div className="flex overflow-x-auto flex-nowrap sm:flex-wrap items-center justify-start sm:justify-center gap-2 sm:gap-2.5 pb-2 md:pb-0 px-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {FILTER_TABS.map((tab) => (
               <button
                 key={tab.id}
                 id={`portfolio2-filter-${tab.id}`}
                 onClick={() => setActiveFilter(tab.id)}
-                className={`px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 whitespace-nowrap cursor-pointer ${activeFilter === tab.id
-                  ? "bg-[#9D26FF] text-white shadow-lg shadow-[#9D26FF]/25 scale-[1.03]"
-                  : "bg-[var(--card)] text-[var(--foreground-muted)] border border-[var(--border)] hover:border-[#9D26FF] hover:text-[#9D26FF]"
+                // whitespace-nowrap on the button is already perfectly keeping the text from breaking!
+                className={`px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 whitespace-nowrap cursor-pointer shrink-0 ${activeFilter === tab.id
+                    ? "bg-[#9D26FF] text-white shadow-lg shadow-[#9D26FF]/25 scale-[1.03]"
+                    : "bg-[var(--card)] text-[var(--foreground-muted)] border border-[var(--border)] hover:border-[#9D26FF] hover:text-[#9D26FF]"
                   }`}
               >
                 {tab.label}
@@ -1319,7 +1321,7 @@ export default function PortfolioV2() {
                     <div
                       key={item.id}
                       onClick={() => openModal(item)}
-                      className="flex-shrink-0 w-48 sm:w-56 lg:w-64 cursor-pointer group rounded-2xl overflow-hidden border border-[var(--border)] group-hover:border-[#9D26FF] transition-all duration-300 shadow-lg bg-[var(--card)]"
+                      className="flex-shrink-0 w-64 sm:w-72 lg:w-80 cursor-pointer group flex flex-col rounded-2xl overflow-hidden border border-[var(--border)] group-hover:border-[#9D26FF] transition-all duration-300 shadow-lg hover:-translate-y-1 bg-[var(--card)]"
                     >
                       {/* Image — fully clean */}
                       <div className="relative w-full aspect-[1418/1109] overflow-hidden">
@@ -1379,10 +1381,10 @@ export default function PortfolioV2() {
                     {/* Image — fully clean */}
                     <div className="relative w-full aspect-[1418/1109] overflow-hidden">
                       <Image
-                        src={tile.image}
-                        alt={tile.title}
+                        src={item.image}
+                        alt={item.title}
                         fill
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                        sizes="(max-width: 640px) 256px, 320px"
                         quality={90}
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
                       />
@@ -1431,7 +1433,7 @@ export default function PortfolioV2() {
                       className="flex-shrink-0 w-64 sm:w-72 lg:w-80 cursor-pointer group flex flex-col rounded-2xl overflow-hidden border border-[var(--border)] group-hover:border-[#9D26FF] transition-all duration-300 shadow-lg hover:-translate-y-1 bg-[var(--card)]"
                     >
                       {/* Image — fully clean */}
-                      <div className="relative w-full aspect-square overflow-hidden">
+                      <div className="relative w-full aspect-[1418/1109] overflow-hidden">
                         <Image
                           src={tile.image}
                           alt={tile.title}

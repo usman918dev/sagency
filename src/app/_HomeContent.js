@@ -7,7 +7,7 @@ import WhyChooseUs from '@/ui/whychooseus/WhyChooseUs';
 import Testimonials from '@/ui/testinomials/Testinomails';
 import Button, { SecondButton } from '@/ui/btn/Button';
 import CallToAction, { CallToActionS } from '@/ui/cta/Cta';
-import PortfolioTwo from '@/ui/portfolio/PortfolioTwo';
+import HomePortfolioCarousel from '@/ui/portfolio/HomePortfolioCarousel';
 import ServicesGrid from '@/ui/servicesection/ServicesSectionMini';
 import { Sparkles } from 'lucide-react';
 import DigitalAtmosphereBackground from '@/ui/hero/DigitalAtmosphereBackground';
@@ -246,7 +246,7 @@ const HeroSection = () => {
       <div>
         <ProcessSection />
         <WhyChooseUs />
-        <PortfolioTwo limit={6} />
+        <HomePortfolioCarousel limit={6} />
         <Testimonials />
         <CallToAction />
       </div>
