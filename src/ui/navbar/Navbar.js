@@ -125,7 +125,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Nav Links */}
-        <nav className="hidden lg:flex items-center space-x-6 lg:ml-16 xl:ml-28">
+        <nav className="hidden lg:flex items-center space-x-1 lg:space-x-2 xl:space-x-3 lg:ml-8 xl:ml-16">
           {navLinks.map((link, index) => (
             <div key={index} className="relative group">
               {link.dropdown ? (
@@ -137,12 +137,12 @@ export default function Navbar() {
                 >
                   <Link
                     href={link.href}
-                    className={`relative flex items-center px-4 py-2 text-sm font-semibold transition-all duration-300 ease-in-out ${isLinkActive(link.href) ? "text-[#9D26FF]" : "text-[var(--foreground)]"
+                    className={`relative flex items-center px-3.5 py-1.5 text-sm font-semibold transition-all duration-300 ease-in-out ${isLinkActive(link.href) ? "text-[#9D26FF]" : "text-[var(--foreground)]"
                       } hover:text-[#9D26FF] group-hover:bg-[var(--background-alt)] rounded-lg`}
                   >
                     {link.name}
                     <ChevronDown
-                      size={16}
+                      size={15}
                       className={`ml-1 transition-all duration-300 ${servicesOpen && link.name === "Services" ? "rotate-180 text-[#9D26FF]" : "rotate-0 text-[var(--foreground-muted)]"
                         }`}
                     />
@@ -152,7 +152,7 @@ export default function Navbar() {
               ) : (
                 <Link
                   href={link.href}
-                  className={`relative block px-4 py-2 text-sm font-semibold transition-all duration-300 ease-in-out ${isLinkActive(link.href) ? "text-[#9D26FF]" : "text-[var(--foreground)]"
+                  className={`relative block px-3.5 py-1.5 text-sm font-semibold transition-all duration-300 ease-in-out ${isLinkActive(link.href) ? "text-[#9D26FF]" : "text-[var(--foreground)]"
                     } hover:text-[#9D26FF] group-hover:bg-[var(--background-alt)] rounded-lg`}
                 >
                   {link.name}

@@ -858,7 +858,7 @@ export default function PortfolioV2() {
   const show = (id) => activeFilter === "all" || activeFilter === id;
 
   return (
-    <section className="w-full relative isolate overflow-hidden bg-[var(--background)] text-[var(--foreground)] transition-colors duration-300">
+    <section className=" w-full relative isolate overflow-hidden bg-[var(--background)] text-[var(--foreground)] transition-colors duration-300">
 
       {/* ── Background atmosphere glow ── */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[700px] bg-[#9D26FF]/6 rounded-full blur-[220px] pointer-events-none" />
@@ -866,61 +866,80 @@ export default function PortfolioV2() {
       {/* ═══════════════════════════════════════════════════════════════════════ */}
       {/* HERO SECTION                                                           */}
       {/* ═══════════════════════════════════════════════════════════════════════ */}
-      <div className="w-full pt-24 sm:pt-28 pb-16 px-4 sm:px-6 lg:px-8 bg-agenko-grid border-b border-[var(--border)] relative z-10">
-        <div className="max-w-7xl mx-auto">
+      <div className="w-full pt-8 sm:pt-12 lg:pt-16 pb-16 sm:pb-20 px-4 sm:px-6 lg:px-8 bg-agenko-grid border-b border-[var(--border)] relative z-10 overflow-hidden">
+
+        {/* Decorative purple orbs */}
+        <div className="absolute -top-32 -left-32 w-[500px] h-[500px] bg-[#9D26FF]/10 rounded-full blur-[140px] pointer-events-none" />
+        <div className="absolute -top-20 -right-20 w-[400px] h-[400px] bg-[#9D26FF]/8 rounded-full blur-[120px] pointer-events-none" />
+
+        <div className="max-w-5xl mx-auto relative z-10">
 
           {/* Badge */}
-          <div className="flex justify-center mb-6">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--background-alt)] border border-[var(--border)] text-[#9D26FF] text-xs font-mono font-bold uppercase tracking-widest shadow-sm">
-              <Sparkles size={13} />
-              <span>Our Work</span>
+          <div className="flex justify-center mb-5 sm:mb-6">
+            <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#9D26FF]/10 border border-[#9D26FF]/30 text-[#9D26FF] text-xs font-mono font-bold uppercase tracking-widest shadow-lg shadow-[#9D26FF]/10">
+              <Sparkles size={12} className="animate-pulse" />
+              <span>Our Work · 150+ Projects Delivered</span>
             </div>
           </div>
 
-          {/* H1 */}
-          <h1 className="text-4xl sm:text-5xl lg:text-[3.75rem] text-center text-[var(--foreground-heading)] leading-[1.1] mb-5 tracking-tight">
-            <span className="font-light">Every partner,</span>{" "}
-            <span className="font-black text-[#9D26FF]">one growth story.</span>
+          {/* H1 — big, dramatic, gradient */}
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl text-center font-black leading-[1.12] tracking-tight mb-5 sm:mb-6">
+            {/* "Every partner," — light weight like other pages */}
+            <span className="font-light text-[var(--foreground-heading)] opacity-90">Every partner,</span>
+            <br className="leading-[1.4]" />
+            <span
+              className="inline-block"
+              style={{
+                background: "linear-gradient(135deg, #9D26FF 0%, #C084FC 50%, #9D26FF 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+            >
+              one growth story.
+            </span>
           </h1>
 
-          <p className="text-center text-[var(--foreground-muted)] text-base sm:text-lg max-w-2xl mx-auto mb-12 leading-relaxed">
-            From Amazon PPC turnarounds to listing image transformations and full brand experiences — here is proof of what measurable growth looks like.
+          <p className="text-center text-[var(--foreground-muted)] text-base sm:text-lg max-w-xl mx-auto mb-10 sm:mb-12 leading-relaxed">
+            From Amazon PPC turnarounds to listing image transformations — here is proof of what{" "}
+            <span className="text-[var(--foreground)] font-semibold">measurable growth</span> looks like.
           </p>
 
-          {/* ── STATS BAR ── */}
-          {/* gap-px technique: parent bg shows through the 1px gaps as dividers */}
-          <div className="max-w-3xl mx-auto mb-12 rounded-2xl overflow-hidden border border-[var(--border)] shadow-2xl bg-[var(--border)]">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-px">
-              {HERO_STATS.map((s, i) => (
-                <div key={i} className="bg-[var(--card)] py-7 px-5 text-center">
-                  <div className="text-2xl sm:text-3xl font-black text-[#9D26FF] tracking-tight mb-1.5 leading-none">
-                    {s.value}
-                  </div>
-                  <div className="text-xs text-[var(--foreground-muted)] font-medium tracking-wide">
-                    {s.label}
-                  </div>
+          {/* ── STATS ── content-aware inline cards, not strict equal grid */}
+          <div className="flex flex-wrap items-stretch justify-center gap-3 sm:gap-4 mb-10 sm:mb-12">
+            {HERO_STATS.map((s, i) => (
+              <div
+                key={i}
+                className="relative rounded-2xl bg-[var(--card)] border border-[var(--border)] hover:border-[#9D26FF]/50 py-5 sm:py-6 px-6 sm:px-8 text-center overflow-hidden group transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-[#9D26FF]/15 hover:shadow-2xl min-w-[120px]"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-[#9D26FF]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                <div className="text-2xl sm:text-3xl font-black text-[#9D26FF] tracking-tight mb-1 leading-none relative z-10">
+                  {s.value}
                 </div>
-              ))}
-            </div>
+                <div className="text-xs text-[var(--foreground-muted)] font-medium tracking-wide relative z-10 whitespace-nowrap">
+                  {s.label}
+                </div>
+              </div>
+            ))}
           </div>
 
-          {/* ── FILTER TABS ── */}
-          {/* ── FILTER TABS ── */}
-          <div className="flex overflow-x-auto flex-nowrap sm:flex-wrap items-center justify-start sm:justify-center gap-2 sm:gap-2.5 pb-2 md:pb-0 px-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-            {FILTER_TABS.map((tab) => (
-              <button
-                key={tab.id}
-                id={`portfolio2-filter-${tab.id}`}
-                onClick={() => setActiveFilter(tab.id)}
-                // whitespace-nowrap on the button is already perfectly keeping the text from breaking!
-                className={`px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 whitespace-nowrap cursor-pointer shrink-0 ${activeFilter === tab.id
-                    ? "bg-[#9D26FF] text-white shadow-lg shadow-[#9D26FF]/25 scale-[1.03]"
+          {/* ── FILTER TABS ── horizontally scrollable on mobile, centered wrap on lg */}
+          <div className="-mx-4 sm:-mx-6 lg:mx-0 px-4 sm:px-6 lg:px-0 pb-2">
+            <div className="flex items-center gap-2 overflow-x-auto flex-nowrap lg:flex-wrap lg:justify-center [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+              {FILTER_TABS.map((tab) => (
+                <button
+                  key={tab.id}
+                  id={`portfolio2-filter-${tab.id}`}
+                  onClick={() => setActiveFilter(tab.id)}
+                  className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 whitespace-nowrap cursor-pointer shrink-0 ${activeFilter === tab.id
+                    ? "bg-[#9D26FF] text-white shadow-lg shadow-[#9D26FF]/30 scale-105"
                     : "bg-[var(--card)] text-[var(--foreground-muted)] border border-[var(--border)] hover:border-[#9D26FF] hover:text-[#9D26FF]"
-                  }`}
-              >
-                {tab.label}
-              </button>
-            ))}
+                    }`}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -1381,8 +1400,8 @@ export default function PortfolioV2() {
                     {/* Image — fully clean */}
                     <div className="relative w-full aspect-[1418/1109] overflow-hidden">
                       <Image
-                        src={item.image}
-                        alt={item.title}
+                        src={tile.image}
+                        alt={tile.title}
                         fill
                         sizes="(max-width: 640px) 256px, 320px"
                         quality={90}
