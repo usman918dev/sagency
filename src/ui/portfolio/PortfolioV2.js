@@ -3,9 +3,9 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Play, Sparkles, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
-import ProjectShowcaseModal from "@/components/portfolio/ProjectShowcaseModal";
 
 // ─── FILTER TABS ──────────────────────────────────────────────────────────────
 
@@ -46,160 +46,7 @@ const FEATURED_PPC = {
 
 // ─── LISTING IMAGES ───────────────────────────────────────────────────────────
 
-const LISTING_IMAGES = [
-  {
-    id: "li1",
-    title: "Nova Shampoo",
-    client: "Nova Beauty",
-    result: "CTR +64% after redesign",
-    tag: "AMAZON · LISTING IMAGES",
-    image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725904601_gmv11.jpg",
-    beforeImage: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725901546_va8bo.jpg",
-    description: "A premium 7-image Amazon main stack with high-impact lifestyle imagery, infographic benefit callouts, ingredient highlights, and customer trust badges.",
-    problem: "Low listing conversion rates due to plain product photos that failed to highlight key natural ingredients and hair nourishment benefits.",
-    solution: "Designed 7-image Amazon main stack with high-impact lifestyle imagery, infographic benefit callouts, ingredient highlights, and customer trust badges.",
-    gallery: [
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786726066975_rb9oz.png",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725904601_gmv11.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725883425_focvl.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725887393_o5p2t.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725891182_5scmx.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725894412_2x0et.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725897414_xr6sf.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725901546_va8bo.jpg"
-    ],
-  },
-  {
-    id: "li2",
-    title: "Avocado Hair & Skin Oil",
-    client: "Organic Avocado Care",
-    result: "Conversion doubled in 30 days",
-    tag: "AMAZON · LISTING IMAGES",
-    image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721788971_ktjnn.png",
-    description: "Full visual storytelling suite featuring step-by-step application graphics, purity certifications, before/after texture shots, and premium packaging callouts.",
-    problem: "Product was losing sales to competitors because buyers could not quickly understand the dual hair & skin application benefits.",
-    solution: "Created application graphics, purity certifications, before/after texture shots, and premium packaging callouts.",
-    gallery: [
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721788971_ktjnn.png",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721754953_zmk2v.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721758483_7xs23.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721762394_lnht2.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721765355_853wk.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721768671_dgplw.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721771546_370ae.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721774923_o590l.jpg"
-    ]
-  },
-  {
-    id: "li3",
-    title: "Anti-Hair Fall Shampoo",
-    client: "Mamaearth Care",
-    result: "+38% sessions after redesign",
-    tag: "AMAZON · LISTING IMAGES",
-    image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786718471342_owd8n.jpg",
-    description: "Photorealistic model lifestyle imagery with clear ingredient callouts (Rosemary & Biotin), clinical test proof points, and anti-hair fall benefit infographics.",
-    problem: "Overcrowded hair care category with generic listings failing to communicate anti-hair fall efficacy.",
-    solution: "Designed photorealistic model lifestyle imagery with Rosemary & Biotin callouts, clinical proof points, and benefit infographics.",
-    gallery: [
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786718471342_owd8n.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786718474665_56pbq.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786718454739_gn66s.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786718458010_wd04h.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786718461115_5fz00.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786718464508_zkjcn.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786718468556_ps5bs.jpg"
-    ]
-  },
-  {
-    id: "li4",
-    title: "Whistling Tea Kettle",
-    client: "Kitchen Craft",
-    result: "2.3× CVR with premium renders",
-    tag: "AMAZON · LISTING IMAGES",
-    image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786641401585_reges.jpg",
-    description: "Dark-mode luxury renders featuring steam dynamics, wood-grain texture closeups, stovetop compatibility infographics, and capacity measurements.",
-    problem: "Kitchenware listing lacked premium luxury feel and failed to showcase heat resistance and ergonomic handle features.",
-    solution: "Developed dark-mode luxury renders featuring steam dynamics, wood-grain texture closeups, stovetop compatibility infographics.",
-    gallery: [
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786641401585_reges.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786641376894_4bey6.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786641380374_hfjmy.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786641383722_fw6zt.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786641387591_vpo97.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786641391008_2fwll.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786641394603_efuvt.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786641398512_wex91.jpg"
-    ]
-  },
-  {
-    id: "li5",
-    title: "Hand Grip Strengthener",
-    client: "FitGrip Athletics",
-    result: "−41% return rate via infographic",
-    tag: "AMAZON · LISTING IMAGES",
-    image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556525233_rp9g8.jpg",
-    description: "High-contrast fitness infographics detailing 10-60kg tension settings, muscle targeting diagrams (forearms, wrist, fingers), and durability stress test visuals.",
-    problem: "Customers were confused about dial resistance adjustment levels and ergonomic grip size.",
-    solution: "Created high-contrast fitness infographics detailing 10-60kg tension settings and muscle targeting diagrams.",
-    gallery: [
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556525233_rp9g8.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556919929_pzqqk.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556495921_7cu1j.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556499559_ex0yo.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556503228_60lyp.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556506876_g1cfr.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556511622_vbndt.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556515103_qxk1u.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556518843_neund.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556522666_4gsr8.jpg"
-    ]
-  },
-  {
-    id: "li6",
-    title: "Vitamin C Powder",
-    client: "Pure Wellness",
-    result: "+22% conversion with trust badges",
-    tag: "AMAZON · LISTING IMAGES",
-    image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557199885_c5scd.png",
-    description: "Bright lifestyle imagery featuring drink mixing, scoop dosage callouts, immune defense benefit stack, and third-party lab testing badges.",
-    problem: "Supplement listing had poor visual trust and failed to communicate solubility and daily immunity dosage.",
-    solution: "Designed bright lifestyle imagery with drink mixing demos, dosage callouts, and third-party lab testing badges.",
-    gallery: [
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557199885_c5scd.png",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557170289_zj7lp.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557174400_lpz47.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557177775_zzuew.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557181417_21jjs.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557185023_2wt0r.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557188040_h5ase.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557191724_ufapy.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557195854_q09e6.jpg"
-    ]
-  },
-  {
-    id: "li7",
-    title: "Dry Body Brush",
-    client: "SkinCare Essentials",
-    result: "+3.1★ review sentiment shift",
-    tag: "AMAZON · LISTING IMAGES",
-    image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786625429845_kutez.jpg",
-    description: "Natural aesthetic graphics showing bristle closeup, body routine diagram, copper wire anti-bacterial benefits, and eco packaging.",
-    problem: "Skincare buyers needed clear evidence of bristle quality, ergonomic wood handle craft, and exfoliation routine guidance.",
-    solution: "Designed natural aesthetic graphics showing bristle closeup, body routine diagram, copper wire benefits, and eco packaging.",
-    gallery: [
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786625429845_kutez.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786625434065_n81ha.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786625394704_jg5pe.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786625398847_9vp0z.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786625403110_fh013.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786625408820_4khku.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786625414945_u5cym.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786625419599_j2p9u.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786625423419_0fwop.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786625427726_3c240.jpg"
-    ]
-  },
-];
+const LISTING_IMAGES = [];
 
 // ─── PPC TILES ────────────────────────────────────────────────────────────────
 
@@ -719,7 +566,7 @@ function SmallTile({ tile, onClick, scrollScreenshot = false }) {
 
 export default function PortfolioV2() {
   const [activeFilter, setActiveFilter] = useState("all");
-  const [selectedModal, setSelectedModal] = useState(null);
+  const router = useRouter();
 
   // Dynamic portfolio project states initialized with rich default fallbacks
   const [listingImages, setListingImages] = useState(LISTING_IMAGES);
@@ -810,41 +657,11 @@ export default function PortfolioV2() {
     loadDynamicProjects();
   }, []);
 
-  /* Open modal helper */
+  /* Open project page helper */
   const openModal = (tile) => {
-    let galleryList = [];
-    if (Array.isArray(tile.gallery) && tile.gallery.length > 0) {
-      galleryList = tile.gallery;
-    } else {
-      galleryList = [
-        tile.image,
-        tile.beforeImage,
-        ...(tile.extraImages || [])
-      ].filter(Boolean);
+    if (tile.id) {
+      router.push(`/portfolio/project/${tile.id}`);
     }
-
-    if (galleryList.length <= 1) {
-      galleryList = [
-        tile.image,
-        tile.beforeImage || "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725904601_gmv11.jpg",
-        "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725883425_focvl.jpg",
-        "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725887393_o5p2t.jpg",
-        "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721754953_zmk2v.jpg"
-      ].filter(Boolean);
-    }
-
-    setSelectedModal({
-      id: tile.id || `proj_${Date.now()}`,
-      title: tile.title,
-      categoryName: tile.tag || tile.categoryLabel || "Amazon Growth",
-      service: tile.tag || tile.categoryLabel || "Amazon Growth",
-      client: tile.client || "Amazon Brand Partner",
-      description: tile.description || tile.result || tile.results || "",
-      problem: tile.problem || "Inefficient listings or PPC strategy leading to high ACoS and lower conversion rates.",
-      solution: tile.solution || "Comprehensive brand redesign, high-impact listing graphics, and data-driven ad management.",
-      results: tile.results || tile.result || "Achieved measurable sales growth, ACoS reduction, and higher organic rank.",
-      gallery: galleryList,
-    });
   };
 
   /* Carousel scroll helper */
@@ -1067,7 +884,7 @@ export default function PortfolioV2() {
 
                 {/* BEFORE / AFTER LISTING TILE — detached banner */}
                 <div
-                  onClick={() => openModal(LISTING_IMAGES[0])}
+                  onClick={() => LISTING_IMAGES[0] && openModal(LISTING_IMAGES[0])}
                   className="flex flex-col cursor-pointer group rounded-3xl overflow-hidden border border-[var(--border)] hover:border-[#9D26FF] transition-all duration-300 shadow-xl hover:-translate-y-1 bg-[var(--card)]"
                 >
                   {/* Split 50/50 image — clean, no overlays */}
@@ -1092,7 +909,7 @@ export default function PortfolioV2() {
                     {/* After */}
                     <div className="w-1/2 relative overflow-hidden border-l-2 border-[#9D26FF]">
                       <Image
-                        src={LISTING_IMAGES[0].image}
+                        src={LISTING_IMAGES[0]?.image || "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725904601_gmv11.jpg"}
                         alt="After listing redesign"
                         fill
                         className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -1677,15 +1494,7 @@ export default function PortfolioV2() {
               {videoTiles.map((vid) => (
                 <div
                   key={vid.id}
-                  onClick={() =>
-                    setSelectedModal({
-                      title: vid.title,
-                      categoryLabel: vid.tag,
-                      description: `${vid.description} — Result: ${vid.result}`,
-                      image: vid.thumbnail,
-                      mediaType: "video",
-                    })
-                  }
+                  onClick={() => vid.id && router.push(`/portfolio/project/${vid.id}`)}
                   className="group relative rounded-3xl overflow-hidden cursor-pointer border border-[var(--border)] hover:border-[#9D26FF] transition-all duration-300 shadow-xl hover:-translate-y-1"
                 >
                   {/* Thumbnail + play */}
@@ -1875,12 +1684,7 @@ export default function PortfolioV2() {
         </div>
       </div>
 
-      {/* Project detail modal */}
-      <ProjectShowcaseModal
-        project={selectedModal}
-        isOpen={Boolean(selectedModal)}
-        onClose={() => setSelectedModal(null)}
-      />
+      {/* Project detail modal removed — cards now navigate to /portfolio/project/[id] */}
     </section>
   );
 }

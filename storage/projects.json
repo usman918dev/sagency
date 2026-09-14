@@ -15,18 +15,18 @@
     "status": "Published",
     "displayOrder": 0,
     "gallery": [
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786726066975_rb9oz.png",
       "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725904601_gmv11.jpg",
       "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725883425_focvl.jpg",
       "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725887393_o5p2t.jpg",
       "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725891182_5scmx.jpg",
       "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725894412_2x0et.jpg",
       "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725897414_xr6sf.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725901546_va8bo.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786726066975_rb9oz.png"
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725901546_va8bo.jpg"
     ],
     "tags": [],
-    "createdAt": "2026-09-06T17:50:37.811+00:00",
-    "updatedAt": "2026-09-06T17:50:37.811+00:00",
+    "createdAt": "2026-09-14T17:09:49.525+00:00",
+    "updatedAt": "2026-09-14T17:09:49.525+00:00",
     "mediaType": "image",
     "width": 0,
     "height": 0,
@@ -55,12 +55,20 @@
     "videoFile": "",
     "mediaItems": [
       {
+        "id": "media_1786726068685_0_s1sy",
+        "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786726066975_rb9oz.png",
+        "isCover": true,
+        "fileSize": 2305586,
+        "mediaType": "image",
+        "displayOrder": 0
+      },
+      {
         "id": "media_1786725906521_6_q4kv",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725904601_gmv11.jpg",
         "isCover": false,
         "fileSize": 1377206,
         "mediaType": "image",
-        "displayOrder": 0
+        "displayOrder": 1
       },
       {
         "id": "media_1786725885353_0_ghgu",
@@ -68,7 +76,7 @@
         "isCover": false,
         "fileSize": 2065187,
         "mediaType": "image",
-        "displayOrder": 1
+        "displayOrder": 2
       },
       {
         "id": "media_1786725889382_1_n47n",
@@ -76,7 +84,7 @@
         "isCover": false,
         "fileSize": 1872454,
         "mediaType": "image",
-        "displayOrder": 2
+        "displayOrder": 3
       },
       {
         "id": "media_1786725893168_2_akmk",
@@ -84,7 +92,7 @@
         "isCover": false,
         "fileSize": 1604526,
         "mediaType": "image",
-        "displayOrder": 3
+        "displayOrder": 4
       },
       {
         "id": "media_1786725896159_3_dtio",
@@ -92,7 +100,7 @@
         "isCover": false,
         "fileSize": 1344807,
         "mediaType": "image",
-        "displayOrder": 4
+        "displayOrder": 5
       },
       {
         "id": "media_1786725899227_4_pgxn",
@@ -100,21 +108,13 @@
         "isCover": false,
         "fileSize": 1474776,
         "mediaType": "image",
-        "displayOrder": 5
+        "displayOrder": 6
       },
       {
         "id": "media_1786725903328_5_16s0",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725901546_va8bo.jpg",
         "isCover": false,
         "fileSize": 2058635,
-        "mediaType": "image",
-        "displayOrder": 6
-      },
-      {
-        "id": "media_1786726068685_0_s1sy",
-        "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786726066975_rb9oz.png",
-        "isCover": true,
-        "fileSize": 2305586,
         "mediaType": "image",
         "displayOrder": 7
       }
@@ -126,7 +126,7 @@
     "problem": "",
     "solution": "",
     "beforeImage": "",
-    "tag": "osm"
+    "tag": "Nova Beauty"
   },
   {
     "id": "proj_1788346338166_5mggx",
@@ -145,15 +145,15 @@
     "displayOrder": 0,
     "gallery": [
       "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1788346264206_xk9tv.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1788346273740_5gy1y.jpg",
       "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1788346278137_h57fi.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1788346273740_5gy1y.jpg",
       "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1788346281420_05oz7.jpg",
       "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1788346284162_uuice.jpg",
       "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1788346286946_308id.jpg"
     ],
     "tags": [],
-    "createdAt": "2026-09-02T10:52:18.166+00:00",
-    "updatedAt": "2026-09-02T10:52:18.166+00:00",
+    "createdAt": "2026-09-14T16:00:53.734+00:00",
+    "updatedAt": "2026-09-14T16:00:53.734+00:00",
     "mediaType": "image",
     "width": 0,
     "height": 0,
@@ -190,18 +190,18 @@
         "displayOrder": 0
       },
       {
-        "id": "media_1788346277528_0_q4s5",
-        "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1788346273740_5gy1y.jpg",
-        "isCover": false,
-        "fileSize": 1902452,
-        "mediaType": "image",
-        "displayOrder": 1
-      },
-      {
         "id": "media_1788346280908_1_n2te",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1788346278137_h57fi.jpg",
         "isCover": false,
         "fileSize": 1976975,
+        "mediaType": "image",
+        "displayOrder": 1
+      },
+      {
+        "id": "media_1788346277528_0_q4s5",
+        "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1788346273740_5gy1y.jpg",
+        "isCover": false,
+        "fileSize": 1902452,
         "mediaType": "image",
         "displayOrder": 2
       },
@@ -232,12 +232,12 @@
     ],
     "coverImage": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1788346264206_xk9tv.jpg",
     "mediaCount": 6,
-    "metricValue": null,
-    "metricSub": null,
-    "problem": null,
-    "solution": null,
-    "beforeImage": null,
-    "tag": null
+    "metricValue": "",
+    "metricSub": "",
+    "problem": "",
+    "solution": "",
+    "beforeImage": "",
+    "tag": ""
   },
   {
     "id": "proj_1786721837342_oh9ah",
@@ -247,7 +247,7 @@
     "categorySlug": "amazon-listing-images",
     "categoryName": "Amazon Listing Images",
     "subCategory": "amazon-listing-images",
-    "image": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721788971_ktjnn.png",
+    "image": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721758483_7xs23.jpg",
     "projectUrl": "",
     "client": "",
     "featured": false,
@@ -265,14 +265,14 @@
       "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721788971_ktjnn.png"
     ],
     "tags": [],
-    "createdAt": "2026-08-14T15:37:17.342+00:00",
-    "updatedAt": "2026-08-14T15:37:17.342+00:00",
+    "createdAt": "2026-09-14T15:58:11.822+00:00",
+    "updatedAt": "2026-09-14T15:58:11.822+00:00",
     "mediaType": "image",
     "width": 0,
     "height": 0,
     "aspectRatio": "auto",
     "fileSize": 0,
-    "thumbnail": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721788971_ktjnn.png",
+    "thumbnail": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721758483_7xs23.jpg",
     "techStack": [
       "Next.js",
       "React",
@@ -305,7 +305,7 @@
       {
         "id": "media_1786721760171_1_g4zx",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721758483_7xs23.jpg",
-        "isCover": false,
+        "isCover": true,
         "fileSize": 1484444,
         "mediaType": "image",
         "displayOrder": 1
@@ -353,20 +353,20 @@
       {
         "id": "media_1786721790689_0_3wit",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721788971_ktjnn.png",
-        "isCover": true,
+        "isCover": false,
         "fileSize": 1994183,
         "mediaType": "image",
         "displayOrder": 7
       }
     ],
-    "coverImage": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721788971_ktjnn.png",
+    "coverImage": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721758483_7xs23.jpg",
     "mediaCount": 8,
-    "metricValue": null,
-    "metricSub": null,
-    "problem": null,
-    "solution": null,
-    "beforeImage": null,
-    "tag": null
+    "metricValue": "",
+    "metricSub": "",
+    "problem": "",
+    "solution": "",
+    "beforeImage": "",
+    "tag": ""
   },
   {
     "id": "proj_1786718660672_tyojs",
@@ -393,8 +393,8 @@
       "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786718471342_owd8n.jpg"
     ],
     "tags": [],
-    "createdAt": "2026-08-14T14:44:20.672+00:00",
-    "updatedAt": "2026-08-14T14:44:20.672+00:00",
+    "createdAt": "2026-09-14T13:36:24.99+00:00",
+    "updatedAt": "2026-09-14T13:36:24.99+00:00",
     "mediaType": "image",
     "width": 0,
     "height": 0,
@@ -481,12 +481,114 @@
     ],
     "coverImage": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786718471342_owd8n.jpg",
     "mediaCount": 7,
-    "metricValue": null,
-    "metricSub": null,
-    "problem": null,
-    "solution": null,
-    "beforeImage": null,
-    "tag": null
+    "metricValue": "",
+    "metricSub": "",
+    "problem": "",
+    "solution": "",
+    "beforeImage": "",
+    "tag": ""
+  },
+  {
+    "id": "proj_1789222644645_arj1l",
+    "title": "AURA: Redesigning a Wellness Brand for Speed & Conversions",
+    "description": "A full WooCommerce redesign for a wellness & lifestyle brand — rebuilt from the ground up for speed, clarity, and conversion, cutting bounce rate by 48% and achieving 96+ Lighthouse scores across the board.",
+    "service": "Web Development",
+    "categorySlug": "web-development",
+    "categoryName": "Web Development",
+    "subCategory": "web-development",
+    "image": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789222488485_r0h15.jpeg",
+    "projectUrl": "",
+    "client": "Olivia Ma",
+    "featured": false,
+    "published": true,
+    "status": "Published",
+    "displayOrder": 0,
+    "gallery": [
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789222488485_r0h15.jpeg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789222492969_a7tcc.jpeg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789222497779_u0p45.jpeg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789222508347_9ev3p.png",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789222518478_ueqmv.jpeg"
+    ],
+    "tags": [],
+    "createdAt": "2026-09-12T14:17:24.645+00:00",
+    "updatedAt": "2026-09-12T14:17:24.645+00:00",
+    "mediaType": "image",
+    "width": 0,
+    "height": 0,
+    "aspectRatio": "16:9",
+    "fileSize": 0,
+    "thumbnail": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789222488485_r0h15.jpeg",
+    "techStack": [
+      "Next.js",
+      "React",
+      "TailwindCSS"
+    ],
+    "industry": "SaaS / E-commerce",
+    "websiteUrl": "",
+    "keywordsImproved": "+45 Keywords Top #3",
+    "trafficGrowth": "+350% Organic Growth",
+    "caseStudyData": "",
+    "campaignName": "AURA: Redesigning a Wellness Brand for Speed & Conversions",
+    "platform": "Facebook Ads",
+    "results": "48% reduction in bounce rate\n96+ Lighthouse scores across all categories\nFaster load times, especially on mobile\nA cohesive, on-brand shopping experience end-to-end",
+    "brandName": "Olivia Ma",
+    "revenueGrowth": "+280% MoM Revenue",
+    "acosImprovement": "ACOS reduced 42% -> 14%",
+    "campaignResults": "",
+    "videoType": "Reel",
+    "videoUrl": "",
+    "videoFile": "",
+    "mediaItems": [
+      {
+        "id": "media_1789222487116_0_vvhs",
+        "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789222488485_r0h15.jpeg",
+        "isCover": true,
+        "fileSize": 567793,
+        "mediaType": "image",
+        "displayOrder": 0
+      },
+      {
+        "id": "media_1789222491385_1_i82x",
+        "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789222492969_a7tcc.jpeg",
+        "isCover": false,
+        "fileSize": 482062,
+        "mediaType": "image",
+        "displayOrder": 1
+      },
+      {
+        "id": "media_1789222496235_2_f495",
+        "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789222497779_u0p45.jpeg",
+        "isCover": false,
+        "fileSize": 612947,
+        "mediaType": "image",
+        "displayOrder": 2
+      },
+      {
+        "id": "media_1789222507705_3_cskw",
+        "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789222508347_9ev3p.png",
+        "isCover": false,
+        "fileSize": 579199,
+        "mediaType": "image",
+        "displayOrder": 3
+      },
+      {
+        "id": "media_1789222516918_0_kgiz",
+        "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789222518478_ueqmv.jpeg",
+        "isCover": false,
+        "fileSize": 502476,
+        "mediaType": "image",
+        "displayOrder": 4
+      }
+    ],
+    "coverImage": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789222488485_r0h15.jpeg",
+    "mediaCount": 5,
+    "metricValue": "-48%",
+    "metricSub": "Bounce rate",
+    "problem": "AURA's WooCommerce store had a cluttered layout, slow load times, and a disjointed cart/checkout flow — resulting in a 48% bounce rate and poor mobile performance.",
+    "solution": "We redesigned the store with a clean, cohesive visual identity and rebuilt it mobile-first — optimizing images, code, and load speed for better Core Web Vitals.",
+    "beforeImage": "",
+    "tag": ""
   },
   {
     "id": "proj_1786556851498_1423e",
@@ -496,7 +598,7 @@
     "categorySlug": "a-plus-content",
     "categoryName": "Amazon A+ Content",
     "subCategory": "a-plus-content",
-    "image": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556503228_60lyp.jpg",
+    "image": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556511622_vbndt.jpg",
     "projectUrl": "",
     "client": "",
     "featured": false,
@@ -516,14 +618,14 @@
       "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556525233_rp9g8.jpg"
     ],
     "tags": [],
-    "createdAt": "2026-09-06T18:14:51.102+00:00",
-    "updatedAt": "2026-09-06T18:14:51.102+00:00",
+    "createdAt": "2026-09-14T15:56:50.825+00:00",
+    "updatedAt": "2026-09-14T15:56:50.825+00:00",
     "mediaType": "image",
     "width": 0,
     "height": 0,
     "aspectRatio": "auto",
     "fileSize": 0,
-    "thumbnail": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556503228_60lyp.jpg",
+    "thumbnail": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556511622_vbndt.jpg",
     "techStack": [
       "Next.js",
       "React",
@@ -572,7 +674,7 @@
       {
         "id": "media_1786556504787_2_hug0",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556503228_60lyp.jpg",
-        "isCover": true,
+        "isCover": false,
         "fileSize": 1714074,
         "mediaType": "image",
         "displayOrder": 3
@@ -588,7 +690,7 @@
       {
         "id": "media_1786556513128_4_vsu4",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556511622_vbndt.jpg",
-        "isCover": false,
+        "isCover": true,
         "fileSize": 2545753,
         "mediaType": "image",
         "displayOrder": 5
@@ -626,7 +728,7 @@
         "displayOrder": 9
       }
     ],
-    "coverImage": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556503228_60lyp.jpg",
+    "coverImage": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556511622_vbndt.jpg",
     "mediaCount": 10,
     "metricValue": "",
     "metricSub": "",
@@ -660,8 +762,8 @@
       "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786641401585_reges.jpg"
     ],
     "tags": [],
-    "createdAt": "2026-09-06T18:12:23.217+00:00",
-    "updatedAt": "2026-09-06T18:12:23.217+00:00",
+    "createdAt": "2026-09-14T15:45:08.328+00:00",
+    "updatedAt": "2026-09-14T15:45:08.328+00:00",
     "mediaType": "image",
     "width": 0,
     "height": 0,
@@ -756,6 +858,99 @@
     "tag": ""
   },
   {
+    "id": "proj_1789223861433_kch8g",
+    "title": "Velour & Oak — Shopify Store",
+    "description": "A luxury fashion Shopify store built from scratch and continuously optimized — resulting in a 55% increase in checkout completion rate and a faster, frictionless shopping experience.",
+    "service": "Web Development",
+    "categorySlug": "web-development",
+    "categoryName": "Web Development",
+    "subCategory": "web-development",
+    "image": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789223828975_obe71.jpeg",
+    "projectUrl": "",
+    "client": "Claire Bennett",
+    "featured": false,
+    "published": true,
+    "status": "Published",
+    "displayOrder": 1,
+    "gallery": [
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789223828975_obe71.jpeg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789223814069_chob2.jpeg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789223817687_3zj11.jpeg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789223825814_vux47.jpeg"
+    ],
+    "tags": [],
+    "createdAt": "2026-09-12T14:42:11.508+00:00",
+    "updatedAt": "2026-09-12T14:42:11.508+00:00",
+    "mediaType": "image",
+    "width": 0,
+    "height": 0,
+    "aspectRatio": "16:9",
+    "fileSize": 0,
+    "thumbnail": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789223828975_obe71.jpeg",
+    "techStack": [
+      "Next.js",
+      "React",
+      "TailwindCSS"
+    ],
+    "industry": "SaaS / E-commerce",
+    "websiteUrl": "",
+    "keywordsImproved": "+45 Keywords Top #3",
+    "trafficGrowth": "+350% Organic Growth",
+    "caseStudyData": "",
+    "campaignName": "Velour & Oak — Shopify Store",
+    "platform": "Facebook Ads",
+    "results": "55% increase in checkout completion rate (50% → 78.4%)\n34% reduction in cart abandonment\n18% increase in average order value\n62% increase in mobile conversion rate\nCheckout load time cut from 3.4s to 1.1s",
+    "brandName": "Claire Bennett",
+    "revenueGrowth": "+280% MoM Revenue",
+    "acosImprovement": "ACOS reduced 42% -> 14%",
+    "campaignResults": "",
+    "videoType": "Reel",
+    "videoUrl": "",
+    "videoFile": "",
+    "mediaItems": [
+      {
+        "id": "media_1789223827537_3_0025",
+        "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789223828975_obe71.jpeg",
+        "isCover": true,
+        "fileSize": 546035,
+        "mediaType": "image",
+        "displayOrder": 0
+      },
+      {
+        "id": "media_1789223812710_0_mx1n",
+        "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789223814069_chob2.jpeg",
+        "isCover": false,
+        "fileSize": 482761,
+        "mediaType": "image",
+        "displayOrder": 1
+      },
+      {
+        "id": "media_1789223816343_1_54bh",
+        "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789223817687_3zj11.jpeg",
+        "isCover": false,
+        "fileSize": 435512,
+        "mediaType": "image",
+        "displayOrder": 2
+      },
+      {
+        "id": "media_1789223824441_2_kb1m",
+        "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789223825814_vux47.jpeg",
+        "isCover": false,
+        "fileSize": 415968,
+        "mediaType": "image",
+        "displayOrder": 3
+      }
+    ],
+    "coverImage": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789223828975_obe71.jpeg",
+    "mediaCount": 4,
+    "metricValue": "55%",
+    "metricSub": "Checkout Completion",
+    "problem": "Velour & Oak needed a Shopify store built from the ground up, but the initial version suffered from a clunky checkout flow, slow load times, and high cart abandonment — resulting in a checkout completion rate stuck around 50%.",
+    "solution": "We built and continuously maintained the store on Shopify, streamlining the checkout into a fast, distraction-free flow and optimizing performance across every step from cart to payment.",
+    "beforeImage": "",
+    "tag": ""
+  },
+  {
     "id": "proj_1786557262274_g8hz3",
     "title": "Vitamin C Powder Listing Images",
     "description": "A clean, premium Amazon listing image set showcasing Pure Vitamin C Powder with bright, natural visuals and a warm orange-and-white aesthetic. The images highlight purity, easy daily use, serving size, product benefits, and a simple wellness-focused lifestyle.",
@@ -782,8 +977,8 @@
       "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557199885_c5scd.png"
     ],
     "tags": [],
-    "createdAt": "2026-08-12T17:54:22.274+00:00",
-    "updatedAt": "2026-08-12T17:54:22.274+00:00",
+    "createdAt": "2026-09-14T13:40:13.096+00:00",
+    "updatedAt": "2026-09-14T13:40:13.096+00:00",
     "mediaType": "image",
     "width": 0,
     "height": 0,
@@ -886,12 +1081,12 @@
     ],
     "coverImage": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557199885_c5scd.png",
     "mediaCount": 9,
-    "metricValue": null,
-    "metricSub": null,
-    "problem": null,
-    "solution": null,
-    "beforeImage": null,
-    "tag": null
+    "metricValue": "",
+    "metricSub": "",
+    "problem": "",
+    "solution": "",
+    "beforeImage": "",
+    "tag": ""
   },
   {
     "id": "proj_1786625536448_6vn32",
@@ -921,8 +1116,8 @@
       "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786625429845_kutez.jpg"
     ],
     "tags": [],
-    "createdAt": "2026-09-06T18:14:21.726+00:00",
-    "updatedAt": "2026-09-06T18:14:21.726+00:00",
+    "createdAt": "2026-09-14T15:55:40.821+00:00",
+    "updatedAt": "2026-09-14T15:55:40.821+00:00",
     "mediaType": "image",
     "width": 0,
     "height": 0,

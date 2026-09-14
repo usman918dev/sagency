@@ -23,44 +23,20 @@ import {
   BarChart2,
   Code
 } from "lucide-react";
-import ProjectShowcaseModal from "@/components/portfolio/ProjectShowcaseModal";
-
+import { useRouter } from "next/navigation";
 import { getProjectAspectRatioClass } from "@/lib/portfolioUtils";
 
 export default function ServicePortfolioView({ category, initialProjects }) {
+  const router = useRouter();
   const [projects] = useState(initialProjects || []);
-  const [selectedProjectIndex, setSelectedProjectIndex] = useState(null);
-  const [activeMediaIndex, setActiveMediaIndex] = useState(0);
-
-  const currentProject = selectedProjectIndex !== null ? projects[selectedProjectIndex] : null;
-
-  // Extract all media items for current lightbox project
-  const currentMediaList = currentProject
-    ? (Array.isArray(currentProject.mediaItems) && currentProject.mediaItems.length > 0
-        ? currentProject.mediaItems
-        : (Array.isArray(currentProject.gallery) && currentProject.gallery.length > 0
-            ? currentProject.gallery.map((url, i) => ({ id: `g_${i}`, url, mediaType: 'image' }))
-            : [{ id: 'm_0', url: currentProject.coverImage || currentProject.image, mediaType: currentProject.mediaType || 'image' }]
-          )
-      )
-    : [];
-
-  const activeMediaItem = currentMediaList[activeMediaIndex] || currentMediaList[0] || {};
 
   const handleOpenLightbox = (index) => {
-    setSelectedProjectIndex(index);
-    setActiveMediaIndex(0);
+    const project = projects[index];
+    if (project?.id) {
+      router.push(`/portfolio/project/${project.id}`);
+    }
   };
 
-  const handleNextMedia = () => {
-    if (currentMediaList.length <= 1) return;
-    setActiveMediaIndex((prev) => (prev + 1) % currentMediaList.length);
-  };
-
-  const handlePrevMedia = () => {
-    if (currentMediaList.length <= 1) return;
-    setActiveMediaIndex((prev) => (prev === 0 ? currentMediaList.length - 1 : prev - 1));
-  };
 
   return (
     <main className="min-h-screen bg-[var(--background)] pt-20 md:pt-24 bg-agenko-grid overflow-hidden text-[var(--foreground)] flex flex-col justify-between">
@@ -225,14 +201,8 @@ export default function ServicePortfolioView({ category, initialProjects }) {
       </div>
 
       {/* ========================================================= */}
-      {/* BEHANCE-STYLE FULL PROJECT SHOWCASE MODAL */}
+      {/* PROJECT DETAIL — cards navigate to /portfolio/project/[id]  */}
       {/* ========================================================= */}
-      <ProjectShowcaseModal
-        project={currentProject}
-        isOpen={selectedProjectIndex !== null}
-        onClose={() => setSelectedProjectIndex(null)}
-        categoryName={category.name}
-      />
 
       {/* Bottom Conversion CTA */}
       <section className="py-20 bg-[var(--card)] border-t border-[var(--border)] mt-auto">

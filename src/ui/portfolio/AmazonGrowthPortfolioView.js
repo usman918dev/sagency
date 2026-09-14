@@ -3,19 +3,19 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { ArrowLeft, Sparkles, FolderOpen, TrendingUp, ArrowRight, Layers, Layout, ShoppingBag, BarChart2, CheckCircle2 } from "lucide-react";
 import PortfolioCard from "@/components/portfolio/PortfolioCard";
-import ProjectShowcaseModal from "@/components/portfolio/ProjectShowcaseModal";
 import { amazonGrowthCategories } from "@/lib/amazonGrowthData";
 import AmazonPpcProvenResults from "@/components/services/AmazonPpcProvenResults";
 import AmazonConnectedWorkflow from "@/components/portfolio/AmazonConnectedWorkflow";
 
 export default function AmazonGrowthPortfolioView() {
+  const router = useRouter();
   const [activeCategory, setActiveCategory] = useState(null);
   const [dbProjects, setDbProjects] = useState([]);
   const [caseStudies, setCaseStudies] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [selectedProject, setSelectedProject] = useState(null);
 
   useEffect(() => {
     async function loadAmazonGrowthData() {
@@ -211,18 +211,12 @@ export default function AmazonGrowthPortfolioView() {
               <PortfolioCard
                 key={item.id || i}
                 project={item}
-                onOpenShowcase={() => setSelectedProject(item)}
+                onClick={() => item.id && router.push(`/portfolio/project/${item.id}`)}
               />
             ))}
           </div>
         )}
       </div>
-
-      <ProjectShowcaseModal
-        project={selectedProject}
-        isOpen={Boolean(selectedProject)}
-        onClose={() => setSelectedProject(null)}
-      />
     </main>
   );
 }

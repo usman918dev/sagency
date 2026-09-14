@@ -378,3 +378,22 @@ html.dark .logo-light-mode {
   scrollbar-width: none !important;
 }
 
+/* Thin scrollbar for compact areas like thumbnail strips */
+.thin-scrollbar::-webkit-scrollbar {
+  height: 4px;
+  width: 4px;
+}
+.thin-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.thin-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(157, 38, 255, 0.5);
+  border-radius: 9999px;
+}
+.thin-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #9D26FF;
+}
+.thin-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(157, 38, 255, 0.5) transparent;
+}

@@ -239,14 +239,16 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={plusJakartaSans.variable} suppressHydrationWarning>
       <head>
-        <script
+        <Script
           id="no-flash-script"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: noFlashScript }}
         />
         {/* Global canonical entity schema — injected once, referenced by @id on all pages */}
-        <script
+        <Script
           id="global-schema-jsonld"
           type="application/ld+json"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
         />
       </head>

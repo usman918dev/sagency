@@ -2,28 +2,12 @@
 
 import React, { useState, useEffect, useMemo, useCallback } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, ArrowUpRight, Sparkles, TrendingUp } from "lucide-react";
-import ProjectShowcaseModal from "@/components/portfolio/ProjectShowcaseModal";
 
-// ─── Instant Fallback Projects (6 Curated High-Impact Work) ───────────────────
+// ─── Instant Fallback Projects (Emergency Fallback Only) ──────────────────────
 const FALLBACK_PROJECTS = [
-  {
-    id: "proj_1786726176540_6nd61",
-    title: "Nova Shampoo Listing Images Stack",
-    categoryLabel: "AMAZON · LISTING IMAGES",
-    categorySlug: "amazon-growth",
-    image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786726066975_rb9oz.png",
-    client: "Nova Beauty",
-    statBadge: "+64% Conversion",
-    description: "A premium Amazon listing image set designed to showcase product benefits, ingredients, and key features.",
-    problem: "Low listing conversion rates due to plain product photos.",
-    solution: "Designed 7-image Amazon main stack with high-impact lifestyle imagery and benefit callouts.",
-    gallery: [
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786726066975_rb9oz.png",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725904601_gmv11.jpg",
-    ],
-  },
   {
     id: "ppc_1786733798883_3ynez",
     title: "Sales & PPC Growth Performance Overhaul",
@@ -52,51 +36,6 @@ const FALLBACK_PROJECTS = [
     solution: "Eliminated wasteful ad spend, targeted high-converting long-tail keywords, and optimized search terms.",
     gallery: [
       "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786652330911_olhcf.png",
-    ],
-  },
-  {
-    id: "proj_1786641570447_m33wd",
-    title: "Whistling Tea Kettle Cinematic A+ Content",
-    categoryLabel: "AMAZON · A+ CONTENT",
-    categorySlug: "amazon-growth",
-    image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786641401585_reges.jpg",
-    client: "Kitchen Craft",
-    statBadge: "Luxury Storefront",
-    description: "Premium cinematic product listing highlighting form, wood-grain detailing, and steam dynamics.",
-    problem: "Kitchenware listing lacked premium luxury feel and failed to showcase heat resistance.",
-    solution: "Dark-mode luxury renders featuring steam dynamics and stovetop compatibility infographics.",
-    gallery: [
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786641401585_reges.jpg",
-    ],
-  },
-  {
-    id: "proj_1786721837342_oh9ah",
-    title: "Avocado Hair & Skin Oil Visual Storytelling",
-    categoryLabel: "GRAPHIC · PACKAGING & VISUALS",
-    categorySlug: "graphic-designing",
-    image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721788971_ktjnn.png",
-    client: "Organic Avocado Care",
-    statBadge: "3.5x Click-Rate",
-    description: "Full visual storytelling suite for organic avocado hair & skin oil.",
-    problem: "Buyers couldn't understand dual hair & skin application benefits.",
-    solution: "Created step-by-step application graphics, purity certifications, and premium packaging callouts.",
-    gallery: [
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721788971_ktjnn.png",
-    ],
-  },
-  {
-    id: "proj_1786556851498_1423e",
-    title: "Hand Grip Strengthener High-Impact Infographics",
-    categoryLabel: "GRAPHIC · INFOGRAPHICS",
-    categorySlug: "graphic-designing",
-    image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556525233_rp9g8.jpg",
-    client: "FitGrip Athletics",
-    statBadge: "Top Seller #1",
-    description: "Professional Amazon listing image set showcasing the adjustable hand grip strengthener.",
-    problem: "Customers confused about dial resistance adjustment levels and ergonomic grip size.",
-    solution: "High-contrast fitness infographics detailing tension settings and muscle targeting diagrams.",
-    gallery: [
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556525233_rp9g8.jpg",
     ],
   },
 ];
@@ -170,28 +109,41 @@ function mapDbProject(p) {
 }
 
 export default function HomePortfolioCarousel({ limit = 6 }) {
-  const [projects, setProjects] = useState(FALLBACK_PROJECTS);
+  const [projects, setProjects] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [activeFilter, setActiveFilter] = useState("all");
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState(1);
-  const [selectedModalProject, setSelectedModalProject] = useState(null);
+  const router = useRouter();
   const [isHovered, setIsHovered] = useState(false);
 
   // Background fetch live projects
   useEffect(() => {
-    fetch("/api/portfolio/projects", { cache: "no-store" })
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 5000);
+
+    fetch("/api/portfolio/projects?status=Published", { cache: "no-store", signal: controller.signal })
       .then((res) => res.json())
       .then((json) => {
+        clearTimeout(timer);
         if (json.success && Array.isArray(json.data) && json.data.length > 0) {
           const mapped = json.data
             .filter((p) => p.status !== "Hidden" && p.published !== false && !p.deleted)
             .map(mapDbProject);
           if (mapped.length > 0) {
             setProjects(mapped);
+            setIsLoading(false);
+            return;
           }
         }
+        setProjects(FALLBACK_PROJECTS);
+        setIsLoading(false);
       })
-      .catch(() => { });
+      .catch(() => {
+        clearTimeout(timer);
+        setProjects(FALLBACK_PROJECTS);
+        setIsLoading(false);
+      });
   }, []);
 
   // Filter projects based on tab
@@ -231,7 +183,16 @@ export default function HomePortfolioCarousel({ limit = 6 }) {
     return () => clearInterval(timer);
   }, [isHovered, total, handleNext]);
 
-  if (total === 0) return null;
+  if (total === 0 && !isLoading) return null;
+  if (total === 0 && isLoading) {
+    return (
+      <section className="w-full relative py-20 bg-[var(--background)] border-b border-[var(--border)] animate-pulse">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="h-64 bg-[var(--card)] rounded-3xl border border-[var(--border)]" />
+        </div>
+      </section>
+    );
+  }
 
   const activeProject = filteredProjects[activeIndex] || filteredProjects[0];
   const nextProjectIndex = (activeIndex + 1) % total;
@@ -313,7 +274,7 @@ export default function HomePortfolioCarousel({ limit = 6 }) {
                   exit={{ opacity: 0, x: -direction * 40, scale: 0.98 }}
                   transition={{ duration: 0.45, ease: "easeOut" }}
                   className="group relative rounded-3xl overflow-hidden bg-[var(--card)] border border-[#9D26FF]/80 ring-2 ring-[#9D26FF]/20 shadow-2xl shadow-purple-950/40 cursor-pointer"
-                  onClick={() => setSelectedModalProject(activeProject)}
+                  onClick={() => activeProject.id && router.push(`/portfolio/project/${activeProject.id}`)}
                 >
                   {/* Spotlight Image Box — capped at max-h-[440px] while maintaining aspect-[1418/1109] */}
                   <div className="relative w-full aspect-[1418/1109] max-h-[420px] sm:max-h-[450px] overflow-hidden bg-black/80">
@@ -368,7 +329,7 @@ export default function HomePortfolioCarousel({ limit = 6 }) {
                         <button
                           onClick={(e) => {
                             e.stopPropagation();
-                            setSelectedModalProject(activeProject);
+                            if (activeProject.id) router.push(`/portfolio/project/${activeProject.id}`);
                           }}
                           className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-black text-xs font-extrabold shadow-2xl hover:bg-[#9D26FF] hover:text-white transition-colors duration-200 cursor-pointer"
                         >
@@ -517,12 +478,6 @@ export default function HomePortfolioCarousel({ limit = 6 }) {
 
       </div>
 
-      {/* Detailed Case Study Modal */}
-      <ProjectShowcaseModal
-        project={selectedModalProject}
-        isOpen={Boolean(selectedModalProject)}
-        onClose={() => setSelectedModalProject(null)}
-      />
     </section>
   );
 }

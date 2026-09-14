@@ -2,9 +2,9 @@
 
 import React, { useState, useMemo, useEffect, useCallback } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Play, Sparkles, ArrowUpRight } from "lucide-react";
-import ProjectShowcaseModal from "@/components/portfolio/ProjectShowcaseModal";
 
 // Main category filter options
 const MAIN_CATEGORIES = [
@@ -129,173 +129,6 @@ function mapDbProjectToItem(p, index) {
 
 // Fallback items shown if the API call fails
 const FALLBACK_ITEMS = [
-  // --- REAL AMAZON LISTING IMAGES PROJECTS ---
-  {
-    id: "proj_1786726176540_6nd61",
-    frame: "F01 / AMZ",
-    title: "Nova Shampoo Listing Images",
-    categorySlug: "amazon-growth",
-    subCategorySlug: "amazon-listing-images",
-    categoryLabel: "AMAZON · LISTING IMAGES",
-    image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786726066975_rb9oz.png",
-    client: "Nova Beauty",
-    description: "A premium Amazon listing image set designed to showcase the product’s benefits, ingredients, and key features. Combines engaging lifestyle visuals, product-focused compositions, and clear benefit-driven messaging.",
-    problem: "The brand struggled with low listing conversion rates due to plain product photos that failed to highlight key natural ingredients and hair nourishment benefits.",
-    solution: "Designed a 7-image Amazon main stack with high-impact lifestyle imagery, infographic benefit callouts, ingredient highlights, and customer trust badges.",
-    gallery: [
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786726066975_rb9oz.png",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725904601_gmv11.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725883425_focvl.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725887393_o5p2t.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725891182_5scmx.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725894412_2x0et.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725897414_xr6sf.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725901546_va8bo.jpg"
-    ]
-  },
-  {
-    id: "proj_1786721837342_oh9ah",
-    frame: "F02 / AMZ",
-    title: "Avocado Hair & Skin Oil Listing Images",
-    categorySlug: "amazon-growth",
-    subCategorySlug: "amazon-listing-images",
-    categoryLabel: "AMAZON · LISTING IMAGES",
-    image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721788971_ktjnn.png",
-    client: "Organic Avocado Care",
-    description: "A premium Amazon listing image set showcasing organic avocado hair & skin oil through clean product visuals, natural ingredients, skincare application, and hair-care lifestyle imagery.",
-    problem: "The product was losing sales to competitors because buyers could not quickly understand the dual hair & skin application benefits.",
-    solution: "Created a full visual storytelling suite featuring step-by-step application graphics, purity certifications, before/after texture shots, and premium packaging callouts.",
-    gallery: [
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721788971_ktjnn.png",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721754953_zmk2v.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721758483_7xs23.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721762394_lnht2.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721765355_853wk.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721768671_dgplw.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721771546_370ae.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721774923_o590l.jpg"
-    ]
-  },
-  {
-    id: "proj_1786718660672_tyojs",
-    frame: "F03 / AMZ",
-    title: "Anti-Hair Fall Shampoo Listing Images",
-    categorySlug: "amazon-growth",
-    subCategorySlug: "amazon-listing-images",
-    categoryLabel: "AMAZON · LISTING IMAGES",
-    image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786718471342_owd8n.jpg",
-    client: "Mamaearth Care",
-    description: "A premium Amazon listing cover for Mamaearth Rosemary Anti-Hair Fall Shampoo, featuring realistic lifestyle visuals, clean compositions, and bold feature callouts.",
-    problem: "The hair care category was overcrowded with generic listings, making it hard to communicate anti-hair fall efficacy.",
-    solution: "Designed photorealistic model lifestyle imagery with clear ingredient callouts (Rosemary & Biotin), clinical test proof points, and anti-hair fall benefit infographics.",
-    gallery: [
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786718471342_owd8n.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786718474665_56pbq.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786718454739_gn66s.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786718458010_wd04h.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786718461115_5fz00.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786718464508_zkjcn.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786718468556_ps5bs.jpg"
-    ]
-  },
-  {
-    id: "proj_1786641570447_m33wd",
-    frame: "F04 / AMZ",
-    title: "Whistling Tea Cattle Listing Images",
-    categorySlug: "amazon-growth",
-    subCategorySlug: "a-plus-content",
-    categoryLabel: "AMAZON · A+ CONTENT",
-    image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786641401585_reges.jpg",
-    client: "Kitchen Craft",
-    description: "A premium, cinematic product listing designed to highlight the kettle’s elegant form, wood-grain detailing, and pouring functionality.",
-    problem: "Kitchenware listing lacked premium luxury feel and failed to showcase heat resistance and ergonomic handle features.",
-    solution: "Developed dark-mode luxury renders featuring steam dynamics, wood-grain texture closeups, stovetop compatibility infographics, and capacity measurements.",
-    gallery: [
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786641401585_reges.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786641376894_4bey6.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786641380374_hfjmy.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786641383722_fw6zt.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786641387591_vpo97.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786641391008_2fwll.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786641394603_efuvt.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786641398512_wex91.jpg"
-    ]
-  },
-  {
-    id: "proj_1786556851498_1423e",
-    frame: "F05 / AMZ",
-    title: "Hand Grip Strengthener Listing Images",
-    categorySlug: "amazon-growth",
-    subCategorySlug: "a-plus-content",
-    categoryLabel: "AMAZON · A+ CONTENT",
-    image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556525233_rp9g8.jpg",
-    client: "FitGrip Athletics",
-    description: "A professional Amazon listing image set designed to showcase the blue adjustable hand grip strengthener through bold, high-impact visuals.",
-    problem: "Customers were confused about dial resistance adjustment levels and ergonomic grip size.",
-    solution: "Created high-contrast fitness infographics detailing 10-60kg tension settings, muscle targeting diagrams (forearms, wrist, fingers), and durability stress test visuals.",
-    gallery: [
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556525233_rp9g8.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556919929_pzqqk.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556495921_7cu1j.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556499559_ex0yo.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556503228_60lyp.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556506876_g1cfr.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556511622_vbndt.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556515103_qxk1u.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556518843_neund.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556522666_4gsr8.jpg"
-    ]
-  },
-  {
-    id: "proj_1786557262274_g8hz3",
-    frame: "F06 / AMZ",
-    title: "Vitamin C Powder Listing Images",
-    categorySlug: "amazon-growth",
-    subCategorySlug: "amazon-listing-images",
-    categoryLabel: "AMAZON · LISTING IMAGES",
-    image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557199885_c5scd.png",
-    client: "Pure Wellness",
-    description: "A clean, premium Amazon listing image set showcasing Pure Vitamin C Powder with bright, natural visuals and a warm orange-and-white aesthetic.",
-    problem: "Supplement listing had poor visual trust and failed to communicate solubility and daily immunity dosage.",
-    solution: "Designed bright lifestyle imagery featuring drink mixing, scoop dosage callouts, immune defense benefit stack, and third-party lab testing badges.",
-    gallery: [
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557199885_c5scd.png",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557170289_zj7lp.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557174400_lpz47.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557177775_zzuew.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557181417_21jjs.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557185023_2wt0r.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557188040_h5ase.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557191724_ufapy.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557195854_q09e6.jpg"
-    ]
-  },
-  {
-    id: "proj_1786625536448_6vn32",
-    frame: "F07 / AMZ",
-    title: "Dry Body Brush Listing Images",
-    categorySlug: "amazon-growth",
-    subCategorySlug: "a-plus-content",
-    categoryLabel: "AMAZON · A+ CONTENT",
-    image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786625429845_kutez.jpg",
-    client: "SkinCare Essentials",
-    description: "Natural dry body brush listing graphics featuring horsehair bristles, copper wire core, and solid beech wood for gentle exfoliation.",
-    problem: "Skincare buyers needed clear evidence of bristle quality, ergonomic wood handle craft, and exfoliation routine guidance.",
-    solution: "Designed natural aesthetic graphics showing bristle closeup, body routine diagram, copper wire anti-bacterial benefits, and eco packaging.",
-    gallery: [
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786625429845_kutez.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786625434065_n81ha.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786625394704_jg5pe.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786625398847_9vp0z.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786625403110_fh013.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786625408820_4khku.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786625414945_u5cym.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786625419599_j2p9u.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786625423419_0fwop.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786625427726_3c240.jpg"
-    ]
-  },
-
   // --- REAL AMAZON PPC PROJECTS WITH PROBLEM & SOLUTION ---
   {
     id: "ppc_1786733798883_3ynez",
@@ -521,29 +354,45 @@ export default function PortfolioTwo({ limit = null }) {
     "graphic-designing": "all-graphic-designing",
     "video-editing": "all-video-editing",
   });
-  const [selectedProjectModal, setSelectedProjectModal] = useState(null);
+  const router = useRouter();
 
   // ─── Live data state ─────────────────────────────────────────────
-  // Start with fallback items immediately (cards show right away).
-  // Live data fetches in background and swaps in silently.
-  const [portfolioItems, setPortfolioItems] = useState(FALLBACK_ITEMS);
-  const [isLoading, setIsLoading] = useState(false); // no blocking skeleton
+  // Start with empty items and loading state.
+  // DB data fetches directly. Fallback data is only used if request times out (>5s) or fails.
+  const [portfolioItems, setPortfolioItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const fetchProjects = useCallback(async () => {
+    let timeoutId;
     try {
       setIsLoading(true);
-      const res = await fetch("/api/portfolio/projects", { cache: "no-store" });
+      const controller = new AbortController();
+      timeoutId = setTimeout(() => controller.abort(), 5000);
+
+      const res = await fetch("/api/portfolio/projects?status=Published", {
+        cache: "no-store",
+        signal: controller.signal,
+      });
+      if (timeoutId) clearTimeout(timeoutId);
+
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const json = await res.json();
       if (json.success && Array.isArray(json.data) && json.data.length > 0) {
         const mapped = json.data
           .filter(p => p.status !== "Hidden" && p.published !== false && !p.deleted)
           .map((p, i) => mapDbProjectToItem(p, i));
-        if (mapped.length > 0) setPortfolioItems(mapped);
+        if (mapped.length > 0) {
+          setPortfolioItems(mapped);
+          return;
+        }
       }
+      // If DB returns empty array, fall back
+      setPortfolioItems(FALLBACK_ITEMS);
     } catch (err) {
-      console.warn("PortfolioTwo: live fetch failed, using fallback data.", err);
+      console.warn("PortfolioTwo: live fetch failed or timed out, using fallback data.", err);
+      setPortfolioItems(FALLBACK_ITEMS);
     } finally {
+      if (timeoutId) clearTimeout(timeoutId);
       setIsLoading(false);
     }
   }, []);
@@ -718,120 +567,149 @@ export default function PortfolioTwo({ limit = null }) {
           </div>
 
           {/* 5. PORTFOLIO GRID — UNIFORM 808x632 ASPECT RATIO CARDS */}
-          <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <AnimatePresence mode="popLayout">
-              {filteredItems.map((item) => (
-                <motion.div
-                  layout
-                  key={item.id}
-                  initial={{ opacity: 0, scale: 0.94 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.94 }}
-                  transition={{ duration: 0.35 }}
-                  onClick={() => setSelectedProjectModal(item)}
-                  className="group relative rounded-3xl bg-[var(--card)] border border-[var(--border)] hover:border-[#9D26FF] transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1.5 overflow-hidden cursor-pointer flex flex-col justify-between"
+          {isLoading && portfolioItems.length === 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 animate-pulse">
+              {[1, 2, 3, 4, 5, 6].map((n) => (
+                <div
+                  key={n}
+                  className="rounded-3xl bg-[var(--card)] border border-[var(--border)] overflow-hidden flex flex-col justify-between"
                 >
-                  {/* Thumbnail / Image Container - Uniform 808x632 Aspect Ratio */}
-                  <div className="relative w-full aspect-[808/632] bg-[var(--background-alt)] overflow-hidden rounded-t-3xl">
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                    />
-
-                    {/* PPC Card Overlay: only on full portfolio page, not homepage */}
-                    {!limit && item.cardBadge && (
-                      <>
-                        {/* Bottom-third dark gradient — fades from transparent at 60% to black/60 at 100% */}
-                        <div
-                          className="absolute inset-x-0 bottom-0 pointer-events-none"
-                          style={{
-                            height: "40%",
-                            background:
-                              "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.62) 100%)",
-                          }}
-                        />
-
-                        {/* Top-left Category Badge — solid pill, 16px from edges, above everything */}
-                        <div className="absolute top-4 left-4 z-20">
-                          <span
-                            className="inline-flex items-center font-mono text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-full shadow-lg"
-                            style={{
-                              background: "rgba(139,92,246,0.92)",
-                              color: "#ffffff",
-                              backdropFilter: "blur(6px)",
-                              border: "1px solid rgba(255,255,255,0.18)",
-                              letterSpacing: "0.08em",
-                              whiteSpace: "nowrap",
-                            }}
-                          >
-                            {item.cardBadge}
-                          </span>
-                        </div>
-
-                        {/* Bottom-left Stat Callout — on top of the dark gradient */}
-                        <div className="absolute bottom-4 left-4 z-20">
-                          <span
-                            className="block font-extrabold leading-none"
-                            style={{
-                              fontSize: "clamp(1.45rem, 3.5vw, 2rem)",
-                              color: "#8B5CF6",
-                              textShadow:
-                                "0 2px 12px rgba(0,0,0,0.55), 0 0 32px rgba(139,92,246,0.35)",
-                              letterSpacing: "-0.02em",
-                            }}
-                          >
-                            {item.cardStat}
-                          </span>
-                        </div>
-                      </>
-                    )}
-
-                    {/* Subtle Overlay on Hover */}
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
-                      <div className="w-10 h-10 rounded-full bg-[#9D26FF] text-white flex items-center justify-center shadow-xl transform scale-75 group-hover:scale-100 transition-transform">
-                        <ArrowUpRight size={20} />
-                      </div>
-                    </div>
+                  <div className="w-full aspect-[808/632] bg-[var(--background-alt)]/60 relative overflow-hidden" />
+                  <div className="p-6 space-y-3">
+                    <div className="h-4 bg-[var(--background-alt)] rounded-full w-28" />
+                    <div className="h-6 bg-[var(--background-alt)] rounded-xl w-3/4" />
+                    <div className="h-3 bg-[var(--background-alt)] rounded-full w-1/2" />
                   </div>
-
-                  {/* Details Below Image */}
-                  <div className="p-5 flex flex-col justify-between flex-grow">
-                    <div>
-                      {/* Top Row: Frame Number + Category Tag */}
-                      <div className="flex items-center justify-between mb-2.5">
-                        <span className="font-mono text-[11px] font-bold text-[#9D26FF] tracking-wider">
-                          {item.frame}
-                        </span>
-                        <span className="font-mono text-[10px] font-bold bg-[var(--background-alt)] text-[#9D26FF] px-2.5 py-0.5 rounded-full border border-[var(--border)]">
-                          {item.categoryLabel}
-                        </span>
-                      </div>
-
-                      {/* Project Title */}
-                      <h3 className="text-base sm:text-lg font-bold text-[var(--foreground-heading)] group-hover:text-[#9D26FF] transition-colors leading-snug">
-                        {item.title}
-                      </h3>
-                    </div>
-
-                    {item.client && (
-                      <div className="mt-4 pt-3 border-t border-[var(--border)] flex items-center justify-between text-xs text-[var(--foreground-muted)]">
-                        <span>Client: {item.client}</span>
-                        <span className="text-[#9D26FF] font-bold group-hover:underline inline-flex items-center">
-                          View Details <ArrowUpRight size={13} className="ml-0.5" />
-                        </span>
-                      </div>
-                    )}
-                  </div>
-                </motion.div>
+                </div>
               ))}
-            </AnimatePresence>
-          </motion.div>
+            </div>
+          ) : (
+            <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <AnimatePresence mode="popLayout">
+                {filteredItems.map((item) => (
+                  <motion.div
+                    layout
+                    key={item.id}
+                    initial={{ opacity: 0, scale: 0.94 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.94 }}
+                    transition={{ duration: 0.35 }}
+                    onClick={() => router.push(`/portfolio/project/${item.id}`)}
+                    className="group relative rounded-3xl bg-[var(--card)] border border-[var(--border)] hover:border-[#9D26FF] transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1.5 overflow-hidden cursor-pointer flex flex-col justify-between"
+                  >
+                    {/* Thumbnail / Image Container - Uniform 808x632 Aspect Ratio */}
+                    <div className="relative w-full aspect-[808/632] bg-[var(--background-alt)] overflow-hidden rounded-t-3xl">
+                      <Image
+                        src={item.image}
+                        alt={item.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      />
+
+                      {/* PPC Card Overlay: only on full portfolio page, not homepage */}
+                      {!limit && item.cardBadge && (
+                        <>
+                          {/* Bottom-third dark gradient — fades from transparent at 60% to black/60 at 100% */}
+                          <div
+                            className="absolute inset-x-0 bottom-0 pointer-events-none"
+                            style={{
+                              height: "40%",
+                              background:
+                                "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.62) 100%)",
+                            }}
+                          />
+
+                          {/* Top-left Category Badge — solid pill, 16px from edges, above everything */}
+                          <div className="absolute top-4 left-4 z-20">
+                            <span
+                              className="inline-flex items-center font-mono text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-full shadow-lg"
+                              style={{
+                                background: "rgba(139,92,246,0.92)",
+                                color: "#ffffff",
+                                backdropFilter: "blur(6px)",
+                                border: "1px solid rgba(255,255,255,0.18)",
+                                letterSpacing: "0.08em",
+                                whiteSpace: "nowrap",
+                              }}
+                            >
+                              {item.cardBadge}
+                            </span>
+                          </div>
+
+                          {/* Bottom-left Stat Callout — on top of the dark gradient */}
+                          <div className="absolute bottom-4 left-4 z-20">
+                            <span
+                              className="block font-extrabold leading-none"
+                              style={{
+                                fontSize: "clamp(1.45rem, 3.5vw, 2rem)",
+                                color: "#8B5CF6",
+                                textShadow:
+                                  "0 2px 12px rgba(0,0,0,0.55), 0 0 32px rgba(139,92,246,0.35)",
+                                letterSpacing: "-0.02em",
+                              }}
+                            >
+                              {item.cardStat}
+                            </span>
+                          </div>
+                        </>
+                      )}
+
+                      {/* Subtle Overlay on Hover */}
+                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
+                        <div className="w-10 h-10 rounded-full bg-[#9D26FF] text-white flex items-center justify-center shadow-xl transform scale-75 group-hover:scale-100 transition-transform">
+                          <ArrowUpRight size={20} />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Details Below Image */}
+                    <div className="p-6 flex flex-col flex-1 justify-between">
+                      <div>
+                        {/* Category Label Pill */}
+                        <div className="flex items-center justify-between gap-2 mb-3">
+                          <span className="font-mono text-[10px] font-bold tracking-widest text-[#9D26FF] uppercase bg-[var(--background-alt)] border border-[var(--border)] px-2.5 py-1 rounded-full">
+                            {item.categoryLabel}
+                          </span>
+                          {item.frame && (
+                            <span className="font-mono text-[10px] text-[var(--foreground-muted)] font-medium">
+                              {item.frame}
+                            </span>
+                          )}
+                        </div>
+
+                        {/* Title */}
+                        <h3 className="text-lg font-bold text-[var(--foreground-heading)] group-hover:text-[#9D26FF] transition-colors leading-snug mb-2 line-clamp-2">
+                          {item.title}
+                        </h3>
+
+                        {/* Description */}
+                        {item.description && (
+                          <p className="text-xs text-[var(--foreground-muted)] line-clamp-2 leading-relaxed font-normal">
+                            {item.description}
+                          </p>
+                        )}
+                      </div>
+
+                      {/* Bottom Client Footer */}
+                      {item.client && (
+                        <div className="pt-4 mt-4 border-t border-[var(--border)] flex items-center justify-between text-xs text-[var(--foreground-muted)]">
+                          <span className="font-semibold">{item.client}</span>
+                          <span className="text-[#9D26FF] font-bold text-[11px] group-hover:translate-x-0.5 transition-transform inline-flex items-center space-x-1">
+                            <span>View Case Study</span>
+                            <ArrowUpRight size={12} />
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            </motion.div>
+          )}
 
           {/* Empty state fallback */}
-          {filteredItems.length === 0 && (
+          {!isLoading && filteredItems.length === 0 && (
             <div className="text-center py-16 bg-[var(--card)] rounded-3xl border border-[var(--border)] p-8 max-w-md mx-auto">
               <h3 className="text-xl font-bold text-[var(--foreground-heading)] mb-2">No Projects Match</h3>
               <p className="text-xs text-[var(--foreground-muted)] mb-4 leading-relaxed">
@@ -898,13 +776,7 @@ export default function PortfolioTwo({ limit = null }) {
             {VIDEO_SECTION_ITEMS.map((vid) => (
               <div
                 key={vid.id}
-                onClick={() => setSelectedProjectModal({
-                  title: vid.title,
-                  categoryLabel: vid.categoryTag,
-                  description: vid.description,
-                  image: vid.thumbnail,
-                  mediaType: "video"
-                })}
+                onClick={() => vid.id && router.push(`/portfolio/project/${vid.id}`)}
                 className="group relative flex flex-col justify-between rounded-3xl bg-[var(--card)] border border-[var(--border)] hover:border-[#9D26FF] transition-all duration-300 p-4 cursor-pointer hover:-translate-y-1 shadow-lg"
               >
                 {/* Video Thumbnail with Centered Play Button Overlay */}
@@ -1003,11 +875,6 @@ export default function PortfolioTwo({ limit = null }) {
       </div>
 
       {/* Lightbox / Showcase Modal */}
-      <ProjectShowcaseModal
-        project={selectedProjectModal}
-        isOpen={Boolean(selectedProjectModal)}
-        onClose={() => setSelectedProjectModal(null)}
-      />
     </section>
   );
 }

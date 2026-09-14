@@ -2,104 +2,12 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Sparkles } from "lucide-react";
-import ProjectShowcaseModal from "@/components/portfolio/ProjectShowcaseModal";
 
-// ─── 6 instant-render fallback items ────────────────────────────────────────
-const FALLBACK = [
-  {
-    id: "proj_1786726176540_6nd61",
-    title: "Nova Shampoo Listing Images",
-    categoryLabel: "AMAZON · LISTING IMAGES",
-    image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786726066975_rb9oz.png",
-    client: "Nova Beauty",
-    categorySlug: "amazon-growth",
-    subCategorySlug: "amazon-listing-images",
-    description: "A premium Amazon listing image set designed to showcase the product's benefits, ingredients, and key features.",
-    problem: "Low listing conversion rates due to plain product photos.",
-    solution: "Designed 7-image Amazon main stack with high-impact lifestyle imagery and benefit callouts.",
-    gallery: [
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786726066975_rb9oz.png",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725904601_gmv11.jpg",
-    ],
-  },
-  {
-    id: "proj_1786721837342_oh9ah",
-    title: "Avocado Hair & Skin Oil Listing Images",
-    categoryLabel: "AMAZON · LISTING IMAGES",
-    image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721788971_ktjnn.png",
-    client: "Organic Avocado Care",
-    categorySlug: "amazon-growth",
-    subCategorySlug: "amazon-listing-images",
-    description: "Full visual storytelling suite for organic avocado hair & skin oil.",
-    problem: "Buyers couldn't understand the dual hair & skin application benefits.",
-    solution: "Created step-by-step application graphics, purity certifications, and premium packaging callouts.",
-    gallery: [
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721788971_ktjnn.png",
-    ],
-  },
-  {
-    id: "proj_1786718660672_tyojs",
-    title: "Anti-Hair Fall Shampoo Listing Images",
-    categoryLabel: "AMAZON · LISTING IMAGES",
-    image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786718471342_owd8n.jpg",
-    client: "Mamaearth Care",
-    categorySlug: "amazon-growth",
-    subCategorySlug: "amazon-listing-images",
-    description: "Premium Amazon listing cover featuring lifestyle visuals and bold feature callouts.",
-    problem: "Generic listings in an overcrowded hair care category.",
-    solution: "Photorealistic model lifestyle imagery with Rosemary & Biotin ingredient callouts.",
-    gallery: [
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786718471342_owd8n.jpg",
-    ],
-  },
-  {
-    id: "proj_1786557262274_g8hz3",
-    title: "Vitamin C Powder Listing Images",
-    categoryLabel: "AMAZON · LISTING IMAGES",
-    image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557199885_c5scd.png",
-    client: "Pure Wellness",
-    categorySlug: "amazon-growth",
-    subCategorySlug: "amazon-listing-images",
-    description: "Clean, premium Amazon listing image set with bright, natural visuals.",
-    problem: "Poor visual trust and failed to communicate solubility and dosage.",
-    solution: "Bright lifestyle imagery featuring drink mixing, dosage callouts, and lab testing badges.",
-    gallery: [
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557199885_c5scd.png",
-    ],
-  },
-  {
-    id: "proj_1786556851498_1423e",
-    title: "Hand Grip Strengthener Listing Images",
-    categoryLabel: "AMAZON · A+ CONTENT",
-    image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556525233_rp9g8.jpg",
-    client: "FitGrip Athletics",
-    categorySlug: "amazon-growth",
-    subCategorySlug: "a-plus-content",
-    description: "Professional Amazon listing image set showcasing the adjustable hand grip strengthener.",
-    problem: "Customers confused about dial resistance adjustment levels and ergonomic grip size.",
-    solution: "High-contrast fitness infographics detailing tension settings and muscle targeting diagrams.",
-    gallery: [
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556525233_rp9g8.jpg",
-    ],
-  },
-  {
-    id: "proj_1786641570447_m33wd",
-    title: "Whistling Tea Kettle Listing Images",
-    categoryLabel: "AMAZON · A+ CONTENT",
-    image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786641401585_reges.jpg",
-    client: "Kitchen Craft",
-    categorySlug: "amazon-growth",
-    subCategorySlug: "a-plus-content",
-    description: "Premium cinematic product listing highlighting elegant form and wood-grain detailing.",
-    problem: "Kitchenware listing lacked premium feel and failed to showcase heat resistance.",
-    solution: "Dark-mode luxury renders featuring steam dynamics and stovetop compatibility infographics.",
-    gallery: [
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786641401585_reges.jpg",
-    ],
-  },
-];
+// ─── Instant-render fallback items (emergency fallback only) ──────────────────
+const FALLBACK = [];
 
 // ─── DB → display shape mapper ───────────────────────────────────────────────
 function mapDbProject(p, i) {
@@ -238,22 +146,36 @@ function BentoCard({ item, index, onClick }) {
 
 // ─── Main export ─────────────────────────────────────────────────────────────
 export default function HomePortfolio() {
-  const [items, setItems] = useState(FALLBACK);
-  const [modal, setModal] = useState(null);
+  const router = useRouter();
+  const [items, setItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  // Background fetch — cards show instantly via FALLBACK, live data swaps in silently
   useEffect(() => {
-    fetch("/api/portfolio/projects", { cache: "no-store" })
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 5000);
+
+    fetch("/api/portfolio/projects?status=Published", { cache: "no-store", signal: controller.signal })
       .then((r) => r.json())
       .then((json) => {
+        clearTimeout(timer);
         if (json.success && Array.isArray(json.data) && json.data.length > 0) {
           const mapped = json.data
             .filter((p) => p.status !== "Hidden" && p.published !== false && !p.deleted)
             .map(mapDbProject);
-          if (mapped.length > 0) setItems(mapped);
+          if (mapped.length > 0) {
+            setItems(mapped);
+            setIsLoading(false);
+            return;
+          }
         }
+        setItems(FALLBACK);
+        setIsLoading(false);
       })
-      .catch(() => {}); // silent fallback
+      .catch(() => {
+        clearTimeout(timer);
+        setItems(FALLBACK);
+        setIsLoading(false);
+      });
   }, []);
 
   const display = items.slice(0, 6);
@@ -286,26 +208,28 @@ export default function HomePortfolio() {
         </motion.div>
 
         {/* ── Bento grid ──────────────────────────────────────────── */}
-        {/*
-          Mobile  (< sm) : 1 column — all cards stack with 4:3 aspect ratio
-          Tablet  (sm-lg) : 2 columns — equal grid, all cards 4:3
-          Desktop (lg+)   : 3 columns, auto-rows 260px
-                            Card 0 → col-span-2, row-span-2 (large hero)
-                            Cards 1-2 → right column, stacked
-                            Cards 3-5 → full-width bottom row
-        */}
-        <div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:[grid-auto-rows:260px]"
-        >
-          {display.map((item, i) => (
-            <BentoCard
-              key={item.id}
-              item={item}
-              index={i}
-              onClick={() => setModal(item)}
-            />
-          ))}
-        </div>
+        {isLoading && items.length === 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 animate-pulse min-h-[500px]">
+            <div className="lg:col-span-2 rounded-3xl bg-[var(--card)] border border-[var(--border)] min-h-[300px] lg:min-h-[520px]" />
+            <div className="space-y-4">
+              <div className="rounded-3xl bg-[var(--card)] border border-[var(--border)] h-[250px]" />
+              <div className="rounded-3xl bg-[var(--card)] border border-[var(--border)] h-[250px]" />
+            </div>
+          </div>
+        ) : (
+          <div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:[grid-auto-rows:260px]"
+          >
+            {display.map((item, i) => (
+              <BentoCard
+                key={item.id}
+                item={item}
+                index={i}
+                onClick={() => router.push(`/portfolio/project/${item.id}`)}
+              />
+            ))}
+          </div>
+        )}
 
         {/* ── CTA ─────────────────────────────────────────────────── */}
         <motion.div
@@ -328,12 +252,6 @@ export default function HomePortfolio() {
         </motion.div>
       </div>
 
-      {/* Project detail modal */}
-      <ProjectShowcaseModal
-        project={modal}
-        isOpen={Boolean(modal)}
-        onClose={() => setModal(null)}
-      />
     </section>
   );
 }
